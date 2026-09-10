@@ -4,6 +4,12 @@
 ומחזירה **שם ותיאור ידידותי בעברית** — עם המון אלמנטים של הצלחה: אלבום מדבקות, נקודות
 ורמות, תגי הישג, אתגר יומי, אנימציות קונפטי, צלילי ניצחון והקראה קולית.
 
+## 🚀 פריסה בלחיצה אחת
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyuvaltzalach%2Fplant-detective-kids&env=PLANTNET_API_KEY&envDescription=מפתח%20Pl@ntNet%20חינמי%20לזיהוי%20צמחים&envLink=https%3A%2F%2Fmy.plantnet.org%2F&project-name=plant-detective-kids&repository-name=plant-detective-kids)
+
+לוחצים על הכפתור → מתחברים ל-Vercel → מדביקים את מפתח ה-Pl@ntNet (מקבלים כאן:
+https://my.plantnet.org/) → Deploy. תוך דקה יש כתובת חיה שאפשר "להתקין" בטלפון.
+
 ## ✨ מה יש באפליקציה
 - 📷 **צילום/העלאה** של צמח מהמצלמה או מהגלריה.
 - 🧠 **זיהוי חינמי** דרך [Pl@ntNet](https://my.plantnet.org/) + שכבת תוכן עברית ידידותית
