@@ -26,6 +26,12 @@ describe("findLocalContent", () => {
   it("מחזיר null כשאין שום התאמה", () => {
     expect(findLocalContent(candidate("Zzz nonexistus", "Zzz"))).toBeNull();
   });
+
+  it("מזהה את הגבסנית בעברית מהמסד המקומי (במקום שם לטיני)", () => {
+    const c = findLocalContent(candidate("Gypsophila paniculata"));
+    expect(c?.id).toBe("gypsophila");
+    expect(/[֐-׿]/.test(c!.hebrewName)).toBe(true);
+  });
 });
 
 describe("getAllPlants", () => {

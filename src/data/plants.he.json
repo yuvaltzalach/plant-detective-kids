@@ -442,5 +442,499 @@
       "כשהפרחים נופלים נראה כאילו יש שטיח סגול על הרצפה.",
       "העלים שלו קטנטנים כמו של שרך."
     ]
+  },
+  {
+    "id": "gypsophila",
+    "hebrewName": "גִּבְּסָנִית (נשימת התינוק)",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Gypsophila paniculata",
+    "genus": "Gypsophila",
+    "facts": [
+      "המון פרחים לבנים קטנטנים שנראים כמו ענן רך.",
+      "קוראים לה גם 'נשימת התינוק' כי היא עדינה.",
+      "שמים אותה בזרי פרחים כדי לקשט מסביב."
+    ]
+  },
+  {
+    "id": "ranunculus",
+    "hebrewName": "נוּרִית",
+    "emoji": "🌼",
+    "category": "פרח",
+    "scientificName": "Ranunculus asiaticus",
+    "genus": "Ranunculus",
+    "facts": [
+      "נורית אדומה שמכסה את השדות באביב.",
+      "לפרח יש הרבה עלי כותרת מבריקים כמו משי.",
+      "אחד מפרחי הבר היפים בישראל."
+    ]
+  },
+  {
+    "id": "lupine",
+    "hebrewName": "תּוּרְמוּס הֶהָרִים",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Lupinus pilosus",
+    "genus": "Lupinus",
+    "facts": [
+      "פורח בעמודים כחולים-סגולים יפים באביב.",
+      "מהזרעים מכינים חטיף מלוח בשם תורמוס.",
+      "גדל על גבעות אחרי גשמי החורף."
+    ]
+  },
+  {
+    "id": "iris",
+    "hebrewName": "אִירוּס",
+    "emoji": "🪻",
+    "category": "פרח",
+    "scientificName": "Iris",
+    "genus": "Iris",
+    "facts": [
+      "פרח גדול ומרשים, לרוב בסגול כהה.",
+      "יש מיני אירוס נדירים ומוגנים בישראל.",
+      "שלושה עלים זקופים ושלושה שמוטים כלפי מטה."
+    ]
+  },
+  {
+    "id": "lily",
+    "hebrewName": "שׁוֹשָׁן צָחוֹר",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Lilium candidum",
+    "genus": "Lilium",
+    "facts": [
+      "פרח לבן גדול וריחני מאוד.",
+      "פורח בקיץ וגדל גם בר.",
+      "אחד הפרחים הכי יפים בטבע."
+    ]
+  },
+  {
+    "id": "tulip",
+    "hebrewName": "צִבְעוֹנִי",
+    "emoji": "🌷",
+    "category": "פרח",
+    "scientificName": "Tulipa",
+    "genus": "Tulipa",
+    "facts": [
+      "פרח בצורת גביע בהמון צבעים.",
+      "בהרי ישראל פורח צבעוני בר אדום.",
+      "פרח מפורסם מאוד מהולנד."
+    ]
+  },
+  {
+    "id": "narcissus",
+    "hebrewName": "נַרְקִיס",
+    "emoji": "🌼",
+    "category": "פרח",
+    "scientificName": "Narcissus tazetta",
+    "genus": "Narcissus",
+    "facts": [
+      "פורח בחורף ויש לו ריח מתוק וחזק.",
+      "פרח לבן עם 'כתר' צהוב קטן באמצע.",
+      "גדל בר בשדות לחים בישראל."
+    ]
+  },
+  {
+    "id": "geranium",
+    "hebrewName": "גֶּרַנְיוּם",
+    "emoji": "🌺",
+    "category": "פרח",
+    "scientificName": "Pelargonium",
+    "genus": "Pelargonium",
+    "facts": [
+      "פורח במרפסות ובעציצים כמעט כל השנה.",
+      "לעלים ריח מיוחד כשנוגעים בהם.",
+      "אוהב שמש ולא צריך הרבה מים."
+    ]
+  },
+  {
+    "id": "petunia",
+    "hebrewName": "פֶּטוּנְיָה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Petunia",
+    "genus": "Petunia",
+    "facts": [
+      "פרחים בצורת חצוצרה בהמון צבעים.",
+      "פורחת יפה במיוחד בקיץ.",
+      "אהובה מאוד לקישוט מרפסות."
+    ]
+  },
+  {
+    "id": "marigold",
+    "hebrewName": "צִפָּרְנֵי חָתוּל",
+    "emoji": "🌼",
+    "category": "פרח",
+    "scientificName": "Tagetes",
+    "genus": "Tagetes",
+    "facts": [
+      "פרחים כתומים-צהובים עליזים.",
+      "לעלים ריח חזק שמרחיק יתושים.",
+      "פורח לאורך כל הקיץ בגינה."
+    ]
+  },
+  {
+    "id": "gazania",
+    "hebrewName": "גַּזַנְיָה",
+    "emoji": "🌼",
+    "category": "פרח",
+    "scientificName": "Gazania",
+    "genus": "Gazania",
+    "facts": [
+      "פרח כמו שמש קטנה שנפתח בבוקר ונסגר בערב.",
+      "עמיד מאוד לחום ולשמש.",
+      "פורח בשלל צבעים כתומים וצהובים."
+    ]
+  },
+  {
+    "id": "lantana",
+    "hebrewName": "לַנְטָנָה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Lantana camara",
+    "genus": "Lantana",
+    "facts": [
+      "זרי פרחים קטנטנים בכמה צבעים יחד.",
+      "פרפרים אוהבים אותה מאוד.",
+      "פורחת כמעט כל השנה."
+    ]
+  },
+  {
+    "id": "jasmine",
+    "hebrewName": "יַסְמִין",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Jasminum",
+    "genus": "Jasminum",
+    "facts": [
+      "פרחים לבנים קטנים עם ריח מתוק וחזק.",
+      "מטפס יפה על גדרות וסורגים.",
+      "מריח הכי חזק בערב."
+    ]
+  },
+  {
+    "id": "gardenia",
+    "hebrewName": "גַּרְדֶּנְיָה",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Gardenia jasminoides",
+    "genus": "Gardenia",
+    "facts": [
+      "פרח לבן עבה עם ריח נהדר.",
+      "העלים ירוקים כהים ומבריקים.",
+      "אוהבת אוויר לח."
+    ]
+  },
+  {
+    "id": "cercis",
+    "hebrewName": "כְּלִיל הַחֹרֶשׁ",
+    "emoji": "💜",
+    "category": "עץ",
+    "scientificName": "Cercis siliquastrum",
+    "genus": "Cercis",
+    "facts": [
+      "באביב מתכסה כולו בפרחים ורודים-סגולים.",
+      "הפרחים צומחים ישר מהגזע והענפים!",
+      "פורח בחורשות ובהרים בישראל."
+    ]
+  },
+  {
+    "id": "pistacia",
+    "hebrewName": "אֵלָה",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Pistacia palaestina",
+    "genus": "Pistacia",
+    "facts": [
+      "עץ בר נפוץ בחורש הישראלי.",
+      "בסתיו העלים מאדימים ומכתימים יפה.",
+      "קרוב משפחה של עץ הפיסטוק."
+    ]
+  },
+  {
+    "id": "acacia",
+    "hebrewName": "שִׁיטָה",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Vachellia",
+    "genus": "Vachellia",
+    "facts": [
+      "עץ המדבר עם קוצים ופרחים צהובים כדוריים.",
+      "נותן צל חשוב לחיות במדבר.",
+      "חזק מאוד ושורד גם בלי הרבה מים."
+    ]
+  },
+  {
+    "id": "plane-tree",
+    "hebrewName": "דּוֹלֵב",
+    "emoji": "🍃",
+    "category": "עץ",
+    "scientificName": "Platanus orientalis",
+    "genus": "Platanus",
+    "facts": [
+      "עץ ענק עם קליפה מנומרת שמתקלפת.",
+      "גדל ליד נחלים ומים.",
+      "העלים שלו גדולים כמו כף יד."
+    ]
+  },
+  {
+    "id": "willow",
+    "hebrewName": "עֲרָבָה",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Salix",
+    "genus": "Salix",
+    "facts": [
+      "הענפים נוטים כלפי מטה כמו שיער ארוך.",
+      "אוהבת מים וגדלה ליד נחלים.",
+      "העלים דקים וארוכים."
+    ]
+  },
+  {
+    "id": "mulberry",
+    "hebrewName": "עֵץ תּוּת",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Morus alba",
+    "genus": "Morus",
+    "facts": [
+      "הפירות מתוקים וצובעים את הידיים.",
+      "זחל המשי אוכל רק את עלי התות.",
+      "נותן צל גדול ונעים בקיץ."
+    ]
+  },
+  {
+    "id": "laurel",
+    "hebrewName": "עֵץ דַּפְנָה",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Laurus nobilis",
+    "genus": "Laurus",
+    "facts": [
+      "מעלי הדפנה מתבלים מרקים ותבשילים.",
+      "העלים ריחניים מאוד.",
+      "ירוק כל השנה."
+    ]
+  },
+  {
+    "id": "apple",
+    "hebrewName": "עֵץ תַּפּוּחַ",
+    "emoji": "🍎",
+    "category": "עץ",
+    "scientificName": "Malus domestica",
+    "genus": "Malus",
+    "facts": [
+      "פורח בפרחים ורודים-לבנים באביב.",
+      "אוהב מקומות קרירים כמו הגולן.",
+      "יש תפוחים אדומים, ירוקים וצהובים."
+    ]
+  },
+  {
+    "id": "pear",
+    "hebrewName": "עֵץ אַגָּס",
+    "emoji": "🍐",
+    "category": "עץ",
+    "scientificName": "Pyrus communis",
+    "genus": "Pyrus",
+    "facts": [
+      "פרי מתוק וריחני בצורת טיפה.",
+      "קרוב משפחה של עץ התפוח.",
+      "פורח בפרחים לבנים באביב."
+    ]
+  },
+  {
+    "id": "mango",
+    "hebrewName": "עֵץ מַנְגּוֹ",
+    "emoji": "🥭",
+    "category": "עץ",
+    "scientificName": "Mangifera indica",
+    "genus": "Mangifera",
+    "facts": [
+      "פרי מתוק וכתום שכולם אוהבים.",
+      "העץ גדל במקומות חמים.",
+      "העלים גדולים וירוקים כהים."
+    ]
+  },
+  {
+    "id": "avocado",
+    "hebrewName": "עֵץ אָבוֹקָדוֹ",
+    "emoji": "🥑",
+    "category": "עץ",
+    "scientificName": "Persea americana",
+    "genus": "Persea",
+    "facts": [
+      "הפרי ירוק, שמנוני ובריא.",
+      "בתוכו יש גלעין גדול.",
+      "אפשר לנבוט גלעין בכוס מים ולראות שורשים."
+    ]
+  },
+  {
+    "id": "banana",
+    "hebrewName": "בָּנָנָה",
+    "emoji": "🍌",
+    "category": "צמח",
+    "scientificName": "Musa",
+    "genus": "Musa",
+    "facts": [
+      "בכלל לא עץ אלא עשב ענק!",
+      "העלים שלה גדולים מאוד.",
+      "הבננות גדלות יחד באשכול גדול."
+    ]
+  },
+  {
+    "id": "strawberry",
+    "hebrewName": "תּוּת שָׂדֶה",
+    "emoji": "🍓",
+    "category": "צמח",
+    "scientificName": "Fragaria",
+    "genus": "Fragaria",
+    "facts": [
+      "הפרי האדום מלא בנקודות זעירות שהן הזרעים.",
+      "צומח נמוך על הקרקע.",
+      "מתוק וחמצמץ וטעים."
+    ]
+  },
+  {
+    "id": "corn",
+    "hebrewName": "תִּירָס",
+    "emoji": "🌽",
+    "category": "צמח",
+    "scientificName": "Zea mays",
+    "genus": "Zea",
+    "facts": [
+      "גדל גבוה עם קלח מלא גרגירים צהובים.",
+      "אוהב שמש חזקה.",
+      "אפשר לאכול אותו חם או להכין ממנו פופקורן."
+    ]
+  },
+  {
+    "id": "pepper",
+    "hebrewName": "פִּלְפֵּל",
+    "emoji": "🫑",
+    "category": "צמח",
+    "scientificName": "Capsicum annuum",
+    "genus": "Capsicum",
+    "facts": [
+      "יש פלפל מתוק ויש פלפל חריף.",
+      "מתחיל ירוק ומבשיל לאדום או צהוב.",
+      "גדל על שיח נמוך בגינה."
+    ]
+  },
+  {
+    "id": "cucumber",
+    "hebrewName": "מְלָפְפוֹן",
+    "emoji": "🥒",
+    "category": "צמח",
+    "scientificName": "Cucumis sativus",
+    "genus": "Cucumis",
+    "facts": [
+      "ירוק, קריר ומלא מים.",
+      "גדל על גבעול מטפס.",
+      "טעים מאוד בסלט."
+    ]
+  },
+  {
+    "id": "pumpkin",
+    "hebrewName": "דְּלַעַת",
+    "emoji": "🎃",
+    "category": "צמח",
+    "scientificName": "Cucurbita",
+    "genus": "Cucurbita",
+    "facts": [
+      "פרי כתום וענק.",
+      "גדל על שלוחה שזוחלת על הקרקע.",
+      "מכינים ממנה מרק כתום וטעים."
+    ]
+  },
+  {
+    "id": "eggplant",
+    "hebrewName": "חָצִיל",
+    "emoji": "🍆",
+    "category": "צמח",
+    "scientificName": "Solanum melongena",
+    "genus": "Solanum",
+    "facts": [
+      "פרי סגול ומבריק.",
+      "קרוב משפחה של העגבנייה.",
+      "מכינים ממנו סלטים טעימים."
+    ]
+  },
+  {
+    "id": "carrot",
+    "hebrewName": "גֶּזֶר",
+    "emoji": "🥕",
+    "category": "צמח",
+    "scientificName": "Daucus carota",
+    "genus": "Daucus",
+    "facts": [
+      "החלק הכתום שאוכלים גדל מתחת לאדמה.",
+      "למעלה יש עלים ירוקים כמו נוצות.",
+      "מתוק ובריא במיוחד לעיניים."
+    ]
+  },
+  {
+    "id": "monstera",
+    "hebrewName": "מוֹנְסְטֵרָה",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Monstera deliciosa",
+    "genus": "Monstera",
+    "facts": [
+      "צמח בית עם עלים גדולים מלאי חורים.",
+      "אוהב אור עקיף ולא שמש ישירה.",
+      "מטפס כשהוא גדל."
+    ]
+  },
+  {
+    "id": "pothos",
+    "hebrewName": "פּוֹתוֹס",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Epipremnum aureum",
+    "genus": "Epipremnum",
+    "facts": [
+      "צמח בית קל מאוד לגידול.",
+      "הענפים נשפכים יפה מהמדף.",
+      "מסתדר גם עם מעט אור."
+    ]
+  },
+  {
+    "id": "snake-plant",
+    "hebrewName": "לְשׁוֹן הַחָמוֹת",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Dracaena trifasciata",
+    "genus": "Dracaena",
+    "facts": [
+      "עלים זקופים, ארוכים וחזקים.",
+      "כמעט בלתי אפשרי להרוג אותו — מושלם למתחילים.",
+      "מנקה את האוויר בבית."
+    ]
+  },
+  {
+    "id": "peace-lily",
+    "hebrewName": "סְפָּתִיפִילוּם",
+    "emoji": "🤍",
+    "category": "צמח",
+    "scientificName": "Spathiphyllum",
+    "genus": "Spathiphyllum",
+    "facts": [
+      "צמח בית עם 'פרח' לבן יפה.",
+      "כשהוא צמא העלים נשמטים ומזכירים לך להשקות.",
+      "אוהב פינה מוצללת."
+    ]
+  },
+  {
+    "id": "ficus-benjamina",
+    "hebrewName": "פִיקוּס בֶּנְגָּ'מִין",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Ficus benjamina",
+    "genus": "Ficus",
+    "facts": [
+      "עץ נוי נפוץ בבתים ובגינות.",
+      "העלים קטנים, ירוקים ומבריקים.",
+      "מנשיר עלים כשמזיזים אותו למקום חדש."
+    ]
   }
 ]
