@@ -9,8 +9,10 @@ import { Album } from "./screens/Album";
 import { Capture } from "./screens/Capture";
 import { Challenges } from "./screens/Challenges";
 import { Encyclopedia } from "./screens/Encyclopedia";
+import { Games } from "./screens/Games";
 import { Home } from "./screens/Home";
 import { Identifying } from "./screens/Identifying";
+import { Login } from "./screens/Login";
 import { OnlineGroup } from "./screens/OnlineGroup";
 import { Parents } from "./screens/Parents";
 import { Players } from "./screens/Players";
@@ -18,6 +20,7 @@ import { Result } from "./screens/Result";
 import type { PlantResult } from "./types";
 
 type Screen =
+  | "login"
   | "home"
   | "capture"
   | "identifying"
@@ -27,13 +30,14 @@ type Screen =
   | "players"
   | "online"
   | "encyclopedia"
+  | "games"
   | "parents";
 
 const MUTE_KEY = "plant-detective:muted";
 
 export default function App() {
   const p = useProgress();
-  const [screen, setScreen] = useState<Screen>("home");
+  const [screen, setScreen] = useState<Screen>("login");
   const [image, setImage] = useState<string | null>(null);
   const [result, setResult] = useState<PlantResult | null>(null);
   const [encOpenId, setEncOpenId] = useState<string | undefined>(undefined);
@@ -70,7 +74,7 @@ export default function App() {
 
   return (
     <div className="mx-auto flex min-h-screen max-w-lg flex-col">
-      {screen !== "home" && (
+      {screen !== "home" && screen !== "login" && (
         <TopBar
           points={p.state.points}
           level={p.level.level}
@@ -78,6 +82,20 @@ export default function App() {
           onHome={() => setScreen("home")}
           muted={muted}
           onToggleMute={() => setMutedState((m) => !m)}
+        />
+      )}
+
+      {screen === "login" && (
+        <Login
+          players={p.players}
+          onSelect={(id) => {
+            p.switchPlayer(id);
+            setScreen("home");
+          }}
+          onCreate={(name, avatar) => {
+            p.createPlayer(name, avatar);
+            setScreen("home");
+          }}
         />
       )}
 
@@ -98,6 +116,8 @@ export default function App() {
           onOnline={() => setScreen("online")}
           onEncyclopedia={() => openEncyclopedia(undefined)}
           onPlantOfDay={() => openEncyclopedia(plantOfDay.id)}
+          onGames={() => setScreen("games")}
+          onSwitchAccount={() => setScreen("login")}
           onParents={() => setScreen("parents")}
         />
       )}
@@ -180,6 +200,8 @@ export default function App() {
 
       {screen === "encyclopedia" && <Encyclopedia state={p.state} initialOpenId={encOpenId} />}
 
+      {screen === "games" && <Games />}
+
       {screen === "parents" && (
         <Parents
           settings={p.settings}
@@ -191,6 +213,13 @@ export default function App() {
           onCreatePlayer={p.createPlayer}
           onEditPlayer={p.editPlayer}
           onDeletePlayer={p.deletePlayer}
+          online={{
+            code: online.code,
+            challenge: online.challenge,
+            join: online.join,
+            leave: online.leave,
+            updateGroupChallenge: online.updateGroupChallenge
+          }}
         />
       )}
     </div>

@@ -19,13 +19,14 @@ interface HomeProps {
   onOnline: () => void;
   onEncyclopedia: () => void;
   onPlantOfDay: () => void;
+  onGames: () => void;
+  onSwitchAccount: () => void;
   onParents: () => void;
 }
 
 export function Home(props: HomeProps) {
   const {
     activePlayer,
-    playerCount,
     level,
     stickerCount,
     totalPlants,
@@ -46,7 +47,7 @@ export function Home(props: HomeProps) {
       {/* שחקן/ית פעיל/ה + דרגה */}
       {activePlayer && (
         <button
-          onClick={go(props.onPlayers)}
+          onClick={go(props.onSwitchAccount)}
           className="flex items-center gap-2 rounded-full bg-white px-4 py-1.5 shadow active:scale-95"
         >
           <span className="text-2xl">{activePlayer.avatar}</span>
@@ -54,7 +55,7 @@ export function Home(props: HomeProps) {
           <span className="rounded-full bg-leaf-light px-2 py-0.5 text-xs font-bold text-leaf-dark">
             {rank.emoji} {rank.name}
           </span>
-          {playerCount > 1 && <span className="text-sm text-leaf-dark/50">🔄</span>}
+          <span className="text-sm text-leaf-dark/50">🔄</span>
         </button>
       )}
 
@@ -110,11 +111,14 @@ export function Home(props: HomeProps) {
         <button onClick={go(props.onEncyclopedia)} className={tile}>
           📖 אנציקלופדיה
         </button>
+        <button onClick={go(props.onGames)} className={tile}>
+          🎮 משחקים
+        </button>
         <button onClick={go(props.onOnline)} className={tile}>
           🌍 תחרות אונליין
         </button>
-        <button onClick={go(props.onPlayers)} className={tile}>
-          🏆 שחקנים
+        <button onClick={go(props.onPlayers)} className={`${tile} col-span-2`}>
+          🏆 טבלת ניצחונות מקומית
         </button>
       </div>
 

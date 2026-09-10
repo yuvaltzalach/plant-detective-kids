@@ -1,6 +1,15 @@
 import { useMemo, useState } from "react";
 import { PlayerSetup } from "../components/PlayerSetup";
+import { randomCode, type GroupChallenge } from "../lib/online";
 import type { AppSettings, CustomChallenge, PlantCategory, Player } from "../types";
+
+export interface OnlineControls {
+  code: string | null;
+  challenge: GroupChallenge | null;
+  join: (raw: string) => void;
+  leave: () => void;
+  updateGroupChallenge: (c: { text: string; emoji: string; category?: string } | null) => void;
+}
 
 interface ParentsProps {
   settings: AppSettings;
@@ -12,6 +21,7 @@ interface ParentsProps {
   onCreatePlayer: (name: string, avatar: string) => void;
   onEditPlayer: (id: string, name: string, avatar: string) => void;
   onDeletePlayer: (id: string) => void;
+  online: OnlineControls;
 }
 
 const CATEGORIES: { label: string; value?: PlantCategory }[] = [
@@ -70,6 +80,12 @@ export function Parents(props: ParentsProps) {
   const [text, setText] = useState(current?.text ?? "");
   const [emoji, setEmoji] = useState(current?.emoji ?? "🎯");
   const [category, setCategory] = useState<PlantCategory | undefined>(current?.category);
+
+  // תחרות אונליין
+  const [codeInput, setCodeInput] = useState("");
+  const [gText, setGText] = useState("");
+  const [gEmoji, setGEmoji] = useState("🎯");
+  const [gCategory, setGCategory] = useState<PlantCategory | undefined>(undefined);
 
   const editingPlayer = useMemo(
     () => (mode.kind === "edit" ? props.players.find((p) => p.id === mode.id) : undefined),
@@ -231,6 +247,110 @@ export function Parents(props: ParentsProps) {
         >
           ➕ הוספת שחקן/ית
         </button>
+      </section>
+
+      {/* תחרות אונליין */}
+      <section className="rounded-blob bg-white p-5 shadow">
+        <h3 className="text-xl font-black text-leaf-dark">🏆 תחרות אונליין</h3>
+        {!props.online.code ? (
+          <>
+            <p className="mt-1 text-sm text-leaf-dark/70">
+              פתחו קבוצה משותפת (מקבלים קוד לשיתוף), או הצטרפו לקוד קיים. כל ילד/ה בטלפון שלו/ה
+              יופיע/תופיע בטבלה.
+            </p>
+            <input
+              value={codeInput}
+              onChange={(e) => setCodeInput(e.target.value.toUpperCase())}
+              placeholder="קוד קבוצה"
+              maxLength={8}
+              className="mt-3 w-full rounded-2xl border-2 border-leaf-light bg-white p-3 text-center text-xl font-black tracking-widest outline-none focus:border-leaf"
+            />
+            <div className="mt-3 flex gap-2">
+              <button
+                onClick={() => props.online.join(codeInput)}
+                disabled={codeInput.trim().length < 3}
+                className="big-btn flex-1 bg-leaf py-2 text-base disabled:opacity-40"
+              >
+                הצטרפות
+              </button>
+              <button
+                onClick={() => props.online.join(randomCode())}
+                className="big-btn flex-1 bg-sky py-2 text-base"
+              >
+                ✨ קבוצה חדשה
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="mt-2 rounded-2xl bg-leaf-light/60 p-3 text-center">
+              <div className="text-sm font-bold text-leaf-dark/70">קוד הקבוצה לשיתוף:</div>
+              <div className="text-3xl font-black tracking-widest text-leaf-dark">
+                {props.online.code}
+              </div>
+            </div>
+
+            <div className="mt-4 text-sm font-bold text-leaf-dark/70">אתגר לכל הקבוצה:</div>
+            <textarea
+              value={gText}
+              onChange={(e) => setGText(e.target.value)}
+              placeholder="מצאו פרח סגול"
+              rows={2}
+              className="mt-1 w-full rounded-2xl border-2 border-leaf-light p-2 outline-none focus:border-leaf"
+            />
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {EMOJI_CHOICES.map((e) => (
+                <button
+                  key={e}
+                  onClick={() => setGEmoji(e)}
+                  className={`h-9 w-9 rounded-lg text-xl ${
+                    e === gEmoji ? "bg-leaf-light ring-2 ring-leaf" : "bg-gray-100"
+                  }`}
+                >
+                  {e}
+                </button>
+              ))}
+            </div>
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {CATEGORIES.map((c) => (
+                <button
+                  key={c.label}
+                  onClick={() => setGCategory(c.value)}
+                  className={`rounded-full px-3 py-1 text-xs font-bold ${
+                    gCategory === c.value ? "bg-leaf text-white" : "bg-gray-100 text-leaf-dark"
+                  }`}
+                >
+                  {c.label}
+                </button>
+              ))}
+            </div>
+            <div className="mt-3 flex gap-2">
+              <button
+                onClick={() => {
+                  if (!gText.trim()) return;
+                  props.online.updateGroupChallenge({
+                    text: gText.trim(),
+                    emoji: gEmoji,
+                    category: gCategory
+                  });
+                  setGText("");
+                }}
+                disabled={!gText.trim()}
+                className="big-btn flex-1 bg-leaf py-2 text-base disabled:opacity-40"
+              >
+                קביעת אתגר לקבוצה
+              </button>
+              <button onClick={props.online.leave} className="big-btn bg-gray-400 py-2 text-base">
+                יציאה
+              </button>
+            </div>
+            {props.online.challenge && (
+              <div className="mt-3 rounded-2xl bg-leaf-light/60 p-3 text-center font-bold text-leaf-dark">
+                אתגר פעיל: {props.online.challenge.emoji} {props.online.challenge.text}
+              </div>
+            )}
+          </>
+        )}
       </section>
 
       {/* איפוס */}
