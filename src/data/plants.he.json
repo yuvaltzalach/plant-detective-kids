@@ -936,5 +936,360 @@
       "העלים קטנים, ירוקים ומבריקים.",
       "מנשיר עלים כשמזיזים אותו למקום חדש."
     ]
+  },
+  {
+    "id": "mastic",
+    "hebrewName": "אֵלַת הַמַּסְטִיק",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Pistacia lentiscus",
+    "genus": "Pistacia",
+    "facts": [
+      "שיח ירוק־עד נפוץ מאוד בחורש הישראלי.",
+      "יש לו פירות אדומים שמשחירים.",
+      "מהשרף שלו הכינו פעם מסטיק ללעיסה."
+    ]
+  },
+  {
+    "id": "tabor-oak",
+    "hebrewName": "אַלּוֹן הַתָּבוֹר",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Quercus ithaburensis",
+    "genus": "Quercus",
+    "facts": [
+      "אלון גדול שמשיר את עליו בחורף.",
+      "הבלוטים שלו גדולים במיוחד.",
+      "פעם כיסה יערות שלמים בשרון ובגליל."
+    ]
+  },
+  {
+    "id": "christ-thorn",
+    "hebrewName": "שִׁיזָף מָצוּי",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Ziziphus spina-christi",
+    "genus": "Ziziphus",
+    "facts": [
+      "עץ קוצני שגדל ליד מעיינות ובעמקים.",
+      "הפירות הקטנים מתוקים ואפשר לאכול.",
+      "יש עצים עתיקים בני מאות שנים."
+    ]
+  },
+  {
+    "id": "storax",
+    "hebrewName": "לִבְנֶה רְפוּאִי",
+    "emoji": "🤍",
+    "category": "עץ",
+    "scientificName": "Styrax officinalis",
+    "genus": "Styrax",
+    "facts": [
+      "פורח באביב בפרחים לבנים בצורת פעמון.",
+      "הפרחים מריחים נהדר.",
+      "נפוץ בחורש ההררי בישראל."
+    ]
+  },
+  {
+    "id": "arbutus",
+    "hebrewName": "קְטָלָב מָצוּי",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Arbutus andrachne",
+    "genus": "Arbutus",
+    "facts": [
+      "יש לו קליפה אדומה חלקה שמתקלפת.",
+      "הפירות אדומים וכדוריים.",
+      "עץ יפהפה של חורש הים־תיכוני."
+    ]
+  },
+  {
+    "id": "hawthorn",
+    "hebrewName": "עֻזְרָר",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Crataegus aronia",
+    "genus": "Crataegus",
+    "facts": [
+      "עץ קוצני עם פרחים לבנים באביב.",
+      "פירות צהובים־כתומים שאפשר לאכול.",
+      "נפוץ מאוד בחורש ובשדות."
+    ]
+  },
+  {
+    "id": "thorny-burnet",
+    "hebrewName": "סִירָה קוֹצָנִית",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Sarcopoterium spinosum",
+    "genus": "Sarcopoterium",
+    "facts": [
+      "השיח הנמוך והקוצני הכי נפוץ בטבע הישראלי.",
+      "צורתו כמו כיפה קטנה ומסובכת.",
+      "בקיץ מתייבש ובחורף מלבלב מחדש."
+    ]
+  },
+  {
+    "id": "rockrose-pink",
+    "hebrewName": "לֹטֶם שָׂעִיר",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Cistus creticus",
+    "genus": "Cistus",
+    "facts": [
+      "פרחים ורודים מקומטים כמו נייר משי.",
+      "שיח נפוץ בחורש, במיוחד אחרי שריפות.",
+      "פורח באביב."
+    ]
+  },
+  {
+    "id": "rockrose-white",
+    "hebrewName": "לֹטֶם מְרְוָנִי",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Cistus salviifolius",
+    "genus": "Cistus",
+    "facts": [
+      "אח לבן של הלוטם השעיר.",
+      "פרחים לבנים עם לב צהוב.",
+      "העלים מחוספסים כמו של מרווה."
+    ]
+  },
+  {
+    "id": "white-broom",
+    "hebrewName": "רֹתֶם הַמִּדְבָּר",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Retama raetam",
+    "genus": "Retama",
+    "facts": [
+      "שיח מדברי עם המון פרחים לבנים ריחניים.",
+      "כמעט אין לו עלים כדי לחסוך מים.",
+      "נותן צל וקן לחיות במדבר."
+    ]
+  },
+  {
+    "id": "spiny-broom",
+    "hebrewName": "קִדָּה שְׂעִירָה",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Calicotome villosa",
+    "genus": "Calicotome",
+    "facts": [
+      "באביב הגבעות מצהיבות מהפרחים שלו.",
+      "שיח קוצני עם ריח חזק.",
+      "נזהרים מהקוצים — רק מסתכלים."
+    ]
+  },
+  {
+    "id": "sea-squill",
+    "hebrewName": "חָצָב מָצוּי",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Drimia maritima",
+    "genus": "Drimia",
+    "facts": [
+      "עמוד לבן וגבוה שפורח בסוף הקיץ.",
+      "פעם סימנו איתו גבולות בין שדות.",
+      "מבשר שהסתיו מתקרב."
+    ],
+    "caution": "הבצל של החצב רעיל — נהנים להסתכל בלי לגעת ובלי לטעום."
+  },
+  {
+    "id": "autumn-crocus",
+    "hebrewName": "סִתְוָנִית",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Colchicum",
+    "genus": "Colchicum",
+    "facts": [
+      "פורחת בסתיו ישר מהאדמה, בלי עלים.",
+      "פרח ורוד עדין שמופיע אחרי החום.",
+      "מהפרחים הראשונים של הסתיו."
+    ],
+    "caution": "הסתוונית רעילה — יפה להסתכל בלבד."
+  },
+  {
+    "id": "sternbergia",
+    "hebrewName": "חֶלְמוֹנִית",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Sternbergia clusiana",
+    "genus": "Sternbergia",
+    "facts": [
+      "פרח צהוב זהוב שפורח בסתיו.",
+      "נראה כמו כוס זהב על האדמה.",
+      "פרח בר מוגן — לא קוטפים."
+    ]
+  },
+  {
+    "id": "asphodel",
+    "hebrewName": "עִירִית",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Asphodelus ramosus",
+    "genus": "Asphodelus",
+    "facts": [
+      "עמוד גבוה עם המון פרחים לבנים־ורודים.",
+      "נפוצה מאוד בשדות שבהם רועים עדרים.",
+      "פורחת בשיא האביב."
+    ]
+  },
+  {
+    "id": "star-of-bethlehem",
+    "hebrewName": "נֵץ־חָלָב",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Ornithogalum",
+    "genus": "Ornithogalum",
+    "facts": [
+      "פרחים לבנים בצורת כוכב.",
+      "נפתחים ביום ונסגרים לקראת הערב.",
+      "גדלים בשדות באביב."
+    ]
+  },
+  {
+    "id": "adonis",
+    "hebrewName": "דְּמּוּמִית",
+    "emoji": "🔴",
+    "category": "פרח",
+    "scientificName": "Adonis",
+    "genus": "Adonis",
+    "facts": [
+      "פרח אדום קטן שפורח באביב.",
+      "אחד מ'הדרום האדום' יחד עם הכלנית והפרג.",
+      "האמצע שלו כהה כמעט שחור."
+    ]
+  },
+  {
+    "id": "milk-thistle",
+    "hebrewName": "גְּדִילָן מָצוּי",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Silybum marianum",
+    "genus": "Silybum",
+    "facts": [
+      "פרח סגול קוצני עם עלים מנוקדים בלבן.",
+      "גדל גבוה בשדות ובצידי דרכים.",
+      "דבורים אוהבות אותו — אבל יש קוצים!"
+    ]
+  },
+  {
+    "id": "echium",
+    "hebrewName": "עַכְנַאי",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Echium",
+    "genus": "Echium",
+    "facts": [
+      "פרחים כחולים־סגולים יפים.",
+      "דבורים ופרפרים אוהבים אותו מאוד.",
+      "פורח באביב בשדות ובחצרות."
+    ]
+  },
+  {
+    "id": "bindweed",
+    "hebrewName": "חֲבַלְבַּל",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Convolvulus",
+    "genus": "Convolvulus",
+    "facts": [
+      "פרח בצורת חצוצרה קטנה, ורוד או לבן.",
+      "מטפס ומתפתל על גדרות וצמחים.",
+      "נפוץ מאוד בגינות ובשדות."
+    ]
+  },
+  {
+    "id": "zaatar",
+    "hebrewName": "אֵזוֹב מָצוּי (זַעְתָּר)",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Origanum syriacum",
+    "genus": "Origanum",
+    "facts": [
+      "עשב התבלין שממנו עושים זעתר.",
+      "ריחני מאוד כשמשפשפים את העלים.",
+      "צמח בר מוגן — לא קוטפים מהטבע."
+    ]
+  },
+  {
+    "id": "three-lobed-sage",
+    "hebrewName": "מַרְוָה מְשֻׁלֶּשֶׁת",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Salvia fruticosa",
+    "genus": "Salvia",
+    "facts": [
+      "עשב ריחני עם עלים אפרפרים ורכים.",
+      "מכינים ממנו תה (מרווה).",
+      "פורח בפרחים סגולים באביב."
+    ]
+  },
+  {
+    "id": "chamomile",
+    "hebrewName": "בַּבּוֹנָג",
+    "emoji": "🌼",
+    "category": "פרח",
+    "scientificName": "Matricaria chamomilla",
+    "genus": "Matricaria",
+    "facts": [
+      "פרח קטן כמו מרגנית, לבן עם לב צהוב.",
+      "מכינים ממנו תה מרגיע.",
+      "נפוץ מאוד בשדות באביב."
+    ]
+  },
+  {
+    "id": "phlomis",
+    "hebrewName": "שַׁלְהֶבֶת",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Phlomis",
+    "genus": "Phlomis",
+    "facts": [
+      "פרחים צהובים שיושבים בקומות סביב הגבעול.",
+      "העלים רכים ומכוסים במוך.",
+      "נפוצה בחורש ובבתה."
+    ]
+  },
+  {
+    "id": "tamarisk",
+    "hebrewName": "אֵשֶׁל",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Tamarix",
+    "genus": "Tamarix",
+    "facts": [
+      "עץ מדברי עם עלים זעירים כמו קשקשים.",
+      "פורח בפרחים ורודים־לבנים קטנטנים.",
+      "יכול לחיות גם באדמה מלוחה."
+    ]
+  },
+  {
+    "id": "arum",
+    "hebrewName": "לוּף אֶרֶץ־יִשְׂרְאֵלִי",
+    "emoji": "🌿",
+    "category": "פרח",
+    "scientificName": "Arum palaestinum",
+    "genus": "Arum",
+    "facts": [
+      "פרח מיוחד עם 'עלה' סגול כהה גדול.",
+      "מושך זבובים בעזרת ריח חזק.",
+      "צומח בחורש ובגינות בחורף ובאביב."
+    ],
+    "caution": "הלוף רעיל אם אוכלים אותו — רק מסתכלים."
+  },
+  {
+    "id": "mandrake",
+    "hebrewName": "דּוּדָא (יַבְרוּחַ)",
+    "emoji": "🟡",
+    "category": "פרח",
+    "scientificName": "Mandragora officinarum",
+    "genus": "Mandragora",
+    "facts": [
+      "צמח מפורסם מסיפורים וגם מהתנ\"ך.",
+      "פרי צהוב וריחני שמופיע באביב.",
+      "העלים גדולים ומונחים כמו שושנה על האדמה."
+    ],
+    "caution": "הדודא רעיל — נהנים מהריח והמראה בלי לטעום."
   }
 ]

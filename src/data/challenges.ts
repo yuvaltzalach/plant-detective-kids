@@ -6,6 +6,8 @@ export interface Challenge {
   emoji: string;
   /** אם מוגדר — האתגר מושלם רק כשמזהים צמח מהקטגוריה הזו. אחרת כל זיהוי נחשב. */
   category?: PlantCategory;
+  /** אתגר טקסט חופשי (של הורה) שמסומן ידנית בכפתור "מצאתי!" ולא אוטומטית. */
+  manual?: boolean;
 }
 
 const CHALLENGES: Challenge[] = [

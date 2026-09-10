@@ -9,15 +9,25 @@ import { Capture } from "./screens/Capture";
 import { Challenges } from "./screens/Challenges";
 import { Home } from "./screens/Home";
 import { Identifying } from "./screens/Identifying";
+import { Parents } from "./screens/Parents";
+import { Players } from "./screens/Players";
 import { Result } from "./screens/Result";
 import type { PlantResult } from "./types";
 
-type Screen = "home" | "capture" | "identifying" | "result" | "album" | "challenges";
+type Screen =
+  | "home"
+  | "capture"
+  | "identifying"
+  | "result"
+  | "album"
+  | "challenges"
+  | "players"
+  | "parents";
 
 const MUTE_KEY = "plant-detective:muted";
 
 export default function App() {
-  const { state, record, level, stickerCount } = useProgress();
+  const p = useProgress();
   const [screen, setScreen] = useState<Screen>("home");
   const [image, setImage] = useState<string | null>(null);
   const [result, setResult] = useState<PlantResult | null>(null);
@@ -29,15 +39,15 @@ export default function App() {
   }, [muted]);
 
   const totalPlants = getAllPlants().length;
-  const challengeDoneToday = state.lastChallengeDate === dateKey();
+  const challengeDoneToday = p.state.lastChallengeDate === dateKey();
 
   return (
     <div className="mx-auto flex min-h-screen max-w-lg flex-col">
       {screen !== "home" && (
         <TopBar
-          points={state.points}
-          level={level.level}
-          inLevel={level.inLevel}
+          points={p.state.points}
+          level={p.level.level}
+          inLevel={p.level.inLevel}
           onHome={() => setScreen("home")}
           muted={muted}
           onToggleMute={() => setMutedState((m) => !m)}
@@ -46,12 +56,17 @@ export default function App() {
 
       {screen === "home" && (
         <Home
-          stickerCount={stickerCount}
+          activePlayer={p.activePlayer}
+          playerCount={p.players.length}
+          stickerCount={p.stickerCount}
           totalPlants={totalPlants}
+          challenge={p.challenge}
           challengeDoneToday={challengeDoneToday}
           onCapture={() => setScreen("capture")}
           onAlbum={() => setScreen("album")}
           onChallenges={() => setScreen("challenges")}
+          onPlayers={() => setScreen("players")}
+          onParents={() => setScreen("parents")}
         />
       )}
 
@@ -79,16 +94,47 @@ export default function App() {
       {screen === "result" && result && (
         <Result
           result={result}
-          record={record}
+          record={p.record}
           onCapture={() => setScreen("capture")}
           onAlbum={() => setScreen("album")}
         />
       )}
 
-      {screen === "album" && <Album state={state} onCapture={() => setScreen("capture")} />}
+      {screen === "album" && <Album state={p.state} onCapture={() => setScreen("capture")} />}
 
       {screen === "challenges" && (
-        <Challenges state={state} onCapture={() => setScreen("capture")} />
+        <Challenges
+          state={p.state}
+          challenge={p.challenge}
+          onCapture={() => setScreen("capture")}
+          onCompleteManually={p.completeChallenge}
+        />
+      )}
+
+      {screen === "players" && (
+        <Players
+          leaderboard={p.leaderboard}
+          activeId={p.activePlayer?.id ?? ""}
+          onSwitch={(id) => {
+            p.switchPlayer(id);
+            setScreen("home");
+          }}
+          onCreate={p.createPlayer}
+        />
+      )}
+
+      {screen === "parents" && (
+        <Parents
+          settings={p.settings}
+          players={p.players}
+          activeId={p.activePlayer?.id ?? ""}
+          onSetChallenge={p.updateCustomChallenge}
+          onClearChallenge={() => p.updateCustomChallenge(null)}
+          onResetActive={p.resetActive}
+          onCreatePlayer={p.createPlayer}
+          onEditPlayer={p.editPlayer}
+          onDeletePlayer={p.deletePlayer}
+        />
       )}
     </div>
   );

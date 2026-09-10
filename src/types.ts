@@ -70,3 +70,25 @@ export interface ProgressState {
   todayDate?: string;
   todayCount: number;
 }
+
+/** משתתף (פרופיל) על המכשיר — לתחרות בין ילדים באותו טלפון. */
+export interface Player {
+  id: string;
+  name: string;
+  avatar: string;
+  createdAt: number;
+}
+
+/** אתגר מותאם שההורה כותב (למשל "מצאו פרח עם עלים צהובים"). */
+export interface CustomChallenge {
+  text: string;
+  emoji: string;
+  /** אם ההורה בחר קטגוריה — האתגר יסומן אוטומטית בזיהוי מתאים. אחרת סימון ידני. */
+  category?: PlantCategory;
+  createdAt: number;
+}
+
+/** הגדרות אפליקציה משותפות (לא תלויות משתתף). */
+export interface AppSettings {
+  customChallenge: CustomChallenge | null;
+}

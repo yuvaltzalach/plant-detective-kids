@@ -1,6 +1,6 @@
 // לוגיקת ההתקדמות הטהורה (בלי React) — קלה לבדיקה ביחידה.
 import { BADGES } from "../data/badges";
-import { challengeForDate, dateKey } from "../data/challenges";
+import { challengeForDate, dateKey, type Challenge } from "../data/challenges";
 import type { PlantResult, ProgressState } from "../types";
 
 export const STORAGE_KEY = "plant-detective:v1";
@@ -21,11 +21,16 @@ export function emptyState(): ProgressState {
   };
 }
 
-export function loadState(storage?: Storage): ProgressState {
-  const store = storage ?? (typeof localStorage !== "undefined" ? localStorage : undefined);
+function getStore(storage?: Storage): Storage | undefined {
+  return storage ?? (typeof localStorage !== "undefined" ? localStorage : undefined);
+}
+
+/** טוען מצב התקדמות ממפתח אחסון כלשהו (משמש גם לפר-משתתף). */
+export function loadStateFrom(key: string, storage?: Storage): ProgressState {
+  const store = getStore(storage);
   if (!store) return emptyState();
   try {
-    const raw = store.getItem(STORAGE_KEY);
+    const raw = store.getItem(key);
     if (!raw) return emptyState();
     const parsed = JSON.parse(raw) as Partial<ProgressState>;
     return { ...emptyState(), ...parsed };
@@ -34,14 +39,22 @@ export function loadState(storage?: Storage): ProgressState {
   }
 }
 
-export function saveState(state: ProgressState, storage?: Storage) {
-  const store = storage ?? (typeof localStorage !== "undefined" ? localStorage : undefined);
+export function saveStateTo(key: string, state: ProgressState, storage?: Storage) {
+  const store = getStore(storage);
   if (!store) return;
   try {
-    store.setItem(STORAGE_KEY, JSON.stringify(state));
+    store.setItem(key, JSON.stringify(state));
   } catch {
     /* אחסון מלא/חסום — מתעלמים בשקט */
   }
+}
+
+export function loadState(storage?: Storage): ProgressState {
+  return loadStateFrom(STORAGE_KEY, storage);
+}
+
+export function saveState(state: ProgressState, storage?: Storage) {
+  saveStateTo(STORAGE_KEY, state, storage);
 }
 
 /** תוצאת רישום זיהוי — משמשת את מסך התוצאה כדי לחגוג. */
@@ -60,14 +73,37 @@ function isYesterday(prev: string | undefined, today: string): boolean {
   return dateKey(y) === prev;
 }
 
+/** מסמן את האתגר של היום כהושלם: נקודות בונוס + עדכון רצף. משנה את state במקום. */
+function applyChallengeCompletion(state: ProgressState, today: string): number {
+  state.challengeStreak = isYesterday(state.lastChallengeDate, today)
+    ? state.challengeStreak + 1
+    : 1;
+  state.lastChallengeDate = today;
+  return POINTS_CHALLENGE;
+}
+
+/** מוסיף לרשימת התגים כל תג חדש שהושג, ומחזיר את המזהים החדשים. */
+function grantNewBadges(state: ProgressState, at: number): string[] {
+  const owned = new Set(state.badges.map((b) => b.id));
+  const newBadgeIds: string[] = [];
+  for (const badge of BADGES) {
+    if (!owned.has(badge.id) && badge.check(state)) {
+      newBadgeIds.push(badge.id);
+      state.badges.push({ id: badge.id, earnedAt: at });
+    }
+  }
+  return newBadgeIds;
+}
+
 /**
- * רושם זיהוי מוצלח: מוסיף מדבקה/נקודות, מעדכן אתגר יומי ורצף, ומחשב תגים חדשים.
- * פונקציה טהורה — לא נוגעת ב-localStorage (זה באחריות הקורא).
+ * רושם זיהוי מוצלח: מוסיף מדבקה/נקודות, מעדכן את האתגר הפעיל ורצף, ומחשב תגים חדשים.
+ * `challenge` הוא האתגר הפעיל (יומי או מותאם על-ידי הורה). פונקציה טהורה.
  */
 export function recordFind(
   prev: ProgressState,
   result: PlantResult,
-  now = new Date()
+  now = new Date(),
+  challenge: Challenge = challengeForDate(now)
 ): FindOutcome {
   const state: ProgressState = {
     ...prev,
@@ -104,39 +140,48 @@ export function recordFind(
   let pointsGained = isNew ? POINTS_NEW : POINTS_REPEAT;
   state.todayCount += 1;
 
-  // אתגר יומי
-  const challenge = challengeForDate(now);
+  // האתגר הפעיל
   const alreadyDoneToday = state.lastChallengeDate === today;
   let challengeCompletedNow = false;
   if (!alreadyDoneToday) {
-    const matches = challenge.category
-      ? result.category === challenge.category
-      : challenge.id === "two"
-        ? state.todayCount >= 2
-        : true;
+    // אתגר עם סימון ידני (טקסט חופשי של הורה) לא מסומן אוטומטית על-ידי זיהוי
+    const matches = challenge.manual
+      ? false
+      : challenge.category
+        ? result.category === challenge.category
+        : challenge.id === "two"
+          ? state.todayCount >= 2
+          : true;
     if (matches) {
       challengeCompletedNow = true;
-      pointsGained += POINTS_CHALLENGE;
-      state.challengeStreak = isYesterday(state.lastChallengeDate, today)
-        ? state.challengeStreak + 1
-        : 1;
-      state.lastChallengeDate = today;
+      pointsGained += applyChallengeCompletion(state, today);
     }
   }
 
   state.points = prev.points + pointsGained;
-
-  // תגים חדשים
-  const owned = new Set(state.badges.map((b) => b.id));
-  const newBadgeIds: string[] = [];
-  for (const badge of BADGES) {
-    if (!owned.has(badge.id) && badge.check(state)) {
-      newBadgeIds.push(badge.id);
-      state.badges.push({ id: badge.id, earnedAt: now.getTime() });
-    }
-  }
+  const newBadgeIds = grantNewBadges(state, now.getTime());
 
   return { state, isNew, pointsGained, newBadgeIds, challengeCompletedNow };
+}
+
+/** סימון ידני של השלמת אתגר (למשל אתגר טקסט חופשי של הורה). פונקציה טהורה. */
+export function completeChallengeManually(
+  prev: ProgressState,
+  now = new Date()
+): FindOutcome {
+  const state: ProgressState = {
+    ...prev,
+    stickers: { ...prev.stickers },
+    badges: [...prev.badges]
+  };
+  const today = dateKey(now);
+  if (state.lastChallengeDate === today) {
+    return { state, isNew: false, pointsGained: 0, newBadgeIds: [], challengeCompletedNow: false };
+  }
+  const pointsGained = applyChallengeCompletion(state, today);
+  state.points = prev.points + pointsGained;
+  const newBadgeIds = grantNewBadges(state, now.getTime());
+  return { state, isNew: false, pointsGained, newBadgeIds, challengeCompletedNow: true };
 }
 
 /** רמה נגזרת מהנקודות (כל 50 נקודות = רמה). */
