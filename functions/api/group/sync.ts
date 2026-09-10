@@ -5,6 +5,7 @@
 
 interface Env {
   PDK_KV?: {
+    get: (key: string) => Promise<string | null>;
     put: (key: string, value: string, opts?: { expirationTtl?: number }) => Promise<void>;
   };
 }
@@ -35,6 +36,16 @@ export const onRequestPost = async (context: { request: Request; env: Env }): Pr
     const id = clip(player.id, 64).replace(/[^A-Za-z0-9_-]/g, "");
     if (!code || !id) return jsonResponse({ error: "bad-request" }, 400);
 
+    const key = `g:${code}:m:${id}`;
+    // שמירה על סימון השלמת האתגר הקבוצתי בין סנכרונים
+    let prevDoneAt = 0;
+    try {
+      const prev = await env.PDK_KV.get(key);
+      if (prev) prevDoneAt = Number(JSON.parse(prev).groupDoneAt) || 0;
+    } catch {
+      /* מתעלמים */
+    }
+
     const stats = body?.stats ?? {};
     const record = {
       id,
@@ -44,13 +55,12 @@ export const onRequestPost = async (context: { request: Request; env: Env }): Pr
       stickers: Number(stats.stickers) || 0,
       badges: Number(stats.badges) || 0,
       level: Number(stats.level) || 1,
+      groupDoneAt: typeof body?.groupDoneAt === "number" ? body.groupDoneAt : prevDoneAt,
       updatedAt: Date.now()
     };
 
     // תוקף 120 יום כדי לא לצבור זבל לנצח
-    await env.PDK_KV.put(`g:${code}:m:${id}`, JSON.stringify(record), {
-      expirationTtl: 60 * 60 * 24 * 120
-    });
+    await env.PDK_KV.put(key, JSON.stringify(record), { expirationTtl: 60 * 60 * 24 * 120 });
 
     return jsonResponse({ ok: true });
   } catch {

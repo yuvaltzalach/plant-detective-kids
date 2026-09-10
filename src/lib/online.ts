@@ -11,7 +11,21 @@ export interface OnlineMember {
   stickers: number;
   badges: number;
   level: number;
+  groupDoneAt?: number;
   updatedAt: number;
+}
+
+export interface GroupChallenge {
+  text: string;
+  emoji: string;
+  category?: string;
+  by?: string;
+  updatedAt: number;
+}
+
+export interface GroupData {
+  members: OnlineMember[];
+  challenge: GroupChallenge | null;
 }
 
 export interface PlayerStats {
@@ -59,13 +73,14 @@ export function normalizeCode(raw: string): string {
 export async function syncGroup(
   code: string,
   player: OnlinePlayer,
-  stats: PlayerStats
+  stats: PlayerStats,
+  groupDoneAt?: number
 ): Promise<boolean> {
   try {
     const res = await fetch("/api/group/sync", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ code, player, stats })
+      body: JSON.stringify({ code, player, stats, groupDoneAt })
     });
     return res.ok;
   } catch {
@@ -73,13 +88,30 @@ export async function syncGroup(
   }
 }
 
-export async function fetchGroup(code: string): Promise<OnlineMember[] | null> {
+export async function fetchGroup(code: string): Promise<GroupData | null> {
   try {
     const res = await fetch("/api/group/leaderboard?code=" + encodeURIComponent(code));
     if (!res.ok) return null;
-    const data = (await res.json()) as { members?: OnlineMember[] };
-    return data.members ?? [];
+    const data = (await res.json()) as Partial<GroupData>;
+    return { members: data.members ?? [], challenge: data.challenge ?? null };
   } catch {
     return null;
+  }
+}
+
+/** קובע (או מבטל, עם null) אתגר משותף לכל הקבוצה. */
+export async function setGroupChallenge(
+  code: string,
+  challenge: { text: string; emoji: string; category?: string; by?: string } | null
+): Promise<boolean> {
+  try {
+    const res = await fetch("/api/group/challenge", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ code, challenge })
+    });
+    return res.ok;
+  } catch {
+    return false;
   }
 }

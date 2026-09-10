@@ -1,18 +1,35 @@
 import { getAllPlants } from "../lib/content";
-import type { ProgressState } from "../types";
+import { levelTitle } from "../data/levels";
+import { shareAlbumImage } from "../lib/share";
+import { playPop } from "../lib/sound";
+import type { Player, ProgressState } from "../types";
 
 interface AlbumProps {
   state: ProgressState;
+  player: Player | null;
+  points: number;
+  level: number;
   onCapture: () => void;
 }
 
-export function Album({ state, onCapture }: AlbumProps) {
+export function Album({ state, player, points, level, onCapture }: AlbumProps) {
   const plants = getAllPlants();
   const localIds = new Set(plants.map((p) => p.id));
 
   // מדבקות שנאספו אך אינן במסד המקומי (מוויקיפדיה וכו')
   const extras = Object.values(state.stickers).filter((s) => !localIds.has(s.collectId));
   const collectedCount = Object.keys(state.stickers).length;
+
+  const handleShare = () => {
+    playPop();
+    void shareAlbumImage({
+      player,
+      points,
+      level,
+      levelTitle: levelTitle(level).name,
+      stickers: Object.values(state.stickers)
+    });
+  };
 
   return (
     <div className="flex flex-1 flex-col px-5 pb-24 pt-2">
@@ -21,6 +38,14 @@ export function Album({ state, onCapture }: AlbumProps) {
         <p className="text-leaf-dark/70">
           אספת {collectedCount} מדבקות! {collectedCount >= plants.length ? "🏆 מדהים!" : "קדימה למצוא עוד 🌿"}
         </p>
+        {collectedCount > 0 && (
+          <button
+            onClick={handleShare}
+            className="mt-3 rounded-full bg-sky px-5 py-2 font-bold text-white shadow active:scale-95"
+          >
+            📤 שיתוף האלבום כתמונה
+          </button>
+        )}
       </div>
 
       <div className="mt-5 grid grid-cols-3 gap-3 sm:grid-cols-4">

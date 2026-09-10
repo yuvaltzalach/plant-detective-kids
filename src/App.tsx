@@ -132,7 +132,15 @@ export default function App() {
         />
       )}
 
-      {screen === "album" && <Album state={p.state} onCapture={() => setScreen("capture")} />}
+      {screen === "album" && (
+        <Album
+          state={p.state}
+          player={p.activePlayer}
+          points={p.state.points}
+          level={p.level.level}
+          onCapture={() => setScreen("capture")}
+        />
+      )}
 
       {screen === "challenges" && (
         <Challenges
@@ -159,11 +167,14 @@ export default function App() {
         <OnlineGroup
           code={online.code}
           members={online.members}
+          challenge={online.challenge}
           status={online.status}
           me={p.activePlayer}
           onJoin={online.join}
           onLeave={online.leave}
           onRefresh={online.refresh}
+          onSetChallenge={online.updateGroupChallenge}
+          onCompleteChallenge={online.completeGroupChallenge}
         />
       )}
 

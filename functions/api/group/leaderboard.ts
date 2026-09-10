@@ -42,7 +42,15 @@ export const onRequestGet = async (context: { request: Request; env: Env }): Pro
     }
     members.sort((a, b) => (b.points || 0) - (a.points || 0));
 
-    return jsonResponse({ code, members: members.slice(0, 100) });
+    let challenge = null;
+    try {
+      const raw = await env.PDK_KV.get(`g:${code}:challenge`);
+      if (raw) challenge = JSON.parse(raw);
+    } catch {
+      /* מתעלמים */
+    }
+
+    return jsonResponse({ code, members: members.slice(0, 100), challenge });
   } catch {
     return jsonResponse({ error: "server-error" }, 500);
   }
