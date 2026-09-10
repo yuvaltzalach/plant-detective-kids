@@ -4,12 +4,23 @@
 ומחזירה **שם ותיאור ידידותי בעברית** — עם המון אלמנטים של הצלחה: אלבום מדבקות, נקודות
 ורמות, תגי הישג, אתגר יומי, אנימציות קונפטי, צלילי ניצחון והקראה קולית.
 
-## 🚀 פריסה בלחיצה אחת (Cloudflare Pages)
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/yuvaltzalach/plant-detective-kids)
+## 🚀 פריסה ל-Cloudflare Pages (חיבור ל-Git)
+> שימו לב: אל תשתמשו בכפתור "Deploy to Cloudflare" / `deploy.workers.cloudflare.com` —
+> זה מסלול של **Worker** בודד (מבקש API token ו-wrangler.toml) ולא מתאים לאתר Vite + פונקציה.
+> משתמשים במסלול **Pages** הבא:
 
-לוחצים על הכפתור → מתחברים ל-Cloudflare → הוא מזהה אוטומטית `npm run build` ותיקיית פלט
-`dist` ואת פונקציית `functions/` → Deploy. אחר כך מוסיפים את מפתח ה-Pl@ntNet כמשתנה סביבה
-(ראו "פריסה" למטה). תוך דקה יש כתובת חיה שאפשר "להתקין" בטלפון.
+1. נכנסים ל-https://dash.cloudflare.com → בתפריט הצד: **Workers & Pages** (או **Compute**).
+2. לוחצים **Create** → עוברים ללשונית **Pages** → **Connect to Git** / **Import a repository**.
+   (אם צריך — מאשרים ל-Cloudflare גישה ל-GitHub ובוחרים את `plant-detective-kids`.)
+3. בהגדרות הבנייה:
+   - **Framework preset:** None (או Vite)
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+4. **Save and Deploy**. הפונקציה שב-`functions/` מזוהה אוטומטית.
+5. אחרי הפריסה: הפרויקט → **Settings → Variables and Secrets** → מוסיפים משתנה
+   `PLANTNET_API_KEY` עם המפתח מ-https://my.plantnet.org/ → שומרים ומריצים **Retry deployment**.
+
+תוך דקה יש כתובת חיה שאפשר "להתקין" בטלפון.
 
 ## ✨ מה יש באפליקציה
 - 📷 **צילום/העלאה** של צמח מהמצלמה או מהגלריה.
