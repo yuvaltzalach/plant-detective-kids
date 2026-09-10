@@ -22,6 +22,10 @@ interface ParentsProps {
     password: string
   ) => Promise<{ ok: true } | { ok: false; error: string }>;
   onDeleteChild: (username: string) => Promise<boolean>;
+  onResetChildPassword: (
+    username: string,
+    newPassword: string
+  ) => Promise<{ ok: true } | { ok: false; error: string }>;
   onSetChallenge: (c: CustomChallenge) => void;
   onClearChallenge: () => void;
   online: OnlineControls;
@@ -109,6 +113,20 @@ export function Parents(props: ParentsProps) {
                   <span>🏅 {badges} תגים</span>
                   <button
                     onClick={async () => {
+                      const np = prompt(`סיסמה חדשה ל${c.username} (לפחות 4 תווים):`, "");
+                      if (np && np.length >= 4) {
+                        const res = await props.onResetChildPassword(c.username, np);
+                        alert(res.ok ? "הסיסמה עודכנה! ✅" : "לא הצלחנו לעדכן סיסמה.");
+                      } else if (np !== null) {
+                        alert("הסיסמה קצרה מדי (לפחות 4 תווים).");
+                      }
+                    }}
+                    className="mr-auto rounded-full bg-sky/20 px-3 py-1 font-bold text-sky-700"
+                  >
+                    🔑 איפוס סיסמה
+                  </button>
+                  <button
+                    onClick={async () => {
                       if (
                         confirm(
                           `למחוק לצמיתות את החשבון של ${c.username}? כל ההתקדמות תימחק ואי אפשר לבטל.`
@@ -118,9 +136,9 @@ export function Parents(props: ParentsProps) {
                         if (!ok) alert("לא הצלחנו למחוק. נסו שוב.");
                       }
                     }}
-                    className="mr-auto rounded-full bg-red-100 px-3 py-1 font-bold text-red-600"
+                    className="rounded-full bg-red-100 px-3 py-1 font-bold text-red-600"
                   >
-                    🗑️ מחיקת חשבון
+                    🗑️ מחיקה
                   </button>
                 </div>
               </div>

@@ -96,6 +96,37 @@ export async function linkChild(
   }
 }
 
+export async function renameAccount(
+  token: string,
+  newUsername: string
+): Promise<{ ok: true; account: PublicAccount } | { ok: false; error: string }> {
+  try {
+    const { data } = await postJson("/api/auth/rename", { token, newUsername });
+    if (data?.ok) return { ok: true, account: data.account };
+    return { ok: false, error: data?.error ?? "server-error" };
+  } catch {
+    return { ok: false, error: "offline" };
+  }
+}
+
+export async function resetChildPassword(
+  token: string,
+  childUsername: string,
+  newPassword: string
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  try {
+    const { data } = await postJson("/api/auth/reset-child-password", {
+      token,
+      childUsername,
+      newPassword
+    });
+    if (data?.ok) return { ok: true };
+    return { ok: false, error: data?.error ?? "server-error" };
+  } catch {
+    return { ok: false, error: "offline" };
+  }
+}
+
 export async function deleteChild(token: string, childUsername: string): Promise<boolean> {
   try {
     const { status } = await postJson("/api/auth/delete-child", { token, childUsername });

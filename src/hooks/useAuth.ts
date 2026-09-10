@@ -8,6 +8,8 @@ import {
   listChildren,
   login,
   me,
+  renameAccount,
+  resetChildPassword,
   saveProgress,
   signup
 } from "../lib/auth";
@@ -184,6 +186,29 @@ export function useAuth() {
     [session, refreshChildren]
   );
 
+  /** שינוי שם המשתמש של החשבון המחובר. */
+  const changeUsername = useCallback(
+    async (newUsername: string) => {
+      if (!session) return { ok: false as const, error: "offline" };
+      const res = await renameAccount(session.token, newUsername);
+      if (res.ok) {
+        persistSession({ token: session.token, account: res.account });
+        setSession({ token: session.token, account: res.account });
+      }
+      return res;
+    },
+    [session]
+  );
+
+  /** הורה מאפס סיסמה של ילד/ה מקושר/ת. */
+  const resetChildPasswordAction = useCallback(
+    async (childUsername: string, newPassword: string) => {
+      if (!session) return { ok: false as const, error: "offline" };
+      return resetChildPassword(session.token, childUsername, newPassword);
+    },
+    [session]
+  );
+
   /** עדכון הדמות (אווטאר) של המשתמש/ת המחובר/ת. */
   const updateAvatar = useCallback(
     (avatar: string) => {
@@ -219,6 +244,8 @@ export function useAuth() {
     refreshChildren,
     linkChildAccount,
     deleteChildAccount,
+    resetChildPassword: resetChildPasswordAction,
+    changeUsername,
     updateAvatar,
     updateCustomChallenge
   };

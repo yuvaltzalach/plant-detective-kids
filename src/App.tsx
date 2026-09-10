@@ -135,6 +135,7 @@ export default function App() {
           onParents={() => go("parents")}
           onLogout={a.logout}
           onUpdateAvatar={a.updateAvatar}
+          onChangeUsername={a.changeUsername}
         />
       )}
 
@@ -213,6 +214,7 @@ export default function App() {
           onRefreshChildren={a.refreshChildren}
           onLinkChild={a.linkChildAccount}
           onDeleteChild={a.deleteChildAccount}
+          onResetChildPassword={a.resetChildPassword}
           onSetChallenge={a.updateCustomChallenge}
           onClearChallenge={() => a.updateCustomChallenge(null)}
           online={{

@@ -25,7 +25,15 @@ interface HomeProps {
   onParents: () => void;
   onLogout: () => void;
   onUpdateAvatar: (avatar: string) => void;
+  onChangeUsername: (name: string) => Promise<{ ok: true } | { ok: false; error: string }>;
 }
+
+const RENAME_ERR: Record<string, string> = {
+  exists: "השם כבר תפוס.",
+  "bad-username": "שם לא תקין.",
+  offline: "אין חיבור לשרת.",
+  "server-error": "משהו השתבש."
+};
 
 export function Home(props: HomeProps) {
   const {
@@ -61,7 +69,18 @@ export function Home(props: HomeProps) {
                 {account.avatar}
                 <span className="absolute -bottom-1 -left-1 text-[10px]">✏️</span>
               </button>
-              <span className="font-bold text-leaf-dark">{account.username}</span>
+              <button
+                onClick={async () => {
+                  const name = prompt("שם משתמש חדש:", account.username);
+                  if (name && name.trim() && name.trim() !== account.username) {
+                    const res = await props.onChangeUsername(name.trim());
+                    if (!res.ok) alert(RENAME_ERR[res.error] ?? RENAME_ERR["server-error"]);
+                  }
+                }}
+                className="font-bold text-leaf-dark underline decoration-dotted"
+              >
+                {account.username}
+              </button>
               <span className="rounded-full bg-leaf-light px-2 py-0.5 text-xs font-bold text-leaf-dark">
                 {rank.emoji} {rank.name}
               </span>
