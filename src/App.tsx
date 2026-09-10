@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { TopBar } from "./components/TopBar";
 import { getAllPlants } from "./lib/content";
 import { setMuted } from "./lib/sound";
 import { dateKey } from "./data/challenges";
 import { useProgress } from "./hooks/useProgress";
+import { useOnlineGroup } from "./hooks/useOnlineGroup";
 import { Album } from "./screens/Album";
 import { Capture } from "./screens/Capture";
 import { Challenges } from "./screens/Challenges";
+import { Encyclopedia } from "./screens/Encyclopedia";
 import { Home } from "./screens/Home";
 import { Identifying } from "./screens/Identifying";
+import { OnlineGroup } from "./screens/OnlineGroup";
 import { Parents } from "./screens/Parents";
 import { Players } from "./screens/Players";
 import { Result } from "./screens/Result";
@@ -22,6 +25,8 @@ type Screen =
   | "album"
   | "challenges"
   | "players"
+  | "online"
+  | "encyclopedia"
   | "parents";
 
 const MUTE_KEY = "plant-detective:muted";
@@ -31,6 +36,7 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>("home");
   const [image, setImage] = useState<string | null>(null);
   const [result, setResult] = useState<PlantResult | null>(null);
+  const [encOpenId, setEncOpenId] = useState<string | undefined>(undefined);
   const [muted, setMutedState] = useState(() => localStorage.getItem(MUTE_KEY) === "1");
 
   useEffect(() => {
@@ -38,8 +44,29 @@ export default function App() {
     localStorage.setItem(MUTE_KEY, muted ? "1" : "0");
   }, [muted]);
 
-  const totalPlants = getAllPlants().length;
+  const plants = getAllPlants();
+  const totalPlants = plants.length;
   const challengeDoneToday = p.state.lastChallengeDate === dateKey();
+
+  // צמח היום — קבוע לפי התאריך
+  const plantOfDay = useMemo(() => {
+    const dayNumber = Math.floor(Date.now() / 86_400_000);
+    return plants[dayNumber % plants.length];
+  }, [plants]);
+
+  // אונליין — מסנכרן את נתוני השחקן/ית הפעיל/ה
+  const stats = {
+    points: p.state.points,
+    stickers: p.stickerCount,
+    badges: p.state.badges.length,
+    level: p.level.level
+  };
+  const online = useOnlineGroup(p.activePlayer, stats);
+
+  const openEncyclopedia = (id?: string) => {
+    setEncOpenId(id);
+    setScreen("encyclopedia");
+  };
 
   return (
     <div className="mx-auto flex min-h-screen max-w-lg flex-col">
@@ -58,14 +85,19 @@ export default function App() {
         <Home
           activePlayer={p.activePlayer}
           playerCount={p.players.length}
+          level={p.level.level}
           stickerCount={p.stickerCount}
           totalPlants={totalPlants}
           challenge={p.challenge}
           challengeDoneToday={challengeDoneToday}
+          plantOfDay={plantOfDay}
           onCapture={() => setScreen("capture")}
           onAlbum={() => setScreen("album")}
           onChallenges={() => setScreen("challenges")}
           onPlayers={() => setScreen("players")}
+          onOnline={() => setScreen("online")}
+          onEncyclopedia={() => openEncyclopedia(undefined)}
+          onPlantOfDay={() => openEncyclopedia(plantOfDay.id)}
           onParents={() => setScreen("parents")}
         />
       )}
@@ -122,6 +154,20 @@ export default function App() {
           onCreate={p.createPlayer}
         />
       )}
+
+      {screen === "online" && (
+        <OnlineGroup
+          code={online.code}
+          members={online.members}
+          status={online.status}
+          me={p.activePlayer}
+          onJoin={online.join}
+          onLeave={online.leave}
+          onRefresh={online.refresh}
+        />
+      )}
+
+      {screen === "encyclopedia" && <Encyclopedia state={p.state} initialOpenId={encOpenId} />}
 
       {screen === "parents" && (
         <Parents

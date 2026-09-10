@@ -1,50 +1,60 @@
 import { playPop } from "../lib/sound";
+import { levelTitle } from "../data/levels";
 import type { Challenge } from "../data/challenges";
-import type { Player } from "../types";
+import type { Player, PlantContent } from "../types";
 
 interface HomeProps {
   activePlayer: Player | null;
   playerCount: number;
+  level: number;
   stickerCount: number;
   totalPlants: number;
   challenge: Challenge;
   challengeDoneToday: boolean;
+  plantOfDay: PlantContent;
   onCapture: () => void;
   onAlbum: () => void;
   onChallenges: () => void;
   onPlayers: () => void;
+  onOnline: () => void;
+  onEncyclopedia: () => void;
+  onPlantOfDay: () => void;
   onParents: () => void;
 }
 
-export function Home({
-  activePlayer,
-  playerCount,
-  stickerCount,
-  totalPlants,
-  challenge,
-  challengeDoneToday,
-  onCapture,
-  onAlbum,
-  onChallenges,
-  onPlayers,
-  onParents
-}: HomeProps) {
+export function Home(props: HomeProps) {
+  const {
+    activePlayer,
+    playerCount,
+    level,
+    stickerCount,
+    totalPlants,
+    challenge,
+    challengeDoneToday,
+    plantOfDay
+  } = props;
+  const rank = levelTitle(level);
   const go = (fn: () => void) => () => {
     playPop();
     fn();
   };
 
+  const tile = "rounded-blob bg-white p-4 text-center font-bold text-leaf-dark shadow active:scale-95 transition-transform";
+
   return (
     <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-4">
-      {/* שחקן/ית פעיל/ה */}
+      {/* שחקן/ית פעיל/ה + דרגה */}
       {activePlayer && (
         <button
-          onClick={go(onPlayers)}
+          onClick={go(props.onPlayers)}
           className="flex items-center gap-2 rounded-full bg-white px-4 py-1.5 shadow active:scale-95"
         >
           <span className="text-2xl">{activePlayer.avatar}</span>
           <span className="font-bold text-leaf-dark">{activePlayer.name}</span>
-          {playerCount > 1 && <span className="text-sm text-leaf-dark/50">🔄 החלפה</span>}
+          <span className="rounded-full bg-leaf-light px-2 py-0.5 text-xs font-bold text-leaf-dark">
+            {rank.emoji} {rank.name}
+          </span>
+          {playerCount > 1 && <span className="text-sm text-leaf-dark/50">🔄</span>}
         </button>
       )}
 
@@ -55,17 +65,17 @@ export function Home({
       </div>
 
       <button
-        onClick={go(onCapture)}
-        className="big-btn mt-6 flex w-full max-w-xs flex-col items-center gap-1 bg-gradient-to-b from-leaf to-leaf-dark py-8 text-3xl animate-pop"
+        onClick={go(props.onCapture)}
+        className="big-btn mt-5 flex w-full max-w-xs flex-col items-center gap-1 bg-gradient-to-b from-leaf to-leaf-dark py-7 text-3xl animate-pop"
       >
         <span className="text-6xl">📷</span>
         צַלְמוּ צמח!
       </button>
 
-      {/* אתגר (יומי או מותאם על-ידי הורה) */}
+      {/* אתגר */}
       <button
-        onClick={go(onChallenges)}
-        className="mt-6 w-full max-w-xs rounded-blob bg-sun/20 p-4 text-right shadow active:scale-95 transition-transform"
+        onClick={go(props.onChallenges)}
+        className="mt-5 w-full max-w-xs rounded-blob bg-sun/20 p-4 text-right shadow active:scale-95 transition-transform"
       >
         <div className="flex items-center gap-2 text-sm font-bold text-amber-700">
           <span>{challenge.id === "custom" ? "אתגר מההורים" : "אתגר היום"}</span>
@@ -77,32 +87,40 @@ export function Home({
         </div>
       </button>
 
+      {/* צמח היום */}
       <button
-        onClick={go(onAlbum)}
-        className="mt-4 w-full max-w-xs rounded-blob bg-white p-4 text-right shadow active:scale-95 transition-transform"
+        onClick={go(props.onPlantOfDay)}
+        className="mt-3 w-full max-w-xs rounded-blob bg-sky/15 p-4 text-right shadow active:scale-95 transition-transform"
       >
-        <div className="flex items-center justify-between">
-          <span className="text-lg font-bold text-leaf-dark">📔 האלבום שלי</span>
-          <span className="rounded-full bg-leaf-light px-3 py-1 text-sm font-bold text-leaf-dark">
-            {stickerCount} / {totalPlants}
-          </span>
+        <div className="text-sm font-bold text-sky-700">🌟 צמח היום</div>
+        <div className="mt-1 flex items-center gap-2 text-lg font-bold text-leaf-dark">
+          <span className="text-3xl">{plantOfDay.emoji}</span>
+          {plantOfDay.hebrewName}
         </div>
       </button>
 
-      <div className="mt-4 flex w-full max-w-xs gap-3">
-        <button
-          onClick={go(onPlayers)}
-          className="flex-1 rounded-blob bg-white p-4 text-center font-bold text-leaf-dark shadow active:scale-95"
-        >
-          🏆 טבלת ניצחונות
+      {/* כפתורים מהירים */}
+      <div className="mt-4 grid w-full max-w-xs grid-cols-2 gap-3">
+        <button onClick={go(props.onAlbum)} className={tile}>
+          📔 האלבום שלי
+          <div className="text-xs font-normal text-leaf-dark/50">
+            {stickerCount} / {totalPlants}
+          </div>
         </button>
-        <button
-          onClick={go(onParents)}
-          className="rounded-blob bg-white px-4 py-4 text-center font-bold text-leaf-dark shadow active:scale-95"
-        >
-          👪
+        <button onClick={go(props.onEncyclopedia)} className={tile}>
+          📖 אנציקלופדיה
+        </button>
+        <button onClick={go(props.onOnline)} className={tile}>
+          🌍 תחרות אונליין
+        </button>
+        <button onClick={go(props.onPlayers)} className={tile}>
+          🏆 שחקנים
         </button>
       </div>
+
+      <button onClick={go(props.onParents)} className="mt-4 text-leaf-dark/50 underline">
+        👪 אזור הורים
+      </button>
     </div>
   );
 }
