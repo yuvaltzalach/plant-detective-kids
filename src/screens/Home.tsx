@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { playPop } from "../lib/sound";
 import { Mascot } from "../components/Mascot";
+import { AVATARS } from "../lib/players";
 import { levelTitle } from "../data/levels";
 import type { Challenge } from "../data/challenges";
 import type { PlantContent } from "../types";
@@ -22,6 +24,7 @@ interface HomeProps {
   onGames: () => void;
   onParents: () => void;
   onLogout: () => void;
+  onUpdateAvatar: (avatar: string) => void;
 }
 
 export function Home(props: HomeProps) {
@@ -35,6 +38,7 @@ export function Home(props: HomeProps) {
     plantOfDay
   } = props;
   const rank = levelTitle(level);
+  const [editAvatar, setEditAvatar] = useState(false);
   const go = (fn: () => void) => () => {
     playPop();
     fn();
@@ -46,22 +50,51 @@ export function Home(props: HomeProps) {
     <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-4">
       {/* זהות המשתמש + יציאה */}
       {account && (
-        <div className="flex w-full max-w-xs items-center justify-between">
-          <div className="flex items-center gap-2 rounded-full bg-white px-4 py-1.5 shadow">
-            <span className="text-2xl">{account.avatar}</span>
-            <span className="font-bold text-leaf-dark">{account.username}</span>
-            <span className="rounded-full bg-leaf-light px-2 py-0.5 text-xs font-bold text-leaf-dark">
-              {rank.emoji} {rank.name}
-            </span>
+        <div className="w-full max-w-xs">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 rounded-full bg-white px-4 py-1.5 shadow">
+              <button
+                onClick={() => setEditAvatar((v) => !v)}
+                className="relative text-2xl active:scale-90"
+                aria-label="שינוי דמות"
+              >
+                {account.avatar}
+                <span className="absolute -bottom-1 -left-1 text-[10px]">✏️</span>
+              </button>
+              <span className="font-bold text-leaf-dark">{account.username}</span>
+              <span className="rounded-full bg-leaf-light px-2 py-0.5 text-xs font-bold text-leaf-dark">
+                {rank.emoji} {rank.name}
+              </span>
+            </div>
+            <button
+              onClick={() => {
+                if (confirm("להתנתק מהחשבון?")) props.onLogout();
+              }}
+              className="rounded-full bg-white px-3 py-1.5 text-sm font-bold text-leaf-dark shadow active:scale-95"
+            >
+              🚪 יציאה
+            </button>
           </div>
-          <button
-            onClick={() => {
-              if (confirm("להתנתק מהחשבון?")) props.onLogout();
-            }}
-            className="rounded-full bg-white px-3 py-1.5 text-sm font-bold text-leaf-dark shadow active:scale-95"
-          >
-            🚪 יציאה
-          </button>
+
+          {editAvatar && (
+            <div className="mt-2 grid grid-cols-6 gap-2 rounded-2xl bg-white p-3 shadow">
+              {AVATARS.map((av) => (
+                <button
+                  key={av}
+                  onClick={() => {
+                    playPop();
+                    props.onUpdateAvatar(av);
+                    setEditAvatar(false);
+                  }}
+                  className={`aspect-square rounded-xl text-2xl ${
+                    av === account.avatar ? "bg-leaf-light ring-2 ring-leaf" : "bg-gray-100"
+                  }`}
+                >
+                  {av}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       )}
 

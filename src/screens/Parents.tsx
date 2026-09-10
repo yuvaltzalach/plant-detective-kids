@@ -21,6 +21,7 @@ interface ParentsProps {
     username: string,
     password: string
   ) => Promise<{ ok: true } | { ok: false; error: string }>;
+  onDeleteChild: (username: string) => Promise<boolean>;
   onSetChallenge: (c: CustomChallenge) => void;
   onClearChallenge: () => void;
   online: OnlineControls;
@@ -103,9 +104,24 @@ export function Parents(props: ParentsProps) {
                   </div>
                   <div className="text-sm font-bold text-amber-600">⭐ {points}</div>
                 </div>
-                <div className="mt-2 flex flex-wrap gap-3 text-xs text-leaf-dark/70">
+                <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-leaf-dark/70">
                   <span>📔 {stickers} צמחים</span>
                   <span>🏅 {badges} תגים</span>
+                  <button
+                    onClick={async () => {
+                      if (
+                        confirm(
+                          `למחוק לצמיתות את החשבון של ${c.username}? כל ההתקדמות תימחק ואי אפשר לבטל.`
+                        )
+                      ) {
+                        const ok = await props.onDeleteChild(c.username);
+                        if (!ok) alert("לא הצלחנו למחוק. נסו שוב.");
+                      }
+                    }}
+                    className="mr-auto rounded-full bg-red-100 px-3 py-1 font-bold text-red-600"
+                  >
+                    🗑️ מחיקת חשבון
+                  </button>
                 </div>
               </div>
             );

@@ -134,6 +134,7 @@ export default function App() {
           onGames={() => go("games")}
           onParents={() => go("parents")}
           onLogout={a.logout}
+          onUpdateAvatar={a.updateAvatar}
         />
       )}
 
@@ -211,6 +212,7 @@ export default function App() {
           children={a.children}
           onRefreshChildren={a.refreshChildren}
           onLinkChild={a.linkChildAccount}
+          onDeleteChild={a.deleteChildAccount}
           onSetChallenge={a.updateCustomChallenge}
           onClearChallenge={() => a.updateCustomChallenge(null)}
           online={{

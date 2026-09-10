@@ -96,6 +96,15 @@ export async function linkChild(
   }
 }
 
+export async function deleteChild(token: string, childUsername: string): Promise<boolean> {
+  try {
+    const { status } = await postJson("/api/auth/delete-child", { token, childUsername });
+    return status === 200;
+  } catch {
+    return false;
+  }
+}
+
 export async function listChildren(token: string): Promise<ChildAccount[] | null> {
   try {
     const res = await fetch("/api/auth/children?token=" + encodeURIComponent(token));

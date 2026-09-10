@@ -4,6 +4,7 @@ export interface Env {
   PDK_KV?: {
     get: (key: string) => Promise<string | null>;
     put: (key: string, value: string, opts?: { expirationTtl?: number }) => Promise<void>;
+    delete: (key: string) => Promise<void>;
   };
 }
 
@@ -16,12 +17,13 @@ export function json(data: unknown, status = 200): Response {
   });
 }
 
-/** שם משתמש: אותיות/ספרות/עברית/קו תחתון, עד 20 תווים. */
+/** שם משתמש: אותיות/ספרות/עברית/רווח/קו תחתון, עד 24 תווים (מאפשר שם + משפחה). */
 export function sanitizeUser(s: unknown): string {
   return String(s ?? "")
+    .replace(/[^0-9A-Za-z֐-׿ _.-]/g, "")
+    .replace(/\s+/g, " ")
     .trim()
-    .replace(/[^0-9A-Za-z֐-׿_.-]/g, "")
-    .slice(0, 20);
+    .slice(0, 24);
 }
 
 function toHex(buf: ArrayBuffer): string {

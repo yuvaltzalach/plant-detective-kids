@@ -3,6 +3,7 @@ import {
   AuthResult,
   ChildAccount,
   PublicAccount,
+  deleteChild,
   linkChild,
   listChildren,
   login,
@@ -173,6 +174,28 @@ export function useAuth() {
     [session, refreshChildren]
   );
 
+  const deleteChildAccount = useCallback(
+    async (childUsername: string) => {
+      if (!session) return false;
+      const ok = await deleteChild(session.token, childUsername);
+      if (ok) void refreshChildren();
+      return ok;
+    },
+    [session, refreshChildren]
+  );
+
+  /** עדכון הדמות (אווטאר) של המשתמש/ת המחובר/ת. */
+  const updateAvatar = useCallback(
+    (avatar: string) => {
+      if (!session) return;
+      const account = { ...session.account, avatar };
+      persistSession({ token: session.token, account });
+      setSession({ token: session.token, account });
+      void saveProgress(session.token, state, avatar);
+    },
+    [session, state]
+  );
+
   const updateCustomChallenge = useCallback((c: CustomChallenge | null) => {
     setCustomChallenge(c);
     setSettings(loadSettings());
@@ -195,6 +218,8 @@ export function useAuth() {
     logout,
     refreshChildren,
     linkChildAccount,
+    deleteChildAccount,
+    updateAvatar,
     updateCustomChallenge
   };
 }
