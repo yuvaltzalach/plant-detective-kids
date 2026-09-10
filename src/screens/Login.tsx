@@ -11,12 +11,14 @@ interface LoginProps {
   onSelect: (id: string) => void;
   onCreate: (name: string, avatar: string) => void;
   onLoginCode: (code: string) => Promise<"ok" | "not-found" | "offline">;
+  onParent: () => void;
 }
 
-/** מסך כניסה בסגנון "מי משחק היום?" — כל ילד/ה בוחר/ת את החשבון שלו/ה. */
-export function Login({ players, onSelect, onCreate, onLoginCode }: LoginProps) {
-  const [adding, setAdding] = useState(false);
-  const [showCode, setShowCode] = useState(false);
+type Mode = "role" | "children" | "create" | "code";
+
+/** מסך פתיחה: בוחרים אם אני ילד/ה (נכנסים לחשבון) או הורה (ניהול וצפייה). */
+export function Login({ players, onSelect, onCreate, onLoginCode, onParent }: LoginProps) {
+  const [mode, setMode] = useState<Mode>("role");
   const [code, setCode] = useState("");
   const [codeErr, setCodeErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -30,32 +32,95 @@ export function Login({ players, onSelect, onCreate, onLoginCode }: LoginProps) 
     else if (res === "offline") setCodeErr("אין חיבור לשרת (או שהאונליין לא הוגדר).");
   };
 
-  if (adding || players.length === 0) {
+  // יצירת ילד/ה חדש/ה
+  if (mode === "create" || (mode === "children" && players.length === 0)) {
     return (
       <PlayerSetup
-        title="ילד/ה חדש/ה"
-        submitLabel="יצירת חשבון"
-        onSubmit={(name, avatar) => {
-          onCreate(name, avatar);
-          setAdding(false);
-        }}
-        onCancel={players.length > 0 ? () => setAdding(false) : undefined}
+        title="חשבון חדש"
+        submitLabel="יצירה והתחברות"
+        onSubmit={(name, avatar) => onCreate(name, avatar)}
+        onCancel={() => setMode(players.length === 0 ? "role" : "children")}
       />
     );
   }
 
+  // מסך בחירת דמות (מי אתה?)
+  if (mode === "role") {
+    return (
+      <div className="flex flex-1 flex-col items-center justify-center px-6 pb-10 pt-8 text-center">
+        <div className="text-6xl animate-float">🌱🔎</div>
+        <h1 className="mt-2 text-4xl font-black text-leaf-dark">בלש הצמחים</h1>
+        <p className="mt-1 text-leaf-dark/70">מי נכנס עכשיו?</p>
+
+        <button
+          onClick={() => {
+            playPop();
+            setMode("children");
+          }}
+          className="big-btn mt-8 flex w-full max-w-xs flex-col items-center gap-1 bg-gradient-to-b from-leaf to-leaf-dark py-7 text-2xl"
+        >
+          <span className="text-5xl">🧒</span>
+          אני ילד/ה
+        </button>
+
+        <button
+          onClick={() => {
+            playPop();
+            onParent();
+          }}
+          className="big-btn mt-4 flex w-full max-w-xs flex-col items-center gap-1 bg-sky py-7 text-2xl"
+        >
+          <span className="text-5xl">👪</span>
+          אני הורה
+        </button>
+      </div>
+    );
+  }
+
+  // כניסה עם קוד
+  if (mode === "code") {
+    return (
+      <div className="flex flex-1 flex-col items-center justify-center px-6 pb-10 text-center">
+        <div className="text-6xl">🔑</div>
+        <h2 className="mt-2 text-2xl font-black text-leaf-dark">כניסה עם קוד אישי</h2>
+        <p className="mt-1 text-leaf-dark/70">מכניסים את הקוד כדי לשחק מכל טלפון</p>
+        <input
+          value={code}
+          onChange={(e) => {
+            setCode(e.target.value.toUpperCase());
+            setCodeErr(null);
+          }}
+          placeholder="הקוד שלי"
+          maxLength={8}
+          className="mt-5 w-full max-w-xs rounded-2xl border-2 border-leaf-light bg-white p-3 text-center text-2xl font-black tracking-widest outline-none focus:border-leaf"
+        />
+        {codeErr && <div className="mt-2 font-bold text-red-500">{codeErr}</div>}
+        <button
+          onClick={submitCode}
+          disabled={busy || code.trim().length < 4}
+          className="big-btn mt-4 w-full max-w-xs bg-leaf disabled:opacity-40"
+        >
+          {busy ? "מתחבר..." : "כניסה"}
+        </button>
+        <button onClick={() => setMode("children")} className="mt-4 text-leaf-dark/60 underline">
+          חזרה
+        </button>
+      </div>
+    );
+  }
+
+  // בחירת חשבון ילד/ה
   return (
     <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-8">
       <div className="text-center">
-        <div className="text-6xl animate-float">🌱🔎</div>
-        <h1 className="mt-2 text-3xl font-black text-leaf-dark">מי משחק היום?</h1>
+        <div className="text-5xl animate-float">🧒</div>
+        <h1 className="mt-2 text-3xl font-black text-leaf-dark">מי משחק?</h1>
         <p className="mt-1 text-leaf-dark/70">בחרו את החשבון שלכם</p>
       </div>
 
-      <div className="mt-8 grid w-full max-w-sm grid-cols-2 gap-4">
+      <div className="mt-6 grid w-full max-w-sm grid-cols-2 gap-4">
         {players.map((p) => {
-          const st = loadProgressFor(p.id);
-          const rank = levelTitle(levelForPoints(st.points).level);
+          const rank = levelTitle(levelForPoints(loadProgressFor(p.id).points).level);
           return (
             <button
               key={p.id}
@@ -77,48 +142,21 @@ export function Login({ players, onSelect, onCreate, onLoginCode }: LoginProps) 
         <button
           onClick={() => {
             playPop();
-            setAdding(true);
+            setMode("create");
           }}
           className="flex flex-col items-center justify-center rounded-blob border-4 border-dashed border-leaf-light bg-white/50 p-5 text-leaf-dark active:scale-95 transition-transform"
         >
           <span className="text-5xl">➕</span>
-          <span className="mt-2 font-bold">ילד/ה חדש/ה</span>
+          <span className="mt-2 font-bold">חשבון חדש</span>
         </button>
       </div>
 
-      {/* התחברות עם קוד חשבון (ממכשיר אחר) */}
-      <div className="mt-8 w-full max-w-sm text-center">
-        {!showCode ? (
-          <button
-            onClick={() => setShowCode(true)}
-            className="text-leaf-dark/60 underline"
-          >
-            🔑 יש לי קוד חשבון (התחברות ממכשיר אחר)
-          </button>
-        ) : (
-          <div className="rounded-blob bg-white p-4 shadow">
-            <div className="font-bold text-leaf-dark">התחברות עם קוד אישי</div>
-            <input
-              value={code}
-              onChange={(e) => {
-                setCode(e.target.value.toUpperCase());
-                setCodeErr(null);
-              }}
-              placeholder="הקוד שלי"
-              maxLength={8}
-              className="mt-3 w-full rounded-2xl border-2 border-leaf-light bg-white p-3 text-center text-xl font-black tracking-widest outline-none focus:border-leaf"
-            />
-            {codeErr && <div className="mt-2 font-bold text-red-500">{codeErr}</div>}
-            <button
-              onClick={submitCode}
-              disabled={busy || code.trim().length < 4}
-              className="big-btn mt-3 w-full bg-leaf py-3 text-lg disabled:opacity-40"
-            >
-              {busy ? "מתחבר..." : "כניסה"}
-            </button>
-          </div>
-        )}
-      </div>
+      <button onClick={() => setMode("code")} className="mt-6 text-leaf-dark/60 underline">
+        🔑 יש לי קוד חשבון
+      </button>
+      <button onClick={() => setMode("role")} className="mt-3 text-leaf-dark/50 underline">
+        חזרה
+      </button>
     </div>
   );
 }

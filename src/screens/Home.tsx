@@ -6,7 +6,6 @@ import type { Player, PlantContent } from "../types";
 
 interface HomeProps {
   activePlayer: Player | null;
-  playerCount: number;
   level: number;
   stickerCount: number;
   totalPlants: number;
@@ -21,8 +20,7 @@ interface HomeProps {
   onEncyclopedia: () => void;
   onPlantOfDay: () => void;
   onGames: () => void;
-  onSwitchAccount: () => void;
-  onParents: () => void;
+  onLogout: () => void;
 }
 
 export function Home(props: HomeProps) {
@@ -45,19 +43,23 @@ export function Home(props: HomeProps) {
 
   return (
     <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-4">
-      {/* שחקן/ית פעיל/ה + דרגה */}
+      {/* זהות השחקן/ית + יציאה */}
       {activePlayer && (
-        <button
-          onClick={go(props.onSwitchAccount)}
-          className="flex items-center gap-2 rounded-full bg-white px-4 py-1.5 shadow active:scale-95"
-        >
-          <span className="text-2xl">{activePlayer.avatar}</span>
-          <span className="font-bold text-leaf-dark">{activePlayer.name}</span>
-          <span className="rounded-full bg-leaf-light px-2 py-0.5 text-xs font-bold text-leaf-dark">
-            {rank.emoji} {rank.name}
-          </span>
-          <span className="text-sm text-leaf-dark/50">🔄</span>
-        </button>
+        <div className="flex w-full max-w-xs items-center justify-between">
+          <div className="flex items-center gap-2 rounded-full bg-white px-4 py-1.5 shadow">
+            <span className="text-2xl">{activePlayer.avatar}</span>
+            <span className="font-bold text-leaf-dark">{activePlayer.name}</span>
+            <span className="rounded-full bg-leaf-light px-2 py-0.5 text-xs font-bold text-leaf-dark">
+              {rank.emoji} {rank.name}
+            </span>
+          </div>
+          <button
+            onClick={go(props.onLogout)}
+            className="rounded-full bg-white px-3 py-1.5 text-sm font-bold text-leaf-dark shadow active:scale-95"
+          >
+            🚪 יציאה
+          </button>
+        </div>
       )}
 
       <div className="mt-3 text-center">
@@ -121,13 +123,9 @@ export function Home(props: HomeProps) {
           🌍 תחרות אונליין
         </button>
         <button onClick={go(props.onPlayers)} className={`${tile} col-span-2`}>
-          🏆 טבלת ניצחונות מקומית
+          🏆 טבלת ניצחונות
         </button>
       </div>
-
-      <button onClick={go(props.onParents)} className="mt-4 text-leaf-dark/50 underline">
-        👪 אזור הורים
-      </button>
     </div>
   );
 }

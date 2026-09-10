@@ -38,6 +38,7 @@ export function useProgress() {
   const [activeId, setActiveId] = useState<string>(() => getActivePlayerId()!);
   const [state, setState] = useState<ProgressState>(() => loadProgressFor(getActivePlayerId()!));
   const [settings, setSettings] = useState<AppSettings>(() => loadSettings());
+  const [refreshTick, setRefreshTick] = useState(0);
 
   const record = useCallback(
     (result: PlantResult): FindOutcome => {
@@ -74,6 +75,13 @@ export function useProgress() {
     return p;
   }, [switchPlayer]);
 
+  // הוספת ילד/ה בלי להחליף את מי שמשחק כרגע (לשימוש ההורה)
+  const createChild = useCallback((name: string, avatar: string) => {
+    addPlayer(name, avatar);
+    setPlayers(loadPlayers());
+    setRefreshTick((t) => t + 1);
+  }, []);
+
   const editPlayer = useCallback((id: string, name: string, avatar?: string) => {
     renamePlayer(id, name, avatar);
     setPlayers(loadPlayers());
@@ -93,6 +101,19 @@ export function useProgress() {
     saveProgressFor(activeId, fresh);
     setState(fresh);
   }, [activeId]);
+
+  /** מאפס התקדמות של ילד/ה מסוים/ת (מהאזור ההורים), כולל דחיפה לענן אם מקושר. */
+  const resetChild = useCallback(
+    (id: string) => {
+      const fresh = emptyState();
+      saveProgressFor(id, fresh);
+      const pl = loadPlayers().find((x) => x.id === id);
+      if (pl?.cloudCode) void saveAccount(pl.cloudCode, { name: pl.name, avatar: pl.avatar, progress: fresh });
+      if (id === activeId) setState(fresh);
+      setRefreshTick((t) => t + 1);
+    },
+    [activeId]
+  );
 
   const updateCustomChallenge = useCallback((challenge: CustomChallenge | null) => {
     setCustomChallenge(challenge);
@@ -148,20 +169,65 @@ export function useProgress() {
     [switchPlayer]
   );
 
-  const leaderboard = useMemo<LeaderRow[]>(() => {
-    return players
-      .map((p) => {
-        const st = p.id === activeId ? state : loadProgressFor(p.id);
-        return {
-          player: p,
-          points: st.points,
-          stickers: Object.keys(st.stickers).length,
-          badges: st.badges.length,
-          level: levelForPoints(st.points).level
-        };
-      })
-      .sort((a, b) => b.points - a.points);
-  }, [players, activeId, state]);
+  /** מוסיף ילד/ה לצפייה לפי קוד — בלי להחליף את מי שמשחק כרגע (לשימוש ההורה). */
+  const addChildByCode = useCallback(
+    async (rawCode: string): Promise<"ok" | "not-found" | "offline"> => {
+      const code = rawCode.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 8);
+      if (!code) return "not-found";
+      const res = await getAccount(code);
+      if (!res.ok) return res.reason;
+      const acc = res.account;
+      const prog: ProgressState = { ...emptyState(), ...(acc.progress ?? {}) };
+      const existing = findPlayerByCloud(code);
+      if (existing) {
+        renamePlayer(existing.id, acc.name, acc.avatar);
+        saveProgressFor(existing.id, prog);
+      } else {
+        const pl = addPlayer(acc.name, acc.avatar);
+        setPlayerCloudCode(pl.id, code);
+        saveProgressFor(pl.id, prog);
+      }
+      setPlayers(loadPlayers());
+      setRefreshTick((t) => t + 1);
+      return "ok";
+    },
+    []
+  );
+
+  /** מרענן נתוני ילד/ה מהענן (עבור צפיית ההורה). */
+  const refreshChild = useCallback(
+    async (id: string) => {
+      const pl = loadPlayers().find((x) => x.id === id);
+      if (!pl?.cloudCode) return;
+      const res = await getAccount(pl.cloudCode);
+      if (res.ok) {
+        saveProgressFor(id, { ...emptyState(), ...(res.account.progress ?? {}) });
+        if (id === activeId) setState(loadProgressFor(id));
+        setRefreshTick((t) => t + 1);
+      }
+    },
+    [activeId]
+  );
+
+  const rows = useMemo<LeaderRow[]>(() => {
+    return players.map((pl) => {
+      const st = pl.id === activeId ? state : loadProgressFor(pl.id);
+      return {
+        player: pl,
+        points: st.points,
+        stickers: Object.keys(st.stickers).length,
+        badges: st.badges.length,
+        level: levelForPoints(st.points).level
+      };
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [players, activeId, state, refreshTick]);
+
+  const children = rows;
+  const leaderboard = useMemo<LeaderRow[]>(
+    () => [...rows].sort((a, b) => b.points - a.points),
+    [rows]
+  );
 
   const activePlayer = players.find((p) => p.id === activeId) ?? null;
 
@@ -178,11 +244,16 @@ export function useProgress() {
     completeChallenge,
     switchPlayer,
     createPlayer,
+    createChild,
     editPlayer,
     deletePlayer,
     resetActive,
     updateCustomChallenge,
     linkPlayerToCloud,
-    loginWithCode
+    loginWithCode,
+    addChildByCode,
+    refreshChild,
+    resetChild,
+    children
   };
 }

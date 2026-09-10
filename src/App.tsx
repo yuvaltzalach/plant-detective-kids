@@ -37,7 +37,13 @@ const MUTE_KEY = "plant-detective:muted";
 
 export default function App() {
   const p = useProgress();
-  const [screen, setScreen] = useState<Screen>("login");
+  // מחסנית ניווט — כדי ש"חזרה" תחזור באמת למסך הקודם
+  const [stack, setStack] = useState<Screen[]>(["login"]);
+  const screen = stack[stack.length - 1];
+  const go = (s: Screen) => setStack((st) => [...st, s]);
+  const back = () => setStack((st) => (st.length > 1 ? st.slice(0, -1) : st));
+  const resetTo = (s: Screen) => setStack([s]);
+
   const [image, setImage] = useState<string | null>(null);
   const [result, setResult] = useState<PlantResult | null>(null);
   const [encOpenId, setEncOpenId] = useState<string | undefined>(undefined);
@@ -52,13 +58,11 @@ export default function App() {
   const totalPlants = plants.length;
   const challengeDoneToday = p.state.lastChallengeDate === dateKey();
 
-  // צמח היום — קבוע לפי התאריך
   const plantOfDay = useMemo(() => {
     const dayNumber = Math.floor(Date.now() / 86_400_000);
     return plants[dayNumber % plants.length];
   }, [plants]);
 
-  // אונליין — מסנכרן את נתוני השחקן/ית הפעיל/ה
   const stats = {
     points: p.state.points,
     stickers: p.stickerCount,
@@ -67,9 +71,10 @@ export default function App() {
   };
   const online = useOnlineGroup(p.activePlayer, stats);
 
+  const startCapture = () => setStack(["home", "capture"]);
   const openEncyclopedia = (id?: string) => {
     setEncOpenId(id);
-    setScreen("encyclopedia");
+    go("encyclopedia");
   };
 
   return (
@@ -79,7 +84,8 @@ export default function App() {
           points={p.state.points}
           level={p.level.level}
           inLevel={p.level.inLevel}
-          onHome={() => setScreen("home")}
+          showProgress={screen !== "parents"}
+          onBack={back}
           muted={muted}
           onToggleMute={() => setMutedState((m) => !m)}
         />
@@ -90,40 +96,39 @@ export default function App() {
           players={p.players}
           onSelect={(id) => {
             p.switchPlayer(id);
-            setScreen("home");
+            resetTo("home");
           }}
           onCreate={(name, avatar) => {
             p.createPlayer(name, avatar);
-            setScreen("home");
+            resetTo("home");
           }}
           onLoginCode={async (code) => {
             const res = await p.loginWithCode(code);
-            if (res === "ok") setScreen("home");
+            if (res === "ok") resetTo("home");
             return res;
           }}
+          onParent={() => go("parents")}
         />
       )}
 
       {screen === "home" && (
         <Home
           activePlayer={p.activePlayer}
-          playerCount={p.players.length}
           level={p.level.level}
           stickerCount={p.stickerCount}
           totalPlants={totalPlants}
           challenge={p.challenge}
           challengeDoneToday={challengeDoneToday}
           plantOfDay={plantOfDay}
-          onCapture={() => setScreen("capture")}
-          onAlbum={() => setScreen("album")}
-          onChallenges={() => setScreen("challenges")}
-          onPlayers={() => setScreen("players")}
-          onOnline={() => setScreen("online")}
+          onCapture={startCapture}
+          onAlbum={() => go("album")}
+          onChallenges={() => go("challenges")}
+          onPlayers={() => go("players")}
+          onOnline={() => go("online")}
           onEncyclopedia={() => openEncyclopedia(undefined)}
           onPlantOfDay={() => openEncyclopedia(plantOfDay.id)}
-          onGames={() => setScreen("games")}
-          onSwitchAccount={() => setScreen("login")}
-          onParents={() => setScreen("parents")}
+          onGames={() => go("games")}
+          onLogout={() => resetTo("login")}
         />
       )}
 
@@ -132,7 +137,7 @@ export default function App() {
           onImage={(dataUrl) => {
             setImage(dataUrl);
             setResult(null);
-            setScreen("identifying");
+            setStack(["home", "identifying"]);
           }}
         />
       )}
@@ -142,9 +147,9 @@ export default function App() {
           imageDataUrl={image}
           onResult={(r) => {
             setResult(r);
-            setScreen("result");
+            setStack(["home", "result"]);
           }}
-          onRetry={() => setScreen("capture")}
+          onRetry={startCapture}
         />
       )}
 
@@ -152,8 +157,8 @@ export default function App() {
         <Result
           result={result}
           record={p.record}
-          onCapture={() => setScreen("capture")}
-          onAlbum={() => setScreen("album")}
+          onCapture={startCapture}
+          onAlbum={() => setStack(["home", "album"])}
         />
       )}
 
@@ -163,7 +168,7 @@ export default function App() {
           player={p.activePlayer}
           points={p.state.points}
           level={p.level.level}
-          onCapture={() => setScreen("capture")}
+          onCapture={startCapture}
         />
       )}
 
@@ -171,21 +176,13 @@ export default function App() {
         <Challenges
           state={p.state}
           challenge={p.challenge}
-          onCapture={() => setScreen("capture")}
+          onCapture={startCapture}
           onCompleteManually={p.completeChallenge}
         />
       )}
 
       {screen === "players" && (
-        <Players
-          leaderboard={p.leaderboard}
-          activeId={p.activePlayer?.id ?? ""}
-          onSwitch={(id) => {
-            p.switchPlayer(id);
-            setScreen("home");
-          }}
-          onCreate={p.createPlayer}
-        />
+        <Players leaderboard={p.leaderboard} activeId={p.activePlayer?.id ?? ""} />
       )}
 
       {screen === "online" && (
@@ -210,15 +207,16 @@ export default function App() {
       {screen === "parents" && (
         <Parents
           settings={p.settings}
-          players={p.players}
-          activeId={p.activePlayer?.id ?? ""}
+          children={p.children}
           onSetChallenge={p.updateCustomChallenge}
           onClearChallenge={() => p.updateCustomChallenge(null)}
-          onResetActive={p.resetActive}
-          onCreatePlayer={p.createPlayer}
+          onCreatePlayer={p.createChild}
           onEditPlayer={p.editPlayer}
           onDeletePlayer={p.deletePlayer}
+          onResetChild={p.resetChild}
           onLinkCloud={p.linkPlayerToCloud}
+          onRefreshChild={p.refreshChild}
+          onAddChildByCode={p.addChildByCode}
           online={{
             code: online.code,
             challenge: online.challenge,
