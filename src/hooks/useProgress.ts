@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   FindOutcome,
   completeChallengeManually,
@@ -10,6 +10,7 @@ import {
   activeChallenge,
   addPlayer,
   ensureActivePlayer,
+  findPlayerByCloud,
   getActivePlayerId,
   loadPlayers,
   loadProgressFor,
@@ -18,8 +19,10 @@ import {
   renamePlayer,
   saveProgressFor,
   setActivePlayerId,
-  setCustomChallenge
+  setCustomChallenge,
+  setPlayerCloudCode
 } from "../lib/players";
+import { createAccount, getAccount, saveAccount } from "../lib/account";
 import type { AppSettings, CustomChallenge, PlantResult, Player, ProgressState } from "../types";
 
 export interface LeaderRow {
@@ -96,6 +99,55 @@ export function useProgress() {
     setSettings(loadSettings());
   }, []);
 
+  // סנכרון אוטומטי לענן עבור משתתף שמקושר לחשבון אונליין
+  useEffect(() => {
+    const ap = players.find((x) => x.id === activeId);
+    if (ap?.cloudCode) {
+      void saveAccount(ap.cloudCode, { name: ap.name, avatar: ap.avatar, progress: state });
+    }
+  }, [activeId, state, players]);
+
+  /** יוצר חשבון אונליין למשתתף ומקשר אותו — מחזיר את הקוד האישי. */
+  const linkPlayerToCloud = useCallback(async (id: string): Promise<string | null> => {
+    const pl = loadPlayers().find((x) => x.id === id);
+    if (!pl) return null;
+    if (pl.cloudCode) return pl.cloudCode;
+    const acc = await createAccount(pl.name, pl.avatar, loadProgressFor(id));
+    if (!acc) return null;
+    setPlayerCloudCode(id, acc.code);
+    setPlayers(loadPlayers());
+    return acc.code;
+  }, []);
+
+  /** התחברות עם קוד אישי — מושך את החשבון ומסנכרן אותו למכשיר הזה. */
+  const loginWithCode = useCallback(
+    async (rawCode: string): Promise<"ok" | "not-found" | "offline"> => {
+      const code = rawCode.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 8);
+      if (!code) return "not-found";
+      const res = await getAccount(code);
+      if (!res.ok) return res.reason;
+
+      const acc = res.account;
+      const prog: ProgressState = { ...emptyState(), ...(acc.progress ?? {}) };
+      const existing = findPlayerByCloud(code);
+      let targetId: string;
+      if (existing) {
+        renamePlayer(existing.id, acc.name, acc.avatar);
+        saveProgressFor(existing.id, prog);
+        targetId = existing.id;
+      } else {
+        const pl = addPlayer(acc.name, acc.avatar);
+        setPlayerCloudCode(pl.id, code);
+        saveProgressFor(pl.id, prog);
+        targetId = pl.id;
+      }
+      setPlayers(loadPlayers());
+      switchPlayer(targetId);
+      return "ok";
+    },
+    [switchPlayer]
+  );
+
   const leaderboard = useMemo<LeaderRow[]>(() => {
     return players
       .map((p) => {
@@ -129,6 +181,8 @@ export function useProgress() {
     editPlayer,
     deletePlayer,
     resetActive,
-    updateCustomChallenge
+    updateCustomChallenge,
+    linkPlayerToCloud,
+    loginWithCode
   };
 }

@@ -21,6 +21,15 @@ function distinctCategories(s: ProgressState) {
   return new Set(stickerList(s).map((x) => x.category)).size;
 }
 
+/** כמה מדבקות נאספו בחודשים מסוימים (לפי תאריך המציאה הראשון) — לתגים עונתיים. */
+function countInMonths(s: ProgressState, months: number[]) {
+  return stickerList(s).filter((x) => months.includes(new Date(x.firstFoundAt).getMonth())).length;
+}
+const SPRING = [2, 3, 4];
+const SUMMER = [5, 6, 7];
+const AUTUMN = [8, 9, 10];
+const WINTER = [11, 0, 1];
+
 export const BADGES: BadgeDef[] = [
   {
     id: "first-find",
@@ -98,6 +107,34 @@ export const BADGES: BadgeDef[] = [
     emoji: "🔥",
     description: "השלמת אתגר יומי 3 ימים ברצף.",
     check: (s) => s.challengeStreak >= 3
+  },
+  {
+    id: "spring-bloom",
+    name: "פריחת אביב",
+    emoji: "🌷",
+    description: "מצאת 3 צמחים באביב.",
+    check: (s) => countInMonths(s, SPRING) >= 3
+  },
+  {
+    id: "summer-sun",
+    name: "חוקר קיץ",
+    emoji: "☀️",
+    description: "מצאת 3 צמחים בקיץ.",
+    check: (s) => countInMonths(s, SUMMER) >= 3
+  },
+  {
+    id: "autumn-leaves",
+    name: "שלכת סתיו",
+    emoji: "🍂",
+    description: "מצאת 3 צמחים בסתיו.",
+    check: (s) => countInMonths(s, AUTUMN) >= 3
+  },
+  {
+    id: "winter-explorer",
+    name: "חוקר חורף",
+    emoji: "❄️",
+    description: "מצאת 3 צמחים בחורף.",
+    check: (s) => countInMonths(s, WINTER) >= 3
   }
 ];
 

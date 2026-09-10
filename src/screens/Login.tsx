@@ -10,11 +10,25 @@ interface LoginProps {
   players: Player[];
   onSelect: (id: string) => void;
   onCreate: (name: string, avatar: string) => void;
+  onLoginCode: (code: string) => Promise<"ok" | "not-found" | "offline">;
 }
 
 /** מסך כניסה בסגנון "מי משחק היום?" — כל ילד/ה בוחר/ת את החשבון שלו/ה. */
-export function Login({ players, onSelect, onCreate }: LoginProps) {
+export function Login({ players, onSelect, onCreate, onLoginCode }: LoginProps) {
   const [adding, setAdding] = useState(false);
+  const [showCode, setShowCode] = useState(false);
+  const [code, setCode] = useState("");
+  const [codeErr, setCodeErr] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  const submitCode = async () => {
+    setBusy(true);
+    setCodeErr(null);
+    const res = await onLoginCode(code);
+    setBusy(false);
+    if (res === "not-found") setCodeErr("קוד לא נמצא. בדקו שהקלדתם נכון 🙂");
+    else if (res === "offline") setCodeErr("אין חיבור לשרת (או שהאונליין לא הוגדר).");
+  };
 
   if (adding || players.length === 0) {
     return (
@@ -70,6 +84,40 @@ export function Login({ players, onSelect, onCreate }: LoginProps) {
           <span className="text-5xl">➕</span>
           <span className="mt-2 font-bold">ילד/ה חדש/ה</span>
         </button>
+      </div>
+
+      {/* התחברות עם קוד חשבון (ממכשיר אחר) */}
+      <div className="mt-8 w-full max-w-sm text-center">
+        {!showCode ? (
+          <button
+            onClick={() => setShowCode(true)}
+            className="text-leaf-dark/60 underline"
+          >
+            🔑 יש לי קוד חשבון (התחברות ממכשיר אחר)
+          </button>
+        ) : (
+          <div className="rounded-blob bg-white p-4 shadow">
+            <div className="font-bold text-leaf-dark">התחברות עם קוד אישי</div>
+            <input
+              value={code}
+              onChange={(e) => {
+                setCode(e.target.value.toUpperCase());
+                setCodeErr(null);
+              }}
+              placeholder="הקוד שלי"
+              maxLength={8}
+              className="mt-3 w-full rounded-2xl border-2 border-leaf-light bg-white p-3 text-center text-xl font-black tracking-widest outline-none focus:border-leaf"
+            />
+            {codeErr && <div className="mt-2 font-bold text-red-500">{codeErr}</div>}
+            <button
+              onClick={submitCode}
+              disabled={busy || code.trim().length < 4}
+              className="big-btn mt-3 w-full bg-leaf py-3 text-lg disabled:opacity-40"
+            >
+              {busy ? "מתחבר..." : "כניסה"}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

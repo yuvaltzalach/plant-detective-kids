@@ -96,6 +96,11 @@ export default function App() {
             p.createPlayer(name, avatar);
             setScreen("home");
           }}
+          onLoginCode={async (code) => {
+            const res = await p.loginWithCode(code);
+            if (res === "ok") setScreen("home");
+            return res;
+          }}
         />
       )}
 
@@ -213,6 +218,7 @@ export default function App() {
           onCreatePlayer={p.createPlayer}
           onEditPlayer={p.editPlayer}
           onDeletePlayer={p.deletePlayer}
+          onLinkCloud={p.linkPlayerToCloud}
           online={{
             code: online.code,
             challenge: online.challenge,

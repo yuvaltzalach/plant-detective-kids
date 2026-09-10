@@ -21,6 +21,7 @@ interface ParentsProps {
   onCreatePlayer: (name: string, avatar: string) => void;
   onEditPlayer: (id: string, name: string, avatar: string) => void;
   onDeletePlayer: (id: string) => void;
+  onLinkCloud: (id: string) => Promise<string | null>;
   online: OnlineControls;
 }
 
@@ -215,29 +216,53 @@ export function Parents(props: ParentsProps) {
         <h3 className="text-xl font-black text-leaf-dark">🧒 שחקנים</h3>
         <div className="mt-3 space-y-2">
           {props.players.map((p) => (
-            <div key={p.id} className="flex items-center gap-3 rounded-2xl bg-gray-50 p-2">
-              <span className="text-3xl">{p.avatar}</span>
-              <span className="flex-1 font-bold text-leaf-dark">{p.name}</span>
-              <button
-                onClick={() => setMode({ kind: "edit", id: p.id })}
-                className="rounded-full bg-sky/20 px-3 py-1.5 text-sm font-bold text-sky-700"
-              >
-                ✏️ עריכה
-              </button>
-              <button
-                onClick={() => {
-                  if (props.players.length <= 1) {
-                    alert("צריך להשאיר לפחות שחקן/ית אחד/ת.");
-                    return;
-                  }
-                  if (confirm(`למחוק את ${p.name} ואת כל ההתקדמות שלו/ה?`)) {
-                    props.onDeletePlayer(p.id);
-                  }
-                }}
-                className="rounded-full bg-red-100 px-3 py-1.5 text-sm font-bold text-red-600"
-              >
-                🗑️
-              </button>
+            <div key={p.id} className="rounded-2xl bg-gray-50 p-2">
+              <div className="flex items-center gap-3">
+                <span className="text-3xl">{p.avatar}</span>
+                <span className="flex-1 font-bold text-leaf-dark">{p.name}</span>
+                <button
+                  onClick={() => setMode({ kind: "edit", id: p.id })}
+                  className="rounded-full bg-sky/20 px-3 py-1.5 text-sm font-bold text-sky-700"
+                >
+                  ✏️
+                </button>
+                <button
+                  onClick={() => {
+                    if (props.players.length <= 1) {
+                      alert("צריך להשאיר לפחות שחקן/ית אחד/ת.");
+                      return;
+                    }
+                    if (confirm(`למחוק את ${p.name} ואת כל ההתקדמות שלו/ה?`)) {
+                      props.onDeletePlayer(p.id);
+                    }
+                  }}
+                  className="rounded-full bg-red-100 px-3 py-1.5 text-sm font-bold text-red-600"
+                >
+                  🗑️
+                </button>
+              </div>
+              {/* חשבון אונליין אישי (סנכרון בין מכשירים) */}
+              <div className="mt-2 border-t border-gray-200 pt-2">
+                {p.cloudCode ? (
+                  <div className="text-sm text-leaf-dark">
+                    🔑 קוד חשבון: <span className="font-black tracking-widest">{p.cloudCode}</span>
+                    <div className="text-xs text-leaf-dark/50">
+                      מתחברים עם הקוד הזה מכל טלפון כדי לשחזר את החשבון.
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    onClick={async () => {
+                      const code = await props.onLinkCloud(p.id);
+                      if (code) alert(`נוצר חשבון אונליין ל${p.name}!\nהקוד האישי: ${code}\nשמרו אותו — מתחברים איתו מכל מכשיר.`);
+                      else alert("לא הצלחנו ליצור חשבון (אולי האונליין לא הוגדר).");
+                    }}
+                    className="rounded-full bg-leaf/15 px-3 py-1.5 text-sm font-bold text-leaf-dark"
+                  >
+                    ☁️ צרו חשבון אונליין (קוד לשחזור מכל מכשיר)
+                  </button>
+                )}
+              </div>
             </div>
           ))}
         </div>

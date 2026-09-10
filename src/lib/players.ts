@@ -84,6 +84,15 @@ export function renamePlayer(id: string, name: string, avatar?: string) {
   );
 }
 
+/** מקשר משתתף לחשבון אונליין (קוד אישי) — או מנתק (undefined). */
+export function setPlayerCloudCode(id: string, code: string | undefined) {
+  savePlayers(loadPlayers().map((p) => (p.id === id ? { ...p, cloudCode: code } : p)));
+}
+
+export function findPlayerByCloud(code: string): Player | null {
+  return loadPlayers().find((p) => p.cloudCode === code) ?? null;
+}
+
 export function removePlayer(id: string) {
   const remaining = loadPlayers().filter((p) => p.id !== id);
   savePlayers(remaining);

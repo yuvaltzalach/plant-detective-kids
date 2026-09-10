@@ -83,6 +83,15 @@ describe("recordFind", () => {
     expect(s.challengeStreak).toBe(1);
   });
 
+  it("מעניק תג עונתי לפי חודש המציאה", () => {
+    let s = emptyState();
+    const april = new Date(2026, 3, 10); // אביב
+    for (let i = 0; i < 3; i++) {
+      s = recordFind(s, makeResult(`spring-${i}`), april).state;
+    }
+    expect(s.badges.map((b) => b.id)).toContain("spring-bloom");
+  });
+
   it("מעניק תגי אספן לפי מספר המדבקות", () => {
     let s = emptyState();
     const date = new Date(2026, 4, 5);

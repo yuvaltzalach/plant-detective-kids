@@ -77,6 +77,8 @@ export interface Player {
   name: string;
   avatar: string;
   createdAt: number;
+  /** קוד חשבון אונליין אישי — אם קיים, ההתקדמות מסתנכרנת בין מכשירים. */
+  cloudCode?: string;
 }
 
 /** אתגר מותאם שההורה כותב (למשל "מצאו פרח עם עלים צהובים"). */

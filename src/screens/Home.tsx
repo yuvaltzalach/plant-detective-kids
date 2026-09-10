@@ -1,4 +1,5 @@
 import { playPop } from "../lib/sound";
+import { Mascot } from "../components/Mascot";
 import { levelTitle } from "../data/levels";
 import type { Challenge } from "../data/challenges";
 import type { Player, PlantContent } from "../types";
@@ -64,6 +65,8 @@ export function Home(props: HomeProps) {
         <h1 className="mt-2 text-4xl font-black text-leaf-dark">בלש הצמחים</h1>
         <p className="mt-1 text-lg text-leaf-dark/70">מצלמים צמח — ומגלים מה הוא!</p>
       </div>
+
+      <Mascot />
 
       <button
         onClick={go(props.onCapture)}
