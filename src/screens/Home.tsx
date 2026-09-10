@@ -2,10 +2,11 @@ import { playPop } from "../lib/sound";
 import { Mascot } from "../components/Mascot";
 import { levelTitle } from "../data/levels";
 import type { Challenge } from "../data/challenges";
-import type { Player, PlantContent } from "../types";
+import type { PlantContent } from "../types";
+import type { PublicAccount } from "../lib/auth";
 
 interface HomeProps {
-  activePlayer: Player | null;
+  account: PublicAccount | null;
   level: number;
   stickerCount: number;
   totalPlants: number;
@@ -15,17 +16,17 @@ interface HomeProps {
   onCapture: () => void;
   onAlbum: () => void;
   onChallenges: () => void;
-  onPlayers: () => void;
   onOnline: () => void;
   onEncyclopedia: () => void;
   onPlantOfDay: () => void;
   onGames: () => void;
+  onParents: () => void;
   onLogout: () => void;
 }
 
 export function Home(props: HomeProps) {
   const {
-    activePlayer,
+    account,
     level,
     stickerCount,
     totalPlants,
@@ -43,18 +44,20 @@ export function Home(props: HomeProps) {
 
   return (
     <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-4">
-      {/* זהות השחקן/ית + יציאה */}
-      {activePlayer && (
+      {/* זהות המשתמש + יציאה */}
+      {account && (
         <div className="flex w-full max-w-xs items-center justify-between">
           <div className="flex items-center gap-2 rounded-full bg-white px-4 py-1.5 shadow">
-            <span className="text-2xl">{activePlayer.avatar}</span>
-            <span className="font-bold text-leaf-dark">{activePlayer.name}</span>
+            <span className="text-2xl">{account.avatar}</span>
+            <span className="font-bold text-leaf-dark">{account.username}</span>
             <span className="rounded-full bg-leaf-light px-2 py-0.5 text-xs font-bold text-leaf-dark">
               {rank.emoji} {rank.name}
             </span>
           </div>
           <button
-            onClick={go(props.onLogout)}
+            onClick={() => {
+              if (confirm("להתנתק מהחשבון?")) props.onLogout();
+            }}
             className="rounded-full bg-white px-3 py-1.5 text-sm font-bold text-leaf-dark shadow active:scale-95"
           >
             🚪 יציאה
@@ -122,9 +125,11 @@ export function Home(props: HomeProps) {
         <button onClick={go(props.onOnline)} className={tile}>
           🌍 תחרות אונליין
         </button>
-        <button onClick={go(props.onPlayers)} className={`${tile} col-span-2`}>
-          🏆 טבלת ניצחונות
-        </button>
+        {account?.isParent && (
+          <button onClick={go(props.onParents)} className={`${tile} col-span-2`}>
+            👪 אזור הורים
+          </button>
+        )}
       </div>
     </div>
   );
