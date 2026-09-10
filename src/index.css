@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Varela Round", "Rubik", system-ui, sans-serif;
+  background: linear-gradient(180deg, #f0fdf4 0%, #ecfeff 100%);
+  color: #14532d;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+/* כפתורים גדולים וידידותיים למגע של ילדים */
+button {
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
+@layer components {
+  .big-btn {
+    @apply rounded-blob px-8 py-5 text-2xl font-bold text-white shadow-lg
+      active:scale-95 transition-transform select-none;
+  }
+}
