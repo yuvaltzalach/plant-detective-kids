@@ -1,10 +1,15 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+// ─────────────────────────────────────────────────────────────────────────
+// Cloudflare Pages Function: POST /api/identify
+// מקבלת תמונה (data-URL) מהדפדפן, קוראת למנוע הזיהוי (Pl@ntNet כברירת מחדל,
+// Claude Vision כאופציה), ומחזירה רשימת מועמדים. המפתחות נשמרים רק כאן בצד
+// השרת (ב-Environment Variables של Cloudflare) ולא נחשפים ללקוח.
+// ─────────────────────────────────────────────────────────────────────────
 
-// ─────────────────────────────────────────────────────────────────────────
-// פונקציית פרוקסי serverless: מקבלת תמונה (data-URL) מהדפדפן, קוראת למנוע
-// הזיהוי (Pl@ntNet כברירת מחדל, Claude Vision כאופציה), ומחזירה רשימת מועמדים.
-// המפתחות נשמרים רק כאן בצד השרת ולא נחשפים ללקוח.
-// ─────────────────────────────────────────────────────────────────────────
+interface Env {
+  PLANTNET_API_KEY?: string;
+  ANTHROPIC_API_KEY?: string;
+  USE_CLAUDE_VISION?: string;
+}
 
 interface Candidate {
   scientificName: string;
@@ -14,33 +19,33 @@ interface Candidate {
   imageUrl?: string;
 }
 
-function parseDataUrl(dataUrl: string): { mime: string; buffer: Buffer } {
+/** מפרק data-URL ל-mime ולבייטים (בלי Buffer של Node — סביבת Workers). */
+function parseDataUrl(dataUrl: string): { mime: string; bytes: Uint8Array; base64: string } {
   const match = /^data:(.+?);base64,(.*)$/.exec(dataUrl);
   if (!match) throw new Error("פורמט תמונה לא תקין");
-  return { mime: match[1], buffer: Buffer.from(match[2], "base64") };
+  const base64 = match[2];
+  const bin = atob(base64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return { mime: match[1], bytes, base64 };
 }
 
-async function identifyWithPlantNet(dataUrl: string): Promise<Candidate[]> {
-  const key = process.env.PLANTNET_API_KEY;
+async function identifyWithPlantNet(dataUrl: string, env: Env): Promise<Candidate[]> {
+  const key = env.PLANTNET_API_KEY;
   if (!key) throw new Error("חסר מפתח Pl@ntNet בשרת (PLANTNET_API_KEY)");
 
-  const { mime, buffer } = parseDataUrl(dataUrl);
+  const { mime, bytes } = parseDataUrl(dataUrl);
   const form = new FormData();
   const ext = mime.includes("png") ? "png" : "jpg";
-  form.append(
-    "images",
-    new Blob([buffer as unknown as BlobPart], { type: mime }),
-    `plant.${ext}`
-  );
+  form.append("images", new Blob([bytes], { type: mime }), `plant.${ext}`);
   form.append("organs", "auto");
 
   const url = `https://my-api.plantnet.org/v2/identify/all?api-key=${encodeURIComponent(
     key
   )}&nb-results=5&lang=he`;
   const res = await fetch(url, { method: "POST", body: form });
-  if (!res.ok) {
-    throw new Error(`Pl@ntNet החזיר שגיאה (${res.status})`);
-  }
+  if (!res.ok) throw new Error(`Pl@ntNet החזיר שגיאה (${res.status})`);
+
   const data: any = await res.json();
   const results: any[] = data.results ?? [];
   return results.map((r) => ({
@@ -53,10 +58,10 @@ async function identifyWithPlantNet(dataUrl: string): Promise<Candidate[]> {
 }
 
 // ─── שדרוג אופציונלי: Claude Vision (בתשלום) ──────────────────────────────
-async function identifyWithClaude(dataUrl: string): Promise<Candidate[]> {
-  const key = process.env.ANTHROPIC_API_KEY;
+async function identifyWithClaude(dataUrl: string, env: Env): Promise<Candidate[]> {
+  const key = env.ANTHROPIC_API_KEY;
   if (!key) throw new Error("חסר מפתח Anthropic");
-  const { mime, buffer } = parseDataUrl(dataUrl);
+  const { mime, base64 } = parseDataUrl(dataUrl);
 
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
@@ -74,7 +79,7 @@ async function identifyWithClaude(dataUrl: string): Promise<Candidate[]> {
           content: [
             {
               type: "image",
-              source: { type: "base64", media_type: mime, data: buffer.toString("base64") }
+              source: { type: "base64", media_type: mime, data: base64 }
             },
             {
               type: "text",
@@ -99,27 +104,31 @@ async function identifyWithClaude(dataUrl: string): Promise<Candidate[]> {
   ];
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== "POST") {
-    res.status(405).send("Method Not Allowed");
-    return;
-  }
-  try {
-    const image: string | undefined =
-      typeof req.body === "string" ? JSON.parse(req.body).image : req.body?.image;
-    if (!image) {
-      res.status(400).send("חסרה תמונה");
-      return;
-    }
-
-    const useClaude = process.env.USE_CLAUDE_VISION === "true" && process.env.ANTHROPIC_API_KEY;
-    const candidates = useClaude
-      ? await identifyWithClaude(image)
-      : await identifyWithPlantNet(image);
-
-    res.status(200).json({ candidates });
-  } catch (e) {
-    const message = e instanceof Error ? e.message : "שגיאה לא ידועה";
-    res.status(500).send(message);
-  }
+function textResponse(body: string, status: number): Response {
+  return new Response(body, { status, headers: { "content-type": "text/plain; charset=utf-8" } });
 }
+
+// נקודת הכניסה של Cloudflare Pages ל-POST /api/identify
+export const onRequestPost = async (context: {
+  request: Request;
+  env: Env;
+}): Promise<Response> => {
+  const { request, env } = context;
+  try {
+    const body = (await request.json()) as { image?: string };
+    const image = body?.image;
+    if (!image) return textResponse("חסרה תמונה", 400);
+
+    const useClaude = env.USE_CLAUDE_VISION === "true" && !!env.ANTHROPIC_API_KEY;
+    const candidates = useClaude
+      ? await identifyWithClaude(image, env)
+      : await identifyWithPlantNet(image, env);
+
+    return new Response(JSON.stringify({ candidates }), {
+      status: 200,
+      headers: { "content-type": "application/json; charset=utf-8" }
+    });
+  } catch (e) {
+    return textResponse(e instanceof Error ? e.message : "שגיאה לא ידועה", 500);
+  }
+};

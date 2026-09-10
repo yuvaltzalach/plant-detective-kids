@@ -4,11 +4,12 @@
 ומחזירה **שם ותיאור ידידותי בעברית** — עם המון אלמנטים של הצלחה: אלבום מדבקות, נקודות
 ורמות, תגי הישג, אתגר יומי, אנימציות קונפטי, צלילי ניצחון והקראה קולית.
 
-## 🚀 פריסה בלחיצה אחת
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyuvaltzalach%2Fplant-detective-kids&env=PLANTNET_API_KEY&envDescription=מפתח%20Pl@ntNet%20חינמי%20לזיהוי%20צמחים&envLink=https%3A%2F%2Fmy.plantnet.org%2F&project-name=plant-detective-kids&repository-name=plant-detective-kids)
+## 🚀 פריסה בלחיצה אחת (Cloudflare Pages)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/yuvaltzalach/plant-detective-kids)
 
-לוחצים על הכפתור → מתחברים ל-Vercel → מדביקים את מפתח ה-Pl@ntNet (מקבלים כאן:
-https://my.plantnet.org/) → Deploy. תוך דקה יש כתובת חיה שאפשר "להתקין" בטלפון.
+לוחצים על הכפתור → מתחברים ל-Cloudflare → הוא מזהה אוטומטית `npm run build` ותיקיית פלט
+`dist` ואת פונקציית `functions/` → Deploy. אחר כך מוסיפים את מפתח ה-Pl@ntNet כמשתנה סביבה
+(ראו "פריסה" למטה). תוך דקה יש כתובת חיה שאפשר "להתקין" בטלפון.
 
 ## ✨ מה יש באפליקציה
 - 📷 **צילום/העלאה** של צמח מהמצלמה או מהגלריה.
@@ -30,30 +31,31 @@ npm install
 VITE_MOCK_IDENTIFY=true npm run dev
 ```
 
-לזרימה המלאה עם זיהוי אמיתי צריך את פונקציית ה-`/api` (ראו "פריסה"). מקומית מריצים אותה עם
-Vercel CLI:
+לזרימה המלאה עם זיהוי אמיתי צריך גם את פונקציית ה-`/api`. מריצים אותה מקומית עם
+Cloudflare Wrangler (הפונקציה נמצאת ב-`functions/api/identify.ts`):
 
 ```bash
-npm i -g vercel
-vercel dev            # מגיש גם את ה-frontend וגם את /api/identify
+# יוצרים קובץ .dev.vars עם המפתח (ראו .dev.vars.example)
+npm run build
+npx wrangler pages dev dist      # מגיש את ה-frontend וגם את /api/identify
 ```
 
 ## 🔑 מפתח Pl@ntNet (חינמי)
 1. נרשמים ב-https://my.plantnet.org/ ומקבלים API key (חינם, לשימוש לא-מסחרי, ~500 זיהויים ביום).
-2. מעתיקים את `.env.example` ל-`.env` וממלאים:
-   ```
-   PLANTNET_API_KEY=xxxxxxxx
-   ```
-   בפריסה על Vercel מגדירים את המשתנה ב-Project Settings → Environment Variables.
-   המפתח נשאר **רק בצד השרת** (פונקציית `/api/identify`) ולא נחשף בדפדפן.
+2. **בפיתוח מקומי:** מעתיקים את `.dev.vars.example` ל-`.dev.vars` וממלאים `PLANTNET_API_KEY=...`.
+3. **בפרודקשן:** מגדירים את `PLANTNET_API_KEY` ב-Cloudflare Pages → Settings → Environment variables.
 
-## ☁️ פריסה (Vercel — מומלץ)
-1. מחברים את הריפו ל-Vercel (Import Project). Vercel מזהה אוטומטית פרויקט Vite ופונקציות `api/`.
-2. מגדירים את משתנה הסביבה `PLANTNET_API_KEY`.
-3. Deploy. זהו — יש כתובת ציבורית שאפשר "להתקין" בטלפון.
+המפתח נשאר **רק בצד השרת** (פונקציית `/api/identify`) ולא נחשף בדפדפן.
 
-חלופה: **Cloudflare Pages** (Build command: `npm run build`, Output: `dist`) + Pages Function
-מקבילה ל-`/api/identify`.
+## ☁️ פריסה (Cloudflare Pages)
+1. Cloudflare Dashboard → **Workers & Pages** → Create → Pages → Connect to Git → בוחרים את הריפו.
+2. הגדרות בנייה: **Build command** = `npm run build`, **Output directory** = `dist`
+   (הפונקציות שב-`functions/` מזוהות אוטומטית).
+3. מוסיפים משתנה סביבה `PLANTNET_API_KEY`.
+4. Deploy. זהו — יש כתובת ציבורית שאפשר "להתקין" בטלפון.
+
+> אפשר גם לפרוס בכל פלטפורמה אחרת שתומכת ב-Vite + serverless (למשל Vercel), אבל
+> פונקציית השרת כאן כתובה בפורמט Cloudflare Pages Functions.
 
 ## 🤖 שדרוג אופציונלי: Claude Vision (בתשלום)
 ברירת המחדל חינמית (Pl@ntNet). מי שרוצה תיאורי זיהוי עשירים במיוחד בעברית יכול להדליק
@@ -71,7 +73,7 @@ npm run test      # לוגיקת נקודות/תגים/אתגרים + מיפוי
 
 ## 🗂️ מבנה הפרויקט
 ```
-api/identify.ts          פונקציית proxy: תמונה → Pl@ntNet (או Claude) → מועמדים
+functions/api/identify.ts  פונקציית Cloudflare: תמונה → Pl@ntNet (או Claude) → מועמדים
 src/
   data/plants.he.json    מסד התוכן העברי הידידותי לילדים
   data/badges.ts          הגדרות תגי ההישג

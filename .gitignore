@@ -4,7 +4,9 @@ dist-ssr
 *.local
 .env
 .env.local
+.dev.vars
 .vercel
+.wrangler
 .DS_Store
 npm-debug.log*
 coverage
