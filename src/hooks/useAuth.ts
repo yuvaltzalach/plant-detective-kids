@@ -6,12 +6,14 @@ import {
   deleteChild,
   linkChild,
   listChildren,
+  forgotInfo,
   login,
   me,
   renameAccount,
   resetChildPassword,
   saveProgress,
-  signup
+  signup,
+  updateProfile as updateProfileApi
 } from "../lib/auth";
 import {
   FindOutcome,
@@ -209,16 +211,18 @@ export function useAuth() {
     [session]
   );
 
-  /** עדכון הדמות (אווטאר) של המשתמש/ת המחובר/ת. */
-  const updateAvatar = useCallback(
-    (avatar: string) => {
-      if (!session) return;
-      const account = { ...session.account, avatar };
-      persistSession({ token: session.token, account });
-      setSession({ token: session.token, account });
-      void saveProgress(session.token, state, avatar);
+  /** עדכון פרטי פרופיל (גיל/סיסמה/דמות) של המשתמש/ת המחובר/ת. */
+  const updateProfile = useCallback(
+    async (fields: { age?: number; password?: string; avatar?: string }) => {
+      if (!session) return { ok: false as const, error: "offline" };
+      const res = await updateProfileApi(session.token, fields);
+      if (res.ok) {
+        persistSession({ token: session.token, account: res.account });
+        setSession({ token: session.token, account: res.account });
+      }
+      return res;
     },
-    [session, state]
+    [session]
   );
 
   const updateCustomChallenge = useCallback((c: CustomChallenge | null) => {
@@ -246,7 +250,8 @@ export function useAuth() {
     deleteChildAccount,
     resetChildPassword: resetChildPasswordAction,
     changeUsername,
-    updateAvatar,
+    updateProfile,
+    forgotInfo,
     updateCustomChallenge
   };
 }

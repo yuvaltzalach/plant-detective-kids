@@ -127,6 +127,36 @@ export async function resetChildPassword(
   }
 }
 
+export async function updateProfile(
+  token: string,
+  fields: { age?: number; password?: string; avatar?: string }
+): Promise<{ ok: true; account: PublicAccount } | { ok: false; error: string }> {
+  try {
+    const { data } = await postJson("/api/auth/update-profile", { token, ...fields });
+    if (data?.ok) return { ok: true, account: data.account };
+    return { ok: false, error: data?.error ?? "server-error" };
+  } catch {
+    return { ok: false, error: "offline" };
+  }
+}
+
+export interface ForgotInfo {
+  exists: boolean;
+  hasParent: boolean;
+  isParent: boolean;
+}
+
+export async function forgotInfo(username: string): Promise<ForgotInfo | null> {
+  try {
+    const res = await fetch("/api/auth/forgot?username=" + encodeURIComponent(username));
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data?.ok ? { exists: !!data.exists, hasParent: !!data.hasParent, isParent: !!data.isParent } : null;
+  } catch {
+    return null;
+  }
+}
+
 export async function deleteChild(token: string, childUsername: string): Promise<boolean> {
   try {
     const { status } = await postJson("/api/auth/delete-child", { token, childUsername });

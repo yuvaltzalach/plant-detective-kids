@@ -24,6 +24,11 @@ export const onRequestPost = async (context: { request: Request; env: Env }): Pr
 
     parent.children = Array.from(new Set([...(parent.children ?? []), childUser]));
     await saveAccount(env, parent);
+    // מסמנים על הילד/ה שיש הורה מקושר (עבור "שכחתי סיסמה")
+    if (!child.hasParent) {
+      child.hasParent = true;
+      await saveAccount(env, child);
+    }
     return json({ ok: true, child: publicAccount(child) });
   } catch {
     return json({ error: "server-error" }, 500);

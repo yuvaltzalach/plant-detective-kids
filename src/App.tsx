@@ -15,6 +15,7 @@ import { Home } from "./screens/Home";
 import { Identifying } from "./screens/Identifying";
 import { OnlineGroup } from "./screens/OnlineGroup";
 import { Parents } from "./screens/Parents";
+import { Profile } from "./screens/Profile";
 import { Result } from "./screens/Result";
 import type { PlantResult, Player } from "./types";
 
@@ -28,6 +29,7 @@ type Screen =
   | "online"
   | "encyclopedia"
   | "games"
+  | "profile"
   | "parents";
 
 const MUTE_KEY = "plant-detective:muted";
@@ -97,7 +99,7 @@ export default function App() {
   if (!a.isLoggedIn) {
     return (
       <div className="mx-auto flex min-h-screen max-w-lg flex-col">
-        <Auth onSignup={a.signup} onLogin={a.login} />
+        <Auth onSignup={a.signup} onLogin={a.login} onForgot={a.forgotInfo} />
       </div>
     );
   }
@@ -134,8 +136,7 @@ export default function App() {
           onGames={() => go("games")}
           onParents={() => go("parents")}
           onLogout={a.logout}
-          onUpdateAvatar={a.updateAvatar}
-          onChangeUsername={a.changeUsername}
+          onProfile={() => go("profile")}
         />
       )}
 
@@ -206,6 +207,14 @@ export default function App() {
       {screen === "encyclopedia" && <Encyclopedia state={a.state} initialOpenId={encOpenId} />}
 
       {screen === "games" && <Games />}
+
+      {screen === "profile" && a.account && (
+        <Profile
+          account={a.account}
+          onChangeUsername={a.changeUsername}
+          onUpdateProfile={a.updateProfile}
+        />
+      )}
 
       {screen === "parents" && (
         <Parents
