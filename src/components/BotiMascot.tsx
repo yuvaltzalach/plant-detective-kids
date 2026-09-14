@@ -14,9 +14,9 @@ function randomPlant(): PlantContent {
 
 function loadMascotId(): string {
   try {
-    return localStorage.getItem(MASCOT_KEY) ?? "owl";
+    return localStorage.getItem(MASCOT_KEY) ?? "lion";
   } catch {
-    return "owl";
+    return "lion";
   }
 }
 

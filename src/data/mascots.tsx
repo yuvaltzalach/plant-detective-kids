@@ -154,47 +154,6 @@ function Bee({ size = 78 }: { size?: number }) {
   );
 }
 
-function Lion({ size = 78 }: { size?: number }) {
-  const u = useId();
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
-      <defs>
-        <radialGradient id={`${u}f`} cx="0.4" cy="0.3" r="0.9">
-          <stop offset="0" stopColor="#fdba74" />
-          <stop offset="1" stopColor="#ea580c" />
-        </radialGradient>
-      </defs>
-      <Shadow />
-      {/* רעמה */}
-      <g fill="#c2410c">
-        {Array.from({ length: 12 }).map((_, i) => {
-          const a = (i / 12) * Math.PI * 2;
-          return <circle key={i} cx={50 + Math.cos(a) * 34} cy={54 + Math.sin(a) * 34} r="12" />;
-        })}
-      </g>
-      <circle cx="50" cy="54" r="34" fill="#9a3412" />
-      {/* אוזניים */}
-      <circle cx="28" cy="34" r="8" fill="#ea580c" />
-      <circle cx="72" cy="34" r="8" fill="#ea580c" />
-      {/* פנים */}
-      <circle cx="50" cy="54" r="30" fill={`url(#${u}f)`} />
-      <path d="M24 40 Q40 26 58 32" stroke="#fff" strokeWidth="4" fill="none" opacity="0.3" strokeLinecap="round" />
-      {/* לחי בהיר */}
-      <ellipse cx="50" cy="64" rx="20" ry="16" fill="#fed7aa" />
-      {/* עיניים */}
-      <circle cx="40" cy="50" r="6.5" fill="#fff" />
-      <circle cx="60" cy="50" r="6.5" fill="#fff" />
-      <circle cx="41" cy="51" r="3.4" fill="#1f2937" />
-      <circle cx="61" cy="51" r="3.4" fill="#1f2937" />
-      <circle cx="42.5" cy="49.5" r="1.2" fill="#fff" />
-      <circle cx="62.5" cy="49.5" r="1.2" fill="#fff" />
-      {/* אף וחיוך */}
-      <path d="M46 60 h8 l-4 4 Z" fill="#7c2d12" />
-      <path d="M50 64 v3 M50 67 q-5 3 -9 0 M50 67 q5 3 9 0" stroke="#7c2d12" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-    </svg>
-  );
-}
-
 function Fawn({ size = 78 }: { size?: number }) {
   const u = useId();
   return (
@@ -297,7 +256,7 @@ function Bear({ size = 78 }: { size?: number }) {
 }
 
 export const MASCOTS: Mascot[] = [
-  { id: "lion", name: "לאון גור האריה", Face: Lion },
+  { id: "lion", name: "לאון גור האריה", image: "/mascots/lion.png" },
   { id: "fawn", name: "עופרי", Face: Fawn },
   { id: "puppy", name: "רקסי הכלבלב", Face: Puppy },
   { id: "bear", name: "דובי", Face: Bear },
