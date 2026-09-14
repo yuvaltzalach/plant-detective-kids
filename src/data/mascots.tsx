@@ -154,74 +154,6 @@ function Bee({ size = 78 }: { size?: number }) {
   );
 }
 
-function Fawn({ size = 78 }: { size?: number }) {
-  const u = useId();
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
-      <defs>
-        <radialGradient id={`${u}f`} cx="0.4" cy="0.3" r="0.9">
-          <stop offset="0" stopColor="#e7b58a" />
-          <stop offset="1" stopColor="#b07a45" />
-        </radialGradient>
-      </defs>
-      <Shadow />
-      {/* אוזניים */}
-      <ellipse cx="24" cy="36" rx="9" ry="16" fill="#b07a45" transform="rotate(-25 24 36)" />
-      <ellipse cx="76" cy="36" rx="9" ry="16" fill="#b07a45" transform="rotate(25 76 36)" />
-      <ellipse cx="25" cy="37" rx="4" ry="9" fill="#f9d9be" transform="rotate(-25 25 37)" />
-      <ellipse cx="75" cy="37" rx="4" ry="9" fill="#f9d9be" transform="rotate(25 75 37)" />
-      {/* ראש */}
-      <ellipse cx="50" cy="56" rx="30" ry="33" fill={`url(#${u}f)`} />
-      <path d="M26 42 Q42 28 58 34" stroke="#fff" strokeWidth="4" fill="none" opacity="0.3" strokeLinecap="round" />
-      {/* חוטם בהיר */}
-      <ellipse cx="50" cy="66" rx="16" ry="14" fill="#f5e0cc" />
-      {/* נקודות */}
-      <circle cx="34" cy="50" r="2" fill="#fff" opacity="0.7" />
-      <circle cx="66" cy="50" r="2" fill="#fff" opacity="0.7" />
-      {/* עיניים גדולות */}
-      <ellipse cx="40" cy="52" rx="7" ry="8" fill="#1f2937" />
-      <ellipse cx="60" cy="52" rx="7" ry="8" fill="#1f2937" />
-      <circle cx="42" cy="50" r="2" fill="#fff" />
-      <circle cx="62" cy="50" r="2" fill="#fff" />
-      {/* אף */}
-      <ellipse cx="50" cy="64" rx="4" ry="3" fill="#5b3a29" />
-      <path d="M50 67 q-4 3 -7 1 M50 67 q4 3 7 1" stroke="#5b3a29" strokeWidth="2" fill="none" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function Puppy({ size = 78 }: { size?: number }) {
-  const u = useId();
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
-      <defs>
-        <radialGradient id={`${u}f`} cx="0.4" cy="0.3" r="0.9">
-          <stop offset="0" stopColor="#f0c48a" />
-          <stop offset="1" stopColor="#c68a4e" />
-        </radialGradient>
-      </defs>
-      <Shadow />
-      {/* אוזניים תלויות */}
-      <ellipse cx="22" cy="52" rx="11" ry="22" fill="#8a5a2b" transform="rotate(15 22 52)" />
-      <ellipse cx="78" cy="52" rx="11" ry="22" fill="#8a5a2b" transform="rotate(-15 78 52)" />
-      {/* ראש */}
-      <circle cx="50" cy="52" r="32" fill={`url(#${u}f)`} />
-      <path d="M26 40 Q42 26 58 32" stroke="#fff" strokeWidth="4" fill="none" opacity="0.3" strokeLinecap="round" />
-      {/* חוטם בהיר */}
-      <ellipse cx="50" cy="62" rx="18" ry="15" fill="#f7e3c8" />
-      {/* עיניים */}
-      <circle cx="40" cy="48" r="6" fill="#1f2937" />
-      <circle cx="60" cy="48" r="6" fill="#1f2937" />
-      <circle cx="42" cy="46" r="1.8" fill="#fff" />
-      <circle cx="62" cy="46" r="1.8" fill="#fff" />
-      {/* אף + לשון */}
-      <ellipse cx="50" cy="58" rx="5" ry="4" fill="#1f2937" />
-      <path d="M50 62 v4" stroke="#7c4a1e" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M46 66 q4 8 8 0 Z" fill="#fb7185" />
-    </svg>
-  );
-}
-
 function Bear({ size = 78 }: { size?: number }) {
   const u = useId();
   return (
@@ -257,8 +189,8 @@ function Bear({ size = 78 }: { size?: number }) {
 
 export const MASCOTS: Mascot[] = [
   { id: "lion", name: "לאון גור האריה", image: "/mascots/lion.png" },
-  { id: "fawn", name: "עופרי", Face: Fawn },
-  { id: "puppy", name: "רקסי הכלבלב", Face: Puppy },
+  { id: "fawn", name: "עופרי", image: "/mascots/fawn.png" },
+  { id: "puppy", name: "רקסי הכלבלב", image: "/mascots/puppy.png" },
   { id: "bear", name: "דובי", Face: Bear },
   { id: "owl", name: "אלה הינשופה", Face: Owl },
   { id: "frog", name: "קורקי הצפרדע", Face: Frog },
