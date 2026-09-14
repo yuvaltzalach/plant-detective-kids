@@ -71,7 +71,7 @@ export function Home(props: HomeProps) {
       )}
 
       <div className="mt-3 text-center">
-        <div className="text-6xl animate-float">🌱🔎</div>
+        <div className="text-6xl">🌱🔎</div>
         <h1 className="mt-2 text-4xl font-black text-leaf-dark">בלש הצמחים</h1>
         <p className="mt-1 text-lg text-leaf-dark/70">מצלמים צמח — ומגלים מה הוא!</p>
       </div>

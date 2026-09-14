@@ -1,5 +1,5 @@
 // מביא תמונה אמיתית לכל צמח מוויקיפדיה (Wikimedia) בזמן ריצה, עם מטמון.
-// רץ בדפדפן של המשתמש (לא בבנייה), ולכן ניגש לוויקיפדיה בלי בעיה.
+// משתמש ב-MediaWiki action API עם origin=* (תומך CORS אמין בדפדפן).
 import type { PlantContent } from "../types";
 
 const mem = new Map<string, string | null>();
@@ -13,16 +13,45 @@ function cleanHe(name: string): string {
     .trim();
 }
 
-async function wikiThumb(lang: string, title: string): Promise<string | null> {
+/** תמונה ממאמר לפי כותרת (prop=pageimages). */
+async function imageByTitle(lang: string, title: string): Promise<string | null> {
   try {
     const url =
-      `https://${lang}.wikipedia.org/api/rest_v1/page/summary/` +
-      encodeURIComponent(title.replace(/\s+/g, "_"));
-    const res = await fetch(url, { headers: { accept: "application/json" } });
+      `https://${lang}.wikipedia.org/w/api.php?action=query&format=json&origin=*` +
+      `&redirects=1&prop=pageimages&piprop=thumbnail&pithumbsize=640&titles=` +
+      encodeURIComponent(title);
+    const res = await fetch(url);
     if (!res.ok) return null;
     const data: any = await res.json();
-    if (data?.type === "disambiguation") return null;
-    return data?.thumbnail?.source ?? data?.originalimage?.source ?? null;
+    const pages = data?.query?.pages;
+    if (!pages) return null;
+    for (const key of Object.keys(pages)) {
+      const src = pages[key]?.thumbnail?.source;
+      if (src) return src as string;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/** תמונה דרך חיפוש (מוצא את המאמר הנכון ואז את התמונה שלו). */
+async function imageBySearch(lang: string, query: string): Promise<string | null> {
+  try {
+    const url =
+      `https://${lang}.wikipedia.org/w/api.php?action=query&format=json&origin=*` +
+      `&generator=search&gsrlimit=1&gsrsearch=${encodeURIComponent(query)}` +
+      `&prop=pageimages&piprop=thumbnail&pithumbsize=640`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const data: any = await res.json();
+    const pages = data?.query?.pages;
+    if (!pages) return null;
+    for (const key of Object.keys(pages)) {
+      const src = pages[key]?.thumbnail?.source;
+      if (src) return src as string;
+    }
+    return null;
   } catch {
     return null;
   }
@@ -46,8 +75,12 @@ export async function resolvePlantImage(plant: PlantContent): Promise<string | n
     /* מתעלמים */
   }
 
-  let url = await wikiThumb("en", plant.scientificName);
-  if (!url) url = await wikiThumb("he", cleanHe(plant.hebrewName));
+  const he = cleanHe(plant.hebrewName);
+  let url =
+    (await imageByTitle("en", plant.scientificName)) ||
+    (await imageByTitle("he", he)) ||
+    (await imageBySearch("he", he || plant.scientificName)) ||
+    (await imageBySearch("en", plant.scientificName));
 
   mem.set(plant.id, url);
   if (url) {

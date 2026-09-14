@@ -9,29 +9,46 @@ function randomPlant(): PlantContent {
   return all[Math.floor(Math.random() * all.length)];
 }
 
-/** דמות מצוירת חמודה של בּוֹטִי. */
-function BotiFace({ size = 72 }: { size?: number }) {
+/** דמות רובוט חמודה ומושקעת של בּוֹטִי. */
+function BotiFace({ size = 76 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
-      {/* נבט על הראש */}
-      <path d="M50 20 C50 8 62 4 70 8 C68 18 58 22 50 22 Z" fill="#22c55e" />
-      <path d="M50 22 C50 10 40 4 31 9 C34 19 43 24 50 24 Z" fill="#16a34a" />
-      <rect x="48" y="18" width="4" height="14" rx="2" fill="#15803d" />
-      {/* גוף/פנים */}
-      <circle cx="50" cy="60" r="32" fill="#4ade80" />
-      <circle cx="50" cy="60" r="32" fill="none" stroke="#16a34a" strokeWidth="3" />
+      <defs>
+        <linearGradient id="botiBody" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#a78bfa" />
+          <stop offset="1" stopColor="#6d28d9" />
+        </linearGradient>
+        <radialGradient id="botiVisor" cx="0.5" cy="0.4" r="0.7">
+          <stop offset="0" stopColor="#1e1b4b" />
+          <stop offset="1" stopColor="#312e81" />
+        </radialGradient>
+      </defs>
+
+      {/* אנטנה */}
+      <line x1="50" y1="14" x2="50" y2="26" stroke="#7c3aed" strokeWidth="3" />
+      <circle cx="50" cy="12" r="5" fill="#34d399" />
+      <circle cx="48" cy="10" r="1.6" fill="#fff" />
+
+      {/* אוזניות בצדדים */}
+      <rect x="12" y="42" width="12" height="24" rx="6" fill="#4c1d95" />
+      <rect x="76" y="42" width="12" height="24" rx="6" fill="#4c1d95" />
+
+      {/* ראש */}
+      <rect x="20" y="26" width="60" height="56" rx="20" fill="url(#botiBody)" />
+      <rect x="20" y="26" width="60" height="56" rx="20" fill="none" stroke="#5b21b6" strokeWidth="2" />
+
+      {/* ויזור */}
+      <rect x="28" y="38" width="44" height="30" rx="15" fill="url(#botiVisor)" />
+      {/* עיניים זוהרות */}
+      <circle cx="42" cy="53" r="6.5" fill="#22d3ee" />
+      <circle cx="58" cy="53" r="6.5" fill="#22d3ee" />
+      <circle cx="44" cy="51" r="2" fill="#fff" />
+      <circle cx="60" cy="51" r="2" fill="#fff" />
+      {/* חיוך קטן מתחת לויזור */}
+      <path d="M44 74 Q50 79 56 74" fill="none" stroke="#e9d5ff" strokeWidth="3" strokeLinecap="round" />
       {/* לחיים */}
-      <circle cx="34" cy="66" r="6" fill="#fca5a5" opacity="0.7" />
-      <circle cx="66" cy="66" r="6" fill="#fca5a5" opacity="0.7" />
-      {/* עיניים */}
-      <circle cx="40" cy="55" r="7" fill="#fff" />
-      <circle cx="60" cy="55" r="7" fill="#fff" />
-      <circle cx="41" cy="56" r="3.4" fill="#14532d" />
-      <circle cx="61" cy="56" r="3.4" fill="#14532d" />
-      <circle cx="42.5" cy="54.5" r="1.2" fill="#fff" />
-      <circle cx="62.5" cy="54.5" r="1.2" fill="#fff" />
-      {/* חיוך */}
-      <path d="M40 70 Q50 80 60 70" fill="none" stroke="#14532d" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="31" cy="72" r="3.5" fill="#f0abfc" opacity="0.8" />
+      <circle cx="69" cy="72" r="3.5" fill="#f0abfc" opacity="0.8" />
     </svg>
   );
 }
@@ -45,40 +62,39 @@ export function BotiMascot() {
     playPop();
     setPopupOpen(true);
   };
-
   const closePopup = () => {
     setPopupOpen(false);
-    setPlant(randomPlant()); // חידה חדשה לפעם הבאה
+    setPlant(randomPlant());
     setBubbleOpen(false);
   };
 
   return (
     <>
-      {/* בּוֹטִי מרחף בצד */}
-      <div className="fixed bottom-24 left-3 z-40 flex items-end gap-2">
+      {/* בּוֹטִי מרחף בצד ימין למעלה */}
+      <div className="fixed right-2 top-16 z-50 flex items-start gap-2">
         <button
           onClick={() => {
             playPop();
             setBubbleOpen((b) => !b);
           }}
-          className="animate-float drop-shadow-lg active:scale-90"
+          className="animate-float drop-shadow-xl active:scale-90"
           aria-label="בּוֹטִי"
         >
           <BotiFace />
         </button>
 
         {bubbleOpen && (
-          <div className="relative mb-4 max-w-[200px] rounded-2xl rounded-bl-none bg-white p-3 pt-5 shadow-xl">
+          <div className="relative mt-2 max-w-[190px] rounded-2xl rounded-tr-none bg-white p-3 pt-6 shadow-xl">
             <button
               onClick={() => setBubbleOpen(false)}
-              className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-gray-200 text-xs font-bold text-gray-600"
+              className="absolute left-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-purple-200 text-xs font-bold text-purple-700"
               aria-label="סגירה"
             >
               ✕
             </button>
             <button onClick={openPopup} className="text-right text-sm font-bold text-leaf-dark">
               🤔 חידה: {plant.facts[0]}
-              <span className="mt-1 block text-xs text-leaf underline">לחצו לגילוי!</span>
+              <span className="mt-1 block text-xs text-purple-600 underline">לחצו לגילוי!</span>
             </button>
           </div>
         )}
@@ -87,7 +103,7 @@ export function BotiMascot() {
       {/* פופ-אפ עם התשובה המפורטת */}
       {popupOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-5"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 p-5"
           onClick={closePopup}
         >
           <div
@@ -97,7 +113,7 @@ export function BotiMascot() {
             <PlantImage plant={plant} big className="h-44 w-full" />
             <div className="p-5 text-center">
               <div className="text-4xl">{plant.emoji}</div>
-              <div className="text-sm font-bold text-leaf">זה ה…</div>
+              <div className="text-sm font-bold text-purple-600">זה ה…</div>
               <h3 className="text-2xl font-black text-leaf-dark">{plant.hebrewName}</h3>
               <ul className="mt-3 space-y-1.5 text-right">
                 {plant.facts.map((f, i) => (

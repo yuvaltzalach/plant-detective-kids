@@ -2,17 +2,14 @@ import { useMemo, useState } from "react";
 import confetti from "canvas-confetti";
 import { PlantImage } from "../components/PlantImage";
 import { getAllPlants } from "../lib/content";
+import { shuffle } from "../lib/shuffle";
 import { playPop, playSuccess } from "../lib/sound";
+import { SortGame } from "./games/SortGame";
+import { TimedGame } from "./games/TimedGame";
+import { MatchGame } from "./games/MatchGame";
+import { PuzzleGame } from "./games/PuzzleGame";
+import { TrueFalseGame } from "./games/TrueFalseGame";
 import type { PlantContent } from "../types";
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 // ─── חידון "נחשו את הצמח" ─────────────────────────────────────────────
 function QuizGame({ onBack }: { onBack: () => void }) {
@@ -207,30 +204,49 @@ function MemoryGame({ onBack }: { onBack: () => void }) {
   );
 }
 
+type Mode = "menu" | "quiz" | "memory" | "sort" | "timed" | "match" | "puzzle" | "truefalse";
+
+const GAMES: { mode: Mode; label: string; emoji: string }[] = [
+  { mode: "quiz", label: "נחשו את הצמח", emoji: "🧩" },
+  { mode: "memory", label: "משחק זיכרון", emoji: "🃏" },
+  { mode: "sort", label: "מיון צמחים", emoji: "🗂️" },
+  { mode: "timed", label: "מרוץ הצמחים", emoji: "⏱️" },
+  { mode: "match", label: "תמונה לשם", emoji: "🔗" },
+  { mode: "puzzle", label: "פאזל תמונה", emoji: "🧩" },
+  { mode: "truefalse", label: "אמת או דמיון", emoji: "✅" }
+];
+
 export function Games() {
-  const [mode, setMode] = useState<"menu" | "quiz" | "memory">("menu");
-  if (mode === "quiz") return <QuizGame onBack={() => setMode("menu")} />;
-  if (mode === "memory") return <MemoryGame onBack={() => setMode("menu")} />;
+  const [mode, setMode] = useState<Mode>("menu");
+  const back = () => setMode("menu");
+
+  if (mode === "quiz") return <QuizGame onBack={back} />;
+  if (mode === "memory") return <MemoryGame onBack={back} />;
+  if (mode === "sort") return <SortGame onBack={back} />;
+  if (mode === "timed") return <TimedGame onBack={back} />;
+  if (mode === "match") return <MatchGame onBack={back} />;
+  if (mode === "puzzle") return <PuzzleGame onBack={back} />;
+  if (mode === "truefalse") return <TrueFalseGame onBack={back} />;
 
   return (
     <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-4">
       <div className="text-center">
-        <div className="text-6xl animate-float">🎮</div>
+        <div className="text-6xl">🎮</div>
         <h2 className="mt-2 text-3xl font-black text-leaf-dark">משחקים</h2>
         <p className="mt-1 text-leaf-dark/70">בואו נשחק ונלמד צמחים!</p>
       </div>
-      <button
-        onClick={() => setMode("quiz")}
-        className="big-btn mt-6 w-full max-w-xs bg-gradient-to-b from-leaf to-leaf-dark py-6 text-2xl"
-      >
-        🧩 נחשו את הצמח
-      </button>
-      <button
-        onClick={() => setMode("memory")}
-        className="big-btn mt-4 w-full max-w-xs bg-sky py-6 text-2xl"
-      >
-        🃏 משחק זיכרון
-      </button>
+      <div className="mt-6 grid w-full max-w-sm grid-cols-2 gap-3">
+        {GAMES.map((g) => (
+          <button
+            key={g.mode}
+            onClick={() => setMode(g.mode)}
+            className="rounded-blob bg-white py-6 text-lg font-black text-leaf-dark shadow active:scale-95"
+          >
+            <div className="text-4xl">{g.emoji}</div>
+            {g.label}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
