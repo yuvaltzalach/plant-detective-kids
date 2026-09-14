@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PlantImage } from "./PlantImage";
 import { getAllPlants } from "../lib/content";
-import { MASCOTS, mascotById } from "../data/mascots";
+import { MASCOTS, MascotView, mascotById } from "../data/mascots";
 import { playPop, speak } from "../lib/sound";
 import type { PlantContent } from "../types";
 
@@ -27,7 +27,7 @@ export function BotiMascot() {
   const [mascotId, setMascotId] = useState<string>(() => loadMascotId());
   const [pickerOpen, setPickerOpen] = useState(false);
 
-  const Face = mascotById(mascotId).Face;
+  const currentMascot = mascotById(mascotId);
   const chooseMascot = (id: string) => {
     setMascotId(id);
     try {
@@ -61,7 +61,7 @@ export function BotiMascot() {
             className="animate-float drop-shadow-xl active:scale-90"
             aria-label="הדמות שלי"
           >
-            <Face />
+            <MascotView mascot={currentMascot} />
           </button>
           <button
             onClick={() => setPickerOpen(true)}
@@ -140,24 +140,21 @@ export function BotiMascot() {
           >
             <h3 className="text-2xl font-black text-leaf-dark">בחרו דמות 🐾</h3>
             <div className="mt-4 grid max-h-[65vh] grid-cols-2 gap-3 overflow-y-auto">
-              {MASCOTS.map((m) => {
-                const F = m.Face;
-                return (
-                  <button
-                    key={m.id}
-                    onClick={() => {
-                      playPop();
-                      chooseMascot(m.id);
-                    }}
-                    className={`flex flex-col items-center rounded-2xl p-3 ${
-                      m.id === mascotId ? "bg-leaf-light ring-4 ring-leaf" : "bg-gray-100"
-                    }`}
-                  >
-                    <F size={64} />
-                    <span className="mt-1 text-sm font-bold text-leaf-dark">{m.name}</span>
-                  </button>
-                );
-              })}
+              {MASCOTS.map((m) => (
+                <button
+                  key={m.id}
+                  onClick={() => {
+                    playPop();
+                    chooseMascot(m.id);
+                  }}
+                  className={`flex flex-col items-center rounded-2xl p-3 ${
+                    m.id === mascotId ? "bg-leaf-light ring-4 ring-leaf" : "bg-gray-100"
+                  }`}
+                >
+                  <MascotView mascot={m} size={64} />
+                  <span className="mt-1 text-sm font-bold text-leaf-dark">{m.name}</span>
+                </button>
+              ))}
             </div>
           </div>
         </div>

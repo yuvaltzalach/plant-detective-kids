@@ -4,7 +4,28 @@ import { useId, type JSX } from "react";
 export interface Mascot {
   id: string;
   name: string;
-  Face: (props: { size?: number }) => JSX.Element;
+  /** דמות מצוירת ב-SVG (ברירת מחדל). */
+  Face?: (props: { size?: number }) => JSX.Element;
+  /** לחלופין: נתיב לתמונה (למשל "/mascots/lion.png") — גובר על Face. */
+  image?: string;
+}
+
+/** מציג דמות — תמונה אם הוגדרה, אחרת האיור המובנה. */
+export function MascotView({ mascot, size = 78 }: { mascot: Mascot; size?: number }) {
+  if (mascot.image) {
+    return (
+      <img
+        src={mascot.image}
+        alt={mascot.name}
+        width={size}
+        height={size}
+        style={{ objectFit: "contain" }}
+        className="drop-shadow"
+      />
+    );
+  }
+  if (mascot.Face) return <mascot.Face size={size} />;
+  return <span style={{ fontSize: size * 0.7 }}>🐾</span>;
 }
 
 function Shadow() {
