@@ -5,30 +5,45 @@ import { getAllPlants } from "../../lib/content";
 import { sample, shuffle } from "../../lib/shuffle";
 import { playPop, playSuccess } from "../../lib/sound";
 
+type Side = "photo" | "name";
+
 export function MatchGame({ onBack }: { onBack: () => void }) {
   const [seed, setSeed] = useState(0);
   const plants = useMemo(() => sample(getAllPlants(), 4), [seed]);
   const names = useMemo(() => shuffle(plants), [plants]);
-  const [selected, setSelected] = useState<string | null>(null);
+  const [sel, setSel] = useState<{ id: string; side: Side } | null>(null);
   const [matched, setMatched] = useState<Set<string>>(new Set());
   const [wrong, setWrong] = useState<string | null>(null);
 
-  const pickName = (id: string) => {
-    if (!selected || matched.has(id)) return;
-    if (id === selected) {
+  const won = matched.size === plants.length;
+
+  const tap = (id: string, side: Side) => {
+    if (matched.has(id)) return;
+    playPop();
+    if (!sel) {
+      setSel({ id, side });
+      return;
+    }
+    if (sel.side === side) {
+      // בחירה מחדש מאותו צד
+      setSel({ id, side });
+      return;
+    }
+    // צד נגדי — בודקים התאמה
+    if (sel.id === id) {
       const nm = new Set(matched).add(id);
       setMatched(nm);
-      setSelected(null);
+      setSel(null);
       playSuccess();
-      if (nm.size === plants.length) confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+      confetti({ particleCount: 55, spread: 60, origin: { y: 0.5 } });
+      if (nm.size === plants.length)
+        setTimeout(() => confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } }), 150);
     } else {
-      playPop();
       setWrong(id);
+      setSel(null);
       setTimeout(() => setWrong(null), 400);
     }
   };
-
-  const won = matched.size === plants.length;
 
   return (
     <div className="flex flex-1 flex-col px-5 pb-10 pt-2">
@@ -37,22 +52,19 @@ export function MatchGame({ onBack }: { onBack: () => void }) {
         <h2 className="text-2xl font-black text-leaf-dark">🔗 תמונה לשם</h2>
         <span className="w-6" />
       </div>
-      <p className="mt-1 text-center text-leaf-dark/70">בוחרים תמונה ואז את השם שלה</p>
+      <p className="mt-1 text-center text-leaf-dark/70">בוחרים תמונה ואז שם — או שם ואז תמונה</p>
 
       <div className="mt-4 flex gap-3">
         {/* תמונות */}
         <div className="flex flex-1 flex-col gap-3">
           {plants.map((p) => {
             const isMatched = matched.has(p.id);
-            const isSel = selected === p.id;
+            const isSel = sel?.side === "photo" && sel.id === p.id;
             return (
               <button
                 key={p.id}
                 disabled={isMatched}
-                onClick={() => {
-                  playPop();
-                  setSelected(p.id);
-                }}
+                onClick={() => tap(p.id, "photo")}
                 className={`overflow-hidden rounded-2xl shadow transition ${
                   isMatched ? "opacity-40" : isSel ? "ring-4 ring-leaf" : ""
                 }`}
@@ -66,17 +78,20 @@ export function MatchGame({ onBack }: { onBack: () => void }) {
         <div className="flex flex-1 flex-col gap-3">
           {names.map((p) => {
             const isMatched = matched.has(p.id);
+            const isSel = sel?.side === "name" && sel.id === p.id;
             return (
               <button
                 key={p.id}
                 disabled={isMatched}
-                onClick={() => pickName(p.id)}
+                onClick={() => tap(p.id, "name")}
                 className={`flex h-24 items-center justify-center rounded-2xl p-2 text-center text-lg font-bold shadow transition active:scale-95 ${
                   isMatched
                     ? "bg-green-500 text-white"
                     : wrong === p.id
                       ? "bg-red-300 text-leaf-dark"
-                      : "bg-white text-leaf-dark"
+                      : isSel
+                        ? "bg-leaf-light ring-4 ring-leaf text-leaf-dark"
+                        : "bg-white text-leaf-dark"
                 }`}
               >
                 {p.hebrewName}
@@ -90,7 +105,7 @@ export function MatchGame({ onBack }: { onBack: () => void }) {
         <button
           onClick={() => {
             setMatched(new Set());
-            setSelected(null);
+            setSel(null);
             setSeed((s) => s + 1);
           }}
           className="big-btn mt-6 self-center bg-leaf"

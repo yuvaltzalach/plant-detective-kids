@@ -62,9 +62,14 @@ export function speak(text: string) {
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "he-IL";
-  u.rate = 0.95;
-  u.pitch = 1.05;
-  const heVoice = window.speechSynthesis.getVoices().find((v) => v.lang.startsWith("he"));
+  // קול "ילדי": גובה גבוה וקצב מעט מהיר
+  u.rate = 1.05;
+  u.pitch = 1.8;
+  const voices = window.speechSynthesis.getVoices();
+  // מעדיפים קול עברי; אם יש כמה — עדיף קול נשי (נשמע צעיר יותר)
+  const heVoices = voices.filter((v) => v.lang.startsWith("he"));
+  const heVoice =
+    heVoices.find((v) => /female|woman|girl|כרמית|Carmit/i.test(v.name)) ?? heVoices[0];
   if (heVoice) u.voice = heVoice;
   window.speechSynthesis.speak(u);
 }

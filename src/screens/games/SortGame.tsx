@@ -27,9 +27,11 @@ export function SortGame({ onBack }: { onBack: () => void }) {
     if (!current) return;
     if (c === current.category) {
       playSuccess();
+      confetti({ particleCount: 60, spread: 65, origin: { y: 0.6 } });
       setWrong(null);
       setScore((s) => s + 1);
-      if (idx + 1 >= queue.length) confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+      if (idx + 1 >= queue.length)
+        setTimeout(() => confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } }), 150);
       setIdx((i) => i + 1);
     } else {
       playPop();

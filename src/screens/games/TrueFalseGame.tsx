@@ -9,14 +9,14 @@ import type { PlantContent } from "../../types";
 function makeRound(plants: PlantContent[]) {
   const plant = plants[Math.floor(Math.random() * plants.length)];
   const isTrue = Math.random() < 0.5;
-  let statement: string;
   if (isTrue) {
-    statement = plant.facts[Math.floor(Math.random() * plant.facts.length)];
-  } else {
-    const other = shuffle(plants.filter((p) => p.id !== plant.id && p.category !== plant.category))[0] ?? plants[0];
-    statement = other.facts[Math.floor(Math.random() * other.facts.length)];
+    const statement = plant.facts[Math.floor(Math.random() * plant.facts.length)];
+    return { plant, statement, isTrue, source: plant };
   }
-  return { plant, statement, isTrue };
+  const other =
+    shuffle(plants.filter((p) => p.id !== plant.id && p.category !== plant.category))[0] ?? plants[0];
+  const statement = other.facts[Math.floor(Math.random() * other.facts.length)];
+  return { plant, statement, isTrue, source: other };
 }
 
 export function TrueFalseGame({ onBack }: { onBack: () => void }) {
@@ -31,7 +31,7 @@ export function TrueFalseGame({ onBack }: { onBack: () => void }) {
       setScore((s) => s + 1);
       setResult("right");
       playSuccess();
-      confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
+      confetti({ particleCount: 60, spread: 65, origin: { y: 0.6 } });
     } else {
       setResult("wrong");
       playPop();
@@ -67,19 +67,45 @@ export function TrueFalseGame({ onBack }: { onBack: () => void }) {
           </button>
         </div>
       ) : (
-        <div className="mt-5 text-center">
-          <div className={`text-2xl font-black ${result === "right" ? "text-green-600" : "text-red-500"}`}>
+        <div className="mt-5">
+          <div
+            className={`text-center text-2xl font-black ${
+              result === "right" ? "text-green-600" : "text-red-500"
+            }`}
+          >
             {result === "right" ? "כל הכבוד! 🎉" : "אופס, לא נכון 🙂"}
           </div>
-          <div className="mt-1 text-leaf-dark/70">
-            {round.isTrue ? "המשפט אכן על הצמח הזה." : "המשפט הוא בעצם על צמח אחר!"}
+
+          {/* הסבר: על איזה צמח המשפט, ומה נכון על הצמח שבתמונה */}
+          <div className="mt-3 space-y-2">
+            {round.isTrue ? (
+              <div className="rounded-2xl bg-leaf-light/60 p-3 text-leaf-dark">
+                ✔️ המשפט אכן על ה{round.plant.hebrewName}.
+              </div>
+            ) : (
+              <div className="rounded-2xl bg-amber-100 p-3 text-amber-800">
+                🔎 המשפט הזה הוא בעצם על ה<b>{round.source.hebrewName}</b> — לא על הצמח שבתמונה.
+              </div>
+            )}
+            <div className="rounded-2xl bg-white p-3 shadow text-leaf-dark">
+              <b>על ה{round.plant.hebrewName}:</b>
+              <ul className="mt-1 space-y-1">
+                {round.plant.facts.map((f, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span>💡</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
+
           <button
             onClick={() => {
               setResult(null);
               setRound(makeRound(plants));
             }}
-            className="big-btn mt-3 bg-leaf"
+            className="big-btn mt-4 w-full bg-leaf"
           >
             עוד אחד ➡️
           </button>

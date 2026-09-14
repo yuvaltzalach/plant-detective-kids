@@ -20,13 +20,15 @@ export function TimedGame({ onBack }: { onBack: () => void }) {
   const [timeLeft, setTimeLeft] = useState(DURATION);
   const [score, setScore] = useState(0);
   const [q, setQ] = useState(() => makeQuestion(plants));
-  const [flash, setFlash] = useState<"ok" | "no" | null>(null);
+  const [locked, setLocked] = useState(false);
+  const [picked, setPicked] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!running) return;
-    if (timeLeft <= 0) {
-      setRunning(false);
-      confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+    if (!running || timeLeft <= 0) {
+      if (running && timeLeft <= 0) {
+        setRunning(false);
+        confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+      }
       return;
     }
     const t = setTimeout(() => setTimeLeft((s) => s - 1), 1000);
@@ -37,21 +39,31 @@ export function TimedGame({ onBack }: { onBack: () => void }) {
     setScore(0);
     setTimeLeft(DURATION);
     setQ(makeQuestion(plants));
+    setLocked(false);
+    setPicked(null);
     setRunning(true);
   };
 
   const answer = (p: PlantContent) => {
-    if (!running) return;
-    if (p.id === q.target.id) {
+    if (!running || locked) return;
+    setLocked(true);
+    setPicked(p.id);
+    const correct = p.id === q.target.id;
+    if (correct) {
       playSuccess();
+      confetti({ particleCount: 60, spread: 65, origin: { y: 0.6 } });
       setScore((s) => s + 1);
-      setFlash("ok");
     } else {
       playPop();
-      setFlash("no");
     }
-    setTimeout(() => setFlash(null), 250);
-    setQ(makeQuestion(plants));
+    setTimeout(
+      () => {
+        setPicked(null);
+        setLocked(false);
+        setQ(makeQuestion(plants));
+      },
+      correct ? 350 : 1000
+    );
   };
 
   return (
@@ -83,24 +95,30 @@ export function TimedGame({ onBack }: { onBack: () => void }) {
           </div>
           <div className="text-center text-sm font-bold text-leaf-dark/70">{timeLeft} שניות</div>
 
-          <div
-            className={`mx-auto mt-3 h-48 w-48 overflow-hidden rounded-blob shadow-lg ${
-              flash === "ok" ? "ring-4 ring-green-400" : flash === "no" ? "ring-4 ring-red-400" : ""
-            }`}
-          >
+          <div className="mx-auto mt-3 h-48 w-48 overflow-hidden rounded-blob shadow-lg">
             <PlantImage plant={q.target} className="h-full w-full" />
           </div>
 
           <div className="mt-4 grid grid-cols-1 gap-2">
-            {q.options.map((o) => (
-              <button
-                key={o.id}
-                onClick={() => answer(o)}
-                className="rounded-blob bg-white p-3 text-lg font-bold text-leaf-dark shadow active:scale-95"
-              >
-                {o.hebrewName}
-              </button>
-            ))}
+            {q.options.map((o) => {
+              const isTarget = o.id === q.target.id;
+              const cls = locked
+                ? isTarget
+                  ? "bg-green-500 text-white"
+                  : picked === o.id
+                    ? "bg-red-400 text-white"
+                    : "bg-white text-leaf-dark opacity-60"
+                : "bg-white text-leaf-dark";
+              return (
+                <button
+                  key={o.id}
+                  onClick={() => answer(o)}
+                  className={`rounded-blob p-3 text-lg font-bold shadow active:scale-95 ${cls}`}
+                >
+                  {o.hebrewName}
+                </button>
+              );
+            })}
           </div>
         </>
       )}

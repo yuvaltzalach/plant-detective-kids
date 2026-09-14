@@ -10,7 +10,14 @@ import { Auth } from "./screens/Auth";
 import { Capture } from "./screens/Capture";
 import { Challenges } from "./screens/Challenges";
 import { Encyclopedia } from "./screens/Encyclopedia";
-import { Games } from "./screens/Games";
+import { Games, type GameId } from "./screens/Games";
+import { QuizGame } from "./screens/games/QuizGame";
+import { MemoryGame } from "./screens/games/MemoryGame";
+import { SortGame } from "./screens/games/SortGame";
+import { TimedGame } from "./screens/games/TimedGame";
+import { MatchGame } from "./screens/games/MatchGame";
+import { PuzzleGame } from "./screens/games/PuzzleGame";
+import { TrueFalseGame } from "./screens/games/TrueFalseGame";
 import { Home } from "./screens/Home";
 import { Identifying } from "./screens/Identifying";
 import { OnlineGroup } from "./screens/OnlineGroup";
@@ -32,8 +39,19 @@ type Screen =
   | "encyclopedia"
   | "plant"
   | "games"
+  | "game"
   | "profile"
   | "parents";
+
+const GAME_COMPONENTS = {
+  quiz: QuizGame,
+  memory: MemoryGame,
+  sort: SortGame,
+  timed: TimedGame,
+  match: MatchGame,
+  puzzle: PuzzleGame,
+  truefalse: TrueFalseGame
+} as const;
 
 const MUTE_KEY = "plant-detective:muted";
 
@@ -69,6 +87,7 @@ export default function App() {
   const [image, setImage] = useState<string | null>(null);
   const [result, setResult] = useState<PlantResult | null>(null);
   const [detailId, setDetailId] = useState<string | undefined>(undefined);
+  const [gameId, setGameId] = useState<GameId | null>(null);
   const [muted, setMutedState] = useState(() => localStorage.getItem(MUTE_KEY) === "1");
 
   useEffect(() => {
@@ -110,7 +129,7 @@ export default function App() {
 
   return (
     <div className="mx-auto flex min-h-screen max-w-lg flex-col">
-      {screen !== "home" && (
+      {screen !== "home" && screen !== "game" && (
         <TopBar
           points={a.state.points}
           level={a.level.level}
@@ -220,7 +239,21 @@ export default function App() {
           ) : null;
         })()}
 
-      {screen === "games" && <Games />}
+      {screen === "games" && (
+        <Games
+          onOpen={(id) => {
+            setGameId(id);
+            go("game");
+          }}
+        />
+      )}
+
+      {screen === "game" &&
+        gameId &&
+        (() => {
+          const GameComp = GAME_COMPONENTS[gameId];
+          return <GameComp onBack={() => history.back()} />;
+        })()}
 
       {screen === "profile" && a.account && (
         <Profile
