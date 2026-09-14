@@ -57,11 +57,6 @@ async function imageBySearch(lang: string, query: string): Promise<string | null
   }
 }
 
-/** מגדיל תמונת Wikimedia (מחליף את רוחב התמונה הממוזערת). */
-export function upscale(url: string, px = 640): string {
-  return url.replace(/\/\d+px-/, `/${px}px-`);
-}
-
 /** מחזיר URL של תמונת הצמח (או null אם לא נמצאה). ממטמן בזיכרון וב-localStorage. */
 export async function resolvePlantImage(plant: PlantContent): Promise<string | null> {
   if (mem.has(plant.id)) return mem.get(plant.id) ?? null;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 import { getAllPlants } from "../../lib/content";
-import { resolvePlantImage, upscale } from "../../lib/images";
+import { resolvePlantImage } from "../../lib/images";
 import { sample, shuffle } from "../../lib/shuffle";
 import { playPop, playSuccess } from "../../lib/sound";
 import type { PlantContent } from "../../types";
@@ -33,7 +33,7 @@ export function PuzzleGame({ onBack }: { onBack: () => void }) {
         if (cancelled) return;
         if (u) {
           setPlant(p);
-          setUrl(upscale(u, 640));
+          setUrl(u);
           setOrder(scrambled());
           setSel(null);
           return;

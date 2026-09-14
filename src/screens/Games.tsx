@@ -49,7 +49,7 @@ function QuizGame({ onBack }: { onBack: () => void }) {
 
       <div className="mt-4 rounded-blob bg-white p-6 text-center shadow">
         {correct ? (
-          <PlantImage plant={question.target} big className="mx-auto h-44 w-44 rounded-2xl" />
+          <PlantImage plant={question.target} className="mx-auto h-44 w-44 rounded-2xl" />
         ) : (
           <div className="text-7xl">{question.target.emoji}</div>
         )}

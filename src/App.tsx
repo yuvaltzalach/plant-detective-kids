@@ -42,22 +42,23 @@ export default function App() {
   const [stack, setStack] = useState<Screen[]>(["home"]);
   const screen = stack[stack.length - 1];
 
-  // ניווט: כל העמקה דוחפת רשומת היסטוריה, כדי שכפתור "חזור" של אנדרואיד יעבוד
-  const navigate = (next: Screen[]) => {
-    setStack((prev) => {
-      const diff = next.length - prev.length;
-      for (let i = 0; i < diff; i++) {
-        try {
-          history.pushState({ pdk: true }, "");
-        } catch {
-          /* מתעלמים */
-        }
+  // ניווט: כל העמקה דוחפת רשומת היסטוריה, כדי שכפתור "חזור" (של האפליקציה ושל אנדרואיד)
+  // יחזור צעד אחד אחורה בלבד.
+  const pushHistory = (n: number) => {
+    for (let i = 0; i < n; i++) {
+      try {
+        history.pushState({ pdk: true }, "");
+      } catch {
+        /* מתעלמים */
       }
-      return next;
-    });
+    }
   };
-  const go = (s: Screen) => navigate([...stack, s]);
-  const startCapture = () => navigate(["home", "capture"]);
+  const navTo = (next: Screen[]) => {
+    pushHistory(Math.max(0, next.length - stack.length));
+    setStack(next);
+  };
+  const go = (s: Screen) => navTo([...stack, s]);
+  const startCapture = () => navTo(["home", "capture"]);
 
   useEffect(() => {
     const onPop = () => setStack((st) => (st.length > 1 ? st.slice(0, -1) : st));
@@ -148,7 +149,7 @@ export default function App() {
           onImage={(dataUrl) => {
             setImage(dataUrl);
             setResult(null);
-            navigate(["home", "identifying"]);
+            navTo(["home", "identifying"]);
           }}
         />
       )}
@@ -158,7 +159,7 @@ export default function App() {
           imageDataUrl={image}
           onResult={(r) => {
             setResult(r);
-            navigate(["home", "result"]);
+            navTo(["home", "result"]);
           }}
           onRetry={startCapture}
         />
@@ -169,7 +170,7 @@ export default function App() {
           result={result}
           record={a.record}
           onCapture={startCapture}
-          onAlbum={() => navigate(["home", "album"])}
+          onAlbum={() => navTo(["home", "album"])}
         />
       )}
 
