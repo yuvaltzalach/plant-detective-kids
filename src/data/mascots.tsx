@@ -133,7 +133,153 @@ function Bee({ size = 78 }: { size?: number }) {
   );
 }
 
+function Lion({ size = 78 }: { size?: number }) {
+  const u = useId();
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <radialGradient id={`${u}f`} cx="0.4" cy="0.3" r="0.9">
+          <stop offset="0" stopColor="#fdba74" />
+          <stop offset="1" stopColor="#ea580c" />
+        </radialGradient>
+      </defs>
+      <Shadow />
+      {/* רעמה */}
+      <g fill="#c2410c">
+        {Array.from({ length: 12 }).map((_, i) => {
+          const a = (i / 12) * Math.PI * 2;
+          return <circle key={i} cx={50 + Math.cos(a) * 34} cy={54 + Math.sin(a) * 34} r="12" />;
+        })}
+      </g>
+      <circle cx="50" cy="54" r="34" fill="#9a3412" />
+      {/* אוזניים */}
+      <circle cx="28" cy="34" r="8" fill="#ea580c" />
+      <circle cx="72" cy="34" r="8" fill="#ea580c" />
+      {/* פנים */}
+      <circle cx="50" cy="54" r="30" fill={`url(#${u}f)`} />
+      <path d="M24 40 Q40 26 58 32" stroke="#fff" strokeWidth="4" fill="none" opacity="0.3" strokeLinecap="round" />
+      {/* לחי בהיר */}
+      <ellipse cx="50" cy="64" rx="20" ry="16" fill="#fed7aa" />
+      {/* עיניים */}
+      <circle cx="40" cy="50" r="6.5" fill="#fff" />
+      <circle cx="60" cy="50" r="6.5" fill="#fff" />
+      <circle cx="41" cy="51" r="3.4" fill="#1f2937" />
+      <circle cx="61" cy="51" r="3.4" fill="#1f2937" />
+      <circle cx="42.5" cy="49.5" r="1.2" fill="#fff" />
+      <circle cx="62.5" cy="49.5" r="1.2" fill="#fff" />
+      {/* אף וחיוך */}
+      <path d="M46 60 h8 l-4 4 Z" fill="#7c2d12" />
+      <path d="M50 64 v3 M50 67 q-5 3 -9 0 M50 67 q5 3 9 0" stroke="#7c2d12" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function Fawn({ size = 78 }: { size?: number }) {
+  const u = useId();
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <radialGradient id={`${u}f`} cx="0.4" cy="0.3" r="0.9">
+          <stop offset="0" stopColor="#e7b58a" />
+          <stop offset="1" stopColor="#b07a45" />
+        </radialGradient>
+      </defs>
+      <Shadow />
+      {/* אוזניים */}
+      <ellipse cx="24" cy="36" rx="9" ry="16" fill="#b07a45" transform="rotate(-25 24 36)" />
+      <ellipse cx="76" cy="36" rx="9" ry="16" fill="#b07a45" transform="rotate(25 76 36)" />
+      <ellipse cx="25" cy="37" rx="4" ry="9" fill="#f9d9be" transform="rotate(-25 25 37)" />
+      <ellipse cx="75" cy="37" rx="4" ry="9" fill="#f9d9be" transform="rotate(25 75 37)" />
+      {/* ראש */}
+      <ellipse cx="50" cy="56" rx="30" ry="33" fill={`url(#${u}f)`} />
+      <path d="M26 42 Q42 28 58 34" stroke="#fff" strokeWidth="4" fill="none" opacity="0.3" strokeLinecap="round" />
+      {/* חוטם בהיר */}
+      <ellipse cx="50" cy="66" rx="16" ry="14" fill="#f5e0cc" />
+      {/* נקודות */}
+      <circle cx="34" cy="50" r="2" fill="#fff" opacity="0.7" />
+      <circle cx="66" cy="50" r="2" fill="#fff" opacity="0.7" />
+      {/* עיניים גדולות */}
+      <ellipse cx="40" cy="52" rx="7" ry="8" fill="#1f2937" />
+      <ellipse cx="60" cy="52" rx="7" ry="8" fill="#1f2937" />
+      <circle cx="42" cy="50" r="2" fill="#fff" />
+      <circle cx="62" cy="50" r="2" fill="#fff" />
+      {/* אף */}
+      <ellipse cx="50" cy="64" rx="4" ry="3" fill="#5b3a29" />
+      <path d="M50 67 q-4 3 -7 1 M50 67 q4 3 7 1" stroke="#5b3a29" strokeWidth="2" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function Puppy({ size = 78 }: { size?: number }) {
+  const u = useId();
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <radialGradient id={`${u}f`} cx="0.4" cy="0.3" r="0.9">
+          <stop offset="0" stopColor="#f0c48a" />
+          <stop offset="1" stopColor="#c68a4e" />
+        </radialGradient>
+      </defs>
+      <Shadow />
+      {/* אוזניים תלויות */}
+      <ellipse cx="22" cy="52" rx="11" ry="22" fill="#8a5a2b" transform="rotate(15 22 52)" />
+      <ellipse cx="78" cy="52" rx="11" ry="22" fill="#8a5a2b" transform="rotate(-15 78 52)" />
+      {/* ראש */}
+      <circle cx="50" cy="52" r="32" fill={`url(#${u}f)`} />
+      <path d="M26 40 Q42 26 58 32" stroke="#fff" strokeWidth="4" fill="none" opacity="0.3" strokeLinecap="round" />
+      {/* חוטם בהיר */}
+      <ellipse cx="50" cy="62" rx="18" ry="15" fill="#f7e3c8" />
+      {/* עיניים */}
+      <circle cx="40" cy="48" r="6" fill="#1f2937" />
+      <circle cx="60" cy="48" r="6" fill="#1f2937" />
+      <circle cx="42" cy="46" r="1.8" fill="#fff" />
+      <circle cx="62" cy="46" r="1.8" fill="#fff" />
+      {/* אף + לשון */}
+      <ellipse cx="50" cy="58" rx="5" ry="4" fill="#1f2937" />
+      <path d="M50 62 v4" stroke="#7c4a1e" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M46 66 q4 8 8 0 Z" fill="#fb7185" />
+    </svg>
+  );
+}
+
+function Bear({ size = 78 }: { size?: number }) {
+  const u = useId();
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <radialGradient id={`${u}f`} cx="0.4" cy="0.3" r="0.9">
+          <stop offset="0" stopColor="#c89b6a" />
+          <stop offset="1" stopColor="#8a5a2b" />
+        </radialGradient>
+      </defs>
+      <Shadow />
+      {/* אוזניים */}
+      <circle cx="28" cy="30" r="12" fill="#8a5a2b" />
+      <circle cx="72" cy="30" r="12" fill="#8a5a2b" />
+      <circle cx="28" cy="30" r="6" fill="#c89b6a" />
+      <circle cx="72" cy="30" r="6" fill="#c89b6a" />
+      {/* ראש */}
+      <circle cx="50" cy="56" r="33" fill={`url(#${u}f)`} />
+      <path d="M26 44 Q42 30 58 36" stroke="#fff" strokeWidth="4" fill="none" opacity="0.3" strokeLinecap="round" />
+      {/* חוטם */}
+      <ellipse cx="50" cy="66" rx="18" ry="15" fill="#f0dcc0" />
+      {/* עיניים */}
+      <circle cx="40" cy="52" r="5.5" fill="#1f2937" />
+      <circle cx="60" cy="52" r="5.5" fill="#1f2937" />
+      <circle cx="42" cy="50" r="1.6" fill="#fff" />
+      <circle cx="62" cy="50" r="1.6" fill="#fff" />
+      {/* אף וחיוך */}
+      <ellipse cx="50" cy="62" rx="6" ry="4.5" fill="#4a2f18" />
+      <path d="M50 66 v3 M50 69 q-5 3 -9 0 M50 69 q5 3 9 0" stroke="#4a2f18" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export const MASCOTS: Mascot[] = [
+  { id: "lion", name: "לאון גור האריה", Face: Lion },
+  { id: "fawn", name: "עופרי", Face: Fawn },
+  { id: "puppy", name: "רקסי הכלבלב", Face: Puppy },
+  { id: "bear", name: "דובי", Face: Bear },
   { id: "owl", name: "אלה הינשופה", Face: Owl },
   { id: "frog", name: "קורקי הצפרדע", Face: Frog },
   { id: "dino", name: "דינו הדינוזאור", Face: Dino },

@@ -139,7 +139,7 @@ export function BotiMascot() {
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-2xl font-black text-leaf-dark">בחרו דמות 🐾</h3>
-            <div className="mt-4 grid grid-cols-2 gap-3">
+            <div className="mt-4 grid max-h-[65vh] grid-cols-2 gap-3 overflow-y-auto">
               {MASCOTS.map((m) => {
                 const F = m.Face;
                 return (
