@@ -26,8 +26,10 @@ export function BotiMascot() {
   const [popupOpen, setPopupOpen] = useState(false);
   const [mascotId, setMascotId] = useState<string>(() => loadMascotId());
   const [pickerOpen, setPickerOpen] = useState(false);
+  const [jumping, setJumping] = useState(false);
 
   const currentMascot = mascotById(mascotId);
+  const doJump = () => setJumping(true);
   const chooseMascot = (id: string) => {
     setMascotId(id);
     try {
@@ -36,6 +38,7 @@ export function BotiMascot() {
       /* מתעלמים */
     }
     setPickerOpen(false);
+    doJump();
   };
 
   const openPopup = () => {
@@ -57,8 +60,10 @@ export function BotiMascot() {
             onClick={() => {
               playPop();
               setBubbleOpen((b) => !b);
+              doJump();
             }}
-            className="animate-float drop-shadow-xl active:scale-90"
+            onAnimationEnd={() => setJumping(false)}
+            className={`drop-shadow-xl active:scale-90 ${jumping ? "animate-jump" : "animate-bob"}`}
             aria-label="הדמות שלי"
           >
             <MascotView mascot={currentMascot} />

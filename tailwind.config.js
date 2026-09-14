@@ -35,13 +35,26 @@ export default {
         grow: {
           "0%": { transform: "scaleY(0.2)", transformOrigin: "bottom", opacity: "0.3" },
           "100%": { transform: "scaleY(1)", transformOrigin: "bottom", opacity: "1" }
+        },
+        bob: {
+          "0%,100%": { transform: "translateY(0) rotate(-2.5deg)" },
+          "50%": { transform: "translateY(-9px) rotate(2.5deg)" }
+        },
+        jump: {
+          "0%": { transform: "translateY(0) scale(1,1)" },
+          "22%": { transform: "translateY(2px) scale(1.14,0.86)" },
+          "48%": { transform: "translateY(-20px) scale(0.9,1.12)" },
+          "72%": { transform: "translateY(0) scale(1.08,0.92)" },
+          "100%": { transform: "translateY(0) scale(1,1)" }
         }
       },
       animation: {
         pop: "pop 0.4s ease-out",
         wiggle: "wiggle 0.6s ease-in-out infinite",
         float: "float 3s ease-in-out infinite",
-        grow: "grow 1.2s ease-in-out infinite alternate"
+        grow: "grow 1.2s ease-in-out infinite alternate",
+        bob: "bob 2.8s ease-in-out infinite",
+        jump: "jump 0.55s ease-out"
       }
     }
   },
