@@ -27,7 +27,7 @@ export function MascotView({ mascot, size = 78 }: { mascot: Mascot; size?: numbe
         width={size}
         height={size}
         style={{ objectFit: "contain" }}
-        className="drop-shadow"
+        className="mascot-alive drop-shadow"
       />
     );
   }

@@ -29,3 +29,25 @@ button {
       active:scale-95 transition-transform select-none;
   }
 }
+
+/* אנימציית "חיים" לדמויות תמונה (PNG): נשימה + נדנוד ידידותי
+   שמסובב את כל הדמות סביב הבסיס, כך שכף היד המורמת מנפנפת. */
+@keyframes mascotAlive {
+  0%,
+  100% {
+    transform: rotate(-3.2deg) translateY(0) scaleY(1);
+  }
+  50% {
+    transform: rotate(3.2deg) translateY(-3px) scaleY(1.03);
+  }
+}
+.mascot-alive {
+  transform-origin: 50% 90%;
+  animation: mascotAlive 2.3s ease-in-out infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mascot-alive {
+    animation: none;
+  }
+}
