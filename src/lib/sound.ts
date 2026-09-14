@@ -57,16 +57,15 @@ export function playBadge() {
 }
 
 /** מקריא טקסט בעברית (תמיכה בקוראים מתחילים). */
-export function speak(text: string) {
+/** הקראה בקול המכשיר (Web Speech) — קירוב לקול ילד: גובה גבוה. */
+function speakDevice(text: string) {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "he-IL";
-  // קול "ילדי": גובה גבוה וקצב מעט מהיר
   u.rate = 1.05;
   u.pitch = 1.8;
   const voices = window.speechSynthesis.getVoices();
-  // מעדיפים קול עברי; אם יש כמה — עדיף קול נשי (נשמע צעיר יותר)
   const heVoices = voices.filter((v) => v.lang.startsWith("he"));
   const heVoice =
     heVoices.find((v) => /female|woman|girl|כרמית|Carmit/i.test(v.name)) ?? heVoices[0];
@@ -74,8 +73,52 @@ export function speak(text: string) {
   window.speechSynthesis.speak(u);
 }
 
+// אם ה-TTS בענן לא זמין (למשל לא הוגדר מפתח), עוברים לקול המכשיר לכל השאר.
+let cloudTtsDisabled = false;
+let currentAudio: HTMLAudioElement | null = null;
+const ttsCache = new Map<string, string>();
+
+/**
+ * הקראה: מנסה קול ילד אמיתי מהשרת (ElevenLabs דרך /api/tts), עם מטמון;
+ * אם לא זמין — נופל לקול המכשיר.
+ */
+export async function speak(text: string) {
+  if (typeof window === "undefined") return;
+  stopSpeaking();
+
+  if (cloudTtsDisabled) return speakDevice(text);
+
+  try {
+    let url = ttsCache.get(text);
+    if (!url) {
+      const res = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ text })
+      });
+      if (res.status === 503 || res.status === 501) {
+        cloudTtsDisabled = true; // לא הוגדר — לא ננסה שוב הפעם
+        return speakDevice(text);
+      }
+      if (!res.ok) return speakDevice(text);
+      const blob = await res.blob();
+      url = URL.createObjectURL(blob);
+      ttsCache.set(text, url);
+    }
+    const audio = new Audio(url);
+    currentAudio = audio;
+    await audio.play();
+  } catch {
+    speakDevice(text);
+  }
+}
+
 export function stopSpeaking() {
   if (typeof window !== "undefined" && "speechSynthesis" in window) {
     window.speechSynthesis.cancel();
+  }
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
   }
 }
