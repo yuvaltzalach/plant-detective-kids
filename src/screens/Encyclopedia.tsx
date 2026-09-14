@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
 import { getAllPlants } from "../lib/content";
-import { playPop, speak } from "../lib/sound";
+import { playPop } from "../lib/sound";
 import type { PlantCategory, ProgressState } from "../types";
 
 interface EncyclopediaProps {
   state: ProgressState;
-  initialOpenId?: string;
+  onOpenPlant: (id: string) => void;
 }
 
 const FILTERS: { label: string; value?: PlantCategory }[] = [
@@ -16,17 +16,18 @@ const FILTERS: { label: string; value?: PlantCategory }[] = [
   { label: "🪴 צמחים", value: "צמח" }
 ];
 
-export function Encyclopedia({ state, initialOpenId }: EncyclopediaProps) {
+export function Encyclopedia({ state, onOpenPlant }: EncyclopediaProps) {
   const plants = getAllPlants();
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<PlantCategory | undefined>(undefined);
-  const [openId, setOpenId] = useState<string | undefined>(initialOpenId);
 
   const list = useMemo(() => {
     const q = query.trim();
     return plants
       .filter((p) => (filter ? p.category === filter : true))
-      .filter((p) => (q ? p.hebrewName.includes(q) || p.scientificName.toLowerCase().includes(q.toLowerCase()) : true))
+      .filter((p) =>
+        q ? p.hebrewName.includes(q) || p.scientificName.toLowerCase().includes(q.toLowerCase()) : true
+      )
       .sort((a, b) => a.hebrewName.localeCompare(b.hebrewName, "he"));
   }, [plants, query, filter]);
 
@@ -58,56 +59,28 @@ export function Encyclopedia({ state, initialOpenId }: EncyclopediaProps) {
 
       <div className="mt-4 space-y-2">
         {list.map((p) => {
-          const open = openId === p.id;
           const found = !!state.stickers[p.id];
           return (
-            <div key={p.id} className="overflow-hidden rounded-2xl bg-white shadow">
-              <button
-                onClick={() => {
-                  playPop();
-                  setOpenId(open ? undefined : p.id);
-                }}
-                className="flex w-full items-center gap-3 p-3 text-right"
-              >
-                <span className="text-3xl">{p.emoji}</span>
-                <span className="flex-1">
-                  <span className="block font-bold text-leaf-dark">
-                    {p.hebrewName} {found && <span title="נאסף">✅</span>}
-                  </span>
-                  <span className="block text-xs text-leaf-dark/50">{p.category}</span>
+            <button
+              key={p.id}
+              onClick={() => {
+                playPop();
+                onOpenPlant(p.id);
+              }}
+              className="flex w-full items-center gap-3 rounded-2xl bg-white p-3 text-right shadow active:scale-95"
+            >
+              <span className="text-3xl">{p.emoji}</span>
+              <span className="flex-1">
+                <span className="block font-bold text-leaf-dark">
+                  {p.hebrewName} {found && <span title="נאסף">✅</span>}
                 </span>
-                <span className="text-leaf-dark/40">{open ? "▲" : "▼"}</span>
-              </button>
-
-              {open && (
-                <div className="border-t border-leaf-light/60 p-3">
-                  <ul className="space-y-1.5">
-                    {p.facts.map((fact, i) => (
-                      <li key={i} className="flex items-start gap-2 text-leaf-dark">
-                        <span>💡</span>
-                        <span>{fact}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  {p.caution && (
-                    <div className="mt-2 rounded-xl bg-amber-100 p-2 text-sm font-bold text-amber-800">
-                      ⚠️ {p.caution}
-                    </div>
-                  )}
-                  <button
-                    onClick={() => speak(`${p.hebrewName}. ${p.facts.join(" ")}`)}
-                    className="mt-3 inline-flex items-center gap-2 rounded-full bg-sky/20 px-4 py-2 font-bold text-sky-700"
-                  >
-                    🔊 הקריאו לי
-                  </button>
-                </div>
-              )}
-            </div>
+                <span className="block text-xs text-leaf-dark/50">{p.category}</span>
+              </span>
+              <span className="text-leaf-dark/40">‹</span>
+            </button>
           );
         })}
-        {list.length === 0 && (
-          <p className="mt-6 text-center text-leaf-dark/60">לא נמצא צמח כזה 🤔</p>
-        )}
+        {list.length === 0 && <p className="mt-6 text-center text-leaf-dark/60">לא נמצא צמח כזה 🤔</p>}
       </div>
     </div>
   );

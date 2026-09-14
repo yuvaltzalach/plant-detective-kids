@@ -15,8 +15,10 @@ import { Home } from "./screens/Home";
 import { Identifying } from "./screens/Identifying";
 import { OnlineGroup } from "./screens/OnlineGroup";
 import { Parents } from "./screens/Parents";
+import { PlantDetail } from "./screens/PlantDetail";
 import { Profile } from "./screens/Profile";
 import { Result } from "./screens/Result";
+import { BotiMascot } from "./components/BotiMascot";
 import type { PlantResult, Player } from "./types";
 
 type Screen =
@@ -28,6 +30,7 @@ type Screen =
   | "challenges"
   | "online"
   | "encyclopedia"
+  | "plant"
   | "games"
   | "profile"
   | "parents";
@@ -64,7 +67,7 @@ export default function App() {
 
   const [image, setImage] = useState<string | null>(null);
   const [result, setResult] = useState<PlantResult | null>(null);
-  const [encOpenId, setEncOpenId] = useState<string | undefined>(undefined);
+  const [detailId, setDetailId] = useState<string | undefined>(undefined);
   const [muted, setMutedState] = useState(() => localStorage.getItem(MUTE_KEY) === "1");
 
   useEffect(() => {
@@ -90,9 +93,9 @@ export default function App() {
   };
   const online = useOnlineGroup(meAsPlayer, stats);
 
-  const openEncyclopedia = (id?: string) => {
-    setEncOpenId(id);
-    go("encyclopedia");
+  const openDetail = (id: string) => {
+    setDetailId(id);
+    go("plant");
   };
 
   // לא מחוברים → מסך חשבון
@@ -131,8 +134,8 @@ export default function App() {
           onAlbum={() => go("album")}
           onChallenges={() => go("challenges")}
           onOnline={() => go("online")}
-          onEncyclopedia={() => openEncyclopedia(undefined)}
-          onPlantOfDay={() => openEncyclopedia(plantOfDay.id)}
+          onEncyclopedia={() => go("encyclopedia")}
+          onPlantOfDay={() => openDetail(plantOfDay.id)}
           onGames={() => go("games")}
           onParents={() => go("parents")}
           onLogout={a.logout}
@@ -204,7 +207,17 @@ export default function App() {
         />
       )}
 
-      {screen === "encyclopedia" && <Encyclopedia state={a.state} initialOpenId={encOpenId} />}
+      {screen === "encyclopedia" && (
+        <Encyclopedia state={a.state} onOpenPlant={openDetail} />
+      )}
+
+      {screen === "plant" &&
+        (() => {
+          const plant = plants.find((pl) => pl.id === detailId);
+          return plant ? (
+            <PlantDetail plant={plant} collected={!!a.state.stickers[plant.id]} />
+          ) : null;
+        })()}
 
       {screen === "games" && <Games />}
 
@@ -235,6 +248,8 @@ export default function App() {
           }}
         />
       )}
+
+      <BotiMascot />
     </div>
   );
 }
