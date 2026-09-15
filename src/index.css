@@ -103,72 +103,46 @@ button {
   }
 }
 
-/* ענן-מחשבה לחידה של בּוֹטִי — גוף לבן מעוגל עם עיגולי "ענן" סביבו וזנב עיגולים לדמות. */
-.thought-cloud {
+/* ענן-מחשבה gooey — עיגולים לבנים שנמזגים דרך פילטר SVG לצורת ענן חלקה. */
+.cloud {
   position: relative;
+  max-width: 190px;
+  filter: drop-shadow(0 8px 14px rgba(20, 83, 45, 0.18));
+}
+.cloud-shape {
+  position: absolute;
+  inset: 0;
   z-index: 0;
-  background: #fff;
-  border-radius: 34px;
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+  filter: url(#cloud-goo);
 }
-/* שורת עיגולים למעלה (כמה כדורים בעזרת box-shadow) */
-.thought-cloud::before {
-  content: "";
+.cloud-shape i {
   position: absolute;
-  z-index: -1;
-  top: -12px;
-  left: 20px;
-  width: 34px;
-  height: 34px;
+  display: block;
   background: #fff;
-  border-radius: 50%;
-  box-shadow:
-    30px -3px 0 -1px #fff,
-    62px 1px 0 -3px #fff,
-    92px -3px 0 -1px #fff,
-    124px 3px 0 -4px #fff;
+  border-radius: 9999px;
 }
-/* שורת עיגולים למטה */
-.thought-cloud::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  bottom: -10px;
-  left: 30px;
-  width: 30px;
-  height: 30px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow:
-    32px 3px 0 -2px #fff,
-    66px -2px 0 -1px #fff,
-    100px 3px 0 -4px #fff;
+.cloud-shape i.cloud-body {
+  inset: 9px 2px;
+  border-radius: 28px;
 }
-/* זנב "מחשבה" — עיגולים קטנים שיוצאים מהדמות (בצד שמאל, בגובה אמצע הענן) */
+.cloud-content {
+  position: relative;
+  z-index: 1;
+  padding: 24px 16px 14px;
+}
+/* זנב "מחשבה" — שני עיגולים קטנים לכיוון הדמות (שמאל, אמצע הענן) */
 .cloud-tail {
   position: absolute;
-  left: 0;
-  top: 50%;
+  left: -6px;
+  top: 52%;
   width: 0;
   height: 0;
+  z-index: 0;
+  filter: url(#cloud-goo);
 }
-.cloud-tail::before,
-.cloud-tail::after {
-  content: "";
+.cloud-tail i {
   position: absolute;
+  display: block;
   background: #fff;
-  border-radius: 50%;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
-}
-.cloud-tail::before {
-  width: 15px;
-  height: 15px;
-  left: -16px;
-  top: -7px;
-}
-.cloud-tail::after {
-  width: 9px;
-  height: 9px;
-  left: -30px;
-  top: -1px;
+  border-radius: 9999px;
 }

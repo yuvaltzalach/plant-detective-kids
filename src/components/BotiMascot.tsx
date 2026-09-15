@@ -11,6 +11,23 @@ function randomPlant(): PlantContent {
   return all[Math.floor(Math.random() * all.length)];
 }
 
+// עיגולי ה"ענן" — נמזגים לצורה חלקה דרך פילטר ה-gooey.
+type Puff = { s: number; left?: string; right?: string; top?: string; bottom?: string };
+const CLOUD_PUFFS: Puff[] = [
+  { left: "6%", top: "-7px", s: 34 },
+  { left: "30%", top: "-12px", s: 40 },
+  { left: "56%", top: "-9px", s: 38 },
+  { left: "80%", top: "-5px", s: 30 },
+  { left: "10%", bottom: "-6px", s: 30 },
+  { left: "42%", bottom: "-9px", s: 34 },
+  { left: "72%", bottom: "-6px", s: 30 },
+  { left: "-6px", top: "34%", s: 26 },
+  { right: "-6px", top: "38%", s: 26 }
+];
+function puffStyle({ s, ...pos }: Puff) {
+  return { ...pos, width: s, height: s } as const;
+}
+
 export function BotiMascot() {
   const [plant, setPlant] = useState<PlantContent>(() => randomPlant());
   const [bubbleOpen, setBubbleOpen] = useState(false);
@@ -31,6 +48,20 @@ export function BotiMascot() {
 
   return (
     <>
+      {/* פילטר gooey — ממזג את עיגולי הענן לצורה חלקה */}
+      <svg width={0} height={0} className="absolute" aria-hidden="true">
+        <defs>
+          <filter id="cloud-goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b" />
+            <feColorMatrix
+              in="b"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"
+            />
+          </filter>
+        </defs>
+      </svg>
+
       {/* בּוֹטִי — קבוע בצד שמאל למעלה, בלי ריחוף. הענן נפתח רק בלחיצה, ומופיע מימין לדמות. */}
       <div className="fixed left-2 top-24 z-50 flex items-center gap-3" dir="ltr">
         <button
@@ -45,16 +76,28 @@ export function BotiMascot() {
         </button>
 
         {bubbleOpen && (
-          <div className="relative" dir="rtl">
-            <span className="cloud-tail" aria-hidden="true" />
-            <div className="thought-cloud max-w-[190px] p-3 pt-6">
-              <button
-                onClick={() => setBubbleOpen(false)}
-                className="absolute left-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-purple-200 text-xs font-bold text-purple-700"
-                aria-label="סגירה"
-              >
-                ✕
-              </button>
+          <div className="cloud" dir="rtl">
+            {/* שכבת הצורה — עיגולים לבנים שנמזגים לענן */}
+            <div className="cloud-shape" aria-hidden="true">
+              <i className="cloud-body" />
+              {CLOUD_PUFFS.map((p, i) => (
+                <i key={i} style={puffStyle(p)} />
+              ))}
+            </div>
+            {/* זנב מחשבה לכיוון הדמות */}
+            <div className="cloud-tail" aria-hidden="true">
+              <i style={{ left: "-14px", top: "-8px", width: 15, height: 15 }} />
+              <i style={{ left: "-28px", top: "-1px", width: 9, height: 9 }} />
+            </div>
+
+            <button
+              onClick={() => setBubbleOpen(false)}
+              className="absolute left-2 top-2 z-20 flex h-6 w-6 items-center justify-center rounded-full bg-purple-200 text-xs font-bold text-purple-700"
+              aria-label="סגירה"
+            >
+              ✕
+            </button>
+            <div className="cloud-content">
               <button onClick={openPopup} className="text-right text-sm font-bold text-leaf-dark">
                 🤔 חידה: {plant.facts[0]}
                 <span className="mt-1 block text-xs text-purple-600 underline">לחצו לגילוי!</span>
