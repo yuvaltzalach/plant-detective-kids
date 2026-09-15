@@ -16,65 +16,102 @@ export interface Mascot {
   image?: string;
   /** פריים "עיניים עצומות" — יחד עם image יוצר מצמוץ אמיתי (ספרייט). */
   blink?: string;
+  /** פריים "יד מורמת" — יחד עם image יוצר נפנוף. */
+  wave?: string;
 }
 
-/** נגן מצמוץ: מדפדף בין תמונת "עיניים פתוחות" ל"עיניים עצומות". */
-function BlinkImage({
+type FrameName = "base" | "blink" | "wave";
+
+/**
+ * נגן פריימים לתמונות: הדמות עומדת במקום, וכל כמה שניות מפעילה אנימציה
+ * מתוזמנת — מצמוץ (base→blink→base) או נפנוף (החלפות base↔wave). בלי ריחוף.
+ */
+function FrameMascot({
   base,
   blink,
+  wave,
   name,
   size
 }: {
   base: string;
-  blink: string;
+  blink?: string;
+  wave?: string;
   name: string;
   size: number;
 }) {
-  const [closed, setClosed] = useState(false);
+  const [frame, setFrame] = useState<FrameName>("base");
   useEffect(() => {
     let alive = true;
-    let t: ReturnType<typeof setTimeout>;
-    const wink = (times: number) => {
-      if (!alive) return;
-      setClosed(true);
-      setTimeout(() => {
-        if (!alive) return;
-        setClosed(false);
-        if (times > 1) setTimeout(() => wink(times - 1), 140);
-      }, 150);
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    const at = (ms: number, fn: () => void) => {
+      timers.push(setTimeout(() => alive && fn(), ms));
     };
-    const schedule = () => {
-      t = setTimeout(() => {
-        if (!alive) return;
-        wink(Math.random() < 0.25 ? 2 : 1); // מדי פעם מצמוץ כפול
-        schedule();
-      }, 2200 + Math.random() * 2800);
+    // מריץ רצף פריימים ואז חוזר ל-base וקורא ל-done.
+    const runClip = (steps: Array<[FrameName, number]>, done: () => void) => {
+      let acc = 0;
+      for (const [f, ms] of steps) {
+        at(acc, () => setFrame(f));
+        acc += ms;
+      }
+      at(acc, () => {
+        setFrame("base");
+        done();
+      });
     };
-    schedule();
+    const loop = () => {
+      at(2600 + Math.random() * 3200, () => {
+        if (wave && Math.random() < 0.45) {
+          runClip(
+            [
+              ["wave", 300],
+              ["base", 180],
+              ["wave", 300],
+              ["base", 180],
+              ["wave", 300]
+            ],
+            loop
+          );
+        } else if (blink) {
+          const steps: Array<[FrameName, number]> =
+            Math.random() < 0.25
+              ? [["blink", 150], ["base", 120], ["blink", 150]]
+              : [["blink", 160]];
+          runClip(steps, loop);
+        } else {
+          loop();
+        }
+      });
+    };
+    loop();
     return () => {
       alive = false;
-      clearTimeout(t);
+      timers.forEach(clearTimeout);
     };
-  }, []);
+  }, [base, blink, wave]);
+
+  const layer = (src: string, name: FrameName, alt: string) => (
+    <img
+      key={name}
+      src={src}
+      alt={alt}
+      aria-hidden={name === "base" ? undefined : true}
+      width={size}
+      height={size}
+      style={{
+        position: "absolute",
+        inset: 0,
+        objectFit: "contain",
+        opacity: frame === name ? 1 : 0
+      }}
+      className="drop-shadow"
+    />
+  );
+
   return (
-    <div className="mascot-alive relative" style={{ width: size, height: size }}>
-      <img
-        src={base}
-        alt={name}
-        width={size}
-        height={size}
-        style={{ objectFit: "contain", opacity: closed ? 0 : 1 }}
-        className="drop-shadow"
-      />
-      <img
-        src={blink}
-        alt=""
-        aria-hidden="true"
-        width={size}
-        height={size}
-        style={{ position: "absolute", inset: 0, objectFit: "contain", opacity: closed ? 1 : 0 }}
-        className="drop-shadow"
-      />
+    <div className="relative" style={{ width: size, height: size }}>
+      {layer(base, "base", name)}
+      {blink && layer(blink, "blink", "")}
+      {wave && layer(wave, "wave", "")}
     </div>
   );
 }
@@ -82,8 +119,16 @@ function BlinkImage({
 /** מציג דמות — מונפשת אם יש, אחרת תמונה, אחרת איור סטטי. */
 export function MascotView({ mascot, size = 78 }: { mascot: Mascot; size?: number }) {
   if (mascot.Anim) return <mascot.Anim size={size} />;
-  if (mascot.image && mascot.blink) {
-    return <BlinkImage base={mascot.image} blink={mascot.blink} name={mascot.name} size={size} />;
+  if (mascot.image && (mascot.blink || mascot.wave)) {
+    return (
+      <FrameMascot
+        base={mascot.image}
+        blink={mascot.blink}
+        wave={mascot.wave}
+        name={mascot.name}
+        size={size}
+      />
+    );
   }
   if (mascot.image) {
     return (
@@ -93,7 +138,7 @@ export function MascotView({ mascot, size = 78 }: { mascot: Mascot; size?: numbe
         width={size}
         height={size}
         style={{ objectFit: "contain" }}
-        className="mascot-alive drop-shadow"
+        className="drop-shadow"
       />
     );
   }
@@ -526,7 +571,8 @@ export const MASCOTS: Mascot[] = [
     id: "puppy-photo",
     name: "רקסי (מונפש)",
     image: "/mascots/puppy.png",
-    blink: "/mascots/puppy-blink.png"
+    blink: "/mascots/puppy-blink.png",
+    wave: "/mascots/puppy-wave.png"
   },
   { id: "lion-photo", name: "לאון (תמונה)", image: "/mascots/lion.png" },
   { id: "fawn-photo", name: "עופרי (תמונה)", image: "/mascots/fawn.png" }

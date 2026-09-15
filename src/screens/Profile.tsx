@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { PasswordInput } from "../components/PasswordInput";
 import { AVATARS } from "../lib/players";
+import { MASCOTS, MascotView } from "../data/mascots";
+import { setMascotId, useMascotId } from "../lib/mascotPref";
 import { playPop } from "../lib/sound";
 import type { PublicAccount } from "../lib/auth";
 
@@ -37,6 +39,7 @@ function Note({ msg }: { msg: { kind: "ok" | "err"; text: string } | null }) {
 }
 
 export function Profile({ account, onChangeUsername, onUpdateProfile }: ProfileProps) {
+  const mascotId = useMascotId();
   const [name, setName] = useState(account.username);
   const [age, setAge] = useState(String(account.age));
   const [password, setPassword] = useState("");
@@ -87,6 +90,31 @@ export function Profile({ account, onChangeUsername, onUpdateProfile }: ProfileP
               }`}
             >
               {a}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* דמות מנחה (בּוֹטִי) */}
+      <section className="rounded-blob bg-white p-5 shadow">
+        <h3 className="text-lg font-black text-leaf-dark">הדמות המנחה (בּוֹטִי)</h3>
+        <p className="text-xs text-leaf-dark/60">הדמות שמלווה אותך במסך ומספרת חידות.</p>
+        <div className="mt-3 grid grid-cols-3 gap-3">
+          {MASCOTS.map((m) => (
+            <button
+              key={m.id}
+              onClick={() => {
+                playPop();
+                setMascotId(m.id);
+              }}
+              className={`flex flex-col items-center rounded-2xl p-2 ${
+                m.id === mascotId ? "bg-leaf-light ring-4 ring-leaf" : "bg-gray-100"
+              }`}
+            >
+              <div className="flex h-16 w-16 items-center justify-center">
+                <MascotView mascot={m} size={60} />
+              </div>
+              <span className="mt-1 text-xs font-bold text-leaf-dark">{m.name}</span>
             </button>
           ))}
         </div>
