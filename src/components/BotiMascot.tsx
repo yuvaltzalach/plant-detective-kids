@@ -32,7 +32,7 @@ export function BotiMascot() {
   return (
     <>
       {/* בּוֹטִי — קבוע בצד שמאל למעלה, בלי ריחוף. הענן נפתח רק בלחיצה, ומופיע מימין לדמות. */}
-      <div className="fixed left-2 top-16 z-50 flex items-start gap-3" dir="ltr">
+      <div className="fixed left-2 top-16 z-50 flex items-center gap-3" dir="ltr">
         <button
           onClick={() => {
             playPop();
@@ -45,7 +45,7 @@ export function BotiMascot() {
         </button>
 
         {bubbleOpen && (
-          <div className="relative mt-4" dir="rtl">
+          <div className="relative" dir="rtl">
             <span className="cloud-tail" aria-hidden="true" />
             <div className="thought-cloud max-w-[190px] p-3 pt-6">
               <button
