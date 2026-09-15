@@ -61,13 +61,12 @@ function FrameMascot({
     const loop = () => {
       at(2600 + Math.random() * 3200, () => {
         if (wave && Math.random() < 0.45) {
+          // נפנוף טבעי: מרים את היד ומחזיק, נדנוד איטי, ומוריד.
           runClip(
             [
-              ["wave", 300],
-              ["base", 180],
-              ["wave", 300],
-              ["base", 180],
-              ["wave", 300]
+              ["wave", 700],
+              ["base", 320],
+              ["wave", 700]
             ],
             loop
           );

@@ -30,24 +30,61 @@ button {
   }
 }
 
-/* אנימציית "חיים" לדמויות תמונה (PNG): נשימה + נדנוד ידידותי
-   שמסובב את כל הדמות סביב הבסיס, כך שכף היד המורמת מנפנפת. */
-@keyframes mascotAlive {
-  0%,
-  100% {
-    transform: rotate(-3.2deg) translateY(0) scaleY(1);
-  }
-  50% {
-    transform: rotate(3.2deg) translateY(-3px) scaleY(1.03);
-  }
+/* ענן-מחשבה לחידה של בּוֹטִי — צורת ענן עם בליטות וזנב עיגולים לכיוון הדמות. */
+.thought-cloud {
+  position: relative;
+  z-index: 0;
+  background: #fff;
+  border-radius: 26px;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
 }
-.mascot-alive {
-  transform-origin: 50% 90%;
-  animation: mascotAlive 2.3s ease-in-out infinite;
-  will-change: transform;
+.thought-cloud::before,
+.thought-cloud::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  z-index: -1;
 }
-@media (prefers-reduced-motion: reduce) {
-  .mascot-alive {
-    animation: none;
-  }
+.thought-cloud::before {
+  /* בליטות עליונות */
+  top: -9px;
+  left: 14px;
+  right: 14px;
+  height: 26px;
+}
+.thought-cloud::after {
+  /* בליטות תחתונות */
+  bottom: -8px;
+  left: 24px;
+  right: 24px;
+  height: 22px;
+}
+/* זנב "מחשבה" — שני עיגולים שיורדים לכיוון הדמות (משמאל לענן) */
+.cloud-tail {
+  position: absolute;
+  left: -8px;
+  bottom: 12px;
+  width: 14px;
+  height: 14px;
+}
+.cloud-tail::before,
+.cloud-tail::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.12));
+}
+.cloud-tail::before {
+  width: 13px;
+  height: 13px;
+  left: -4px;
+  top: 0;
+}
+.cloud-tail::after {
+  width: 8px;
+  height: 8px;
+  left: -14px;
+  top: 9px;
 }
