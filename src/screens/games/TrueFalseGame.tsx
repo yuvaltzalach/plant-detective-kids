@@ -53,7 +53,7 @@ export function TrueFalseGame({ onBack }: { onBack: () => void }) {
           <div className="mt-2 rounded-2xl bg-leaf-light/60 p-3 text-lg text-leaf-dark">
             "{round.statement}"
           </div>
-          <div className="mt-1 text-sm text-leaf-dark/60">נכון על הצמח הזה?</div>
+          <div className="mt-1 text-sm text-leaf-dark/80">נכון על הצמח הזה?</div>
         </div>
       </div>
 

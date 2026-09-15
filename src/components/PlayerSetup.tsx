@@ -66,7 +66,7 @@ export function PlayerSetup({
       </button>
 
       {onCancel && (
-        <button onClick={onCancel} className="mt-3 text-leaf-dark/60 underline">
+        <button onClick={onCancel} className="mt-3 text-leaf-dark/80 underline">
           ביטול
         </button>
       )}

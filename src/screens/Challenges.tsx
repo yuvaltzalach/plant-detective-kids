@@ -65,7 +65,12 @@ export function Challenges({ state, challenge, onCapture, onCompleteManually }: 
       </div>
 
       {/* תגים */}
-      <h3 className="mt-6 text-xl font-black text-leaf-dark">התגים שלי</h3>
+      <h3 className="mt-6 text-xl font-black text-leaf-dark">
+        התגים שלי{" "}
+        <span className="text-base text-leaf-dark/80">
+          ({earned.size} מתוך {BADGES.length})
+        </span>
+      </h3>
       <div className="mt-3 grid grid-cols-2 gap-3">
         {BADGES.map((b) => {
           const has = earned.has(b.id);
@@ -78,7 +83,7 @@ export function Challenges({ state, challenge, onCapture, onCompleteManually }: 
             >
               <div className={`text-4xl ${has ? "" : "opacity-30 grayscale"}`}>{b.emoji}</div>
               <div>
-                <div className={`font-bold ${has ? "text-leaf-dark" : "text-gray-400"}`}>
+                <div className={`font-bold ${has ? "text-leaf-dark" : "text-gray-500"}`}>
                   {b.name}
                 </div>
                 <div className="text-xs text-gray-500">{has ? b.description : "עוד לא הושג"}</div>

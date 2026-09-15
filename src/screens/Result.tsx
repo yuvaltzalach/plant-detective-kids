@@ -58,7 +58,7 @@ export function Result({ result, record, onCapture, onAlbum }: ResultProps) {
               {result.category}
             </span>
             {result.score > 0 && (
-              <span className="text-gray-400">ביטחון {Math.round(result.score * 100)}%</span>
+              <span className="text-gray-500">ביטחון {Math.round(result.score * 100)}%</span>
             )}
           </div>
         </div>

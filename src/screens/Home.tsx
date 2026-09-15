@@ -59,7 +59,7 @@ export function Home(props: HomeProps) {
             <span className="rounded-full bg-leaf-light px-2 py-0.5 text-xs font-bold text-leaf-dark">
               {rank.emoji} {rank.name}
             </span>
-            <span className="text-xs text-leaf-dark/50">⚙️</span>
+            <span className="text-xs text-leaf-dark/70">⚙️</span>
           </button>
           <button
             onClick={() => {
@@ -134,7 +134,7 @@ export function Home(props: HomeProps) {
           <button onClick={go(props.onAlbum)} className={navTile}>
             <div className="text-2xl">📔</div>
             <div className="mt-1 text-sm font-bold text-leaf-dark">האלבום שלי</div>
-            <div className="mt-1.5 text-[11px] font-bold text-leaf-dark/70">
+            <div className="mt-1.5 text-[11px] font-bold text-leaf-dark/80">
               {stickerCount} מתוך {totalPlants}
             </div>
             <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-leaf-light">

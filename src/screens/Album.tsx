@@ -74,7 +74,7 @@ export function Album({ state, player, points, level, onCapture }: AlbumProps) {
               </div>
               <div
                 className={`mt-1 text-xs font-bold leading-tight ${
-                  has ? "text-leaf-dark" : "text-gray-400"
+                  has ? "text-leaf-dark" : "text-gray-500"
                 }`}
               >
                 {has ? p.hebrewName : "עוד לא נמצא"}

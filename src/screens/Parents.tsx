@@ -102,13 +102,13 @@ export function Parents(props: ParentsProps) {
                   <span className="text-4xl">{c.avatar}</span>
                   <div className="flex-1">
                     <div className="font-black text-leaf-dark">{c.username}</div>
-                    <div className="text-xs text-leaf-dark/60">
+                    <div className="text-xs text-leaf-dark/80">
                       {rank.emoji} {rank.name} · רמה {level} · גיל {c.age}
                     </div>
                   </div>
                   <div className="text-sm font-bold text-amber-600">⭐ {points}</div>
                 </div>
-                <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-leaf-dark/70">
+                <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-leaf-dark/80">
                   <span>📔 {stickers} צמחים</span>
                   <span>🏅 {badges} תגים</span>
                   <button
@@ -145,18 +145,18 @@ export function Parents(props: ParentsProps) {
             );
           })}
           {props.children && props.children.length === 0 && (
-            <p className="text-center text-sm text-leaf-dark/60">
+            <p className="text-center text-sm text-leaf-dark/80">
               עדיין לא קישרתם ילדים. הוסיפו למטה עם שם המשתמש והסיסמה שלהם.
             </p>
           )}
           {props.children === null && (
-            <p className="text-center text-sm text-leaf-dark/60">טוען... (דורש חיבור לשרת)</p>
+            <p className="text-center text-sm text-leaf-dark/80">טוען... (דורש חיבור לשרת)</p>
           )}
         </div>
 
         {/* קישור ילד/ה */}
         <div className="mt-4 border-t border-gray-200 pt-3">
-          <div className="text-sm font-bold text-leaf-dark/70">
+          <div className="text-sm font-bold text-leaf-dark/80">
             קישור חשבון ילד/ה — הכניסו שם משתמש וסיסמה שלו/ה:
           </div>
           <input
@@ -185,7 +185,7 @@ export function Parents(props: ParentsProps) {
       {/* אתגר אישי (במכשיר הזה) */}
       <section className="rounded-blob bg-white p-5 shadow">
         <h3 className="text-xl font-black text-leaf-dark">🎯 אתגר אישי</h3>
-        <p className="mt-1 text-sm text-leaf-dark/70">
+        <p className="mt-1 text-sm text-leaf-dark/80">
           למשל "מצאו פרח עם עלים צהובים". יופיע במקום האתגר היומי במכשיר הזה.
         </p>
         <textarea
@@ -257,7 +257,7 @@ export function Parents(props: ParentsProps) {
         <h3 className="text-xl font-black text-leaf-dark">🏆 תחרות אונליין</h3>
         {!props.online.code ? (
           <>
-            <p className="mt-1 text-sm text-leaf-dark/70">
+            <p className="mt-1 text-sm text-leaf-dark/80">
               פתחו קבוצה (קוד לשיתוף) או הצטרפו לקוד קיים — טבלת ניצחונות משותפת בין כולם.
             </p>
             <input
@@ -286,12 +286,12 @@ export function Parents(props: ParentsProps) {
         ) : (
           <>
             <div className="mt-2 rounded-2xl bg-leaf-light/60 p-3 text-center">
-              <div className="text-sm font-bold text-leaf-dark/70">קוד הקבוצה לשיתוף:</div>
+              <div className="text-sm font-bold text-leaf-dark/80">קוד הקבוצה לשיתוף:</div>
               <div className="text-3xl font-black tracking-widest text-leaf-dark">
                 {props.online.code}
               </div>
             </div>
-            <div className="mt-4 text-sm font-bold text-leaf-dark/70">אתגר לכל הקבוצה:</div>
+            <div className="mt-4 text-sm font-bold text-leaf-dark/80">אתגר לכל הקבוצה:</div>
             <textarea
               value={gText}
               onChange={(e) => setGText(e.target.value)}

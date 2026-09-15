@@ -65,7 +65,7 @@ export function SortGame({ onBack }: { onBack: () => void }) {
         </div>
       ) : (
         <>
-          <p className="mt-2 text-center text-leaf-dark/70">לאיזו קבוצה שייך הצמח?</p>
+          <p className="mt-2 text-center text-leaf-dark/80">לאיזו קבוצה שייך הצמח?</p>
           <div className="mx-auto mt-3 w-56 overflow-hidden rounded-blob bg-white shadow-lg">
             <PlantImage plant={current} className="h-44 w-full" />
             <div className="p-2 text-center text-lg font-black text-leaf-dark">
@@ -85,7 +85,7 @@ export function SortGame({ onBack }: { onBack: () => void }) {
               </button>
             ))}
           </div>
-          <div className="mt-3 text-center text-sm text-leaf-dark/50">
+          <div className="mt-3 text-center text-sm text-leaf-dark/80">
             {idx + 1} / {queue.length}
           </div>
         </>

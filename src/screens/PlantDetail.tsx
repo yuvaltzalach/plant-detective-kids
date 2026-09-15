@@ -21,7 +21,7 @@ export function PlantDetail({ plant, collected }: PlantDetailProps) {
             <span className="rounded-full bg-leaf-light px-3 py-0.5 font-bold text-leaf-dark">
               {plant.category}
             </span>
-            <span className="text-gray-400">{plant.scientificName}</span>
+            <span className="text-gray-500">{plant.scientificName}</span>
           </div>
 
           <ul className="mt-4 space-y-2 text-right">

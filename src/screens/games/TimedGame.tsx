@@ -93,7 +93,7 @@ export function TimedGame({ onBack }: { onBack: () => void }) {
               style={{ width: `${(timeLeft / DURATION) * 100}%` }}
             />
           </div>
-          <div className="text-center text-sm font-bold text-leaf-dark/70">{timeLeft} שניות</div>
+          <div className="text-center text-sm font-bold text-leaf-dark/80">{timeLeft} שניות</div>
 
           <div className="mx-auto mt-3 h-48 w-48 overflow-hidden rounded-blob shadow-lg">
             <PlantImage plant={q.target} className="h-full w-full" />

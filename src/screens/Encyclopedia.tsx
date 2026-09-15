@@ -34,7 +34,7 @@ export function Encyclopedia({ state, onOpenPlant }: EncyclopediaProps) {
   return (
     <div className="flex flex-1 flex-col px-5 pb-10 pt-2">
       <h2 className="text-center text-3xl font-black text-leaf-dark">📖 אנציקלופדיית הצמחים</h2>
-      <p className="text-center text-leaf-dark/70">{plants.length} צמחים ללמוד ולגלות</p>
+      <p className="text-center text-leaf-dark/80">{plants.length} צמחים ללמוד ולגלות</p>
 
       <input
         value={query}
@@ -74,13 +74,13 @@ export function Encyclopedia({ state, onOpenPlant }: EncyclopediaProps) {
                 <span className="block font-bold text-leaf-dark">
                   {p.hebrewName} {found && <span title="נאסף">✅</span>}
                 </span>
-                <span className="block text-xs text-leaf-dark/50">{p.category}</span>
+                <span className="block text-xs text-leaf-dark/80">{p.category}</span>
               </span>
               <span className="text-leaf-dark/40">‹</span>
             </button>
           );
         })}
-        {list.length === 0 && <p className="mt-6 text-center text-leaf-dark/60">לא נמצא צמח כזה 🤔</p>}
+        {list.length === 0 && <p className="mt-6 text-center text-leaf-dark/80">לא נמצא צמח כזה 🤔</p>}
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ export function Capture({ onImage }: CaptureProps) {
       <div className="text-center">
         <div className="text-6xl animate-float">📸</div>
         <h2 className="mt-3 text-2xl font-black text-leaf-dark">בואו נצלם צמח!</h2>
-        <p className="mt-1 text-leaf-dark/70">כוונו את המצלמה לעלה, לפרח או לעץ</p>
+        <p className="mt-1 text-leaf-dark/80">כוונו את המצלמה לעלה, לפרח או לעץ</p>
       </div>
 
       <input

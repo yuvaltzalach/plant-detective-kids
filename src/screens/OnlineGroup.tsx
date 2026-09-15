@@ -47,7 +47,7 @@ export function OnlineGroup(props: OnlineGroupProps) {
       <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-4 text-center">
         <div className="text-6xl animate-float">🌍🏆</div>
         <h2 className="mt-2 text-3xl font-black text-leaf-dark">תחרות אונליין</h2>
-        <p className="mt-2 text-leaf-dark/70">
+        <p className="mt-2 text-leaf-dark/80">
           שחקו יחד עם חברים מכל טלפון! מצטרפים לאותה קבוצה עם קוד, ורואים מי אסף הכי הרבה.
         </p>
         <input
@@ -67,7 +67,7 @@ export function OnlineGroup(props: OnlineGroupProps) {
         >
           הצטרפות לקבוצה
         </button>
-        <div className="mt-6 text-leaf-dark/50">— או —</div>
+        <div className="mt-6 text-leaf-dark/80">— או —</div>
         <button
           onClick={() => {
             playPop();
@@ -96,7 +96,7 @@ export function OnlineGroup(props: OnlineGroupProps) {
       <h2 className="text-center text-3xl font-black text-leaf-dark">🌍 הקבוצה שלנו</h2>
 
       <div className="mt-3 rounded-blob bg-leaf-light/60 p-4 text-center">
-        <div className="text-sm font-bold text-leaf-dark/70">קוד להצטרפות — שתפו עם חברים:</div>
+        <div className="text-sm font-bold text-leaf-dark/80">קוד להצטרפות — שתפו עם חברים:</div>
         <div className="mt-1 text-4xl font-black tracking-widest text-leaf-dark">{code}</div>
       </div>
 
@@ -114,7 +114,7 @@ export function OnlineGroup(props: OnlineGroupProps) {
             <div className="mt-1 text-2xl">{challenge.emoji}</div>
             <div className="text-lg font-bold text-leaf-dark">{challenge.text}</div>
             {challenge.by && (
-              <div className="text-xs text-leaf-dark/50">נקבע ע״י {challenge.by}</div>
+              <div className="text-xs text-leaf-dark/80">נקבע ע״י {challenge.by}</div>
             )}
             <div className="mt-2">
               {myDone ? (
@@ -132,7 +132,7 @@ export function OnlineGroup(props: OnlineGroupProps) {
             </div>
           </>
         ) : (
-          <div className="mt-1 text-leaf-dark/60">עדיין אין אתגר קבוצתי</div>
+          <div className="mt-1 text-leaf-dark/80">עדיין אין אתגר קבוצתי</div>
         )}
 
         <button
@@ -227,7 +227,7 @@ export function OnlineGroup(props: OnlineGroupProps) {
                     {done && <span title="השלים את האתגר"> ✅</span>}
                     {isMe && <span className="mr-2 text-sm text-leaf">‹ אני</span>}
                   </span>
-                  <span className="block text-sm text-leaf-dark/60">
+                  <span className="block text-sm text-leaf-dark/80">
                     רמה {m.level} · 📔 {m.stickers} · 🏅 {m.badges}
                   </span>
                 </span>
@@ -239,7 +239,7 @@ export function OnlineGroup(props: OnlineGroupProps) {
       )}
 
       {members && members.length === 0 && status === "ok" && (
-        <p className="mt-6 text-center text-leaf-dark/60">
+        <p className="mt-6 text-center text-leaf-dark/80">
           עדיין אין חברים בקבוצה. שתפו את הקוד וזהו צמח כדי להופיע בטבלה!
         </p>
       )}

@@ -64,7 +64,7 @@ export function Auth({ onSignup, onLogin, onForgot }: AuthProps) {
       <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-8">
         <div className="text-6xl">🔑</div>
         <h2 className="mt-2 text-2xl font-black text-leaf-dark">שכחתי סיסמה</h2>
-        <p className="mt-1 text-center text-leaf-dark/70">הכניסו את שם המשתמש</p>
+        <p className="mt-1 text-center text-leaf-dark/80">הכניסו את שם המשתמש</p>
         <input
           value={username}
           onChange={(e) => {
@@ -87,7 +87,7 @@ export function Auth({ onSignup, onLogin, onForgot }: AuthProps) {
             {forgotMsg}
           </div>
         )}
-        <button onClick={() => setMode("login")} className="mt-5 text-leaf-dark/60 underline">
+        <button onClick={() => setMode("login")} className="mt-5 text-leaf-dark/80 underline">
           חזרה לכניסה
         </button>
       </div>
@@ -102,7 +102,7 @@ export function Auth({ onSignup, onLogin, onForgot }: AuthProps) {
       <div className="text-center">
         <div className="text-6xl animate-float">🌱🔎</div>
         <h1 className="mt-2 text-4xl font-black text-leaf-dark">בלש הצמחים</h1>
-        <p className="mt-1 text-leaf-dark/70">{mode === "signup" ? "יוצרים חשבון פעם אחת" : "כניסה לחשבון"}</p>
+        <p className="mt-1 text-leaf-dark/80">{mode === "signup" ? "יוצרים חשבון פעם אחת" : "כניסה לחשבון"}</p>
       </div>
 
       <div className="mt-6 flex w-full max-w-xs rounded-full bg-white p-1 shadow">
@@ -154,7 +154,7 @@ export function Auth({ onSignup, onLogin, onForgot }: AuthProps) {
 
         {mode === "signup" && (
           <div>
-            <div className="mb-1 text-sm font-bold text-leaf-dark/70">בחרו דמות:</div>
+            <div className="mb-1 text-sm font-bold text-leaf-dark/80">בחרו דמות:</div>
             <div className="grid grid-cols-6 gap-2">
               {AVATARS.map((a) => (
                 <button
@@ -171,7 +171,7 @@ export function Auth({ onSignup, onLogin, onForgot }: AuthProps) {
                 </button>
               ))}
             </div>
-            <p className="mt-2 text-xs text-leaf-dark/50">
+            <p className="mt-2 text-xs text-leaf-dark/80">
               עד גיל 16 — חשבון ילד/ה. מעל 16 — חשבון הורה (עם אזור ניהול).
             </p>
           </div>
@@ -190,7 +190,7 @@ export function Auth({ onSignup, onLogin, onForgot }: AuthProps) {
               setErr(null);
               setForgotMsg(null);
             }}
-            className="w-full text-center text-leaf-dark/60 underline"
+            className="w-full text-center text-leaf-dark/80 underline"
           >
             שכחתי סיסמה
           </button>

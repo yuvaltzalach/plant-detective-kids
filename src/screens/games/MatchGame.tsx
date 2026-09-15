@@ -52,7 +52,7 @@ export function MatchGame({ onBack }: { onBack: () => void }) {
         <h2 className="text-2xl font-black text-leaf-dark">🔗 תמונה לשם</h2>
         <span className="w-6" />
       </div>
-      <p className="mt-1 text-center text-leaf-dark/70">בוחרים תמונה ואז שם — או שם ואז תמונה</p>
+      <p className="mt-1 text-center text-leaf-dark/80">בוחרים תמונה ואז שם — או שם ואז תמונה</p>
 
       <div className="mt-4 flex gap-3">
         {/* תמונות */}

@@ -77,14 +77,14 @@ export function PuzzleGame({ onBack }: { onBack: () => void }) {
         </button>
       </div>
 
-      {url === undefined && <p className="mt-10 text-center text-leaf-dark/60">טוען תמונה...</p>}
+      {url === undefined && <p className="mt-10 text-center text-leaf-dark/80">טוען תמונה...</p>}
       {url === null && (
-        <p className="mt-10 text-center text-leaf-dark/60">צריך חיבור לאינטרנט לתמונות 🌐</p>
+        <p className="mt-10 text-center text-leaf-dark/80">צריך חיבור לאינטרנט לתמונות 🌐</p>
       )}
 
       {url && plant && (
         <>
-          <p className="mt-2 text-center text-leaf-dark/70">
+          <p className="mt-2 text-center text-leaf-dark/80">
             סדרו את התמונה של ה{plant.hebrewName} — הקישו על שני חלקים כדי להחליף
           </p>
           <div className="mx-auto mt-4 grid w-72 grid-cols-3 gap-1 rounded-2xl bg-white p-1 shadow-lg">

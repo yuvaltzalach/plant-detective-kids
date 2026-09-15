@@ -98,7 +98,7 @@ export function Profile({ account, onChangeUsername, onUpdateProfile }: ProfileP
       {/* דמות מנחה (בּוֹטִי) */}
       <section className="rounded-blob bg-white p-5 shadow">
         <h3 className="text-lg font-black text-leaf-dark">הדמות המנחה (בּוֹטִי)</h3>
-        <p className="text-xs text-leaf-dark/60">הדמות שמלווה אותך במסך ומספרת חידות.</p>
+        <p className="text-xs text-leaf-dark/80">הדמות שמלווה אותך במסך ומספרת חידות.</p>
         <div className="mt-3 grid grid-cols-3 gap-3">
           {MASCOTS.map((m) => (
             <button
@@ -142,7 +142,7 @@ export function Profile({ account, onChangeUsername, onUpdateProfile }: ProfileP
       {/* גיל */}
       <section className="rounded-blob bg-white p-5 shadow">
         <h3 className="text-lg font-black text-leaf-dark">גיל</h3>
-        <p className="text-xs text-leaf-dark/60">מעל 16 = חשבון הורה (עם אזור ניהול).</p>
+        <p className="text-xs text-leaf-dark/80">מעל 16 = חשבון הורה (עם אזור ניהול).</p>
         <input
           value={age}
           onChange={(e) => setAge(e.target.value.replace(/[^0-9]/g, ""))}
