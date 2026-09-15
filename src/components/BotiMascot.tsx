@@ -32,7 +32,7 @@ export function BotiMascot() {
   return (
     <>
       {/* בּוֹטִי — קבוע בצד שמאל למעלה, בלי ריחוף. הענן נפתח רק בלחיצה, ומופיע מימין לדמות. */}
-      <div className="fixed left-2 top-16 z-50 flex items-center gap-3" dir="ltr">
+      <div className="fixed left-2 top-44 z-50 flex items-center gap-3" dir="ltr">
         <button
           onClick={() => {
             playPop();
