@@ -17,10 +17,83 @@ body {
   overscroll-behavior-y: none;
 }
 
+/* משטחי דפדפן מעוצבים מהפלטה (לא ברירות-מחדל אפורות) */
+:root {
+  accent-color: #16a34a;
+}
+::selection {
+  background: #bbf7d0;
+  color: #14532d;
+}
+:focus-visible {
+  outline: 3px solid #22c55e;
+  outline-offset: 2px;
+}
+* {
+  scrollbar-color: #86efac transparent;
+  scrollbar-width: thin;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #86efac;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  border-radius: 9999px;
+}
+
 /* כפתורים גדולים וידידותיים למגע של ילדים */
 button {
   font-family: inherit;
   touch-action: manipulation;
+}
+
+/* רקע בוטני עדין למסך הבית — אור מנומר, לא שטוח */
+.home-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(58% 38% at 14% 6%, rgba(250, 204, 21, 0.18), transparent 70%),
+    radial-gradient(52% 42% at 92% 10%, rgba(56, 189, 248, 0.16), transparent 72%),
+    radial-gradient(75% 45% at 50% 104%, rgba(22, 163, 74, 0.14), transparent 72%);
+}
+
+/* כניסה מדורגת אחת — הדף "מתיישב" פעם אחת בטעינה */
+@keyframes homeRise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.home-rise > * {
+  animation: homeRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.home-rise > *:nth-child(1) {
+  animation-delay: 0.02s;
+}
+.home-rise > *:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.home-rise > *:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.home-rise > *:nth-child(4) {
+  animation-delay: 0.23s;
+}
+.home-rise > *:nth-child(5) {
+  animation-delay: 0.31s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-rise > * {
+    animation: none;
+  }
 }
 
 @layer components {
