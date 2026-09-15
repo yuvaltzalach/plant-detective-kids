@@ -14,15 +14,24 @@ function randomPlant(): PlantContent {
 // עיגולי ה"ענן" — נמזגים לצורה חלקה דרך פילטר ה-gooey.
 type Puff = { s: number; left?: string; right?: string; top?: string; bottom?: string };
 const CLOUD_PUFFS: Puff[] = [
-  { left: "6%", top: "-7px", s: 34 },
-  { left: "30%", top: "-12px", s: 40 },
-  { left: "56%", top: "-9px", s: 38 },
-  { left: "80%", top: "-5px", s: 30 },
-  { left: "10%", bottom: "-6px", s: 30 },
-  { left: "42%", bottom: "-9px", s: 34 },
-  { left: "72%", bottom: "-6px", s: 30 },
-  { left: "-6px", top: "34%", s: 26 },
-  { right: "-6px", top: "38%", s: 26 }
+  // קשקושים עליונים
+  { left: "3%", top: "-8px", s: 32 },
+  { left: "19%", top: "-11px", s: 36 },
+  { left: "37%", top: "-12px", s: 38 },
+  { left: "55%", top: "-11px", s: 36 },
+  { left: "72%", top: "-9px", s: 34 },
+  { left: "86%", top: "-5px", s: 28 },
+  // קשקושים תחתונים
+  { left: "8%", bottom: "-7px", s: 30 },
+  { left: "27%", bottom: "-9px", s: 34 },
+  { left: "47%", bottom: "-9px", s: 34 },
+  { left: "67%", bottom: "-8px", s: 32 },
+  { left: "84%", bottom: "-6px", s: 28 },
+  // צדדים
+  { left: "-7px", top: "28%", s: 26 },
+  { left: "-8px", top: "56%", s: 26 },
+  { right: "-7px", top: "30%", s: 26 },
+  { right: "-8px", top: "58%", s: 26 }
 ];
 function puffStyle({ s, ...pos }: Puff) {
   return { ...pos, width: s, height: s } as const;
@@ -52,12 +61,21 @@ export function BotiMascot() {
       <svg width={0} height={0} className="absolute" aria-hidden="true">
         <defs>
           <filter id="cloud-goo">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
             <feColorMatrix
-              in="b"
+              in="blur"
               mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -11"
+              result="goo"
             />
+            {/* קו מתאר: מרחיבים את צורת הענן וצובעים בזהב, ומעליו המילוי */}
+            <feMorphology in="goo" operator="dilate" radius="4" result="d" />
+            <feFlood floodColor="#e0cb8a" result="oc" />
+            <feComposite in="oc" in2="d" operator="in" result="outline" />
+            <feMerge>
+              <feMergeNode in="outline" />
+              <feMergeNode in="goo" />
+            </feMerge>
           </filter>
         </defs>
       </svg>
@@ -86,8 +104,8 @@ export function BotiMascot() {
             </div>
             {/* זנב מחשבה לכיוון הדמות */}
             <div className="cloud-tail" aria-hidden="true">
-              <i style={{ left: "-14px", top: "-8px", width: 15, height: 15 }} />
-              <i style={{ left: "-28px", top: "-1px", width: 9, height: 9 }} />
+              <i style={{ left: "-14px", top: "-8px", width: 16, height: 16 }} />
+              <i style={{ left: "-29px", top: "-1px", width: 10, height: 10 }} />
             </div>
 
             <button

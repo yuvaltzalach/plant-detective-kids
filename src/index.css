@@ -118,17 +118,18 @@ button {
 .cloud-shape i {
   position: absolute;
   display: block;
-  background: #fff;
+  background: #e6f3fa;
   border-radius: 9999px;
 }
 .cloud-shape i.cloud-body {
-  inset: 9px 2px;
-  border-radius: 28px;
+  inset: 10px 4px;
+  border-radius: 26px;
+  background: radial-gradient(120% 120% at 50% 38%, #ffffff 0%, #eaf5fb 60%, #dbeef7 100%);
 }
 .cloud-content {
   position: relative;
   z-index: 1;
-  padding: 24px 16px 14px;
+  padding: 20px 18px 16px;
 }
 /* זנב "מחשבה" — שני עיגולים קטנים לכיוון הדמות (שמאל, אמצע הענן) */
 .cloud-tail {
@@ -143,6 +144,6 @@ button {
 .cloud-tail i {
   position: absolute;
   display: block;
-  background: #fff;
+  background: #e6f3fa;
   border-radius: 9999px;
 }
