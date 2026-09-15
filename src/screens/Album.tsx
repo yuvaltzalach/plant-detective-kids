@@ -35,7 +35,7 @@ export function Album({ state, player, points, level, onCapture }: AlbumProps) {
     <div className="flex flex-1 flex-col px-5 pb-24 pt-2">
       <div className="text-center">
         <h2 className="text-3xl font-black text-leaf-dark">📔 האלבום שלי</h2>
-        <p className="text-leaf-dark/70">
+        <p className="text-leaf-dark/80">
           אספת {collectedCount} מדבקות! {collectedCount >= plants.length ? "🏆 מדהים!" : "קדימה למצוא עוד 🌿"}
         </p>
         {collectedCount > 0 && (
@@ -47,6 +47,16 @@ export function Album({ state, player, points, level, onCapture }: AlbumProps) {
           </button>
         )}
       </div>
+
+      {collectedCount === 0 && (
+        <div className="mt-4 rounded-blob bg-leaf-light/70 p-5 text-center">
+          <div className="text-5xl">🌱</div>
+          <p className="mt-2 text-lg font-black text-leaf-dark">האלבום עוד ריק!</p>
+          <p className="mt-1 text-sm font-bold text-leaf-dark/80">
+            כל צמח שתצלמו יהפוך למדבקה כאן. בואו נמצא את הראשון!
+          </p>
+        </div>
+      )}
 
       <div className="mt-5 grid grid-cols-3 gap-3 sm:grid-cols-4">
         {plants.map((p) => {
@@ -93,7 +103,7 @@ export function Album({ state, player, points, level, onCapture }: AlbumProps) {
         onClick={onCapture}
         className="big-btn fixed bottom-5 left-1/2 -translate-x-1/2 bg-leaf text-xl shadow-xl"
       >
-        📷 צַלְמוּ עוד צמח
+        📷 {collectedCount === 0 ? "צַלְמוּ צמח ראשון" : "צַלְמוּ עוד צמח"}
       </button>
     </div>
   );

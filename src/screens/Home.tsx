@@ -40,7 +40,9 @@ export function Home(props: HomeProps) {
     fn();
   };
 
-  const tile = "rounded-blob bg-white p-4 text-center font-bold text-leaf-dark shadow active:scale-95 transition-transform";
+  const navTile =
+    "rounded-blob bg-white p-3 text-center shadow-sm active:scale-95 transition-transform";
+  const albumPct = totalPlants > 0 ? Math.round((stickerCount / totalPlants) * 100) : 0;
 
   return (
     <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-4">
@@ -73,7 +75,7 @@ export function Home(props: HomeProps) {
       <div className="mt-10 text-center">
         <div className="text-6xl">🌱🔎</div>
         <h1 className="mt-2 text-4xl font-black text-leaf-dark">בלש הצמחים</h1>
-        <p className="mt-1 text-lg text-leaf-dark/70">מצלמים צמח — ומגלים מה הוא!</p>
+        <p className="mt-1 text-lg text-leaf-dark/80">מצלמים צמח — ומגלים מה הוא!</p>
       </div>
 
       <button
@@ -84,56 +86,84 @@ export function Home(props: HomeProps) {
         צַלְמוּ צמח!
       </button>
 
-      {/* אתגר */}
-      <button
-        onClick={go(props.onChallenges)}
-        className="mt-5 w-full max-w-xs rounded-blob bg-sun/20 p-4 text-right shadow active:scale-95 transition-transform"
-      >
-        <div className="flex items-center gap-2 text-sm font-bold text-amber-700">
-          <span>{challenge.id === "custom" ? "אתגר מההורים" : "אתגר היום"}</span>
-          {challengeDoneToday && <span className="text-green-600">✓ הושלם!</span>}
-        </div>
-        <div className="mt-1 flex items-center gap-2 text-lg font-bold text-leaf-dark">
-          <span className="text-3xl">{challenge.emoji}</span>
-          {challenge.text}
-        </div>
-      </button>
-
-      {/* צמח היום */}
-      <button
-        onClick={go(props.onPlantOfDay)}
-        className="mt-3 w-full max-w-xs rounded-blob bg-sky/15 p-4 text-right shadow active:scale-95 transition-transform"
-      >
-        <div className="text-sm font-bold text-sky-700">🌟 צמח היום</div>
-        <div className="mt-1 flex items-center gap-2 text-lg font-bold text-leaf-dark">
-          <span className="text-3xl">{plantOfDay.emoji}</span>
-          {plantOfDay.hebrewName}
-        </div>
-      </button>
-
-      {/* כפתורים מהירים */}
-      <div className="mt-4 grid w-full max-w-xs grid-cols-2 gap-3">
-        <button onClick={go(props.onAlbum)} className={tile}>
-          📔 האלבום שלי
-          <div className="text-xs font-normal text-leaf-dark/50">
-            {stickerCount} / {totalPlants}
-          </div>
-        </button>
-        <button onClick={go(props.onEncyclopedia)} className={tile}>
-          📖 אנציקלופדיה
-        </button>
-        <button onClick={go(props.onGames)} className={tile}>
-          🎮 משחקים
-        </button>
-        <button onClick={go(props.onOnline)} className={tile}>
-          🌍 תחרות אונליין
-        </button>
-        {account?.isParent && (
-          <button onClick={go(props.onParents)} className={`${tile} col-span-2`}>
-            👪 אזור הורים
+      {/* רצועת "היום" — אתגר + צמח היום כיחידה מקובצת אחת */}
+      <section className="mt-6 w-full max-w-xs">
+        <h2 className="mb-2 pr-1 text-sm font-black text-leaf-dark/80">✨ היום</h2>
+        <div className="space-y-2.5">
+          <button
+            onClick={go(props.onChallenges)}
+            className="flex w-full items-center gap-3 rounded-blob bg-sun/25 p-4 text-right shadow-sm active:scale-95 transition-transform"
+          >
+            <span className="text-3xl">{challenge.emoji}</span>
+            <span className="min-w-0 flex-1">
+              <span className="flex items-center gap-2 text-xs font-bold text-amber-800">
+                {challenge.id === "custom" ? "אתגר מההורים" : "אתגר היום"}
+                {challengeDoneToday && <span className="text-green-700">✓ הושלם</span>}
+              </span>
+              <span className="mt-0.5 block truncate text-base font-bold text-leaf-dark">
+                {challenge.text}
+              </span>
+            </span>
+            <span className="text-xl text-leaf-dark/40" aria-hidden="true">
+              ‹
+            </span>
           </button>
-        )}
-      </div>
+
+          <button
+            onClick={go(props.onPlantOfDay)}
+            className="flex w-full items-center gap-3 rounded-blob bg-sky/20 p-4 text-right shadow-sm active:scale-95 transition-transform"
+          >
+            <span className="text-3xl">{plantOfDay.emoji}</span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-xs font-bold text-sky-800">🌟 צמח היום</span>
+              <span className="mt-0.5 block truncate text-base font-bold text-leaf-dark">
+                {plantOfDay.hebrewName}
+              </span>
+            </span>
+            <span className="text-xl text-leaf-dark/40" aria-hidden="true">
+              ‹
+            </span>
+          </button>
+        </div>
+      </section>
+
+      {/* ניווט — שכבה משנית, אריחים קטנים יותר */}
+      <section className="mt-5 w-full max-w-xs">
+        <h2 className="mb-2 pr-1 text-sm font-black text-leaf-dark/80">🧭 עוד</h2>
+        <div className="grid grid-cols-2 gap-3">
+          <button onClick={go(props.onAlbum)} className={navTile}>
+            <div className="text-2xl">📔</div>
+            <div className="mt-1 text-sm font-bold text-leaf-dark">האלבום שלי</div>
+            <div className="mt-1.5 text-[11px] font-bold text-leaf-dark/70">
+              {stickerCount} מתוך {totalPlants}
+            </div>
+            <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-leaf-light">
+              <div
+                className="h-full rounded-full bg-leaf transition-all"
+                style={{ width: `${albumPct}%` }}
+              />
+            </div>
+          </button>
+          <button onClick={go(props.onEncyclopedia)} className={navTile}>
+            <div className="text-2xl">📖</div>
+            <div className="mt-1 text-sm font-bold text-leaf-dark">אנציקלופדיה</div>
+          </button>
+          <button onClick={go(props.onGames)} className={navTile}>
+            <div className="text-2xl">🎮</div>
+            <div className="mt-1 text-sm font-bold text-leaf-dark">משחקים</div>
+          </button>
+          <button onClick={go(props.onOnline)} className={navTile}>
+            <div className="text-2xl">🌍</div>
+            <div className="mt-1 text-sm font-bold text-leaf-dark">תחרות אונליין</div>
+          </button>
+          {account?.isParent && (
+            <button onClick={go(props.onParents)} className={`${navTile} col-span-2`}>
+              <div className="text-2xl">👪</div>
+              <div className="mt-1 text-sm font-bold text-leaf-dark">אזור הורים</div>
+            </button>
+          )}
+        </div>
+      </section>
     </div>
   );
 }

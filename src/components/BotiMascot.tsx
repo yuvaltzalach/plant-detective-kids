@@ -41,7 +41,7 @@ export function BotiMascot() {
           className="shrink-0 drop-shadow-xl active:scale-90"
           aria-label="הדמות שלי"
         >
-          <MascotView mascot={currentMascot} />
+          <MascotView mascot={currentMascot} size={68} />
         </button>
 
         {bubbleOpen && (
