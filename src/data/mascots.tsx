@@ -1,4 +1,4 @@
-import { useId, type JSX } from "react";
+import { useEffect, useId, useState, type JSX } from "react";
 
 // דמויות חיות חמודות בצבעי האפליקציה.
 // יש שני סוגים:
@@ -14,11 +14,77 @@ export interface Mascot {
   Face?: (props: { size?: number }) => JSX.Element;
   /** נתיב לתמונה (למשל "/mascots/lion.png"). */
   image?: string;
+  /** פריים "עיניים עצומות" — יחד עם image יוצר מצמוץ אמיתי (ספרייט). */
+  blink?: string;
+}
+
+/** נגן מצמוץ: מדפדף בין תמונת "עיניים פתוחות" ל"עיניים עצומות". */
+function BlinkImage({
+  base,
+  blink,
+  name,
+  size
+}: {
+  base: string;
+  blink: string;
+  name: string;
+  size: number;
+}) {
+  const [closed, setClosed] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    let t: ReturnType<typeof setTimeout>;
+    const wink = (times: number) => {
+      if (!alive) return;
+      setClosed(true);
+      setTimeout(() => {
+        if (!alive) return;
+        setClosed(false);
+        if (times > 1) setTimeout(() => wink(times - 1), 140);
+      }, 150);
+    };
+    const schedule = () => {
+      t = setTimeout(() => {
+        if (!alive) return;
+        wink(Math.random() < 0.25 ? 2 : 1); // מדי פעם מצמוץ כפול
+        schedule();
+      }, 2200 + Math.random() * 2800);
+    };
+    schedule();
+    return () => {
+      alive = false;
+      clearTimeout(t);
+    };
+  }, []);
+  return (
+    <div className="mascot-alive relative" style={{ width: size, height: size }}>
+      <img
+        src={base}
+        alt={name}
+        width={size}
+        height={size}
+        style={{ objectFit: "contain", opacity: closed ? 0 : 1 }}
+        className="drop-shadow"
+      />
+      <img
+        src={blink}
+        alt=""
+        aria-hidden="true"
+        width={size}
+        height={size}
+        style={{ position: "absolute", inset: 0, objectFit: "contain", opacity: closed ? 1 : 0 }}
+        className="drop-shadow"
+      />
+    </div>
+  );
 }
 
 /** מציג דמות — מונפשת אם יש, אחרת תמונה, אחרת איור סטטי. */
 export function MascotView({ mascot, size = 78 }: { mascot: Mascot; size?: number }) {
   if (mascot.Anim) return <mascot.Anim size={size} />;
+  if (mascot.image && mascot.blink) {
+    return <BlinkImage base={mascot.image} blink={mascot.blink} name={mascot.name} size={size} />;
+  }
   if (mascot.image) {
     return (
       <img
@@ -456,9 +522,14 @@ export const MASCOTS: Mascot[] = [
   { id: "frog", name: "קורקי הצפרדע", Face: Frog },
   { id: "dino", name: "דינו הדינוזאור", Face: Dino },
   { id: "bee", name: "זוזי הדבורה", Face: Bee },
+  {
+    id: "puppy-photo",
+    name: "רקסי (מונפש)",
+    image: "/mascots/puppy.png",
+    blink: "/mascots/puppy-blink.png"
+  },
   { id: "lion-photo", name: "לאון (תמונה)", image: "/mascots/lion.png" },
-  { id: "fawn-photo", name: "עופרי (תמונה)", image: "/mascots/fawn.png" },
-  { id: "puppy-photo", name: "רקסי (תמונה)", image: "/mascots/puppy.png" }
+  { id: "fawn-photo", name: "עופרי (תמונה)", image: "/mascots/fawn.png" }
 ];
 
 export function mascotById(id: string): Mascot {
