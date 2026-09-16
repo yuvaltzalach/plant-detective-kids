@@ -11,31 +11,12 @@ function randomPlant(): PlantContent {
   return all[Math.floor(Math.random() * all.length)];
 }
 
-// עיגולי ה"ענן" — נמזגים לצורה חלקה דרך פילטר ה-gooey.
-type Puff = { s: number; left?: string; right?: string; top?: string; bottom?: string };
-const CLOUD_PUFFS: Puff[] = [
-  // קשקושים עליונים
-  { left: "3%", top: "-8px", s: 32 },
-  { left: "19%", top: "-11px", s: 36 },
-  { left: "37%", top: "-12px", s: 38 },
-  { left: "55%", top: "-11px", s: 36 },
-  { left: "72%", top: "-9px", s: 34 },
-  { left: "86%", top: "-5px", s: 28 },
-  // קשקושים תחתונים
-  { left: "8%", bottom: "-7px", s: 30 },
-  { left: "27%", bottom: "-9px", s: 34 },
-  { left: "47%", bottom: "-9px", s: 34 },
-  { left: "67%", bottom: "-8px", s: 32 },
-  { left: "84%", bottom: "-6px", s: 28 },
-  // צדדים
-  { left: "-7px", top: "28%", s: 26 },
-  { left: "-8px", top: "56%", s: 26 },
-  { right: "-7px", top: "30%", s: 26 },
-  { right: "-8px", top: "58%", s: 26 }
-];
-function puffStyle({ s, ...pos }: Puff) {
-  return { ...pos, width: s, height: s } as const;
-}
+// צורת הענן — נתיב SVG של ענן אמיתי (בליטות עגולות בכל ההיקף), viewBox 0 0 280 230.
+const CLOUD_PATH =
+  "M 140.0 32.3 A 40.0 40.0 0 0 1 211.4 33.6 A 31.6 31.6 0 0 1 242.6 80.6 " +
+  "A 31.2 31.2 0 0 1 270.7 128.8 A 34.0 34.0 0 0 1 225.2 169.2 A 34.6 34.6 0 0 1 177.2 207.9 " +
+  "A 39.4 39.4 0 0 1 108.2 194.4 A 39.1 39.1 0 0 1 40.2 178.4 A 29.7 29.7 0 0 1 28.3 126.8 " +
+  "A 29.5 29.5 0 0 1 19.9 74.8 A 37.0 37.0 0 0 1 79.0 45.4 A 34.9 34.9 0 0 1 140.0 32.3 Z";
 
 export function BotiMascot() {
   const [plant, setPlant] = useState<PlantContent>(() => randomPlant());
@@ -57,29 +38,6 @@ export function BotiMascot() {
 
   return (
     <>
-      {/* פילטר gooey — ממזג את עיגולי הענן לצורה חלקה */}
-      <svg width={0} height={0} className="absolute" aria-hidden="true">
-        <defs>
-          <filter id="cloud-goo">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -11"
-              result="goo"
-            />
-            {/* קו מתאר: מרחיבים את צורת הענן וצובעים בזהב, ומעליו המילוי */}
-            <feMorphology in="goo" operator="dilate" radius="4" result="d" />
-            <feFlood floodColor="#e0cb8a" result="oc" />
-            <feComposite in="oc" in2="d" operator="in" result="outline" />
-            <feMerge>
-              <feMergeNode in="outline" />
-              <feMergeNode in="goo" />
-            </feMerge>
-          </filter>
-        </defs>
-      </svg>
-
       {/* בּוֹטִי — קבוע בצד שמאל למעלה, בלי ריחוף. הענן נפתח רק בלחיצה, ומופיע מימין לדמות. */}
       <div className="fixed left-2 top-24 z-50 flex items-center gap-3" dir="ltr">
         <button
@@ -95,32 +53,37 @@ export function BotiMascot() {
 
         {bubbleOpen && (
           <div className="cloud" dir="rtl">
-            {/* שכבת הצורה — עיגולים לבנים שנמזגים לענן */}
-            <div className="cloud-shape" aria-hidden="true">
-              <i className="cloud-body" />
-              {CLOUD_PUFFS.map((p, i) => (
-                <i key={i} style={puffStyle(p)} />
-              ))}
-            </div>
-            {/* זנב מחשבה לכיוון הדמות */}
-            <div className="cloud-tail" aria-hidden="true">
-              <i style={{ left: "-14px", top: "-8px", width: 16, height: 16 }} />
-              <i style={{ left: "-29px", top: "-1px", width: 10, height: 10 }} />
-            </div>
-
-            <button
-              onClick={() => setBubbleOpen(false)}
-              className="absolute left-2 top-2 z-20 flex h-6 w-6 items-center justify-center rounded-full bg-purple-200 text-xs font-bold text-purple-700"
-              aria-label="סגירה"
+            {/* גוף הענן — נמתח לפי גודל הטקסט, עם קו מתאר בעובי קבוע */}
+            <svg
+              className="cloud-svg"
+              viewBox="0 0 280 230"
+              preserveAspectRatio="none"
+              aria-hidden="true"
             >
-              ✕
+              <path
+                d={CLOUD_PATH}
+                fill="#fff"
+                stroke="#7cc79a"
+                strokeWidth="4"
+                strokeLinejoin="round"
+                vectorEffect="non-scaling-stroke"
+              />
+              <path
+                d={CLOUD_PATH}
+                fill="none"
+                stroke="#c9ecd6"
+                strokeWidth="1.5"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+            {/* בועות מחשבה עגולות לכיוון הדמות */}
+            <span className="cloud-dot" style={{ width: 14, height: 14, left: -8, bottom: "22%" }} />
+            <span className="cloud-dot" style={{ width: 9, height: 9, left: -20, bottom: "12%" }} />
+
+            <button onClick={openPopup} className="cloud-content text-center text-sm font-bold text-leaf-dark">
+              🤔 חידה: {plant.facts[0]}
+              <span className="mt-1 block text-xs text-purple-600 underline">לחצו לגילוי!</span>
             </button>
-            <div className="cloud-content">
-              <button onClick={openPopup} className="text-right text-sm font-bold text-leaf-dark">
-                🤔 חידה: {plant.facts[0]}
-                <span className="mt-1 block text-xs text-purple-600 underline">לחצו לגילוי!</span>
-              </button>
-            </div>
           </div>
         )}
       </div>

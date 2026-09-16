@@ -103,47 +103,33 @@ button {
   }
 }
 
-/* ענן-מחשבה gooey — עיגולים לבנים שנמזגים דרך פילטר SVG לצורת ענן חלקה. */
+/* ענן-מחשבה — נתיב SVG של ענן אמיתי שנמתח לפי גודל הטקסט (קו מתאר בעובי קבוע). */
 .cloud {
   position: relative;
-  max-width: 190px;
-  filter: drop-shadow(0 8px 14px rgba(20, 83, 45, 0.18));
+  display: inline-block;
+  max-width: 200px;
+  filter: drop-shadow(0 8px 12px rgba(20, 83, 45, 0.22));
 }
-.cloud-shape {
+.cloud-svg {
   position: absolute;
-  inset: 0;
-  z-index: 0;
-  filter: url(#cloud-goo);
-}
-.cloud-shape i {
-  position: absolute;
-  display: block;
-  background: #e6f3fa;
-  border-radius: 9999px;
-}
-.cloud-shape i.cloud-body {
-  inset: 10px 4px;
-  border-radius: 26px;
-  background: radial-gradient(120% 120% at 50% 38%, #ffffff 0%, #eaf5fb 60%, #dbeef7 100%);
+  /* הענן נמתח מעבר לטקסט כדי לכסות אותו לגמרי */
+  inset: -14px -20px;
+  overflow: visible;
 }
 .cloud-content {
   position: relative;
-  z-index: 1;
-  padding: 20px 18px 16px;
-}
-/* זנב "מחשבה" — שני עיגולים קטנים לכיוון הדמות (שמאל, אמצע הענן) */
-.cloud-tail {
-  position: absolute;
-  left: -6px;
-  top: 52%;
-  width: 0;
-  height: 0;
-  z-index: 0;
-  filter: url(#cloud-goo);
-}
-.cloud-tail i {
-  position: absolute;
+  z-index: 2;
   display: block;
-  background: #e6f3fa;
+  width: 100%;
+  padding: 26px 30px;
+  text-align: center;
+}
+/* בועות מחשבה עגולות לכיוון הדמות */
+.cloud-dot {
+  position: absolute;
+  z-index: 1;
+  background: #fff;
+  border: 3px solid #7cc79a;
   border-radius: 9999px;
+  box-sizing: border-box;
 }
