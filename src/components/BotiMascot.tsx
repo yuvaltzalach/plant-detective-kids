@@ -81,9 +81,9 @@ export function BotiMascot() {
             <span className="cloud-dot" style={{ width: 14, height: 14, left: -24, bottom: "16%" }} />
             <span className="cloud-dot" style={{ width: 9, height: 9, left: -38, bottom: "5%" }} />
 
-            <button onClick={openPopup} className="cloud-content text-center text-sm font-bold text-leaf-dark">
+            <button onClick={openPopup} className="cloud-content text-center text-base font-bold leading-snug text-leaf-dark">
               🤔 חידה: {plant.facts[0]}
-              <span className="mt-1 block text-xs text-purple-600 underline">לחצו לגילוי!</span>
+              <span className="mt-1 block text-sm text-purple-600 underline">לחצו לגילוי!</span>
             </button>
           </div>
         )}
