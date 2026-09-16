@@ -121,14 +121,16 @@ export default function App() {
   // לא מחוברים → מסך חשבון
   if (!a.isLoggedIn) {
     return (
-      <div className="mx-auto flex min-h-screen max-w-lg flex-col">
+      <div className="relative mx-auto flex min-h-screen max-w-lg flex-col">
+        <div className="app-bg" aria-hidden="true" />
         <Auth onSignup={a.signup} onLogin={a.login} onForgot={a.forgotInfo} />
       </div>
     );
   }
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-lg flex-col">
+    <div className="relative mx-auto flex min-h-screen max-w-lg flex-col">
+      <div className="app-bg" aria-hidden="true" />
       {screen !== "home" && screen !== "game" && (
         <TopBar
           points={a.state.points}

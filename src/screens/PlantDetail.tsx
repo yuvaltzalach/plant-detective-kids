@@ -9,8 +9,8 @@ interface PlantDetailProps {
 
 export function PlantDetail({ plant, collected }: PlantDetailProps) {
   return (
-    <div className="flex flex-1 flex-col px-5 pb-10 pt-2">
-      <div className="mx-auto w-full max-w-md overflow-hidden rounded-blob bg-white shadow-xl">
+    <div className="screen-rise flex flex-1 flex-col px-5 pb-10 pt-2">
+      <div className="mx-auto w-full max-w-md overflow-hidden rounded-blob bg-white ring-1 ring-leaf-dark/5 shadow-[0_20px_44px_-18px_rgba(20,83,45,0.5)]">
         <PlantImage plant={plant} className="h-56 w-full" />
         <div className="p-5 text-center">
           <div className="text-5xl">{plant.emoji}</div>

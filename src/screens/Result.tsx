@@ -40,8 +40,8 @@ export function Result({ result, record, onCapture, onAlbum }: ResultProps) {
   const speakText = `${result.hebrewName}. ${result.facts.join(" ")}`;
 
   return (
-    <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-2">
-      <div className="w-full max-w-md animate-pop rounded-blob bg-white p-5 shadow-xl">
+    <div className="screen-rise flex flex-1 flex-col items-center px-6 pb-10 pt-2">
+      <div className="w-full max-w-md animate-pop rounded-blob bg-white p-5 ring-1 ring-leaf-dark/5 shadow-[0_20px_44px_-18px_rgba(20,83,45,0.5)]">
         {result.imageUrl && (
           <img
             src={result.imageUrl}

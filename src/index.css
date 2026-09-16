@@ -96,11 +96,51 @@ button {
   }
 }
 
+/* רקע בוטני גלובלי — אור מנומר מאחורי כל המסכים */
+.app-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  background:
+    radial-gradient(48% 32% at 12% 4%, rgba(250, 204, 21, 0.16), transparent 70%),
+    radial-gradient(46% 36% at 94% 8%, rgba(56, 189, 248, 0.14), transparent 72%),
+    radial-gradient(70% 40% at 50% 102%, rgba(22, 163, 74, 0.12), transparent 72%);
+}
+
+/* כניסה עדינה לכל מסך (fade-up אחד) */
+.screen-rise {
+  animation: homeRise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .screen-rise {
+    animation: none;
+  }
+}
+
 @layer components {
   .big-btn {
     @apply rounded-blob px-8 py-5 text-2xl font-bold text-white shadow-lg
       active:scale-95 transition-transform select-none;
   }
+  /* כרטיס לבן מעוצב עם צל רך וטבעת עדינה — עומק אחיד בכל המסכים */
+  .soft-card {
+    @apply rounded-blob bg-white ring-1 ring-leaf-dark/5
+      shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)];
+  }
+}
+/* זוהר שמש רך מאחורי אמוג'י כותרת */
+.title-glow {
+  position: absolute;
+  left: 50%;
+  top: 0.25rem;
+  height: 5rem;
+  width: 6rem;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: rgba(250, 204, 21, 0.28);
+  filter: blur(28px);
+  pointer-events: none;
 }
 
 /* ענן-מחשבה — נתיב SVG של ענן אמיתי. Grid: הענן והטקסט באותו תא, כך שהגובה נקבע

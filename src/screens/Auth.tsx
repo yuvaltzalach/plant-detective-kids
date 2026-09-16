@@ -61,7 +61,7 @@ export function Auth({ onSignup, onLogin, onForgot }: AuthProps) {
   // מסך שכחתי סיסמה
   if (mode === "forgot") {
     return (
-      <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-8">
+      <div className="screen-rise flex flex-1 flex-col items-center px-6 pb-10 pt-8">
         <div className="text-6xl">🔑</div>
         <h2 className="mt-2 text-2xl font-black text-leaf-dark">שכחתי סיסמה</h2>
         <p className="mt-1 text-center text-leaf-dark/80">הכניסו את שם המשתמש</p>
@@ -98,7 +98,7 @@ export function Auth({ onSignup, onLogin, onForgot }: AuthProps) {
     username.trim().length >= 2 && password.length >= 4 && (mode === "login" || Number(age) >= 3);
 
   return (
-    <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-8">
+    <div className="screen-rise flex flex-1 flex-col items-center px-6 pb-10 pt-8">
       <div className="text-center">
         <div className="text-6xl animate-float">🌱🔎</div>
         <h1 className="mt-2 text-4xl font-black text-leaf-dark">בלש הצמחים</h1>

@@ -44,7 +44,7 @@ export function OnlineGroup(props: OnlineGroupProps) {
   // ── מסך הצטרפות ──
   if (!code) {
     return (
-      <div className="flex flex-1 flex-col items-center px-6 pb-10 pt-4 text-center">
+      <div className="screen-rise flex flex-1 flex-col items-center px-6 pb-10 pt-4 text-center">
         <div className="text-6xl animate-float">🌍🏆</div>
         <h2 className="mt-2 text-3xl font-black text-leaf-dark">תחרות אונליין</h2>
         <p className="mt-2 text-leaf-dark/80">
@@ -92,7 +92,7 @@ export function OnlineGroup(props: OnlineGroupProps) {
 
   // ── מסך קבוצה ──
   return (
-    <div className="flex flex-1 flex-col px-5 pb-10 pt-2">
+    <div className="screen-rise flex flex-1 flex-col px-5 pb-10 pt-2">
       <h2 className="text-center text-3xl font-black text-leaf-dark">🌍 הקבוצה שלנו</h2>
 
       <div className="mt-3 rounded-blob bg-leaf-light/60 p-4 text-center">

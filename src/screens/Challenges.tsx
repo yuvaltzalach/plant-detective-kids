@@ -23,11 +23,16 @@ export function Challenges({ state, challenge, onCapture, onCompleteManually }: 
   };
 
   return (
-    <div className="flex flex-1 flex-col px-5 pb-10 pt-2">
-      <h2 className="text-center text-3xl font-black text-leaf-dark">🎯 אתגרים ותגים</h2>
+    <div className="screen-rise flex flex-1 flex-col px-5 pb-10 pt-2">
+      <div className="relative">
+        <div className="title-glow" aria-hidden="true" />
+        <h2 className="relative text-center text-3xl font-black text-leaf-dark">
+          🎯 אתגרים ותגים
+        </h2>
+      </div>
 
       {/* האתגר הפעיל */}
-      <div className="mt-4 rounded-blob bg-sun/20 p-5 text-center shadow">
+      <div className="mt-4 rounded-blob bg-sun/20 p-5 text-center ring-1 ring-amber-900/5 shadow-[0_10px_24px_-14px_rgba(120,53,15,0.45)]">
         <div className="text-sm font-bold text-amber-700">
           {isCustom ? "אתגר מההורים 👪" : "האתגר של היום"}
         </div>

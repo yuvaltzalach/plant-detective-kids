@@ -32,9 +32,14 @@ export function Encyclopedia({ state, onOpenPlant }: EncyclopediaProps) {
   }, [plants, query, filter]);
 
   return (
-    <div className="flex flex-1 flex-col px-5 pb-10 pt-2">
-      <h2 className="text-center text-3xl font-black text-leaf-dark">📖 אנציקלופדיית הצמחים</h2>
-      <p className="text-center text-leaf-dark/80">{plants.length} צמחים ללמוד ולגלות</p>
+    <div className="screen-rise flex flex-1 flex-col px-5 pb-10 pt-2">
+      <div className="relative">
+        <div className="title-glow" aria-hidden="true" />
+        <h2 className="relative text-center text-3xl font-black text-leaf-dark">
+          📖 אנציקלופדיית הצמחים
+        </h2>
+        <p className="text-center text-leaf-dark/80">{plants.length} צמחים ללמוד ולגלות</p>
+      </div>
 
       <input
         value={query}
@@ -67,7 +72,7 @@ export function Encyclopedia({ state, onOpenPlant }: EncyclopediaProps) {
                 playPop();
                 onOpenPlant(p.id);
               }}
-              className="flex w-full items-center gap-3 rounded-2xl bg-white p-3 text-right shadow active:scale-95"
+              className="flex w-full items-center gap-3 rounded-2xl bg-white p-3 text-right ring-1 ring-leaf-dark/5 shadow-[0_8px_18px_-14px_rgba(20,83,45,0.4)] active:scale-95 transition-transform"
             >
               <span className="text-3xl">{p.emoji}</span>
               <span className="flex-1">

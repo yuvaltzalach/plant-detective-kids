@@ -77,11 +77,11 @@ export function Parents(props: ParentsProps) {
   };
 
   return (
-    <div className="flex flex-1 flex-col gap-6 px-5 pb-12 pt-2">
+    <div className="screen-rise flex flex-1 flex-col gap-6 px-5 pb-12 pt-2">
       <h2 className="text-center text-3xl font-black text-leaf-dark">👪 אזור הורים</h2>
 
       {/* הילדים המקושרים */}
-      <section className="rounded-blob bg-white p-5 shadow">
+      <section className="rounded-blob bg-white p-5 ring-1 ring-leaf-dark/5 shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)]">
         <div className="flex items-center justify-between">
           <h3 className="text-xl font-black text-leaf-dark">🧒 הילדים שלי</h3>
           <button onClick={props.onRefreshChildren} className="text-sm font-bold text-leaf underline">
@@ -183,7 +183,7 @@ export function Parents(props: ParentsProps) {
       </section>
 
       {/* אתגר אישי (במכשיר הזה) */}
-      <section className="rounded-blob bg-white p-5 shadow">
+      <section className="rounded-blob bg-white p-5 ring-1 ring-leaf-dark/5 shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)]">
         <h3 className="text-xl font-black text-leaf-dark">🎯 אתגר אישי</h3>
         <p className="mt-1 text-sm text-leaf-dark/80">
           למשל "מצאו פרח עם עלים צהובים". יופיע במקום האתגר היומי במכשיר הזה.
@@ -253,7 +253,7 @@ export function Parents(props: ParentsProps) {
       </section>
 
       {/* תחרות אונליין */}
-      <section className="rounded-blob bg-white p-5 shadow">
+      <section className="rounded-blob bg-white p-5 ring-1 ring-leaf-dark/5 shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)]">
         <h3 className="text-xl font-black text-leaf-dark">🏆 תחרות אונליין</h3>
         {!props.online.code ? (
           <>

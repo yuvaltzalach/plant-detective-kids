@@ -46,9 +46,7 @@ export function Home(props: HomeProps) {
   const albumPct = totalPlants > 0 ? Math.round((stickerCount / totalPlants) * 100) : 0;
 
   return (
-    <div className="relative flex flex-1 flex-col">
-      <div aria-hidden="true" className="home-bg" />
-
+    <div className="flex flex-1 flex-col">
       <div className="home-rise flex flex-1 flex-col items-center px-6 pb-10 pt-4">
         {/* זהות המשתמש + יציאה */}
         {account && (

@@ -69,13 +69,16 @@ export function Profile({ account, onChangeUsername, onUpdateProfile }: ProfileP
   };
 
   return (
-    <div className="flex flex-1 flex-col gap-5 px-5 pb-12 pt-2">
-      <h2 className="text-center text-3xl font-black text-leaf-dark">
-        {account.avatar} הפרופיל שלי
-      </h2>
+    <div className="screen-rise flex flex-1 flex-col gap-5 px-5 pb-12 pt-2">
+      <div className="relative">
+        <div className="title-glow" aria-hidden="true" />
+        <h2 className="relative text-center text-3xl font-black text-leaf-dark">
+          {account.avatar} הפרופיל שלי
+        </h2>
+      </div>
 
       {/* דמות */}
-      <section className="rounded-blob bg-white p-5 shadow">
+      <section className="rounded-blob bg-white p-5 ring-1 ring-leaf-dark/5 shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)]">
         <h3 className="text-lg font-black text-leaf-dark">הדמות שלי</h3>
         <div className="mt-3 grid grid-cols-6 gap-2">
           {AVATARS.map((a) => (
@@ -96,7 +99,7 @@ export function Profile({ account, onChangeUsername, onUpdateProfile }: ProfileP
       </section>
 
       {/* דמות מנחה (בּוֹטִי) */}
-      <section className="rounded-blob bg-white p-5 shadow">
+      <section className="rounded-blob bg-white p-5 ring-1 ring-leaf-dark/5 shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)]">
         <h3 className="text-lg font-black text-leaf-dark">הדמות המנחה (בּוֹטִי)</h3>
         <p className="text-xs text-leaf-dark/80">הדמות שמלווה אותך במסך ומספרת חידות.</p>
         <div className="mt-3 grid grid-cols-3 gap-3">
@@ -121,7 +124,7 @@ export function Profile({ account, onChangeUsername, onUpdateProfile }: ProfileP
       </section>
 
       {/* שם */}
-      <section className="rounded-blob bg-white p-5 shadow">
+      <section className="rounded-blob bg-white p-5 ring-1 ring-leaf-dark/5 shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)]">
         <h3 className="text-lg font-black text-leaf-dark">שם משתמש</h3>
         <input
           value={name}
@@ -140,7 +143,7 @@ export function Profile({ account, onChangeUsername, onUpdateProfile }: ProfileP
       </section>
 
       {/* גיל */}
-      <section className="rounded-blob bg-white p-5 shadow">
+      <section className="rounded-blob bg-white p-5 ring-1 ring-leaf-dark/5 shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)]">
         <h3 className="text-lg font-black text-leaf-dark">גיל</h3>
         <p className="text-xs text-leaf-dark/80">מעל 16 = חשבון הורה (עם אזור ניהול).</p>
         <input
@@ -161,7 +164,7 @@ export function Profile({ account, onChangeUsername, onUpdateProfile }: ProfileP
       </section>
 
       {/* סיסמה */}
-      <section className="rounded-blob bg-white p-5 shadow">
+      <section className="rounded-blob bg-white p-5 ring-1 ring-leaf-dark/5 shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)]">
         <h3 className="text-lg font-black text-leaf-dark">שינוי סיסמה</h3>
         <div className="mt-2">
           <PasswordInput value={password} onChange={setPassword} placeholder="סיסמה חדשה" />
