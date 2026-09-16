@@ -103,26 +103,30 @@ button {
   }
 }
 
-/* ענן-מחשבה — נתיב SVG של ענן אמיתי שנמתח לפי גודל הטקסט (קו מתאר בעובי קבוע). */
+/* ענן-מחשבה — נתיב SVG של ענן אמיתי. Grid: הענן והטקסט באותו תא, כך שהגובה נקבע
+   לפי הטקסט והכיתוב ממורכז בדיוק; ה-SVG גדל אחיד מהמרכז ליצירת הילה שווה. */
 .cloud {
   position: relative;
-  display: inline-block;
-  width: max-content;
-  max-width: 190px;
+  display: inline-grid;
+  place-items: center;
+  max-width: 185px;
   filter: drop-shadow(0 8px 12px rgba(20, 83, 45, 0.22));
 }
+.cloud > .cloud-svg,
+.cloud > .cloud-content {
+  grid-area: 1 / 1;
+}
 .cloud-svg {
-  position: absolute;
-  /* הענן נמתח מעבר לטקסט כדי לכסות אותו — שוליים מהודקים */
-  inset: -8px -12px;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.2);
   overflow: visible;
+  z-index: 1;
 }
 .cloud-content {
   position: relative;
   z-index: 2;
-  display: block;
-  width: 100%;
-  padding: 18px 22px;
+  padding: 16px 20px;
   text-align: center;
 }
 /* בועות מחשבה עגולות לכיוון הדמות */

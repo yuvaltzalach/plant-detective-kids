@@ -13,10 +13,11 @@ function randomPlant(): PlantContent {
 
 // צורת הענן — נתיב SVG של ענן אמיתי (בליטות עגולות בכל ההיקף), viewBox 0 0 280 230.
 const CLOUD_PATH =
-  "M 140.0 32.3 A 40.0 40.0 0 0 1 211.4 33.6 A 31.6 31.6 0 0 1 242.6 80.6 " +
-  "A 31.2 31.2 0 0 1 270.7 128.8 A 34.0 34.0 0 0 1 225.2 169.2 A 34.6 34.6 0 0 1 177.2 207.9 " +
-  "A 39.4 39.4 0 0 1 108.2 194.4 A 39.1 39.1 0 0 1 40.2 178.4 A 29.7 29.7 0 0 1 28.3 126.8 " +
-  "A 29.5 29.5 0 0 1 19.9 74.8 A 37.0 37.0 0 0 1 79.0 45.4 A 34.9 34.9 0 0 1 140.0 32.3 Z";
+  "M 140.0 16.2 A 34.5 34.5 0 0 1 206.3 18.6 A 30.7 30.7 0 0 1 242.0 65.6 " +
+  "A 30.2 30.2 0 0 1 272.7 115.0 A 30.2 30.2 0 0 1 242.0 164.4 A 30.7 30.7 0 0 1 206.3 211.4 " +
+  "A 34.5 34.5 0 0 1 140.0 213.8 A 34.5 34.5 0 0 1 73.7 211.4 A 30.7 30.7 0 0 1 38.0 164.4 " +
+  "A 30.2 30.2 0 0 1 7.3 115.0 A 30.2 30.2 0 0 1 38.0 65.6 A 30.7 30.7 0 0 1 73.7 18.6 " +
+  "A 34.5 34.5 0 0 1 140.0 16.2 Z";
 
 export function BotiMascot() {
   const [plant, setPlant] = useState<PlantContent>(() => randomPlant());
@@ -77,8 +78,8 @@ export function BotiMascot() {
               />
             </svg>
             {/* בועות מחשבה עגולות לכיוון הדמות */}
-            <span className="cloud-dot" style={{ width: 14, height: 14, left: -8, bottom: "22%" }} />
-            <span className="cloud-dot" style={{ width: 9, height: 9, left: -20, bottom: "12%" }} />
+            <span className="cloud-dot" style={{ width: 14, height: 14, left: -24, bottom: "16%" }} />
+            <span className="cloud-dot" style={{ width: 9, height: 9, left: -38, bottom: "5%" }} />
 
             <button onClick={openPopup} className="cloud-content text-center text-sm font-bold text-leaf-dark">
               🤔 חידה: {plant.facts[0]}
