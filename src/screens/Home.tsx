@@ -45,9 +45,42 @@ export function Home(props: HomeProps) {
   const chip = "mx-auto flex h-12 w-12 items-center justify-center rounded-2xl text-2xl";
   const albumPct = totalPlants > 0 ? Math.round((stickerCount / totalPlants) * 100) : 0;
 
+  const RAYS = Array.from({ length: 12 }, (_, i) => i * 30);
   return (
-    <div className="flex flex-1 flex-col">
-      <div className="home-rise flex flex-1 flex-col items-center px-6 pb-10 pt-4">
+    <div className="relative flex flex-1 flex-col">
+      {/* סצנת ספר-אגדות: שמש עם קרניים + עננים שטים */}
+      <div className="home-scene" aria-hidden="true">
+        <svg className="sun" viewBox="0 0 120 120">
+          <defs>
+            <radialGradient id="sunG" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stopColor="#fff6c8" />
+              <stop offset="0.6" stopColor="#fde047" />
+              <stop offset="1" stopColor="#f59e0b" />
+            </radialGradient>
+          </defs>
+          <g className="sun-rays">
+            {RAYS.map((deg) => (
+              <rect
+                key={deg}
+                x="57"
+                y="4"
+                width="6"
+                height="20"
+                rx="3"
+                fill="#fbbf24"
+                opacity="0.85"
+                transform={`rotate(${deg} 60 60)`}
+              />
+            ))}
+          </g>
+          <circle cx="60" cy="60" r="30" fill="url(#sunG)" />
+        </svg>
+        <div className="drift-cloud c1" />
+        <div className="drift-cloud c2" />
+        <div className="drift-cloud c3" />
+      </div>
+
+      <div className="home-rise relative z-10 flex flex-1 flex-col items-center px-6 pb-10 pt-4">
         {/* זהות המשתמש + יציאה */}
         {account && (
           <div className="flex w-full max-w-xs items-center justify-between">
@@ -79,7 +112,9 @@ export function Home(props: HomeProps) {
             aria-hidden="true"
             className="pointer-events-none absolute left-1/2 top-1 h-24 w-28 -translate-x-1/2 rounded-full bg-sun/30 blur-2xl"
           />
-          <div className="relative text-6xl drop-shadow-sm">🌱🔎</div>
+          <div className="relative text-6xl drop-shadow-sm">
+            🌱<span className="scan">🔎</span>
+          </div>
           <h1 className="mt-2 text-4xl font-black text-leaf-dark">בלש הצמחים</h1>
           <p className="mt-1 text-lg text-leaf-dark/80">מצלמים צמח — ומגלים מה הוא!</p>
         </div>
