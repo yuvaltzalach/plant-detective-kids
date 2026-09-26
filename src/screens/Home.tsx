@@ -240,6 +240,7 @@ export function Home(props: HomeProps) {
                 </div>
               )}
             </div>
+            <img src="/art/hero-foreground.webp" alt="" className="hero-illustrated-foreground" aria-hidden="true" />
           </div>
 
           {/* 3. הפעולה הראשית */}
