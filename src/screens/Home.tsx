@@ -5,28 +5,17 @@ import type { Challenge } from "../data/challenges";
 import type { PlantContent } from "../types";
 import type { PublicAccount } from "../lib/auth";
 import {
-  AlbumArt,
-  BookArt,
-  CameraArt,
-  ChallengeArt,
   ChevronForward,
   DoorArt,
-  GamesArt,
-  GlobeArt,
-  HeroPlant,
-  HillArt,
   ParentsArt,
   PlantSpecimenArt
 } from "../components/HomeArt";
 import {
   BeeTrail,
   Butterfly,
-  GardenCanopy,
-  GardenClearing,
   GardenEdgeVine,
   EdgeLeafLarge,
   GardenFloor,
-  HeroForeground,
   PawTrail,
   StoneBloom
 } from "../components/Garden";
@@ -187,7 +176,6 @@ export function Home(props: HomeProps) {
         <div className="drift-cloud c1" />
         <div className="drift-cloud c2" />
         <div className="drift-cloud c3" />
-        <GardenCanopy className="garden-canopy" />
       </div>
 
       <div className="home-rise relative z-10 flex flex-1 flex-col items-center px-4 pt-3">
@@ -236,9 +224,6 @@ export function Home(props: HomeProps) {
           <div className="hero-stage relative h-[226px]">
             {/* רקע רחוק → גבעה → צמחייה (אמצע) → הכלבלב → פרפר */}
             <div className="stage-glow" aria-hidden="true" />
-            <GardenClearing className="garden-deco hero-clearing" />
-            <HillArt className="absolute -inset-x-4 bottom-0 h-[54px] w-[calc(100%+2rem)] opacity-60" />
-            <HeroPlant className="absolute bottom-5 right-[4%] h-[102px] w-[63px]" />
             <Butterfly className="garden-deco hero-butterfly" />
             <div className="puppy-hop absolute bottom-0 left-1/2 z-[1] -translate-x-1/2">
               <HeroPuppy size={208} onTap={boti.toggleBubble} expanded={boti.bubbleOpen} />
@@ -255,14 +240,13 @@ export function Home(props: HomeProps) {
                 </div>
               )}
             </div>
-            <HeroForeground className="garden-deco hero-foreground" />
           </div>
 
           {/* 3. הפעולה הראשית */}
           <button onClick={go(props.onCapture)} className="capture-cta relative z-10 -mt-5 w-full">
             <span className="flex items-center justify-center gap-4">
               <span className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-[1.35rem] bg-white/15">
-                <CameraArt className="h-[52px] w-[52px]" />
+                <img src="/art/camera.webp" alt="" className="h-[60px] w-[60px] object-contain" />
               </span>
               <span className="font-display text-[1.85rem] font-black">צַלְמוּ צמח!</span>
             </span>
@@ -279,7 +263,11 @@ export function Home(props: HomeProps) {
           <div className="mt-11 grid grid-cols-2 gap-3">
             <button onClick={go(props.onPlantOfDay)} className="explorer-card explorer-card--mint station">
               <span className="station-object station-object--plant">
-                <PlantSpecimenArt category={plantOfDay.category} className="h-full w-full" />
+                {plantOfDay.hebrewName.includes("שקד") ? (
+                  <img src="/art/almond.webp" alt="" className="h-full w-full object-contain" />
+                ) : (
+                  <PlantSpecimenArt category={plantOfDay.category} className="h-full w-full" />
+                )}
               </span>
               <span className="block text-xs font-bold text-leaf-dark">צמח היום</span>
               <span className="mt-0.5 line-clamp-2 text-[15px] font-bold leading-snug text-forest">
@@ -292,7 +280,7 @@ export function Home(props: HomeProps) {
             </button>
             <button onClick={go(props.onChallenges)} className="explorer-card explorer-card--sun station">
               <span className="station-object station-object--challenge">
-                <ChallengeArt done={challengeDoneToday} className="h-full w-full" />
+                <img src="/art/magnifier.webp" alt="" className="h-full w-full object-contain" />
               </span>
               {challengeDoneToday && <span className="done-stamp">✓ הושלם</span>}
               <span className="block text-xs font-bold text-amber-800">
@@ -319,7 +307,7 @@ export function Home(props: HomeProps) {
 
           <button onClick={go(props.onAlbum)} className="explorer-card explorer-card--peach album-card">
             <span className="album-object">
-              <AlbumArt className="h-full w-full" />
+              <img src="/art/album.webp" alt="" className="h-full w-full object-contain" />
             </span>
             <span className="min-w-0 flex-1 text-right">
               <span className="block text-base font-black text-forest">האלבום שלי</span>
@@ -337,19 +325,19 @@ export function Home(props: HomeProps) {
           <div className="mt-11 grid grid-cols-3 gap-3">
             <button onClick={go(props.onEncyclopedia)} className="explorer-card explorer-card--mint activity-tile">
               <span className="tile-object tile-object--book">
-                <BookArt className="h-full w-full" />
+                <img src="/art/book.webp" alt="" className="h-full w-full object-contain" />
               </span>
               <span className="text-[13px] font-bold leading-tight text-forest">אנציקלופדיה</span>
             </button>
             <button onClick={go(props.onGames)} className="explorer-card explorer-card--lilac activity-tile">
               <span className="tile-object tile-object--games">
-                <GamesArt className="h-full w-full" />
+                <img src="/art/games.webp" alt="" className="h-full w-full object-contain" />
               </span>
               <span className="text-[13px] font-bold leading-tight text-forest">משחקים</span>
             </button>
             <button onClick={go(props.onOnline)} className="explorer-card explorer-card--sky activity-tile">
               <span className="tile-object tile-object--globe">
-                <GlobeArt className="h-full w-full" />
+                <img src="/art/globe.webp" alt="" className="h-full w-full object-contain" />
               </span>
               <span className="text-[13px] font-bold leading-tight text-forest">תחרות אונליין</span>
             </button>

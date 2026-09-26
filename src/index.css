@@ -941,7 +941,50 @@ button {
   .album-card { padding-left: 108px; }
   .album-object { width: 120px; height: 112px; top: -18px; }
   .activity-tile { padding-inline: 2px; }
-  .activity-tile > span:last-child { font-size: 11px; }
+.activity-tile > span:last-child { font-size: 11px; }
+}
+
+/* Illustrated Garden World: detailed assets behind live, accessible controls. */
+.home-wash {
+  background:
+    linear-gradient(180deg, transparent 0, transparent 420px, #fff9e9 680px, #fff9e9 100%),
+    url('/art/garden-sky.webp') center top / 100% auto no-repeat,
+    #fff9e9;
+}
+.home-rise {
+  background: url('/art/garden-frame.webp') center top / 100% 100% no-repeat;
+}
+.home-scene::after { display: none; }
+.stage-glow { opacity: .18; }
+.hero-stage { height: 225px; }
+.garden-marker {
+  min-width: 202px;
+  height: 70px;
+  background: url('/art/wood-sign.webp') center / 100% 100% no-repeat;
+  filter: drop-shadow(0 4px 3px rgba(98,69,29,.22));
+}
+.garden-marker__sign { display: none; }
+.garden-marker > span { margin-top: 3px; }
+.section-heading { min-height: 70px; }
+.station-object, .tile-object, .album-object { filter: drop-shadow(-3px 6px 5px rgba(66,67,26,.26)); }
+.station-object--challenge, .station-object--plant {
+  top: -43px;
+  width: 123px;
+  height: 123px;
+}
+.station { padding-top: 84px; }
+.album-object { width: 158px; height: 139px; }
+.tile-object { width: 112px; height: 108px; top: -44px; margin-left: -56px; }
+.tile-object--games { top: -46px; }
+.tile-object--globe { width: 106px; height: 109px; top: -46px; margin-left: -53px; }
+.activity-tile { padding-top: 75px; }
+.capture-cta { background: linear-gradient(165deg,#39c977,#10a85b 50%,#087448); }
+.capture-cta > span > span:first-child { background: none; }
+.garden-floor { opacity: .35; }
+@media (max-width: 370px) {
+  .station-object--challenge, .station-object--plant { width: 104px; height: 104px; }
+  .album-object { width: 126px; height: 113px; }
+  .tile-object, .tile-object--globe { width: 94px; height: 94px; margin-left: -47px; }
 }
 /* זוהר שמש רך מאחורי אמוג'י כותרת */
 .title-glow {
