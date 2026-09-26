@@ -21,14 +21,12 @@ import {
 import {
   BeeTrail,
   Butterfly,
-  EdgeFern,
-  EdgeLeaf,
+  GardenCanopy,
+  GardenClearing,
+  GardenEdgeVine,
   EdgeLeafLarge,
   GardenFloor,
-  HeroBackdrop,
   HeroForeground,
-  HeroGardenLeft,
-  HeroGardenRight,
   PawTrail,
   StoneBloom
 } from "../components/Garden";
@@ -189,6 +187,7 @@ export function Home(props: HomeProps) {
         <div className="drift-cloud c1" />
         <div className="drift-cloud c2" />
         <div className="drift-cloud c3" />
+        <GardenCanopy className="garden-canopy" />
       </div>
 
       <div className="home-rise relative z-10 flex flex-1 flex-col items-center px-4 pt-3">
@@ -234,18 +233,15 @@ export function Home(props: HomeProps) {
 
         {/* הבמה: הכלבלב יושב על גבעה ליד צמח, ומציץ מעל כפתור הצילום */}
         <div className="relative mt-2 w-full max-w-sm">
-          <div className="relative h-[176px]">
+          <div className="hero-stage relative h-[226px]">
             {/* רקע רחוק → גבעה → צמחייה (אמצע) → הכלבלב → פרפר */}
             <div className="stage-glow" aria-hidden="true" />
-            <HeroBackdrop className="garden-deco hero-backdrop" />
-            <HillArt className="absolute -inset-x-4 bottom-0 h-[64px] w-[calc(100%+2rem)]" />
-            <EdgeLeaf className="garden-deco hero-edge-leaf" />
-            <HeroGardenLeft className="garden-deco hero-garden-left" />
-            <HeroGardenRight className="garden-deco hero-garden-right" />
-            <HeroPlant className="absolute bottom-5 right-[7%] h-[128px] w-[76px]" />
+            <GardenClearing className="garden-deco hero-clearing" />
+            <HillArt className="absolute -inset-x-4 bottom-0 h-[54px] w-[calc(100%+2rem)] opacity-60" />
+            <HeroPlant className="absolute bottom-5 right-[4%] h-[102px] w-[63px]" />
             <Butterfly className="garden-deco hero-butterfly" />
-            <div className="puppy-hop absolute bottom-0 left-1/2 -translate-x-1/2">
-              <HeroPuppy size={168} onTap={boti.toggleBubble} expanded={boti.bubbleOpen} />
+            <div className="puppy-hop absolute bottom-0 left-1/2 z-[1] -translate-x-1/2">
+              <HeroPuppy size={208} onTap={boti.toggleBubble} expanded={boti.bubbleOpen} />
               {boti.bubbleOpen ? (
                 <RiddleCloud
                   plant={boti.plant}
@@ -275,12 +271,25 @@ export function Home(props: HomeProps) {
 
         {/* 4. היום בגינה — שתי "תחנות גילוי": משימת בלש (זכוכית מגדלת) וגילוי בוטני (דגימה) */}
         <section className="relative mt-8 w-full max-w-sm" aria-labelledby="home-today">
-          <EdgeFern className="garden-deco deco-fern" />
+          <GardenEdgeVine className="garden-deco section-vine section-vine--today" />
           <SectionHeading id="home-today" accessory={<PawTrail className="h-9 w-[110px]" />}>
             היום בגינה
           </SectionHeading>
           <span className="journey-fragment journey-fragment--today" aria-hidden="true">✿ · · ·</span>
           <div className="mt-11 grid grid-cols-2 gap-3">
+            <button onClick={go(props.onPlantOfDay)} className="explorer-card explorer-card--mint station">
+              <span className="station-object station-object--plant">
+                <PlantSpecimenArt category={plantOfDay.category} className="h-full w-full" />
+              </span>
+              <span className="block text-xs font-bold text-leaf-dark">צמח היום</span>
+              <span className="mt-0.5 line-clamp-2 text-[15px] font-bold leading-snug text-forest">
+                {plantOfDay.hebrewName}
+              </span>
+              <span className="mt-auto flex w-full items-center justify-between gap-2 pt-2">
+                <span className="specimen-tag">{plantOfDay.category}</span>
+                <ChevronForward className="h-5 w-5 text-leaf-dark/45" />
+              </span>
+            </button>
             <button onClick={go(props.onChallenges)} className="explorer-card explorer-card--sun station">
               <span className="station-object station-object--challenge">
                 <ChallengeArt done={challengeDoneToday} className="h-full w-full" />
@@ -296,25 +305,12 @@ export function Home(props: HomeProps) {
                 <ChevronForward className="h-5 w-5 text-amber-700/45" />
               </span>
             </button>
-
-            <button onClick={go(props.onPlantOfDay)} className="explorer-card explorer-card--mint station">
-              <span className="station-object station-object--plant">
-                <PlantSpecimenArt category={plantOfDay.category} className="h-full w-full" />
-              </span>
-              <span className="block text-xs font-bold text-leaf-dark">צמח היום</span>
-              <span className="mt-0.5 line-clamp-2 text-[15px] font-bold leading-snug text-forest">
-                {plantOfDay.hebrewName}
-              </span>
-              <span className="mt-auto flex w-full items-center justify-between gap-2 pt-2">
-                <span className="specimen-tag">{plantOfDay.category}</span>
-                <ChevronForward className="h-5 w-5 text-leaf-dark/45" />
-              </span>
-            </button>
           </div>
         </section>
 
         {/* 5. פעילויות — אלבום השדה (חפץ-גיבור) ושלושה כלי חוקר */}
         <section className="relative mt-9 w-full max-w-sm" aria-labelledby="home-explore">
+          <GardenEdgeVine className="garden-deco section-vine section-vine--explore" />
           <EdgeLeafLarge className="garden-deco deco-leaf-large" />
           <SectionHeading id="home-explore" accessory={<BeeTrail className="h-9 w-[110px]" />}>
             לגלות ולשחק

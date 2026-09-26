@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { MarkerLeaves } from "./Garden";
+import { WoodenSign } from "./Garden";
 
 // שפת "בלש הגינה" — רכיבים קטנים לשימוש חוזר (מסך הבית הוא הרפרנס; שאר המסכים יאמצו אותם בהמשך).
 // הסגנון עצמו ב-index.css: .explorer-card (משטח מורם ונלחץ), .garden-marker (סמן גינה),
@@ -18,8 +18,8 @@ export function SectionHeading({
   return (
     <div className="section-heading">
       <h2 id={id} className="garden-marker">
-        <MarkerLeaves className="garden-marker__leaves" />
-        {children}
+        <WoodenSign className="garden-marker__sign" />
+        <span>{children}</span>
       </h2>
       {accessory && (
         <span className="section-heading__trail" aria-hidden="true">

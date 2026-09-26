@@ -800,6 +800,149 @@ button {
       shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)];
   }
 }
+
+/* Mockup 4: a continuous illustrated garden, with the controls sitting inside it. */
+.home-wash {
+  background:
+    radial-gradient(85% 270px at 50% 410px, rgba(255, 250, 216, .95), transparent 85%),
+    linear-gradient(180deg, #8cdbfc 0, #d9f5ff 260px, #fff9e8 575px, #fff9e8 100%);
+}
+.garden-canopy {
+  position: absolute;
+  top: -16px;
+  left: 0;
+  width: 100%;
+  height: 156px;
+  opacity: .92;
+}
+.home-scene::after {
+  position: absolute;
+  top: 330px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: .25;
+  background-image: radial-gradient(#a7d68a 1.1px, transparent 1.1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(transparent, #000 22%, #000 85%, transparent);
+  content: "";
+}
+.hero-stage { isolation: isolate; }
+.hero-clearing {
+  bottom: -1px;
+  left: -18px;
+  width: calc(100% + 36px);
+  height: 184px;
+}
+.hero-foreground { height: 36px; }
+.stage-glow { width: 230px; height: 204px; bottom: 8px; border-radius: 50%; opacity: .9; }
+.hero-butterfly { top: 38px; right: 2%; width: 39px; height: 35px; }
+.sun { width: 150px; height: 150px; top: -25px; right: -31px; opacity: .95; }
+.hello-bubble { top: 58px; font-size: 18px; padding: 9px 17px; }
+
+.capture-cta {
+  border: 3px solid rgba(178, 246, 155, .86);
+  background: linear-gradient(165deg, #34c76b 0%, #10a44d 48%, #087c43 100%);
+  box-shadow: inset 0 3px 0 rgba(255,255,255,.42), inset 0 -5px 0 rgba(0,83,45,.27),
+    0 7px 0 #087b3e, 0 20px 19px -14px rgba(5,88,43,.65);
+}
+.capture-cta::before,
+.capture-cta::after {
+  position: absolute;
+  bottom: -8px;
+  width: 40px;
+  height: 42px;
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(ellipse at 35% 65%, #4caf43 0 28%, transparent 29%),
+    radial-gradient(ellipse at 72% 32%, #83cc56 0 25%, transparent 26%);
+}
+.capture-cta::before { right: -19px; transform: rotate(-18deg); }
+.capture-cta::after { left: -15px; transform: scaleX(-1) rotate(-18deg); }
+
+.section-heading { position: relative; justify-content: center; min-height: 56px; }
+.garden-marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  min-width: 168px;
+  height: 58px;
+  padding: 0 23px;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  transform: none;
+  font-size: 19px;
+  font-weight: 900;
+}
+.garden-marker__sign { position: absolute; inset: 0; width: 100%; height: 100%; }
+.garden-marker > span { position: relative; white-space: nowrap; }
+.section-heading__trail { position: absolute; right: 0; top: 36px; opacity: .8; }
+.journey-fragment { color: #ba9a6a; }
+.journey-fragment--today { left: 8px; top: 44px; }
+.journey-fragment--explore { right: 4px; top: 44px; }
+.section-vine {
+  z-index: 0;
+  left: -47px;
+  bottom: -42px;
+  width: 82px;
+  height: 197px;
+  opacity: .86;
+}
+.section-vine--explore {
+  left: auto;
+  right: -44px;
+  bottom: 125px;
+  transform: scaleX(-1);
+}
+
+.station {
+  min-height: 166px;
+  padding: 82px 15px 11px;
+  border: 2px solid rgba(255,255,255,.78);
+  border-radius: 31px !important;
+  box-shadow: inset 0 2px 0 #fff, inset 0 -3px 0 rgba(44,110,56,.08),
+    0 5px 0 var(--card-edge), 0 15px 18px -12px var(--card-glow);
+}
+.station-object--plant { width: 120px; height: 120px; top: -40px; inset-inline-start: -2px; }
+.station-object--challenge { width: 115px; height: 115px; top: -37px; inset-inline-start: -2px; }
+.station > span:not(.station-object):not(.done-stamp) { position: relative; z-index: 1; }
+.station::before { inset: 8px; border-color: rgba(122,145,58,.14); }
+.station.explorer-card--sun { --card-bg: linear-gradient(135deg,#fff9df,#ffe5a5); }
+.station.explorer-card--mint { --card-bg: linear-gradient(135deg,#edffdf,#beeeb5); }
+
+.album-card {
+  min-height: 126px;
+  padding: 15px 20px;
+  padding-left: 132px;
+  border: 2px solid #fff;
+  background: linear-gradient(130deg,#fff9e5,#fff1c5);
+  box-shadow: inset 0 2px 0 #fff, 0 5px 0 #e7c882,
+    0 17px 22px -17px rgba(123,79,20,.42);
+}
+.album-object { inset-inline-start: auto; left: -15px; width: 151px; height: 135px; top: -27px; transform: rotate(-7deg); }
+.field-progress { height: 14px; margin-top: 12px; }
+.activity-tile {
+  min-height: 126px;
+  padding-top: 71px;
+  border: 2px solid rgba(255,255,255,.85);
+  box-shadow: inset 0 2px 0 #fff, 0 5px 0 var(--card-edge),
+    0 13px 18px -13px var(--card-glow);
+}
+.tile-object { width: 102px; height: 99px; top: -38px; margin-left: -51px; }
+.tile-object--games { top: -42px; }
+.tile-object--globe { top: -44px; width: 99px; height: 102px; margin-left: -49px; }
+.garden-floor { height: 93px; margin-top: 18px; }
+
+@media (max-width: 370px) {
+  .station { padding-inline: 10px; min-height: 173px; }
+  .station-object--plant, .station-object--challenge { width: 101px; height: 101px; }
+  .album-card { padding-left: 108px; }
+  .album-object { width: 120px; height: 112px; top: -18px; }
+  .activity-tile { padding-inline: 2px; }
+  .activity-tile > span:last-child { font-size: 11px; }
+}
 /* זוהר שמש רך מאחורי אמוג'י כותרת */
 .title-glow {
   position: absolute;

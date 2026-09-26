@@ -190,6 +190,79 @@ export function HeroForeground({ className }: ArtProps) {
   );
 }
 
+/** מסגור העלווה של המוקאפ: ענפים צפופים בקצוות, בלי לכסות טקסט או לחיצות. */
+export function GardenCanopy({ className }: ArtProps) {
+  return (
+    <svg viewBox="0 0 400 150" preserveAspectRatio="xMidYMin slice" className={className} {...svgProps}>
+      <g>
+        <path d="M-5 4 Q 38 15 108 105 M-5 22 Q 49 26 155 78 M405 0 Q 355 30 290 91" stroke="#376d28" strokeWidth="7" fill="none" />
+        {[
+          [9, 14, -30, 49, 16], [38, 15, -72, 48, 16], [60, 25, 22, 42, 14],
+          [23, 43, -12, 54, 18], [64, 56, -57, 45, 17], [90, 40, 32, 48, 17],
+          [99, 75, -62, 40, 15], [134, 68, -28, 36, 13], [340, 15, -147, 46, 16],
+          [382, 25, -198, 51, 18], [355, 55, -135, 42, 14], [309, 74, -164, 34, 12]
+        ].map(([x, y, angle, len, width], i) => (
+          <Leaf key={i} len={len} w={width} fill={i % 3 === 0 ? "#346b2c" : i % 3 === 1 ? "#5ca43b" : "#81bd48"}
+            vein="#b5d889" transform={`translate(${x} ${y}) rotate(${angle})`} />
+        ))}
+      </g>
+    </svg>
+  );
+}
+
+/** נוף אמצע צפוף מאחורי בוטי: מגוון פרחים, סלעים, שיחים ושתי גבעות. */
+export function GardenClearing({ className }: ArtProps) {
+  return (
+    <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMax slice" className={className} {...svgProps}>
+      <path d="M0 131 Q 63 84 137 110 Q 236 66 400 110 V180 H0Z" fill="#dbf5d1" />
+      <path d="M0 145 Q 112 110 215 132 Q 296 102 400 132 V180 H0Z" fill="#a6dc91" />
+      <path d="M0 165 Q 132 135 244 157 Q 321 136 400 158 V180 H0Z" fill="#69c269" />
+      <Bush x={18} y={159} s={1.45} /><Bush x={80} y={165} s={1.05} />
+      <Bush x={320} y={159} s={1.2} /><Bush x={389} y={163} s={1.6} />
+      <Rock x={57} y={165} w={36} /><Rock x={356} y={170} w={27} />
+      <Tulip x={104} y={164} h={30} color="#fb7185" /><Tulip x={118} y={167} h={24} color="#f472b6" />
+      <Daisy x={24} y={157} r={7} h={27} /><Daisy x={44} y={166} r={5} h={23} />
+      <Daisy x={303} y={162} r={7} h={28} /><Daisy x={341} y={165} r={5} h={21} />
+      <Lavender x={92} y={164} h={25} /><Lavender x={372} y={168} h={28} />
+      <GrassTuft x={135} y={173} s={1.4} /><GrassTuft x={270} y={172} s={1.1} />
+      <Flower x={390} y={121} r={8} petal="#f9a8d4" /><Flower x={15} y={125} r={6} petal="#f472b6" />
+      <Ladybug x={53} y={157} s={0.8} />
+    </svg>
+  );
+}
+
+/** שלט עץ עם עלי גינה, המשמש את כותרות התחנות. */
+export function WoodenSign({ className }: ArtProps) {
+  return (
+    <svg viewBox="0 0 280 74" preserveAspectRatio="none" className={className} {...svgProps}>
+      <path d="M19 17 Q 138 13 258 17 Q 273 19 271 29 L269 63 Q 137 68 13 63 Q 6 60 9 48 L11 28 Q 11 20 19 17Z" fill="#b98649" />
+      <path d="M18 13 Q 138 8 260 13 Q 269 15 267 28 L265 57 Q 135 63 14 58 Q 9 55 12 43 L13 24 Q 12 16 18 13Z" fill="#f1d3a3" />
+      <path d="M25 24 Q 138 17 253 24 M34 48 Q 140 54 249 47" stroke="#d7a66f" strokeWidth="2" opacity=".55" fill="none" />
+      <circle cx="24" cy="29" r="2" fill="#b98649" /><circle cx="251" cy="43" r="2" fill="#b98649" />
+      <Leaf len={31} w={10} fill="#4e9c3d" transform="translate(8 50) rotate(-75)" />
+      <Leaf len={31} w={10} fill="#6bb447" transform="translate(267 52) rotate(-111)" />
+      <Leaf len={23} w={8} fill="#89c954" transform="translate(11 56) rotate(-30)" />
+      <Leaf len={24} w={8} fill="#3e8b39" transform="translate(270 54) rotate(-150)" />
+    </svg>
+  );
+}
+
+/** ענף שוליים מאויר שממסגר תחנות בלי להפריע לתוכן. */
+export function GardenEdgeVine({ className }: ArtProps) {
+  return (
+    <svg viewBox="0 0 95 230" className={className} {...svgProps}>
+      <path d="M-9 235 C 42 173, 10 112, 70 18" stroke="#559242" strokeWidth="4" fill="none" strokeLinecap="round" />
+      <Leaf len={47} w={16} fill="#70ba49" transform="translate(22 177) rotate(-127)" />
+      <Leaf len={43} w={15} fill="#92c95a" transform="translate(18 145) rotate(-27)" />
+      <Leaf len={44} w={16} fill="#4d9d42" transform="translate(35 100) rotate(-135)" />
+      <Leaf len={38} w={14} fill="#77be4e" transform="translate(51 71) rotate(-22)" />
+      <Flower x={72} y={25} r={10} petal="#f9a8d4" />
+      <Daisy x={13} y={224} r={6} h={19} />
+      <Ladybug x={33} y={107} rot={-30} s={.8} />
+    </svg>
+  );
+}
+
 /** עלה גדול שנכנס מהשוליים ומציץ מאחורי כפתור הצילום. */
 export function EdgeLeaf({ className }: ArtProps) {
   return (
