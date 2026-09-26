@@ -175,6 +175,21 @@ export function HeroGardenRight({ className }: ArtProps) {
   );
 }
 
+/** חזית הגיבור: פרחים ועשב שמסתירים מעט את בסיס הדמות ויוצרים קרחת גינה. */
+export function HeroForeground({ className }: ArtProps) {
+  return (
+    <svg viewBox="0 0 400 50" preserveAspectRatio="xMidYMax slice" className={className} {...svgProps}>
+      <path d="M0 44 Q 58 30 108 42 Q 198 50 272 40 Q 340 30 400 43 L400 50 H0Z" fill="#86efac" />
+      <path d="M0 47 Q 100 39 168 47 Q 235 51 310 43 Q 366 40 400 47 V50 H0Z" fill="#4ade80" />
+      <GrassTuft x={17} y={47} s={1.1} /><Daisy x={37} y={44} r={4} h={16} />
+      <Tulip x={75} y={43} h={18} color="#fb7185" /><Rock x={99} y={47} w={12} />
+      <GrassTuft x={146} y={49} s={0.65} /><GrassTuft x={243} y={48} s={0.8} />
+      <Daisy x={313} y={44} r={4.2} h={15} /><Lavender x={344} y={45} h={19} />
+      <Rock x={370} y={47} w={11} /><Ladybug x={279} y={42} s={0.65} />
+    </svg>
+  );
+}
+
 /** עלה גדול שנכנס מהשוליים ומציץ מאחורי כפתור הצילום. */
 export function EdgeLeaf({ className }: ArtProps) {
   return (

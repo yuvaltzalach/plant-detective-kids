@@ -468,6 +468,13 @@ button {
   height: 27px;
   animation: butterflyDrift 11s ease-in-out infinite;
 }
+.hero-foreground {
+  z-index: 2;
+  bottom: -2px;
+  left: -16px;
+  width: calc(100% + 32px);
+  height: 48px;
+}
 .butterfly-wings {
   transform-box: fill-box;
   transform-origin: center;
@@ -537,6 +544,47 @@ button {
 .station.explorer-card--mint {
   border-radius: 24px 30px 22px 30px;
 }
+.station::before {
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(146, 64, 14, 0.16);
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+}
+.station.explorer-card--mint::before {
+  border-color: rgba(21, 128, 61, 0.18);
+}
+.station::after {
+  position: absolute;
+  inset-inline-end: 15px;
+  bottom: 17px;
+  width: 19px;
+  height: 13px;
+  border-bottom: 1px solid rgba(146, 64, 14, 0.25);
+  border-radius: 50%;
+  transform: rotate(-25deg);
+  content: "";
+  pointer-events: none;
+}
+.journey-fragment {
+  position: absolute;
+  z-index: 0;
+  color: #92bb79;
+  font-size: 18px;
+  letter-spacing: 4px;
+  pointer-events: none;
+}
+.journey-fragment--today {
+  top: -31px;
+  left: 12px;
+  transform: rotate(-16deg);
+}
+.journey-fragment--explore {
+  top: -30px;
+  right: 8px;
+  transform: rotate(12deg);
+}
 /* זכוכית המגדלת בולטת מעל הפינה הימנית-עליונה */
 .station-object--challenge {
   top: -40px;
@@ -601,6 +649,14 @@ button {
   padding-inline-start: 132px;
   border-radius: 30px 34px 28px 32px;
 }
+.album-card::before {
+  position: absolute;
+  inset: 7px;
+  border: 1px dashed rgba(161, 98, 7, 0.19);
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+}
 .album-object {
   inset-inline-start: -12px;
   top: -34px;
@@ -657,6 +713,18 @@ button {
 }
 .activity-tile.explorer-card--sky {
   border-radius: 30px 24px 28px 22px;
+}
+.activity-tile::before {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 63px;
+  height: 63px;
+  border: 1px dashed rgba(20, 83, 45, 0.19);
+  border-radius: 47% 53% 49% 51%;
+  transform: translateX(-50%) rotate(12deg);
+  content: "";
+  pointer-events: none;
 }
 .tile-object {
   left: 50%;

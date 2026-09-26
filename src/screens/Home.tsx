@@ -26,6 +26,7 @@ import {
   EdgeLeafLarge,
   GardenFloor,
   HeroBackdrop,
+  HeroForeground,
   HeroGardenLeft,
   HeroGardenRight,
   PawTrail,
@@ -258,6 +259,7 @@ export function Home(props: HomeProps) {
                 </div>
               )}
             </div>
+            <HeroForeground className="garden-deco hero-foreground" />
           </div>
 
           {/* 3. הפעולה הראשית */}
@@ -277,6 +279,7 @@ export function Home(props: HomeProps) {
           <SectionHeading id="home-today" accessory={<PawTrail className="h-9 w-[110px]" />}>
             היום בגינה
           </SectionHeading>
+          <span className="journey-fragment journey-fragment--today" aria-hidden="true">✿ · · ·</span>
           <div className="mt-11 grid grid-cols-2 gap-3">
             <button onClick={go(props.onChallenges)} className="explorer-card explorer-card--sun station">
               <span className="station-object station-object--challenge">
@@ -316,6 +319,7 @@ export function Home(props: HomeProps) {
           <SectionHeading id="home-explore" accessory={<BeeTrail className="h-9 w-[110px]" />}>
             לגלות ולשחק
           </SectionHeading>
+          <span className="journey-fragment journey-fragment--explore" aria-hidden="true">· · ✿</span>
 
           <button onClick={go(props.onAlbum)} className="explorer-card explorer-card--peach album-card">
             <span className="album-object">
