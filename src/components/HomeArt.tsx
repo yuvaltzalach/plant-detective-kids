@@ -77,62 +77,245 @@ export function CameraArt({ className }: ArtProps) {
   );
 }
 
-/** אלבום פתוח עם עלה מיובש ומדבקה. */
+// ===== ערכת האייקונים של "בלש הגינה" =====
+// מתכון משותף לכל האייקונים: צל-קרקע רך, "עובי" בגוון כהה מתחת לכל גוף (מוזז 3px למטה),
+// והדגשה לבנה עדינה למעלה. כך כולם נראים כמו חפצים מאותו עולם.
+
+/** צל-קרקע רך מתחת לחפץ. */
+function Ground({ cx = 32, cy = 58, rx = 19 }: { cx?: number; cy?: number; rx?: number }) {
+  return <ellipse cx={cx} cy={cy} rx={rx} ry={3.4} fill="#14532d" fillOpacity="0.13" />;
+}
+
+/** כוכב חמש-קצוות סביב (cx,cy). */
+function starPath(cx: number, cy: number, r: number) {
+  const pts: string[] = [];
+  for (let i = 0; i < 10; i++) {
+    const rr = i % 2 === 0 ? r : r * 0.48;
+    const a = (Math.PI / 5) * i - Math.PI / 2;
+    pts.push(`${(cx + rr * Math.cos(a)).toFixed(2)} ${(cy + rr * Math.sin(a)).toFixed(2)}`);
+  }
+  return `M${pts.join(" L")} Z`;
+}
+
+/** אתגר היום — זכוכית מגדלת מעל עלה, עם כוכב שנדלק כשהאתגר הושלם. */
+export function ChallengeArt({ className, done = false }: ArtProps & { done?: boolean }) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} {...svgProps}>
+      <Ground cx={30} />
+      <Leaf len={30} w={10} fill="#16a34a" transform="translate(8 52) rotate(-38)" />
+      <Leaf len={22} w={8} fill="#4ade80" transform="translate(12 54) rotate(-8)" />
+      {/* ידית */}
+      <g transform="rotate(45 42 42)">
+        <rect x="36" y="41" width="22" height="9" rx="4.5" fill="#14532d" />
+        <rect x="36" y="38.5" width="22" height="9" rx="4.5" fill="#15803d" />
+        <rect x="39" y="40" width="14" height="2.2" rx="1.1" fill="#fff" fillOpacity="0.35" />
+      </g>
+      {/* מסגרת העדשה */}
+      <circle cx="27" cy="28.5" r="16" fill="#d97706" />
+      <circle cx="27" cy="26" r="16" fill="#fbbf24" />
+      <circle cx="27" cy="26" r="11.5" fill="#e0f2fe" />
+      {/* עלה מוגדל בתוך העדשה */}
+      <Leaf len={15} w={5.5} fill="#22c55e" transform="translate(20 32) rotate(-50)" />
+      <path d="M19.5 20.5 A 9 9 0 0 1 27 16.5" stroke="#fff" strokeWidth="2.6" fill="none" strokeLinecap="round" />
+      {/* כוכב־פרס */}
+      <path d={starPath(51, 13.5, 8)} fill={done ? "#eab308" : "#fde68a"} transform="translate(0 1.6)" />
+      <path d={starPath(51, 13.5, 8)} fill={done ? "#facc15" : "#fffbeb"} stroke={done ? "none" : "#fcd34d"} strokeWidth="1.4" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** צמח היום — עציץ בוטני עם תווית דגימה. */
+export function SpecimenArt({ className }: ArtProps) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} {...svgProps}>
+      <Ground />
+      {/* הצמח */}
+      <path d="M32 40 C 31 32, 33 24, 31 14" stroke="#15803d" strokeWidth="2.6" fill="none" strokeLinecap="round" />
+      <Leaf len={17} w={6.5} fill="#16a34a" transform="translate(32 34) rotate(-155)" />
+      <Leaf len={17} w={6.5} fill="#22c55e" transform="translate(32 30) rotate(-25)" />
+      <Leaf len={13} w={5} fill="#4ade80" transform="translate(32 22) rotate(-148)" />
+      <Leaf len={12} w={4.6} fill="#16a34a" transform="translate(31.5 18) rotate(-40)" />
+      <circle cx="31" cy="12.5" r="3.4" fill="#f9a8d4" />
+      {/* העציץ */}
+      <path d="M17 42 H47 L43.5 58 H20.5 Z" fill="#ec4899" fillOpacity="0.55" transform="translate(0 2)" />
+      <path d="M17 42 H47 L43.5 57 H20.5 Z" fill="#fbcfe8" />
+      <rect x="14.5" y="37" width="35" height="8" rx="4" fill="#f472b6" fillOpacity="0.55" transform="translate(0 2)" />
+      <rect x="14.5" y="37" width="35" height="8" rx="4" fill="#f9a8d4" />
+      <rect x="18" y="38.6" width="16" height="2" rx="1" fill="#fff" fillOpacity="0.55" />
+      {/* תווית דגימה */}
+      <rect x="25" y="47" width="14" height="7" rx="2" fill="#fff" />
+      <rect x="27.5" y="49.8" width="9" height="1.5" rx="0.75" fill="#86efac" />
+    </svg>
+  );
+}
+
+/** אלבום השדה — כריכה עם טבעות, סמל עלה, לשוניות ומדבקת פרח. */
 export function AlbumArt({ className }: ArtProps) {
   return (
     <svg viewBox="0 0 64 64" className={className} {...svgProps}>
-      <path d="M4 16 Q 4 12 8 12 L 56 12 Q 60 12 60 16 L 60 52 Q 60 56 56 56 L 8 56 Q 4 56 4 52 Z" fill="#f59e0b" />
-      <path d="M8 14 Q 20 10 31 15 L 31 52 Q 20 47 8 51 Z" fill="#fffbeb" />
-      <path d="M56 14 Q 44 10 33 15 L 33 52 Q 44 47 56 51 Z" fill="#fff7ed" />
-      <Leaf len={17} w={6} fill="#22c55e" transform="translate(12 40) rotate(-50)" />
-      <circle cx="45" cy="28" r="7" fill="#fbcfe8" />
-      <path d="M45 23.5 l1.5 3 3.2 .4 -2.3 2.2 .6 3.2 -3 -1.6 -3 1.6 .6 -3.2 -2.3 -2.2 3.2 -.4 z" fill="#fff" />
-      <rect x="38" y="40" width="14" height="2.6" rx="1.3" fill="#fde68a" />
+      <Ground />
+      {/* לשוניות דפים (בצד הפתיחה — שמאל, כי הכריכה נכרכת מימין) */}
+      <rect x="7" y="16" width="9" height="7" rx="2.5" fill="#7dd3fc" />
+      <rect x="7" y="26" width="9" height="7" rx="2.5" fill="#f9a8d4" />
+      <rect x="7" y="36" width="9" height="7" rx="2.5" fill="#c4b5fd" />
+      {/* עובי הדפים + כריכה */}
+      <rect x="11" y="11" width="42" height="45" rx="7" fill="#b45309" />
+      <rect x="12" y="46" width="40" height="7" rx="3" fill="#fffbeb" />
+      <rect x="11" y="8" width="42" height="42" rx="7" fill="#f59e0b" />
+      <rect x="15" y="11" width="22" height="2.4" rx="1.2" fill="#fff" fillOpacity="0.3" />
+      {/* טבעות כריכה בצד ימין */}
+      {[16, 27, 38].map((y) => (
+        <g key={y}>
+          <rect x="48" y={y} width="9" height="5" rx="2.5" fill="#94a3b8" />
+          <rect x="48" y={y - 0.8} width="9" height="5" rx="2.5" fill="#e2e8f0" />
+        </g>
+      ))}
+      {/* סמל העלה */}
+      <circle cx="30" cy="29" r="11" fill="#fffbeb" />
+      <circle cx="30" cy="29" r="11" fill="none" stroke="#fcd34d" strokeWidth="1.6" strokeDasharray="2.4 2.4" />
+      <Leaf len={14} w={5.5} fill="#16a34a" transform="translate(24 35) rotate(-50)" />
+      {/* מדבקת פרח */}
+      <g transform="translate(18 44) rotate(-12)">
+        <circle r="6" fill="#fff" />
+        <Flower x={0} y={0} r={3.4} petal="#f9a8d4" />
+      </g>
     </svg>
   );
 }
 
-/** ספר עם סימנייה של עלה — אנציקלופדיה. */
+/** אנציקלופדיה — ספר בוטני עם איור עלה וסרט סימנייה. */
 export function BookArt({ className }: ArtProps) {
   return (
     <svg viewBox="0 0 64 64" className={className} {...svgProps}>
-      <Leaf len={20} w={7} fill="#4ade80" transform="translate(42 16) rotate(-70)" />
-      <rect x="12" y="12" width="40" height="44" rx="7" fill="#16a34a" />
-      <rect x="16" y="48" width="36" height="8" rx="3" fill="#fffbeb" />
-      <rect x="12" y="12" width="7" height="44" rx="3.5" fill="#15803d" />
-      <rect x="24" y="21" width="22" height="14" rx="5" fill="#dcfce7" />
-      <Leaf len={12} w={4.5} fill="#16a34a" vein="#dcfce7" transform="translate(29 30.5) rotate(-35)" />
+      <Ground />
+      {/* סרט סימנייה */}
+      <path d="M22 50 V60 L25 57.5 L28 60 V50 Z" fill="#f472b6" />
+      <rect x="11" y="11" width="42" height="45" rx="7" fill="#14532d" />
+      <rect x="12" y="46" width="39" height="7" rx="3" fill="#fffbeb" />
+      <rect x="11" y="8" width="42" height="42" rx="7" fill="#16a34a" />
+      {/* שדרה מימין */}
+      <rect x="45" y="8" width="8" height="42" rx="4" fill="#15803d" />
+      <rect x="15" y="11" width="22" height="2.4" rx="1.2" fill="#fff" fillOpacity="0.3" />
+      {/* חלון איור */}
+      <rect x="16" y="17" width="25" height="24" rx="7" fill="#dcfce7" />
+      <path d="M28.5 38 C 28 32, 29 26, 28.5 21" stroke="#15803d" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+      <Leaf len={10} w={4} fill="#22c55e" transform="translate(28.5 33) rotate(-150)" />
+      <Leaf len={10} w={4} fill="#16a34a" transform="translate(28.6 29) rotate(-30)" />
+      <Leaf len={8} w={3.4} fill="#4ade80" transform="translate(28.5 24.5) rotate(-145)" />
     </svg>
   );
 }
 
-/** קלפי זיכרון — משחקים. */
+/** משחקים — שני קלפי-פרחים פרוסים. */
 export function GamesArt({ className }: ArtProps) {
   return (
     <svg viewBox="0 0 64 64" className={className} {...svgProps}>
-      <g transform="rotate(-12 26 34)">
-        <rect x="10" y="14" width="30" height="40" rx="8" fill="#a78bfa" />
-        <circle cx="25" cy="34" r="7" fill="none" stroke="#ede9fe" strokeWidth="2.4" />
-        <circle cx="25" cy="34" r="2.4" fill="#ede9fe" />
+      <Ground />
+      <g transform="rotate(-13 24 34)">
+        <rect x="9" y="15" width="28" height="38" rx="7" fill="#7c3aed" fillOpacity="0.55" />
+        <rect x="9" y="12" width="28" height="38" rx="7" fill="#a78bfa" />
+        <rect x="13" y="16" width="20" height="30" rx="4.5" fill="none" stroke="#ede9fe" strokeWidth="1.6" strokeDasharray="3 2.6" />
+        <Leaf len={12} w={4.5} fill="#ede9fe" vein="#a78bfa" transform="translate(17 36) rotate(-55)" />
       </g>
-      <g transform="rotate(10 40 34)">
-        <rect x="26" y="12" width="30" height="40" rx="8" fill="#fffbeb" />
-        <Flower x={41} y={32} r={6} petal="#c4b5fd" />
+      <g transform="rotate(11 40 32)">
+        <rect x="27" y="13" width="28" height="38" rx="7" fill="#c4b5fd" />
+        <rect x="27" y="10" width="28" height="38" rx="7" fill="#fffbeb" />
+        <rect x="31" y="13" width="12" height="2.2" rx="1.1" fill="#fff" />
+        <Flower x={41} y={29} r={6.5} petal="#c4b5fd" />
       </g>
     </svg>
   );
 }
 
-/** כדור ארץ ירוק — תחרות אונליין. */
+/** תחרות אונליין — כדור ארץ שמנביט עלים. */
 export function GlobeArt({ className }: ArtProps) {
   return (
     <svg viewBox="0 0 64 64" className={className} {...svgProps}>
-      <circle cx="32" cy="33" r="22" fill="#7dd3fc" />
-      <path d="M17 22 Q 24 16 31 20 Q 34 26 28 29 Q 24 33 27 39 Q 22 42 16 36 Q 12 28 17 22 Z" fill="#4ade80" />
-      <path d="M38 36 Q 45 32 51 36 Q 52 44 45 50 Q 39 49 40 44 Q 35 41 38 36 Z" fill="#22c55e" />
-      <path d="M39 16 Q 45 15 48 20 Q 44 22 40 20 Z" fill="#4ade80" />
-      <path d="M17 26 A 18 18 0 0 1 28 14" stroke="#fff" strokeOpacity="0.6" strokeWidth="2.6" fill="none" strokeLinecap="round" />
-      <Leaf len={14} w={5} fill="#16a34a" transform="translate(46 13) rotate(-60)" />
+      <Ground />
+      {/* נבט על הכדור */}
+      <path d="M32 16 C 32 12, 31 9, 32 6" stroke="#15803d" strokeWidth="2.2" fill="none" strokeLinecap="round" />
+      <Leaf len={13} w={5} fill="#22c55e" transform="translate(32 9) rotate(-160)" />
+      <Leaf len={13} w={5} fill="#16a34a" transform="translate(32 8) rotate(-20)" />
+      {/* הכדור */}
+      <circle cx="32" cy="36.5" r="20" fill="#0284c7" fillOpacity="0.5" />
+      <circle cx="32" cy="34" r="20" fill="#7dd3fc" />
+      <path d="M18 26 Q 24 20 31 23 Q 34 29 28 32 Q 24 36 27 42 Q 22 45 17 39 Q 13 31 18 26 Z" fill="#4ade80" />
+      <path d="M38 36 Q 45 32 50 37 Q 50 45 44 50 Q 38 49 39 44 Q 35 41 38 36 Z" fill="#22c55e" />
+      <path d="M38 19 Q 44 18 47 23 Q 43 25 39 23 Z" fill="#4ade80" />
+      <path d="M17.5 28 A 17 17 0 0 1 27.5 16.5" stroke="#fff" strokeOpacity="0.65" strokeWidth="2.6" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/** טביעת כף של כלבלב — לשביל הגינה. */
+function Paw({ x, y, rot = 0 }: { x: number; y: number; rot?: number }) {
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${rot})`} fill="#15803d" fillOpacity="0.22">
+      <ellipse cx="0" cy="2" rx="3.2" ry="2.7" />
+      <circle cx="-3.4" cy="-2" r="1.3" />
+      <circle cx="-1.2" cy="-3.6" r="1.3" />
+      <circle cx="1.2" cy="-3.6" r="1.3" />
+      <circle cx="3.4" cy="-2" r="1.3" />
+    </g>
+  );
+}
+
+/** דבורה קטנטנה. */
+function Bee({ x, y }: { x: number; y: number }) {
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <ellipse cx="-1.5" cy="-4" rx="3" ry="2.2" fill="#fff" stroke="#bae6fd" strokeWidth="0.8" />
+      <ellipse cx="2" cy="-4.2" rx="2.6" ry="2" fill="#fff" stroke="#bae6fd" strokeWidth="0.8" />
+      <ellipse cx="0" cy="0" rx="5" ry="3.6" fill="#facc15" />
+      <rect x="-1.6" y="-3.5" width="1.6" height="7" rx="0.8" fill="#14532d" fillOpacity="0.7" />
+      <rect x="1.4" y="-3.2" width="1.4" height="6.4" rx="0.7" fill="#14532d" fillOpacity="0.7" />
+    </g>
+  );
+}
+
+/**
+ * שביל הגינה — קו מנוקד עדין עם טביעות כפות, שממשיך מכותרת האזור הלאה (RTL: מימין לשמאל).
+ * דקורטיבי בלבד; בוריאנט "bee" מסתיים בדבורה, אחרת בפרח קטן.
+ */
+export function GardenTrail({ className, end = "flower" }: ArtProps & { end?: "flower" | "bee" }) {
+  return (
+    <svg viewBox="0 0 200 26" preserveAspectRatio="xMaxYMid meet" className={className} {...svgProps}>
+      <path
+        d="M198 15 C 170 5, 150 22, 122 14 S 74 6, 50 15 S 22 20, 14 14"
+        stroke="#16a34a"
+        strokeOpacity="0.28"
+        strokeWidth="2"
+        strokeDasharray="0.1 6"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <Paw x={158} y={11} rot={-100} />
+      <Paw x={98} y={16} rot={-80} />
+      {end === "bee" ? <Bee x={9} y={12} /> : <Flower x={8} y={13} r={3} petal="#fbcfe8" />}
+    </svg>
+  );
+}
+
+/** נבט קטן — "הראש" של פס ההתקדמות באלבום. */
+export function SproutKnob({ className }: ArtProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...svgProps}>
+      <circle cx="12" cy="13" r="10" fill="#15803d" />
+      <circle cx="12" cy="12" r="10" fill="#fff" />
+      <path d="M12 17 V11" stroke="#15803d" strokeWidth="1.8" strokeLinecap="round" />
+      <Leaf len={7} w={3} fill="#22c55e" transform="translate(12 12) rotate(-150)" />
+      <Leaf len={7} w={3} fill="#16a34a" transform="translate(12 11) rotate(-30)" />
+    </svg>
+  );
+}
+
+/** כוכב היעד בקצה פס ההתקדמות. */
+export function GoalStar({ className }: ArtProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...svgProps}>
+      <path d={starPath(12, 12.5, 10)} fill="#eab308" transform="translate(0 1.5)" />
+      <path d={starPath(12, 12.5, 10)} fill="#facc15" />
+      <path d="M8.5 9.5 L11 8.8" stroke="#fff" strokeOpacity="0.7" strokeWidth="1.4" strokeLinecap="round" />
     </svg>
   );
 }
