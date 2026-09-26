@@ -285,7 +285,8 @@ export default function App() {
         />
       )}
 
-      <BotiMascot />
+      {/* במסך הבית הכלבלב הגדול הוא בּוֹטִי — אין צורך בדמות הצפה */}
+      {screen !== "home" && <BotiMascot />}
     </div>
   );
 }
