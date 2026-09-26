@@ -310,7 +310,7 @@ button {
   display: block;
   padding: 14px 20px;
   color: #fff;
-  background: #16a34a;
+  background: linear-gradient(180deg, #1fb257 0%, #16a34a 60%);
   border-radius: 34px 40px 36px 30px / 36px 30px 40px 34px;
   box-shadow:
     inset 0 2px 0 rgba(255, 255, 255, 0.28),
@@ -322,101 +322,234 @@ button {
   user-select: none;
 }
 .capture-cta:active {
-  transform: translateY(4px);
+  transform: translateY(4px) scale(0.99);
   box-shadow:
     inset 0 2px 0 rgba(255, 255, 255, 0.2),
     0 2px 0 #15803d,
     0 8px 14px -10px rgba(21, 128, 61, 0.55);
 }
 
-/* ===== אזורי התוכן ===== */
-.home-section-title {
-  display: flex;
+/* ===== שפת "בלש הגינה" — חפצי חוקר בתוך עולם בוטני =====
+   ~70% ממשק נקי, ~30% חפץ מאויר: משטח מורם עם "עובי" תחתון, הדגשה פנימית עדינה,
+   ולחיצה פיזית (יורד ומאבד עובי). צבעי הווריאנטים דרך משתנים. */
+.explorer-card {
+  --card-bg: #fff;
+  --card-edge: rgba(21, 128, 61, 0.14);
+  --card-glow: rgba(20, 83, 45, 0.35);
+  --card-ring: rgba(255, 255, 255, 0.75);
+  position: relative;
+  background: var(--card-bg);
+  box-shadow:
+    inset 0 0 0 1.5px var(--card-ring),
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    0 4px 0 var(--card-edge),
+    0 16px 26px -18px var(--card-glow);
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.explorer-card:active {
+  transform: translateY(3px);
+  box-shadow:
+    inset 0 0 0 1.5px var(--card-ring),
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    0 1px 0 var(--card-edge),
+    0 8px 14px -12px var(--card-glow);
+}
+.explorer-card--sun {
+  --card-bg: linear-gradient(180deg, #fffbea 0%, #fff3c9 100%);
+  --card-edge: #f3dc97;
+  --card-glow: rgba(146, 64, 14, 0.4);
+}
+.explorer-card--mint {
+  --card-bg: linear-gradient(180deg, #f1fdf5 0%, #dcfce7 100%);
+  --card-edge: #b5e8c6;
+  --card-glow: rgba(21, 128, 61, 0.45);
+}
+.explorer-card--peach {
+  --card-bg: linear-gradient(180deg, #fffaf0 0%, #fef0d4 100%);
+  --card-edge: #f3d7a6;
+  --card-glow: rgba(146, 64, 14, 0.4);
+}
+.explorer-card--lilac {
+  --card-bg: linear-gradient(180deg, #f7f4ff 0%, #ede9fe 100%);
+  --card-edge: #d9cffc;
+  --card-glow: rgba(91, 33, 182, 0.35);
+}
+.explorer-card--sky {
+  --card-bg: linear-gradient(180deg, #f2faff 0%, #e0f2fe 100%);
+  --card-edge: #bfe3f8;
+  --card-glow: rgba(3, 105, 161, 0.4);
+}
+
+/* גומחת אייקון — "שקע" לבן רך שבו יושב חפץ החוקר; נוטה קצת בלחיצה */
+.icon-well {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 46% 54% 50% 50% / 52% 46% 54% 48%;
+  box-shadow:
+    inset 0 -3px 0 rgba(20, 83, 45, 0.05),
+    0 3px 8px -5px rgba(20, 83, 45, 0.35);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.icon-well--alt {
+  border-radius: 54% 46% 48% 52% / 46% 54% 46% 54%;
+}
+.icon-well--lg {
+  width: 70px;
+  height: 70px;
+}
+.explorer-card:active .icon-well {
+  transform: rotate(-6deg) scale(1.06);
+}
+
+/* תווית-חוקר לכותרות אזור — תג קרם קטן עם "חור" בקצה, לא שלט עץ כבד */
+.explorer-label {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 10px;
-  padding-inline-start: 4px;
+  gap: 5px;
+  padding-inline: 12px 20px;
   font-family: "Rubik", "Varela Round", system-ui, sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
   color: #14532d;
-}
-.today-panel {
-  padding: 6px;
-  background: rgba(255, 255, 255, 0.78);
-  border-radius: 30px 26px 32px 28px;
+  background: #fffaf0;
+  border-start-start-radius: 999px;
+  border-end-start-radius: 999px;
+  border-start-end-radius: 10px;
+  border-end-end-radius: 10px;
   box-shadow:
-    0 0 0 1px rgba(21, 128, 61, 0.06),
-    0 12px 26px -18px rgba(20, 83, 45, 0.45);
+    inset 0 0 0 1.5px #f1e3bb,
+    0 2px 0 #eadcae,
+    0 8px 14px -12px rgba(120, 53, 15, 0.5);
 }
-.today-row {
+.explorer-label::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: 7px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 9999px;
+  background: #fbfcf3;
+  box-shadow: inset 0 0 0 1.5px #e7d59e;
+}
+
+/* ===== היום בגינה ===== */
+.today-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 150px;
+  padding: 12px 14px 12px;
+  text-align: right;
+}
+.today-card.explorer-card--sun {
+  border-radius: 28px 24px 30px 22px;
+}
+.today-card.explorer-card--mint {
+  border-radius: 24px 30px 22px 30px;
+}
+/* חותמת "הושלם" — כמו חותמת על דף משימה */
+.done-stamp {
+  position: absolute;
+  top: 12px;
+  inset-inline-end: 10px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #15803d;
+  background: #dcfce7;
+  border-radius: 9999px;
+  box-shadow: inset 0 0 0 1.5px #86efac;
+  transform: rotate(-8deg);
+}
+/* תג-דגימה קטן (קטגוריית הצמח) */
+.specimen-tag {
+  padding: 1px 9px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #166534;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 6px 9999px 9999px 6px;
+  box-shadow: inset 0 0 0 1px #b5e8c6;
+}
+
+/* ===== לגלות ולשחק ===== */
+.album-card {
   display: flex;
   width: 100%;
   align-items: center;
   gap: 12px;
-  padding: 10px 12px;
-  text-align: right;
-  border-radius: 24px;
-  transition:
-    transform 0.12s ease,
-    background-color 0.12s ease;
-}
-.today-row:active {
-  transform: scale(0.98);
-}
-.today-badge {
-  display: flex;
-  height: 52px;
-  width: 52px;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  border-radius: 44% 56% 52% 48% / 52% 44% 56% 48%;
-}
-.today-badge--alt {
-  border-radius: 56% 44% 48% 52% / 46% 56% 44% 54%;
-}
-
-.activity-tile {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition:
-    transform 0.12s ease,
-    box-shadow 0.12s ease;
-}
-.activity-tile:active {
-  transform: translateY(2px) scale(0.97);
-}
-.album-tile {
   padding: 12px 14px;
-  background: #fef3c7;
   border-radius: 30px 34px 28px 32px;
-  box-shadow: 0 10px 22px -16px rgba(146, 64, 14, 0.55);
 }
 .mini-tile {
+  display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 6px;
-  min-height: 112px;
+  gap: 7px;
+  min-height: 118px;
   padding: 12px 6px;
   text-align: center;
 }
-.tile-mint {
-  background: #dcfce7;
+.mini-tile.explorer-card--mint {
   border-radius: 28px 22px 30px 24px;
-  box-shadow: 0 10px 20px -16px rgba(21, 128, 61, 0.6);
 }
-.tile-lilac {
-  background: #ede9fe;
+.mini-tile.explorer-card--lilac {
   border-radius: 24px 30px 22px 30px;
-  box-shadow: 0 10px 20px -16px rgba(91, 33, 182, 0.5);
 }
-.tile-sky {
-  background: #e0f2fe;
+.mini-tile.explorer-card--sky {
   border-radius: 30px 24px 28px 22px;
-  box-shadow: 0 10px 20px -16px rgba(3, 105, 161, 0.55);
+}
+
+/* פס התקדמות של אלבום השדה: נבט שצומח לכיוון כוכב היעד (RTL — מימין לשמאל) */
+.field-progress {
+  position: relative;
+  display: block;
+  height: 12px;
+  margin: 10px 8px 4px 12px;
+  background: #fff;
+  border-radius: 9999px;
+  box-shadow:
+    inset 0 1px 2px rgba(120, 53, 15, 0.18),
+    0 0 0 1px #f3dcae;
+}
+.field-progress__fill {
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #4ade80 0%, #16a34a 100%);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.35);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.field-progress__knob {
+  position: absolute;
+  left: -11px;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin-top: -12px;
+  filter: drop-shadow(0 2px 2px rgba(20, 83, 45, 0.2));
+}
+.field-progress__goal {
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin-top: -12px;
 }
 
 @media (prefers-reduced-motion: reduce) {

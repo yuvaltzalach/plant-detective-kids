@@ -8,16 +8,20 @@ import {
   AlbumArt,
   BookArt,
   CameraArt,
+  ChallengeArt,
   ChevronForward,
   CornerLeaves,
   DoorArt,
   GamesArt,
   GlobeArt,
+  GoalStar,
   HeroPlant,
   HillArt,
   ParentsArt,
-  SprigArt
+  SpecimenArt,
+  SproutKnob
 } from "../components/HomeArt";
+import { SectionHeading } from "../components/Explorer";
 import { RiddleCloud, RiddlePopup, useBotiRiddle } from "../components/BotiRiddle";
 
 interface HomeProps {
@@ -253,85 +257,84 @@ export function Home(props: HomeProps) {
           </button>
         </div>
 
-        {/* 4. היום בגינה — אתגר + צמח היום */}
-        <section className="mt-8 w-full max-w-sm" aria-labelledby="home-today">
-          <h2 id="home-today" className="home-section-title">
-            <SprigArt className="h-5 w-7" />
-            היום בגינה
-          </h2>
-          <div className="today-panel">
-            <button onClick={go(props.onChallenges)} className="today-row active:bg-amber-50">
-              <span className="today-badge bg-amber-100">{challenge.emoji}</span>
-              <span className="min-w-0 flex-1">
-                <span className="flex items-center gap-2 text-xs font-bold text-amber-800">
-                  {challenge.id === "custom" ? "אתגר מההורים" : "אתגר היום"}
-                  {challengeDoneToday && (
-                    <span className="rounded-full bg-leaf-light px-2 py-0.5 text-[11px] text-leaf-dark">
-                      ✓ הושלם
-                    </span>
-                  )}
-                </span>
-                <span className="mt-0.5 line-clamp-2 block text-[15px] font-bold leading-snug text-forest">
-                  {challenge.text}
-                </span>
+        {/* 4. היום בגינה — שתי משימות שונות: אתגר (חיפוש) וצמח היום (גילוי בוטני) */}
+        <section className="mt-7 w-full max-w-sm" aria-labelledby="home-today">
+          <SectionHeading id="home-today">היום בגינה</SectionHeading>
+          <div className="grid grid-cols-2 gap-3">
+            <button onClick={go(props.onChallenges)} className="explorer-card explorer-card--sun today-card">
+              {challengeDoneToday && <span className="done-stamp">✓ הושלם</span>}
+              <span className="icon-well">
+                <ChallengeArt done={challengeDoneToday} className="h-[50px] w-[50px]" />
               </span>
-              <ChevronForward className="h-5 w-5 shrink-0 text-amber-700/45" />
+              <span className="mt-2.5 block text-xs font-bold text-amber-800">
+                {challenge.id === "custom" ? "אתגר מההורים" : "אתגר היום"}
+              </span>
+              <span className="mt-0.5 line-clamp-3 text-[15px] font-bold leading-snug text-forest">
+                {challenge.text}
+              </span>
+              <span className="mt-auto flex w-full justify-end pt-2">
+                <ChevronForward className="h-5 w-5 text-amber-700/45" />
+              </span>
             </button>
 
-            <div className="mx-4 border-t-2 border-dashed border-leaf/15" aria-hidden="true" />
-
-            <button onClick={go(props.onPlantOfDay)} className="today-row active:bg-sky-50">
-              <span className="today-badge today-badge--alt bg-sky-100">{plantOfDay.emoji}</span>
-              <span className="min-w-0 flex-1">
-                <span className="block text-xs font-bold text-sky-800">צמח היום</span>
-                <span className="mt-0.5 block truncate text-[15px] font-bold text-forest">
-                  {plantOfDay.hebrewName}
-                </span>
+            <button onClick={go(props.onPlantOfDay)} className="explorer-card explorer-card--mint today-card">
+              <span className="icon-well">
+                <SpecimenArt className="h-[50px] w-[50px]" />
               </span>
-              <ChevronForward className="h-5 w-5 shrink-0 text-sky-700/45" />
+              <span className="mt-2.5 block text-xs font-bold text-leaf-dark">צמח היום</span>
+              <span className="mt-0.5 line-clamp-2 text-[15px] font-bold leading-snug text-forest">
+                {plantOfDay.hebrewName}
+              </span>
+              <span className="mt-auto flex w-full items-center justify-between gap-2 pt-2">
+                <span className="specimen-tag">{plantOfDay.category}</span>
+                <ChevronForward className="h-5 w-5 text-leaf-dark/45" />
+              </span>
             </button>
           </div>
         </section>
 
         {/* 5. פעילויות */}
         <section className="mt-7 w-full max-w-sm" aria-labelledby="home-explore">
-          <h2 id="home-explore" className="home-section-title">
-            <SprigArt className="h-5 w-7" />
+          <SectionHeading id="home-explore" trailEnd="bee">
             לגלות ולשחק
-          </h2>
+          </SectionHeading>
 
-          <button onClick={go(props.onAlbum)} className="activity-tile album-tile w-full">
-            <AlbumArt className="h-16 w-16 shrink-0" />
+          <button onClick={go(props.onAlbum)} className="explorer-card explorer-card--peach album-card">
+            <span className="icon-well icon-well--lg">
+              <AlbumArt className="h-[58px] w-[58px]" />
+            </span>
             <span className="min-w-0 flex-1 text-right">
               <span className="block text-base font-black text-forest">האלבום שלי</span>
               <span className="mt-0.5 block text-xs font-bold text-amber-900/70">
                 {stickerCount} מתוך {totalPlants} צמחים
               </span>
-              <span className="mt-2 block h-2.5 w-full rounded-full bg-white/80">
-                <span
-                  className="relative block h-full rounded-full bg-leaf transition-all"
-                  style={{ width: `${albumPct}%` }}
-                >
-                  {albumPct > 0 && (
-                    <span className="absolute -left-1 top-1/2 h-3.5 w-3.5 -translate-y-1/2 rounded-full bg-leaf ring-2 ring-white" />
-                  )}
+              <span className="field-progress" aria-hidden="true">
+                <span className="field-progress__fill" style={{ width: `${albumPct}%` }}>
+                  <SproutKnob className="field-progress__knob" />
                 </span>
+                <GoalStar className="field-progress__goal" />
               </span>
             </span>
             <ChevronForward className="h-5 w-5 shrink-0 text-amber-800/40" />
           </button>
 
           <div className="mt-3 grid grid-cols-3 gap-3">
-            <button onClick={go(props.onEncyclopedia)} className="activity-tile mini-tile tile-mint">
-              <BookArt className="h-14 w-14" />
+            <button onClick={go(props.onEncyclopedia)} className="explorer-card explorer-card--mint mini-tile">
+              <span className="icon-well">
+                <BookArt className="h-[50px] w-[50px]" />
+              </span>
               <span className="text-[13px] font-bold leading-tight text-forest">אנציקלופדיה</span>
             </button>
-            <button onClick={go(props.onGames)} className="activity-tile mini-tile tile-lilac">
-              <GamesArt className="h-14 w-14" />
+            <button onClick={go(props.onGames)} className="explorer-card explorer-card--lilac mini-tile">
+              <span className="icon-well icon-well--alt">
+                <GamesArt className="h-[50px] w-[50px]" />
+              </span>
               <span className="text-[13px] font-bold leading-tight text-forest">משחקים</span>
             </button>
-            <button onClick={go(props.onOnline)} className="activity-tile mini-tile tile-sky">
-              <GlobeArt className="h-14 w-14" />
+            <button onClick={go(props.onOnline)} className="explorer-card explorer-card--sky mini-tile">
+              <span className="icon-well">
+                <GlobeArt className="h-[50px] w-[50px]" />
+              </span>
               <span className="text-[13px] font-bold leading-tight text-forest">תחרות אונליין</span>
             </button>
           </div>
