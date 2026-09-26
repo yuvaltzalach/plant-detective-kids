@@ -1,26 +1,31 @@
 import type { ReactNode } from "react";
-import { GardenTrail, SprigArt } from "./HomeArt";
+import { MarkerLeaves } from "./Garden";
 
 // שפת "בלש הגינה" — רכיבים קטנים לשימוש חוזר (מסך הבית הוא הרפרנס; שאר המסכים יאמצו אותם בהמשך).
-// הסגנון עצמו ב-index.css: .explorer-card (משטח מורם ונלחץ), .icon-well (גומחת אייקון), .explorer-label.
+// הסגנון עצמו ב-index.css: .explorer-card (משטח מורם ונלחץ), .garden-marker (סמן גינה),
+// .station-object / .tile-object / .album-object (חפצים שבולטים מהכרטיס).
 
-/** כותרת אזור: תווית-חוקר קטנה עם ענף, ושביל גינה מנוקד שממשיך ממנה. */
+/** כותרת אזור: סמן-גינה קליל עם עלים וניצן, ואופציונלית מקטע קצר משביל בּוֹטִי בצד השני. */
 export function SectionHeading({
   id,
   children,
-  trailEnd = "flower"
+  accessory
 }: {
   id: string;
   children: ReactNode;
-  trailEnd?: "flower" | "bee";
+  accessory?: ReactNode;
 }) {
   return (
-    <div className="mb-3 flex items-center gap-2">
-      <h2 id={id} className="explorer-label">
-        <SprigArt className="h-4 w-6" />
+    <div className="section-heading">
+      <h2 id={id} className="garden-marker">
+        <MarkerLeaves className="garden-marker__leaves" />
         {children}
       </h2>
-      <GardenTrail end={trailEnd} className="h-[26px] min-w-0 flex-1" />
+      {accessory && (
+        <span className="section-heading__trail" aria-hidden="true">
+          {accessory}
+        </span>
+      )}
     </div>
   );
 }

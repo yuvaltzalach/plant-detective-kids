@@ -212,25 +212,6 @@ button {
     radial-gradient(60% 26% at 50% 24%, rgba(254, 243, 199, 0.7), transparent 72%),
     linear-gradient(180deg, #fffaf0 0%, #fbfcf3 42%, #eefbf1 100%);
 }
-.corner-leaves {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  opacity: 0.7;
-}
-.corner-leaves.cl-a {
-  bottom: -18px;
-  right: -26px;
-  transform: scaleX(-1);
-}
-.corner-leaves.cl-b {
-  top: 46%;
-  left: -40px;
-  width: 120px;
-  height: 120px;
-  opacity: 0.5;
-}
-
 /* ===== הבמה של הכלבלב ===== */
 .stage-glow {
   position: absolute;
@@ -305,17 +286,20 @@ button {
   }
 }
 
-/* כפתור הצילום — חפץ "אמיתי": צורה אורגנית, שפה תחתונה שנלחצת */
+/* כפתור הצילום — חפץ "אמיתי" (עומק רמה 4): צורה אורגנית, שפה תחתונה שנלחצת,
+   הדגשה עליונה עדינה, וצל רך כפול שמפריד אותו מהנוף שמאחוריו */
 .capture-cta {
   display: block;
   padding: 14px 20px;
   color: #fff;
-  background: linear-gradient(180deg, #1fb257 0%, #16a34a 60%);
+  background: linear-gradient(180deg, #22b85b 0%, #16a34a 55%, #15a045 100%);
   border-radius: 34px 40px 36px 30px / 36px 30px 40px 34px;
   box-shadow:
-    inset 0 2px 0 rgba(255, 255, 255, 0.28),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -3px 0 rgba(20, 83, 45, 0.18),
     0 6px 0 #15803d,
-    0 18px 28px -14px rgba(21, 128, 61, 0.6);
+    0 9px 0 rgba(20, 83, 45, 0.12),
+    0 24px 30px -16px rgba(21, 128, 61, 0.6);
   transition:
     transform 0.12s ease,
     box-shadow 0.12s ease;
@@ -324,26 +308,38 @@ button {
 .capture-cta:active {
   transform: translateY(4px) scale(0.99);
   box-shadow:
-    inset 0 2px 0 rgba(255, 255, 255, 0.2),
+    inset 0 2px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -2px 0 rgba(20, 83, 45, 0.16),
     0 2px 0 #15803d,
-    0 8px 14px -10px rgba(21, 128, 61, 0.55);
+    0 3px 0 rgba(20, 83, 45, 0.1),
+    0 10px 16px -10px rgba(21, 128, 61, 0.55);
 }
 
-/* ===== שפת "בלש הגינה" — חפצי חוקר בתוך עולם בוטני =====
-   ~70% ממשק נקי, ~30% חפץ מאויר: משטח מורם עם "עובי" תחתון, הדגשה פנימית עדינה,
-   ולחיצה פיזית (יורד ומאבד עובי). צבעי הווריאנטים דרך משתנים. */
+/* ===== שפת "בלש הגינה" — עולם בוטני + ערכת חוקר =====
+   מודל העומק: רקע (עולם) → נוף אמצע → משטח/כרטיס → חפץ מאויר → חפץ שבולט מהכרטיס → פרטי חזית.
+   היררכיית צללים (האור מגיע מלמעלה-ימין, הצללים נופלים מעט שמאלה):
+     רמה 1 — קישוטי רקע: בלי צל
+     רמה 2 — כרטיסים/משטחים: צל רדוד ורך
+     רמה 3 — חפצים מאוירים אינטראקטיביים: צל-חפץ מעט חזק יותר
+     רמה 4 — כפתור הצילום ואלבום השדה: הצל החזק ביותר (ועדיין רך) */
+.garden-deco {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* רמה 2 — משטח מורם עם "עובי" תחתון והדגשה פנימית; נלחץ פיזית */
 .explorer-card {
   --card-bg: #fff;
   --card-edge: rgba(21, 128, 61, 0.14);
-  --card-glow: rgba(20, 83, 45, 0.35);
+  --card-glow: rgba(20, 83, 45, 0.3);
   --card-ring: rgba(255, 255, 255, 0.75);
   position: relative;
   background: var(--card-bg);
   box-shadow:
     inset 0 0 0 1.5px var(--card-ring),
     inset 0 2px 0 rgba(255, 255, 255, 0.9),
-    0 4px 0 var(--card-edge),
-    0 16px 26px -18px var(--card-glow);
+    0 3px 0 var(--card-edge),
+    0 12px 18px -14px var(--card-glow);
   transition:
     transform 0.14s ease,
     box-shadow 0.14s ease;
@@ -351,113 +347,209 @@ button {
   user-select: none;
 }
 .explorer-card:active {
-  transform: translateY(3px);
+  transform: translateY(2px) scale(0.985);
   box-shadow:
     inset 0 0 0 1.5px var(--card-ring),
     inset 0 2px 0 rgba(255, 255, 255, 0.9),
     0 1px 0 var(--card-edge),
-    0 8px 14px -12px var(--card-glow);
+    0 6px 10px -8px var(--card-glow);
 }
 .explorer-card--sun {
-  --card-bg: linear-gradient(180deg, #fffbea 0%, #fff3c9 100%);
-  --card-edge: #f3dc97;
-  --card-glow: rgba(146, 64, 14, 0.4);
+  --card-bg: linear-gradient(180deg, #fffbea 0%, #fff1c2 100%);
+  --card-edge: #f1d98e;
+  --card-glow: rgba(146, 64, 14, 0.38);
 }
 .explorer-card--mint {
-  --card-bg: linear-gradient(180deg, #f1fdf5 0%, #dcfce7 100%);
-  --card-edge: #b5e8c6;
-  --card-glow: rgba(21, 128, 61, 0.45);
+  --card-bg: linear-gradient(180deg, #f1fdf5 0%, #d7f8e2 100%);
+  --card-edge: #b0e5c2;
+  --card-glow: rgba(21, 128, 61, 0.42);
 }
 .explorer-card--peach {
-  --card-bg: linear-gradient(180deg, #fffaf0 0%, #fef0d4 100%);
-  --card-edge: #f3d7a6;
+  --card-bg: linear-gradient(180deg, #fffaf0 0%, #fdecca 100%);
+  --card-edge: #efd09b;
   --card-glow: rgba(146, 64, 14, 0.4);
 }
 .explorer-card--lilac {
-  --card-bg: linear-gradient(180deg, #f7f4ff 0%, #ede9fe 100%);
-  --card-edge: #d9cffc;
-  --card-glow: rgba(91, 33, 182, 0.35);
+  --card-bg: linear-gradient(180deg, #f8f5ff 0%, #ebe5fe 100%);
+  --card-edge: #d6cbfb;
+  --card-glow: rgba(91, 33, 182, 0.34);
 }
 .explorer-card--sky {
-  --card-bg: linear-gradient(180deg, #f2faff 0%, #e0f2fe 100%);
-  --card-edge: #bfe3f8;
-  --card-glow: rgba(3, 105, 161, 0.4);
+  --card-bg: linear-gradient(180deg, #f2faff 0%, #ddf0fd 100%);
+  --card-edge: #bcdff6;
+  --card-glow: rgba(3, 105, 161, 0.38);
 }
 
-/* גומחת אייקון — "שקע" לבן רך שבו יושב חפץ החוקר; נוטה קצת בלחיצה */
-.icon-well {
-  display: grid;
-  place-items: center;
-  width: 62px;
-  height: 62px;
-  flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.78);
-  border-radius: 46% 54% 50% 50% / 52% 46% 54% 48%;
-  box-shadow:
-    inset 0 -3px 0 rgba(20, 83, 45, 0.05),
-    0 3px 8px -5px rgba(20, 83, 45, 0.35);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+/* רמה 3 — חפץ שיושב על הכרטיס ובולט ממנו; נוטה/קופץ קלות בלחיצה */
+.station-object,
+.tile-object,
+.album-object {
+  position: absolute;
+  pointer-events: none;
+  filter: drop-shadow(-3px 6px 5px rgba(20, 83, 45, 0.2));
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.icon-well--alt {
-  border-radius: 54% 46% 48% 52% / 46% 54% 46% 54%;
-}
-.icon-well--lg {
-  width: 70px;
-  height: 70px;
-}
-.explorer-card:active .icon-well {
-  transform: rotate(-6deg) scale(1.06);
+.explorer-card:active .station-object,
+.explorer-card:active .tile-object {
+  transform: rotate(-5deg) translateY(-3px);
 }
 
-/* תווית-חוקר לכותרות אזור — תג קרם קטן עם "חור" בקצה, לא שלט עץ כבד */
-.explorer-label {
+/* ===== סמן גינה לכותרות: תווית עץ-בהיר קלילה עם עלים וניצן ===== */
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.section-heading__trail {
+  display: flex;
+  min-width: 0;
+  flex-shrink: 1;
+  overflow: hidden;
+}
+.garden-marker {
   position: relative;
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
-  gap: 5px;
-  padding-inline: 12px 20px;
+  padding: 6px 16px;
+  padding-inline-start: 28px;
   font-family: "Rubik", "Varela Round", system-ui, sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #14532d;
-  background: #fffaf0;
-  border-start-start-radius: 999px;
-  border-end-start-radius: 999px;
-  border-start-end-radius: 10px;
-  border-end-end-radius: 10px;
+  background: linear-gradient(180deg, #fdf4de 0%, #f5e2b8 100%);
+  border-radius: 12px 16px 14px 10px;
   box-shadow:
-    inset 0 0 0 1.5px #f1e3bb,
-    0 2px 0 #eadcae,
-    0 8px 14px -12px rgba(120, 53, 15, 0.5);
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1.5px 0 rgba(161, 98, 7, 0.1),
+    0 2px 0 #e7d09c,
+    0 8px 12px -10px rgba(120, 53, 15, 0.45);
+  transform: rotate(-1.5deg);
 }
-.explorer-label::after {
-  content: "";
+.garden-marker__leaves {
   position: absolute;
-  inset-inline-end: 7px;
-  top: 50%;
-  width: 6px;
-  height: 6px;
-  margin-top: -3px;
-  border-radius: 9999px;
-  background: #fbfcf3;
-  box-shadow: inset 0 0 0 1.5px #e7d59e;
+  inset-inline-start: -14px;
+  top: -13px;
+  width: 38px;
+  height: 32px;
 }
 
-/* ===== היום בגינה ===== */
-.today-card {
+/* ===== גיבור: שכבות הנוף ===== */
+.hero-backdrop {
+  left: -16px;
+  right: -16px;
+  bottom: 28px;
+  width: calc(100% + 32px);
+  height: 110px;
+}
+.hero-edge-leaf {
+  left: -34px;
+  bottom: -14px;
+  width: 86px;
+  height: 76px;
+}
+.hero-garden-left {
+  left: -12px;
+  bottom: 8px;
+  width: 128px;
+  height: 83px;
+}
+.hero-garden-right {
+  right: -14px;
+  bottom: 8px;
+  width: 108px;
+  height: 82px;
+}
+.hero-butterfly {
+  top: 16px;
+  right: 5%;
+  width: 30px;
+  height: 27px;
+  animation: butterflyDrift 11s ease-in-out infinite;
+}
+.butterfly-wings {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: butterflyFlap 11s linear infinite;
+}
+@keyframes butterflyDrift {
+  0%,
+  58%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  70% {
+    transform: translate(-10px, -7px) rotate(-8deg);
+  }
+  84% {
+    transform: translate(-4px, -3px) rotate(-3deg);
+  }
+}
+@keyframes butterflyFlap {
+  0%,
+  58%,
+  78%,
+  100% {
+    transform: scaleX(1);
+  }
+  61%,
+  67%,
+  73% {
+    transform: scaleX(0.35);
+  }
+  64%,
+  70%,
+  76% {
+    transform: scaleX(1);
+  }
+}
+.bee-hover {
+  transform-box: fill-box;
+  animation: beeHover 8s ease-in-out infinite;
+}
+@keyframes beeHover {
+  0%,
+  70%,
+  100% {
+    transform: translate(0, 0);
+  }
+  80% {
+    transform: translate(-3px, -3px);
+  }
+  90% {
+    transform: translate(1px, -1px);
+  }
+}
+
+/* ===== היום בגינה: שתי תחנות גילוי ===== */
+.station {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 150px;
-  padding: 12px 14px 12px;
+  min-height: 138px;
+  padding: 56px 14px 12px;
   text-align: right;
 }
-.today-card.explorer-card--sun {
+.station.explorer-card--sun {
   border-radius: 28px 24px 30px 22px;
 }
-.today-card.explorer-card--mint {
+.station.explorer-card--mint {
   border-radius: 24px 30px 22px 30px;
+}
+/* זכוכית המגדלת בולטת מעל הפינה הימנית-עליונה */
+.station-object--challenge {
+  top: -40px;
+  inset-inline-start: -2px;
+  width: 98px;
+  height: 98px;
+}
+/* הענף הבוטני בולט מעל הכרטיס ומעט מעבר לקצה השמאלי */
+.station-object--plant {
+  top: -42px;
+  inset-inline-start: 8px;
+  width: 104px;
+  height: 104px;
 }
 /* חותמת "הושלם" — כמו חותמת על דף משימה */
 .done-stamp {
@@ -483,50 +575,63 @@ button {
   border-radius: 6px 9999px 9999px 6px;
   box-shadow: inset 0 0 0 1px #b5e8c6;
 }
+.deco-fern {
+  right: -30px;
+  bottom: -40px;
+  width: 64px;
+  height: 104px;
+}
 
 /* ===== לגלות ולשחק ===== */
+.deco-leaf-large {
+  left: -46px;
+  bottom: -26px;
+  width: 76px;
+  height: 104px;
+}
+/* אלבום השדה — חפץ-גיבור (רמה 4) שיושב על הכרטיס ובולט ממנו */
 .album-card {
   display: flex;
   width: 100%;
   align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
+  gap: 10px;
+  min-height: 104px;
+  margin-top: 40px;
+  padding: 14px;
+  padding-inline-start: 132px;
   border-radius: 30px 34px 28px 32px;
 }
-.mini-tile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  min-height: 118px;
-  padding: 12px 6px;
-  text-align: center;
+.album-object {
+  inset-inline-start: -12px;
+  top: -34px;
+  width: 140px;
+  height: 117px;
+  filter: drop-shadow(-4px 10px 8px rgba(20, 83, 45, 0.26));
+  transform: rotate(-3deg);
 }
-.mini-tile.explorer-card--mint {
-  border-radius: 28px 22px 30px 24px;
+.explorer-card:active .album-object {
+  transform: rotate(-6deg) translateY(-4px);
 }
-.mini-tile.explorer-card--lilac {
-  border-radius: 24px 30px 22px 30px;
+.deco-stone {
+  left: -10px;
+  bottom: -30px;
+  width: 50px;
+  height: 34px;
 }
-.mini-tile.explorer-card--sky {
-  border-radius: 30px 24px 28px 22px;
-}
-
-/* פס התקדמות של אלבום השדה: נבט שצומח לכיוון כוכב היעד (RTL — מימין לשמאל) */
+/* פס ההתקדמות: מסילה ברורה עם מילוי ירוק (RTL — מתמלא מימין) */
 .field-progress {
   position: relative;
   display: block;
   height: 12px;
-  margin: 10px 8px 4px 12px;
+  margin-top: 9px;
   background: #fff;
   border-radius: 9999px;
   box-shadow:
-    inset 0 1px 2px rgba(120, 53, 15, 0.18),
-    0 0 0 1px #f3dcae;
+    inset 0 1px 2px rgba(120, 53, 15, 0.2),
+    0 0 0 1px #f0d7a6;
+  overflow: hidden;
 }
 .field-progress__fill {
-  position: relative;
   display: block;
   height: 100%;
   border-radius: 9999px;
@@ -534,22 +639,78 @@ button {
   box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.35);
   transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.field-progress__knob {
-  position: absolute;
-  left: -11px;
-  top: 50%;
-  width: 22px;
-  height: 22px;
-  margin-top: -12px;
-  filter: drop-shadow(0 2px 2px rgba(20, 83, 45, 0.2));
+/* אריחי הכלים — החפץ עולה מעל האריח */
+.activity-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 108px;
+  padding: 56px 4px 12px;
+  text-align: center;
 }
-.field-progress__goal {
-  position: absolute;
-  left: -12px;
-  top: 50%;
-  width: 22px;
-  height: 22px;
-  margin-top: -12px;
+.activity-tile.explorer-card--mint {
+  border-radius: 28px 22px 30px 24px;
+}
+.activity-tile.explorer-card--lilac {
+  border-radius: 24px 30px 22px 30px;
+}
+.activity-tile.explorer-card--sky {
+  border-radius: 30px 24px 28px 22px;
+}
+.tile-object {
+  left: 50%;
+  top: -34px;
+  width: 88px;
+  height: 84px;
+  margin-left: -44px;
+}
+.tile-object--games {
+  top: -38px;
+}
+.tile-object--globe {
+  top: -40px;
+  width: 84px;
+  height: 88px;
+  margin-left: -42px;
+}
+
+/* ===== תחתית: הגינה ממשיכה ===== */
+.garden-floor {
+  display: block;
+  align-self: stretch;
+  width: calc(100% + 2rem);
+  height: 62px;
+  margin: auto -1rem 0;
+  padding-top: 6px;
+  pointer-events: none;
+}
+
+@media (max-width: 370px) {
+  .hero-garden-left {
+    width: 112px;
+    height: 73px;
+    left: -18px;
+  }
+  .hero-garden-right {
+    width: 94px;
+    height: 71px;
+  }
+  .album-card {
+    padding-inline-start: 120px;
+  }
+  .album-object {
+    width: 128px;
+    height: 107px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-butterfly,
+  .butterfly-wings,
+  .bee-hover {
+    animation: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
