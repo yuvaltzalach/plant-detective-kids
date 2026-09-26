@@ -90,6 +90,9 @@ button {
 .home-rise > *:nth-child(5) {
   animation-delay: 0.31s;
 }
+.home-rise > *:nth-child(6) {
+  animation-delay: 0.38s;
+}
 @media (prefers-reduced-motion: reduce) {
   .home-rise > * {
     animation: none;
@@ -129,11 +132,11 @@ button {
 /* שמש עם קרניים מסתובבות — פינה עליונה */
 .sun {
   position: absolute;
-  top: -34px;
-  right: -30px;
-  width: 150px;
-  height: 150px;
-  opacity: 0.9;
+  top: -40px;
+  right: -36px;
+  width: 136px;
+  height: 136px;
+  opacity: 0.75;
 }
 .sun-rays {
   transform-box: fill-box;
@@ -194,29 +197,218 @@ button {
     transform: translateX(-70px);
   }
 }
-/* זכוכית מגדלת "סורקת" — נדנוד עדין + נצנוץ */
-.scan {
-  display: inline-block;
-  transform-origin: 70% 70%;
-  animation: scan 6s ease-in-out infinite;
-}
-@keyframes scan {
-  0%,
-  60%,
-  100% {
-    transform: rotate(0deg);
-  }
-  72% {
-    transform: rotate(-11deg);
-  }
-  86% {
-    transform: rotate(9deg);
-  }
-}
 @media (prefers-reduced-motion: reduce) {
   .sun-rays,
-  .drift-cloud,
-  .scan {
+  .drift-cloud {
+    animation: none;
+  }
+}
+
+/* בסיס קרם שמתמזג למנטה, עם כתם אור רך מאחורי הבמה */
+.home-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 26% at 50% 24%, rgba(254, 243, 199, 0.7), transparent 72%),
+    linear-gradient(180deg, #fffaf0 0%, #fbfcf3 42%, #eefbf1 100%);
+}
+.corner-leaves {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  opacity: 0.7;
+}
+.corner-leaves.cl-a {
+  bottom: -18px;
+  right: -26px;
+  transform: scaleX(-1);
+}
+.corner-leaves.cl-b {
+  top: 46%;
+  left: -40px;
+  width: 120px;
+  height: 120px;
+  opacity: 0.5;
+}
+
+/* ===== הבמה של הכלבלב ===== */
+.stage-glow {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: 190px;
+  height: 150px;
+  transform: translateX(-50%);
+  border-radius: 48% 52% 46% 54% / 55% 50% 50% 45%;
+  background: #fef3c7;
+  opacity: 0.85;
+}
+.hello-bubble {
+  padding: 6px 14px;
+  border-radius: 18px 18px 18px 6px;
+  background: #fff;
+  color: #14532d;
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: 0 6px 14px -8px rgba(20, 83, 45, 0.35);
+  animation: bubbleIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.75s both;
+}
+@keyframes bubbleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.puppy-hop {
+  animation: puppyHop 0.7s cubic-bezier(0.34, 1.4, 0.64, 1) 0.15s both;
+}
+@keyframes puppyHop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 18px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.plant-sway {
+  transform-box: view-box;
+  transform-origin: 50% 100%;
+  animation: plantSway 7s ease-in-out infinite;
+}
+@keyframes plantSway {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+/* כפתור הצילום — חפץ "אמיתי": צורה אורגנית, שפה תחתונה שנלחצת */
+.capture-cta {
+  display: block;
+  padding: 14px 20px;
+  color: #fff;
+  background: #16a34a;
+  border-radius: 34px 40px 36px 30px / 36px 30px 40px 34px;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.28),
+    0 6px 0 #15803d,
+    0 18px 28px -14px rgba(21, 128, 61, 0.6);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+  user-select: none;
+}
+.capture-cta:active {
+  transform: translateY(4px);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.2),
+    0 2px 0 #15803d,
+    0 8px 14px -10px rgba(21, 128, 61, 0.55);
+}
+
+/* ===== אזורי התוכן ===== */
+.home-section-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding-inline-start: 4px;
+  font-family: "Rubik", "Varela Round", system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #14532d;
+}
+.today-panel {
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 30px 26px 32px 28px;
+  box-shadow:
+    0 0 0 1px rgba(21, 128, 61, 0.06),
+    0 12px 26px -18px rgba(20, 83, 45, 0.45);
+}
+.today-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  text-align: right;
+  border-radius: 24px;
+  transition:
+    transform 0.12s ease,
+    background-color 0.12s ease;
+}
+.today-row:active {
+  transform: scale(0.98);
+}
+.today-badge {
+  display: flex;
+  height: 52px;
+  width: 52px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  border-radius: 44% 56% 52% 48% / 52% 44% 56% 48%;
+}
+.today-badge--alt {
+  border-radius: 56% 44% 48% 52% / 46% 56% 44% 54%;
+}
+
+.activity-tile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+.activity-tile:active {
+  transform: translateY(2px) scale(0.97);
+}
+.album-tile {
+  padding: 12px 14px;
+  background: #fef3c7;
+  border-radius: 30px 34px 28px 32px;
+  box-shadow: 0 10px 22px -16px rgba(146, 64, 14, 0.55);
+}
+.mini-tile {
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-height: 112px;
+  padding: 12px 6px;
+  text-align: center;
+}
+.tile-mint {
+  background: #dcfce7;
+  border-radius: 28px 22px 30px 24px;
+  box-shadow: 0 10px 20px -16px rgba(21, 128, 61, 0.6);
+}
+.tile-lilac {
+  background: #ede9fe;
+  border-radius: 24px 30px 22px 30px;
+  box-shadow: 0 10px 20px -16px rgba(91, 33, 182, 0.5);
+}
+.tile-sky {
+  background: #e0f2fe;
+  border-radius: 30px 24px 28px 22px;
+  box-shadow: 0 10px 20px -16px rgba(3, 105, 161, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hello-bubble,
+  .puppy-hop,
+  .plant-sway {
     animation: none;
   }
 }

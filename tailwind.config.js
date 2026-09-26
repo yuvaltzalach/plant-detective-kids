@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        kid: ['"Varela Round"', '"Rubik"', "system-ui", "sans-serif"]
+        kid: ['"Varela Round"', '"Rubik"', "system-ui", "sans-serif"],
+        display: ['"Rubik"', '"Varela Round"', "system-ui", "sans-serif"]
       },
       colors: {
         leaf: {
@@ -12,6 +13,7 @@ export default {
           DEFAULT: "#16a34a",
           dark: "#15803d"
         },
+        forest: "#14532d",
         sun: "#facc15",
         sky: "#38bdf8"
       },
