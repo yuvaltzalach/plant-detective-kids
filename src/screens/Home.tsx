@@ -18,6 +18,7 @@ import {
   ParentsArt,
   SprigArt
 } from "../components/HomeArt";
+import { RiddleCloud, RiddlePopup, useBotiRiddle } from "../components/BotiRiddle";
 
 interface HomeProps {
   account: PublicAccount | null;
@@ -48,9 +49,17 @@ const PUPPY_FRAMES: Record<PuppyFrame, string> = {
 
 /**
  * הכלבלב של מסך הבית: מנפנף "שלום" פעם אחת בכניסה, ממצמץ מדי פעם,
- * ומנפנף שוב כשנוגעים בו. בלי תנועה מתמדת.
+ * ומנפנף שוב כשנוגעים בו. בלי תנועה מתמדת. במסך הבית הוא בּוֹטִי — נגיעה פותחת את החידה.
  */
-function HeroPuppy({ size }: { size: number }) {
+function HeroPuppy({
+  size,
+  onTap,
+  expanded
+}: {
+  size: number;
+  onTap: () => void;
+  expanded: boolean;
+}) {
   const [frame, setFrame] = useState<PuppyFrame>("base");
   const tapTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
@@ -87,7 +96,16 @@ function HeroPuppy({ size }: { size: number }) {
   };
 
   return (
-    <div className="relative" style={{ width: size, height: size }} onClick={waveHello}>
+    <button
+      onClick={() => {
+        waveHello();
+        onTap();
+      }}
+      className="relative block transition-transform active:scale-95"
+      style={{ width: size, height: size }}
+      aria-label="הדמות שלי"
+      aria-expanded={expanded}
+    >
       {(Object.keys(PUPPY_FRAMES) as PuppyFrame[]).map((f) => (
         <img
           key={f}
@@ -100,7 +118,7 @@ function HeroPuppy({ size }: { size: number }) {
           style={{ opacity: frame === f ? 1 : 0 }}
         />
       ))}
-    </div>
+    </button>
   );
 }
 
@@ -115,6 +133,7 @@ export function Home(props: HomeProps) {
     plantOfDay
   } = props;
   const rank = levelTitle(level);
+  const boti = useBotiRiddle();
   const go = (fn: () => void) => () => {
     playPop();
     fn();
@@ -192,7 +211,7 @@ export function Home(props: HomeProps) {
 
         {/* 2. כותרת */}
         <header className="mt-4 text-center">
-          <h1 className="font-display text-[2.4rem] font-black leading-none tracking-tight text-forest">
+          <h1 className="font-display text-[2rem] font-black min-[390px]:text-[2.2rem] leading-none tracking-tight text-forest">
             בלש הצמחים
           </h1>
           <p className="mx-auto mt-2 max-w-[13rem] text-[15px] leading-snug text-forest/75 [text-wrap:balance]">
@@ -202,14 +221,25 @@ export function Home(props: HomeProps) {
 
         {/* הבמה: הכלבלב יושב על גבעה ליד צמח, ומציץ מעל כפתור הצילום */}
         <div className="relative mt-2 w-full max-w-sm">
-          <div className="relative h-[176px]" aria-hidden="true">
-            <div className="stage-glow" />
+          <div className="relative h-[176px]">
+            <div className="stage-glow" aria-hidden="true" />
             <HillArt className="absolute -inset-x-4 bottom-0 h-[64px] w-[calc(100%+2rem)]" />
             <HeroPlant className="absolute bottom-5 right-[7%] h-[128px] w-[76px]" />
             <div className="puppy-hop absolute bottom-0 left-1/2 -translate-x-1/2">
-              <HeroPuppy size={168} />
+              <HeroPuppy size={168} onTap={boti.toggleBubble} expanded={boti.bubbleOpen} />
+              {boti.bubbleOpen ? (
+                <RiddleCloud
+                  plant={boti.plant}
+                  onOpen={boti.openPopup}
+                  dotsSide="right"
+                  className="hero-riddle"
+                />
+              ) : (
+                <div className="hello-bubble" aria-hidden="true">
+                  היי! 👋
+                </div>
+              )}
             </div>
-            <div className="hello-bubble absolute left-[3%] top-5">היי! 👋</div>
           </div>
 
           {/* 3. הפעולה הראשית */}
@@ -322,6 +352,8 @@ export function Home(props: HomeProps) {
           </button>
         )}
       </div>
+
+      {boti.popupOpen && <RiddlePopup plant={boti.plant} onClose={boti.closePopup} />}
     </div>
   );
 }
