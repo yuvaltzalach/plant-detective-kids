@@ -260,7 +260,7 @@ export function Home(props: HomeProps) {
           <SectionHeading id="home-today" accessory={<PawTrail className="h-9 w-[110px]" />}>
             היום בגינה
           </SectionHeading>
-          <div className="mt-11 grid grid-cols-2 gap-3">
+          <div className="mt-8 grid grid-cols-2 gap-3">
             <button onClick={go(props.onPlantOfDay)} className="explorer-card explorer-card--mint station">
               <span className="station-object station-object--plant">
                 {plantOfDay.hebrewName.includes("שקד") ? (
@@ -321,7 +321,7 @@ export function Home(props: HomeProps) {
           </button>
 
           <StoneBloom className="garden-deco deco-stone" />
-          <div className="mt-11 grid grid-cols-3 gap-3">
+          <div className="mt-6 grid grid-cols-3 gap-3">
             <button onClick={go(props.onEncyclopedia)} className="explorer-card explorer-card--mint activity-tile">
               <span className="tile-object tile-object--book">
                 <img src="/art/book.webp" alt="" className="h-full w-full object-contain" />
