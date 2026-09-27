@@ -1150,3 +1150,43 @@ button {
   .station-object--challenge, .station-object--plant { width: 102px; height: 102px; }
   .activity-tile { min-height: 110px; }
 }
+
+/* One continuous painted surface: fade the sky into the path gradually, and
+   bring the side foliage in gradually instead of starting a second picture. */
+.home-wash {
+  background:
+    linear-gradient(180deg,
+      transparent 0, transparent 395px,
+      rgba(255,249,233,.12) 460px,
+      rgba(255,249,233,.72) 620px,
+      #fff9e9 850px, #fff9e9 100%),
+    url('/art/garden-sky.webp') center top / 165% auto no-repeat,
+    #fff9e9;
+}
+.home-rise::before {
+  top: 0;
+  background-position: center top;
+  background-size: 115% 100%;
+  opacity: .8;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 340px, #000 660px);
+  mask-image: linear-gradient(to bottom, transparent 0, transparent 340px, #000 660px);
+}
+.section-heading::before {
+  position: absolute;
+  inset: 12px -8px 1px;
+  border-bottom: 2px dashed rgba(173, 130, 74, .45);
+  border-radius: 50%;
+  transform: rotate(-3deg);
+  background: radial-gradient(ellipse at center, rgba(255,250,226,.8), transparent 70%);
+  content: "";
+  pointer-events: none;
+}
+.garden-marker { z-index: 1; }
+.section-heading__trail { z-index: 1; }
+.station { min-height: 130px; padding-top: 60px; }
+.activity-tile { min-height: 96px; padding-top: 53px; }
+.activity-tile::before { display: none; }
+@media (max-width: 370px) {
+  .station { min-height: 136px; padding-top: 64px; }
+  .activity-tile { min-height: 96px; }
+}
