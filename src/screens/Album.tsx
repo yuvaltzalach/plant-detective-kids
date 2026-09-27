@@ -32,7 +32,7 @@ export function Album({ state, player, points, level, onCapture }: AlbumProps) {
   };
 
   return (
-    <div className="screen-rise flex flex-1 flex-col px-5 pb-24 pt-2">
+    <div className="garden-page garden-page--album screen-rise flex flex-1 flex-col px-5 pb-24 pt-2">
       <div className="relative text-center">
         <div className="title-glow" aria-hidden="true" />
         <h2 className="relative text-3xl font-black text-leaf-dark">📔 האלבום שלי</h2>

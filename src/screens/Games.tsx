@@ -12,7 +12,7 @@ export const GAMES: { id: GameId; label: string; emoji: string }[] = [
 
 export function Games({ onOpen }: { onOpen: (id: GameId) => void }) {
   return (
-    <div className="screen-rise flex flex-1 flex-col items-center px-6 pb-10 pt-4">
+    <div className="garden-page garden-page--games screen-rise flex flex-1 flex-col items-center px-6 pb-10 pt-4">
       <div className="relative text-center">
         <div className="title-glow" aria-hidden="true" />
         <div className="relative text-6xl drop-shadow-sm">🎮</div>

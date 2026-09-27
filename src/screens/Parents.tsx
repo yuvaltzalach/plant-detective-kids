@@ -77,7 +77,7 @@ export function Parents(props: ParentsProps) {
   };
 
   return (
-    <div className="screen-rise flex flex-1 flex-col gap-6 px-5 pb-12 pt-2">
+    <div className="garden-page screen-rise flex flex-1 flex-col gap-6 px-5 pb-12 pt-2">
       <h2 className="text-center text-3xl font-black text-leaf-dark">👪 אזור הורים</h2>
 
       {/* הילדים המקושרים */}

@@ -69,7 +69,7 @@ export function Profile({ account, onChangeUsername, onUpdateProfile }: ProfileP
   };
 
   return (
-    <div className="screen-rise flex flex-1 flex-col gap-5 px-5 pb-12 pt-2">
+    <div className="garden-page screen-rise flex flex-1 flex-col gap-5 px-5 pb-12 pt-2">
       <div className="relative">
         <div className="title-glow" aria-hidden="true" />
         <h2 className="relative text-center text-3xl font-black text-leaf-dark">
