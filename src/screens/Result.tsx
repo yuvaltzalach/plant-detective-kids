@@ -11,6 +11,8 @@ interface ResultProps {
   record: (r: PlantResult) => FindOutcome;
   onCapture: () => void;
   onAlbum: () => void;
+  /** אם הגענו ממשימת צילום במרוץ — כפתור ראשי לחזרה למרוץ */
+  onBackToRace?: () => void;
 }
 
 function celebrate() {
@@ -19,7 +21,7 @@ function celebrate() {
   confetti({ ...opts, angle: 120 });
 }
 
-export function Result({ result, record, onCapture, onAlbum }: ResultProps) {
+export function Result({ result, record, onCapture, onAlbum, onBackToRace }: ResultProps) {
   const done = useRef(false);
   const [outcome, setOutcome] = useState<FindOutcome | null>(null);
   const [showBadges, setShowBadges] = useState(false);
@@ -100,7 +102,13 @@ export function Result({ result, record, onCapture, onAlbum }: ResultProps) {
         </div>
       )}
 
-      <div className="mt-6 flex w-full max-w-md gap-3">
+      {onBackToRace && (
+        <button onClick={onBackToRace} className="big-btn mt-6 w-full max-w-md bg-amber-500 text-xl">
+          🏁 חזרה למרוץ
+        </button>
+      )}
+
+      <div className={`${onBackToRace ? "mt-3" : "mt-6"} flex w-full max-w-md gap-3`}>
         <button onClick={onCapture} className="big-btn flex-1 bg-leaf text-xl">
           📷 עוד צמח!
         </button>

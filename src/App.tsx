@@ -21,6 +21,7 @@ import { TrueFalseGame } from "./screens/games/TrueFalseGame";
 import { Home } from "./screens/Home";
 import { Identifying } from "./screens/Identifying";
 import { OnlineGroup } from "./screens/OnlineGroup";
+import type { HuntOutcome } from "./screens/RacePlay";
 import { Parents } from "./screens/Parents";
 import { PlantDetail } from "./screens/PlantDetail";
 import { Profile } from "./screens/Profile";
@@ -88,6 +89,9 @@ export default function App() {
   const [result, setResult] = useState<PlantResult | null>(null);
   const [detailId, setDetailId] = useState<string | undefined>(undefined);
   const [gameId, setGameId] = useState<GameId | null>(null);
+  // משימת צילום במרוץ: אחרי הזיהוי חוזרים למרוץ עם הצמח שנמצא
+  const [pendingHunt, setPendingHunt] = useState<{ raceId: string; index: number } | null>(null);
+  const [huntOutcome, setHuntOutcome] = useState<HuntOutcome | null>(null);
   const [muted, setMutedState] = useState(() => localStorage.getItem(MUTE_KEY) === "1");
 
   useEffect(() => {
@@ -152,7 +156,10 @@ export default function App() {
           challenge={a.challenge}
           challengeDoneToday={challengeDoneToday}
           plantOfDay={plantOfDay}
-          onCapture={startCapture}
+          onCapture={() => {
+            setPendingHunt(null);
+            startCapture();
+          }}
           onAlbum={() => go("album")}
           onChallenges={() => go("challenges")}
           onOnline={() => go("online")}
@@ -170,7 +177,7 @@ export default function App() {
           onImage={(dataUrl) => {
             setImage(dataUrl);
             setResult(null);
-            navTo(["home", "identifying"]);
+            navTo(pendingHunt ? ["home", "online", "identifying"] : ["home", "identifying"]);
           }}
         />
       )}
@@ -180,7 +187,13 @@ export default function App() {
           imageDataUrl={image}
           onResult={(r) => {
             setResult(r);
-            navTo(["home", "result"]);
+            if (pendingHunt) {
+              setHuntOutcome({ ...pendingHunt, category: r.category, plantName: r.hebrewName });
+              setPendingHunt(null);
+              navTo(["home", "online", "result"]);
+            } else {
+              navTo(["home", "result"]);
+            }
           }}
           onRetry={startCapture}
         />
@@ -192,6 +205,7 @@ export default function App() {
           record={a.record}
           onCapture={startCapture}
           onAlbum={() => navTo(["home", "album"])}
+          onBackToRace={huntOutcome ? () => history.back() : undefined}
         />
       )}
 
@@ -218,14 +232,23 @@ export default function App() {
         <OnlineGroup
           code={online.code}
           members={online.members}
-          challenge={online.challenge}
+          race={online.race}
+          raceResults={online.raceResults}
           status={online.status}
           me={meAsPlayer}
           onJoin={online.join}
           onLeave={online.leave}
           onRefresh={online.refresh}
-          onSetChallenge={online.updateGroupChallenge}
-          onCompleteChallenge={online.completeGroupChallenge}
+          onStartRace={online.startRace}
+          onEndRace={online.endRace}
+          onRaceProgress={online.reportRaceProgress}
+          onHunt={(raceId, index) => {
+            setPendingHunt({ raceId, index });
+            setHuntOutcome(null);
+            navTo(["home", "online", "capture"]);
+          }}
+          huntOutcome={huntOutcome}
+          onHuntConsumed={() => setHuntOutcome(null)}
         />
       )}
 
@@ -277,10 +300,11 @@ export default function App() {
           onClearChallenge={() => a.updateCustomChallenge(null)}
           online={{
             code: online.code,
-            challenge: online.challenge,
+            race: online.race,
             join: online.join,
             leave: online.leave,
-            updateGroupChallenge: online.updateGroupChallenge
+            startRace: online.startRace,
+            endRace: online.endRace
           }}
         />
       )}

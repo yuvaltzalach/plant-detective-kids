@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import { levelTitle } from "../data/levels";
 import { levelForPoints } from "../lib/progress";
-import { randomCode, type GroupChallenge } from "../lib/online";
+import { randomCode } from "../lib/online";
+import { getAllPlants } from "../lib/content";
+import { generateMissions, type Mission, type Race } from "../lib/race";
 import type { ChildAccount } from "../lib/auth";
 import type { AppSettings, CustomChallenge, PlantCategory } from "../types";
 
 export interface OnlineControls {
   code: string | null;
-  challenge: GroupChallenge | null;
+  race: Race | null;
   join: (raw: string) => void;
   leave: () => void;
-  updateGroupChallenge: (c: { text: string; emoji: string; category?: string } | null) => void;
+  startRace: (missions: Mission[]) => Promise<boolean>;
+  endRace: () => void;
 }
 
 interface ParentsProps {
@@ -56,9 +59,8 @@ export function Parents(props: ParentsProps) {
   const [childUser, setChildUser] = useState("");
   const [childPass, setChildPass] = useState("");
   const [codeInput, setCodeInput] = useState("");
-  const [gText, setGText] = useState("");
-  const [gEmoji, setGEmoji] = useState("🎯");
-  const [gCategory, setGCategory] = useState<PlantCategory | undefined>(undefined);
+  const [raceCount, setRaceCount] = useState(10);
+  const [raceMsg, setRaceMsg] = useState("");
   const current = props.settings.customChallenge;
 
   useEffect(() => {
@@ -291,52 +293,49 @@ export function Parents(props: ParentsProps) {
                 {props.online.code}
               </div>
             </div>
-            <div className="mt-4 text-sm font-bold text-leaf-dark/80">אתגר לכל הקבוצה:</div>
-            <textarea
-              value={gText}
-              onChange={(e) => setGText(e.target.value)}
-              placeholder="מצאו פרח סגול"
-              rows={2}
-              className="mt-1 w-full rounded-2xl border-2 border-leaf-light p-2 outline-none focus:border-leaf"
-            />
-            <div className="mt-2 flex flex-wrap gap-1.5">
-              {EMOJI_CHOICES.map((e) => (
+            <div className="mt-4 text-sm font-bold text-leaf-dark/80">🏁 מרוץ משימות לכל הקבוצה:</div>
+            <p className="mt-1 text-xs text-leaf-dark/70">
+              {props.online.race && !props.online.race.endedAt
+                ? `יש מרוץ פעיל (${props.online.race.missions.length} משימות). הילדים משחקים ממסך "תחרות אונליין".`
+                : "כולם מקבלים את אותו רצף משימות ומתחרים על הכי הרבה נקודות."}
+            </p>
+            <div className="mt-2 flex gap-1.5">
+              {[5, 10, 15].map((c) => (
                 <button
-                  key={e}
-                  onClick={() => setGEmoji(e)}
-                  className={`h-9 w-9 rounded-lg text-xl ${
-                    e === gEmoji ? "bg-leaf-light ring-2 ring-leaf" : "bg-gray-100"
+                  key={c}
+                  onClick={() => setRaceCount(c)}
+                  className={`rounded-full px-4 py-1 text-sm font-bold ${
+                    raceCount === c ? "bg-leaf text-white" : "bg-gray-100 text-leaf-dark"
                   }`}
                 >
-                  {e}
+                  {c} משימות
                 </button>
               ))}
             </div>
-            <div className="mt-2 flex flex-wrap gap-1.5">
-              {CATEGORIES.map((c) => (
-                <button
-                  key={c.label}
-                  onClick={() => setGCategory(c.value)}
-                  className={`rounded-full px-3 py-1 text-xs font-bold ${
-                    gCategory === c.value ? "bg-leaf text-white" : "bg-gray-100 text-leaf-dark"
-                  }`}
-                >
-                  {c.label}
-                </button>
-              ))}
-            </div>
+            {raceMsg && <div className="mt-2 text-sm font-bold text-leaf">{raceMsg}</div>}
             <div className="mt-3 flex gap-2">
               <button
-                onClick={() => {
-                  if (!gText.trim()) return;
-                  props.online.updateGroupChallenge({ text: gText.trim(), emoji: gEmoji, category: gCategory });
-                  setGText("");
+                onClick={async () => {
+                  const ok = await props.online.startRace(
+                    generateMissions(getAllPlants(), raceCount, true)
+                  );
+                  setRaceMsg(ok ? "✓ המרוץ נפתח! כל הקבוצה יכולה להתחיל." : "לא הצלחנו לפתוח מרוץ, נסו שוב.");
                 }}
-                disabled={!gText.trim()}
-                className="big-btn flex-1 bg-leaf py-2 text-base disabled:opacity-40"
+                className="big-btn flex-1 bg-leaf py-2 text-base"
               >
-                קביעת אתגר לקבוצה
+                פתיחת מרוץ חדש
               </button>
+              {props.online.race && !props.online.race.endedAt && (
+                <button
+                  onClick={() => {
+                    props.online.endRace();
+                    setRaceMsg("המרוץ הסתיים — התוצאות במסך התחרות.");
+                  }}
+                  className="big-btn bg-amber-500 py-2 text-base"
+                >
+                  סיום מרוץ
+                </button>
+              )}
               <button onClick={props.online.leave} className="big-btn bg-gray-400 py-2 text-base">
                 יציאה
               </button>
