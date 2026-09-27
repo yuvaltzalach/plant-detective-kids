@@ -1191,3 +1191,17 @@ button {
   .station { min-height: 136px; padding-top: 64px; }
   .activity-tile { min-height: 96px; }
 }
+
+/* Restore the continuous composition from the earlier phone capture. The
+   later foreground strip and the separately positioned frame made seams. */
+.home-wash {
+  background:
+    linear-gradient(180deg, transparent 0, transparent 420px, #fff9e9 680px, #fff9e9 100%),
+    url('/art/garden-sky.webp') center top / 100% auto no-repeat,
+    #fff9e9;
+}
+.home-rise {
+  background: url('/art/garden-frame.webp') center top / 100% 100% no-repeat;
+}
+.home-rise::before { display: none; }
+.stage-glow { opacity: .18; }
