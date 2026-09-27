@@ -8,6 +8,8 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
+      // הרישום נעשה ידנית ב-main.tsx (כדי לרענן את הדף מיד כשיש גרסה חדשה)
+      injectRegister: false,
       includeAssets: ["favicon.svg", "icon.svg"],
       manifest: {
         name: "בלש הצמחים",
