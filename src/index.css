@@ -1102,3 +1102,51 @@ button {
     animation: none;
   }
 }
+
+/* Finer match to the garden artwork on narrow phone screens. */
+.home-wash {
+  background:
+    linear-gradient(180deg, transparent 0, transparent 405px, #fff9e9 620px, #fff9e9 100%),
+    url('/art/garden-sky.webp') 53% top / 125% auto no-repeat,
+    #fff9e9;
+}
+.home-rise::before { top: 560px; background-size: 115% 100%; }
+.section-heading__trail {
+  top: 7px;
+  right: auto;
+  left: 4px;
+  width: 110px;
+  height: 36px;
+  opacity: 1;
+  overflow: visible;
+}
+.station {
+  min-height: 140px;
+  padding-top: 70px;
+  padding-bottom: 10px;
+}
+.station-object--challenge, .station-object--plant {
+  top: -39px;
+  width: 112px;
+  height: 112px;
+}
+.activity-tile { min-height: 112px; padding-top: 64px; }
+.tile-object, .tile-object--globe {
+  width: 99px;
+  height: 99px;
+  top: -39px;
+  margin-left: -49px;
+}
+.parents-entry {
+  position: relative;
+  z-index: 1;
+  border: 2px solid rgba(249, 227, 173, .95);
+  background: #fff3d5;
+  box-shadow: inset 0 2px 0 #fff, 0 4px 0 #d6b879,
+    0 10px 18px -12px rgba(105, 74, 31, .65);
+}
+@media (max-width: 370px) {
+  .station { min-height: 146px; padding-top: 72px; }
+  .station-object--challenge, .station-object--plant { width: 102px; height: 102px; }
+  .activity-tile { min-height: 110px; }
+}

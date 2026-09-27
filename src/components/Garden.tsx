@@ -91,9 +91,9 @@ export function Ladybug({ x, y, rot = 0, s = 1 }: { x: number; y: number; rot?: 
   );
 }
 
-function Paw({ x, y, rot = 0, o = 0.2 }: { x: number; y: number; rot?: number; o?: number }) {
+function Paw({ x, y, rot = 0, o = 0.2, s = 1 }: { x: number; y: number; rot?: number; o?: number; s?: number }) {
   return (
-    <g transform={`translate(${x} ${y}) rotate(${rot})`} fill="#92400e" fillOpacity={o}>
+    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`} fill="#a86532" fillOpacity={o}>
       <ellipse cx="0" cy="2.2" rx="3.4" ry="2.9" />
       <ellipse cx="-3.8" cy="-2" rx="1.35" ry="1.6" />
       <ellipse cx="-1.3" cy="-3.9" rx="1.35" ry="1.6" />
@@ -295,11 +295,10 @@ export function Butterfly({ className }: ArtProps) {
 export function PawTrail({ className }: ArtProps) {
   return (
     <svg viewBox="0 0 110 36" className={className} {...svgProps}>
-      <path d="M104 26 C 90 30, 80 18, 66 22" stroke="#92400e" strokeOpacity="0.18" strokeWidth="2" strokeDasharray="0.1 5.5" strokeLinecap="round" fill="none" />
-      <Paw x={56} y={18} rot={-100} o={0.22} />
-      <Paw x={40} y={26} rot={-80} o={0.18} />
-      <Paw x={24} y={16} rot={-100} o={0.14} />
-      <Leaf len={9} w={3.4} fill="#86efac" transform="translate(8 28) rotate(-30)" />
+      <path d="M108 25 C 93 27, 85 10, 72 16 S 50 29, 40 17 S 20 12, 8 23" stroke="#bb8c5a" strokeOpacity=".7" strokeWidth="2.3" strokeDasharray="2 5" strokeLinecap="round" fill="none" />
+      <Paw x={92} y={25} rot={-32} o={0.68} s={1.5} />
+      <Paw x={57} y={15} rot={24} o={0.74} s={1.65} />
+      <Paw x={23} y={22} rot={-28} o={0.68} s={1.5} />
     </svg>
   );
 }
@@ -308,12 +307,11 @@ export function PawTrail({ className }: ArtProps) {
 export function BeeTrail({ className }: ArtProps) {
   return (
     <svg viewBox="0 0 110 36" className={className} {...svgProps}>
-      <path d="M104 24 C 86 30, 76 8, 62 16 C 54 21, 58 28, 48 24" stroke="#ca8a04" strokeOpacity="0.28" strokeWidth="1.6" strokeDasharray="0.1 5" strokeLinecap="round" fill="none" />
+      <path d="M108 26 C 88 32, 79 4, 60 14 C 47 20, 57 30, 44 24" stroke="#b88749" strokeOpacity=".7" strokeWidth="2" strokeDasharray="2 4" strokeLinecap="round" fill="none" />
       <g className="bee-hover">
-        <Bee x={36} y={18} s={1.15} />
+        <Bee x={31} y={17} s={2.05} />
       </g>
-      <Daisy x={14} y={34} r={4} h={10} />
-      <GrassTuft x={22} y={36} s={0.45} />
+      <Daisy x={8} y={35} r={4} h={12} />
     </svg>
   );
 }
