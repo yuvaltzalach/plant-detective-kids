@@ -2,6 +2,7 @@ import { useState } from "react";
 import { PasswordInput } from "../components/PasswordInput";
 import { AVATARS } from "../lib/players";
 import { playPop } from "../lib/sound";
+import { APP_VERSION, forceLatestVersion } from "../lib/appUpdate";
 import type { PublicAccount } from "../lib/auth";
 
 interface ProfileProps {
@@ -149,6 +150,20 @@ export function Profile({ account, onChangeUsername, onUpdateProfile }: ProfileP
           עדכון סיסמה
         </button>
         <Note msg={passMsg} />
+      </section>
+
+      {/* גרסה */}
+      <section className="text-center">
+        <div className="text-xs text-leaf-dark/70">גרסה {APP_VERSION}</div>
+        <button
+          onClick={() => {
+            playPop();
+            void forceLatestVersion();
+          }}
+          className="mt-1 text-sm font-bold text-leaf underline"
+        >
+          🔄 עדכון לגרסה האחרונה
+        </button>
       </section>
     </div>
   );

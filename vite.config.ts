@@ -2,13 +2,18 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
+import pkg from "./package.json";
 
 export default defineConfig({
+  define: {
+    __APP_VERSION__: JSON.stringify(pkg.version)
+  },
   plugins: [
     react(),
     VitePWA({
-      // "prompt": הגרסה החדשה מחכה, והאפליקציה מחילה אותה רק במסך הבית (src/lib/appUpdate.ts)
+      // ה-SW החדש משתלט מיד, אבל רענון הדף קורה רק במסך הבית (src/lib/appUpdate.ts)
       registerType: "prompt",
+      workbox: { skipWaiting: true, clientsClaim: true, cleanupOutdatedCaches: true },
       injectRegister: false,
       includeAssets: ["favicon.svg", "icon.svg"],
       manifest: {

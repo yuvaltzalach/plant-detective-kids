@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { getAllPlants } from "../lib/content";
+import { hasHebrew, hebrewNameFor } from "../lib/hebrewName";
 import { levelTitle } from "../data/levels";
 import { shareAlbumImage } from "../lib/share";
 import { playPop } from "../lib/sound";
@@ -71,7 +73,7 @@ export function Album({ state, player, points, level, onCapture }: AlbumProps) {
             >
               <div className="text-4xl">{p?.emoji ?? sticker.emoji}</div>
               <div className="mt-1 text-xs font-bold leading-tight text-leaf-dark">
-                {p?.hebrewName ?? sticker.hebrewName}
+                {p ? p.hebrewName : <HebrewStickerName name={sticker.hebrewName} collectId={sticker.collectId} />}
               </div>
               {sticker.timesFound > 1 && (
                 <div className="text-[10px] text-amber-600">×{sticker.timesFound}</div>
@@ -99,4 +101,25 @@ export function Album({ state, player, points, level, onCapture }: AlbumProps) {
       </button>
     </div>
   );
+}
+
+/**
+ * מדבקות ישנות נשמרו לפעמים עם שם באנגלית/לטינית (לפני שהיה תרגום). מציגים אותן בעברית:
+ * מתרגמים את השם המדעי, ועד שיש תרגום — "צמח מסתורי" ולא אנגלית.
+ */
+function HebrewStickerName({ name, collectId }: { name: string; collectId: string }) {
+  const [he, setHe] = useState<string | null>(hasHebrew(name) ? name : null);
+
+  useEffect(() => {
+    if (hasHebrew(name) || !collectId.startsWith("sci:")) return;
+    let cancelled = false;
+    void hebrewNameFor(collectId.slice(4)).then((r) => {
+      if (!cancelled && r) setHe(r.name);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [name, collectId]);
+
+  return <>{he ?? "צמח מסתורי"}</>;
 }

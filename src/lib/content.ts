@@ -1,4 +1,5 @@
 import plantsData from "../data/plants.he.json";
+import { hasHebrew, hebrewNameFor } from "./hebrewName";
 import type {
   IdentifyCandidate,
   PlantCategory,
@@ -32,13 +33,20 @@ export function getAllPlants(): PlantContent[] {
   return PLANTS;
 }
 
-/** חיפוש תוכן עברי מקומי עבור מועמד זיהוי. מחזיר null אם אין התאמה. */
-export function findLocalContent(candidate: IdentifyCandidate): PlantContent | null {
+/** התאמה מדויקת לפי השם המדעי (כולל תת-מין/זן או שם מחבר שנוספו לו). */
+function findExactLocal(candidate: IdentifyCandidate): PlantContent | null {
   const sci = normSci(candidate.scientificName ?? "");
   if (sci && byScientific.has(sci)) return byScientific.get(sci)!;
   // Pl@ntNet לפעמים מחזיר גם תת-מין/זן ("Olea europaea subsp. ...") — משווים לפי שתי המילים הראשונות
   const binomial = sci.split(" ").slice(0, 2).join(" ");
   if (binomial && byScientific.has(binomial)) return byScientific.get(binomial)!;
+  return null;
+}
+
+/** חיפוש תוכן עברי מקומי עבור מועמד זיהוי. מחזיר null אם אין התאמה. */
+export function findLocalContent(candidate: IdentifyCandidate): PlantContent | null {
+  const exact = findExactLocal(candidate);
+  if (exact) return exact;
 
   // התאמה לפי הסוג (genus) — רק כשיש במסד מין אחד בלבד מהסוג הזה. אם יש כמה מינים
   // (למשל כמה סוגי אלון), הצגת אחד מהם הייתה נותנת שם לא נכון לצמח שצולם.
@@ -100,24 +108,6 @@ async function fetchWikipedia(title: string): Promise<WikiSummary | null> {
   }
 }
 
-/**
- * מחפש בוויקיפדיה העברית ומחזיר את כותרת הערך המתאים ביותר.
- * כך מוצאים את הערך העברי (למשל "גבסנית מכבדית") גם משם לטיני (Gypsophila paniculata).
- */
-async function searchWikipediaTitle(query: string): Promise<string | null> {
-  try {
-    const url =
-      "https://he.wikipedia.org/w/api.php?action=query&list=search&srlimit=1&format=json&origin=*&srsearch=" +
-      encodeURIComponent(query);
-    const res = await fetch(url);
-    if (!res.ok) return null;
-    const data: any = await res.json();
-    return data?.query?.search?.[0]?.title ?? null;
-  } catch {
-    return null;
-  }
-}
-
 const GENERIC_FACTS = [
   "כל הכבוד! מצאת צמח מעניין 🌿",
   "כדאי להסתכל טוב על העלים, הפרחים והצבעים שלו.",
@@ -129,16 +119,11 @@ function collectIdFor(candidate: IdentifyCandidate): string {
   return sci ? `sci:${sci}` : `name:${candidate.commonNames[0] ?? "unknown"}`;
 }
 
-/**
- * הופך מועמד זיהוי לתוצאה מלאה בעברית:
- * 1. מסד תוכן מקומי (הכי ידידותי לילדים)
- * 2. ויקיפדיה בעברית (גיבוי דינמי)
- * 3. טקסט כללי ידידותי
- */
-function toResultFromWiki(wiki: WikiSummary, candidate: IdentifyCandidate): PlantResult {
+/** תוצאה מוויקיפדיה העברית. `name` — השם העברי שיוצג (לא כותרת באנגלית). */
+function toResultFromWiki(wiki: WikiSummary, candidate: IdentifyCandidate, name: string): PlantResult {
   const facts = splitToFacts(wiki.extract);
   return {
-    hebrewName: wiki.title,
+    hebrewName: name,
     emoji: "🌿",
     category: "צמח" as PlantCategory,
     scientificName: candidate.scientificName,
@@ -150,42 +135,9 @@ function toResultFromWiki(wiki: WikiSummary, candidate: IdentifyCandidate): Plan
   };
 }
 
-/** האם המחרוזת מכילה אותיות עבריות (כדי לא להציג שם לטיני כ"שם עברי"). */
-function hasHebrew(text: string): boolean {
-  return /[֐-׿]/.test(text);
-}
-
-export async function enrichToResult(candidate: IdentifyCandidate): Promise<PlantResult> {
-  const local = findLocalContent(candidate);
-  if (local) return toResultFromLocal(local, candidate);
-
-  // 1) ניסיון ישיר לפי שמות עבריים ואז לפי השם המדעי
-  const titles = [...(candidate.commonNames ?? []), candidate.scientificName].filter(Boolean);
-  for (const title of titles) {
-    const wiki = await fetchWikipedia(title);
-    if (wiki) return toResultFromWiki(wiki, candidate);
-  }
-
-  // 2) חיפוש בוויקיפדיה העברית — מוצא את הערך העברי גם מהשם הלטיני
-  const searchQuery = candidate.scientificName || candidate.commonNames?.[0] || "";
-  if (searchQuery) {
-    const foundTitle = await searchWikipediaTitle(searchQuery);
-    if (foundTitle) {
-      const wiki = await fetchWikipedia(foundTitle);
-      if (wiki) return toResultFromWiki(wiki, candidate);
-    }
-  }
-
-  // 3) צמח קרוב מאותו סוג במסד המקומי
-  const sibling = genusFallback(candidate);
-  if (sibling) return toResultFromLocal(sibling, candidate);
-
-  // 4) גיבוי אחרון — מעדיפים שם נפוץ בעברית; אם אין, מציגים את השם הלטיני
-  const hebrewCommon = (candidate.commonNames ?? []).find(hasHebrew);
-  const friendlyName =
-    hebrewCommon || candidate.commonNames?.[0] || candidate.scientificName || "צמח מסתורי";
+function genericResult(candidate: IdentifyCandidate, name: string): PlantResult {
   return {
-    hebrewName: friendlyName,
+    hebrewName: name,
     emoji: "🌱",
     category: "צמח",
     scientificName: candidate.scientificName,
@@ -195,4 +147,53 @@ export async function enrichToResult(candidate: IdentifyCandidate): Promise<Plan
     source: "generic",
     collectId: collectIdFor(candidate)
   };
+}
+
+/** ערך בוויקיפדיה העברית — רק אם הכותרת שלו בעברית (לא דף באנגלית שנמצא בטעות). */
+async function hebrewWiki(title: string): Promise<WikiSummary | null> {
+  const wiki = await fetchWikipedia(title);
+  return wiki && hasHebrew(wiki.title) ? wiki : null;
+}
+
+/**
+ * הופך מועמד זיהוי לתוצאה מלאה — תמיד עם שם בעברית (לעולם לא אנגלית):
+ * 1. מסד התוכן המקומי — התאמה מדויקת (500 צמחים, הכי ידידותי לילדים)
+ * 2. תרגום השם המדעי לעברית (ויקיפדיה האנגלית ← הערך העברי, או ויקידאטה) + עובדות מוויקיפדיה
+ * 3. צמח קרוב מאותו סוג במסד המקומי
+ * 4. שם הסוג בעברית ("מין של אלון")
+ * 5. "צמח מסתורי"
+ */
+export async function enrichToResult(candidate: IdentifyCandidate): Promise<PlantResult> {
+  const local = findExactLocal(candidate);
+  if (local) return toResultFromLocal(local, candidate);
+
+  const sci = candidate.scientificName?.trim() ?? "";
+  const hebrewCommon = (candidate.commonNames ?? []).find(hasHebrew);
+
+  // 2) תרגום השם המדעי
+  const he = sci ? await hebrewNameFor(sci) : null;
+  if (he) {
+    const wiki = he.wikiTitle ? await hebrewWiki(he.wikiTitle) : await hebrewWiki(he.name);
+    return wiki ? toResultFromWiki(wiki, candidate, he.name) : genericResult(candidate, he.name);
+  }
+
+  // 2ב) שם עברי שהגיע ממנוע הזיהוי, או ערך עברי שמפנה מהשם הלטיני
+  for (const title of [hebrewCommon, sci].filter((t): t is string => !!t)) {
+    const wiki = await hebrewWiki(title);
+    if (wiki) return toResultFromWiki(wiki, candidate, wiki.title);
+  }
+
+  // 3) צמח קרוב מאותו סוג במסד המקומי
+  const sibling = genusFallback(candidate);
+  if (sibling) return toResultFromLocal(sibling, candidate);
+
+  if (hebrewCommon) return genericResult(candidate, hebrewCommon);
+
+  // 4) לפחות שם הסוג בעברית
+  const genus = candidate.genus?.trim() || sci.split(/\s+/)[0];
+  const heGenus = genus ? await hebrewNameFor(genus) : null;
+  if (heGenus) return genericResult(candidate, `מין של ${heGenus.name}`);
+
+  // 5) גיבוי אחרון — בלי שמות באנגלית
+  return genericResult(candidate, "צמח מסתורי");
 }
