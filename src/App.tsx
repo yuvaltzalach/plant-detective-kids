@@ -25,6 +25,8 @@ import { OnlineGroup } from "./screens/OnlineGroup";
 import type { HuntOutcome } from "./screens/RacePlay";
 import { Parents } from "./screens/Parents";
 import { PlantDetail } from "./screens/PlantDetail";
+import { StickerDetail } from "./screens/StickerDetail";
+import { saveStickerPhoto } from "./lib/photos";
 import { Profile } from "./screens/Profile";
 import { Result } from "./screens/Result";
 import { BotiMascot } from "./components/BotiMascot";
@@ -40,6 +42,7 @@ type Screen =
   | "online"
   | "encyclopedia"
   | "plant"
+  | "sticker"
   | "games"
   | "game"
   | "profile"
@@ -125,6 +128,7 @@ export default function App() {
   }, [screen]);
   const [result, setResult] = useState<PlantResult | null>(null);
   const [detailId, setDetailId] = useState<string | undefined>(undefined);
+  const [stickerId, setStickerId] = useState<string | undefined>(undefined);
   const [gameId, setGameId] = useState<GameId | null>(null);
   // משימת צילום במרוץ: אחרי הזיהוי חוזרים למרוץ עם הצמח שנמצא
   const [pendingHunt, setPendingHunt] = useState<{ raceId: string; index: number } | null>(null);
@@ -225,6 +229,8 @@ export default function App() {
           imageDataUrl={image}
           onResult={(r) => {
             savePendingImage(null);
+            // הצילום נשמר (מוקטן, רק במכשיר) כדי להופיע במדבקה באלבום
+            if (a.account && image) void saveStickerPhoto(a.account.username, r.collectId, image);
             setResult(r);
             if (pendingHunt) {
               setHuntOutcome({ ...pendingHunt, category: r.category, plantName: r.hebrewName });
@@ -257,9 +263,32 @@ export default function App() {
           player={meAsPlayer}
           points={a.state.points}
           level={a.level.level}
+          username={a.account?.username ?? ""}
           onCapture={startCapture}
+          onOpenSticker={(id) => {
+            setStickerId(id);
+            go("sticker");
+          }}
+          onDeleteStickers={a.deleteStickers}
         />
       )}
+
+      {screen === "sticker" &&
+        (() => {
+          const sticker = stickerId ? a.state.stickers[stickerId] : undefined;
+          if (!sticker) return null;
+          return (
+            <StickerDetail
+              sticker={sticker}
+              plant={plants.find((pl) => pl.id === sticker.collectId)}
+              username={a.account?.username ?? ""}
+              onDelete={() => {
+                a.deleteStickers([sticker.collectId]);
+                history.back();
+              }}
+            />
+          );
+        })()}
 
       {screen === "challenges" && (
         <Challenges

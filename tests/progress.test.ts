@@ -4,7 +4,8 @@ import {
   levelForPoints,
   POINTS_NEW,
   POINTS_REPEAT,
-  recordFind
+  recordFind,
+  removeStickers
 } from "../src/lib/progress";
 import { challengeForDate } from "../src/data/challenges";
 import type { PlantCategory, PlantResult, ProgressState } from "../src/types";
@@ -108,5 +109,20 @@ describe("levelForPoints", () => {
     expect(levelForPoints(49).level).toBe(1);
     expect(levelForPoints(50).level).toBe(2);
     expect(levelForPoints(120).level).toBe(3);
+  });
+});
+
+describe("removeStickers", () => {
+  it("מוחק מדבקות ומוריד את נקודות המציאה", () => {
+    let s = recordFind(emptyState(), makeResult("a"), new Date(2026, 4, 5)).state;
+    s = recordFind(s, makeResult("b"), new Date(2026, 4, 5)).state;
+    const out = removeStickers(s, ["a", "missing"]);
+    expect(Object.keys(out.stickers)).toEqual(["b"]);
+    expect(out.points).toBe(s.points - POINTS_NEW);
+  });
+
+  it("לא יורד מתחת לאפס נקודות", () => {
+    const s = recordFind(emptyState(), makeResult("a"), new Date(2026, 4, 5)).state;
+    expect(removeStickers({ ...s, points: 3 }, ["a"]).points).toBe(0);
   });
 });
