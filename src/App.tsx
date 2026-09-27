@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { TopBar } from "./components/TopBar";
 import { getAllPlants } from "./lib/content";
 import { setMuted } from "./lib/sound";
@@ -86,6 +86,26 @@ export default function App() {
     loadPendingImage() ? ["home", "identifying"] : ["home"]
   );
   const screen = stack[stack.length - 1];
+
+  // גלילה: מסך חדש נפתח מלמעלה (קודם האלבום נפתח באמצע — בגובה שבו היה גלול המסך הקודם),
+  // ו"חזרה" מחזירה למקום שבו הייתם במסך הקודם.
+  const scrollByDepth = useRef<number[]>([]);
+  const shown = useRef({ depth: stack.length, screen });
+  useEffect(() => {
+    const onScroll = () => {
+      scrollByDepth.current[shown.current.depth - 1] = window.scrollY;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  useLayoutEffect(() => {
+    const prev = shown.current;
+    const depth = stack.length;
+    if (prev.depth === depth && prev.screen === screen) return;
+    const back = depth < prev.depth;
+    shown.current = { depth, screen };
+    window.scrollTo(0, back ? (scrollByDepth.current[depth - 1] ?? 0) : 0);
+  }, [stack, screen]);
 
   // ניווט: כל העמקה דוחפת רשומת היסטוריה, כדי שכפתור "חזור" (של האפליקציה ושל אנדרואיד)
   // יחזור צעד אחד אחורה בלבד.
