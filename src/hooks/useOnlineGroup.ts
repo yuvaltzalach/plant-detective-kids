@@ -1,15 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
 import {
-  GroupChallenge,
   OnlineMember,
   PlayerStats,
+  endRace as endRaceApi,
   fetchGroup,
   getGroupCode,
   normalizeCode,
-  setGroupChallenge,
+  sendRaceProgress,
   setGroupCode,
+  startRace as startRaceApi,
   syncGroup
 } from "../lib/online";
+import type { Mission, Race, RaceResult } from "../lib/race";
 import type { Player } from "../types";
 
 export type OnlineStatus = "idle" | "loading" | "offline" | "ok";
@@ -18,13 +20,14 @@ export type OnlineStatus = "idle" | "loading" | "offline" | "ok";
  * מנהל את חברות המכשיר בקבוצה אונליין:
  * - שומר את קוד הקבוצה
  * - מסנכרן אוטומטית את נתוני השחקן הפעיל בכל שינוי בנקודות/מדבקות
- * - מביא את טבלת הניצחונות והאתגר הקבוצתי המשותפים
+ * - מביא את טבלת הניצחונות ומרוץ המשימות המשותפים
  */
 export function useOnlineGroup(player: Player | null, stats: PlayerStats) {
   const [code, setCode] = useState<string | null>(() => getGroupCode());
   const [members, setMembers] = useState<OnlineMember[] | null>(null);
-  const [challenge, setChallenge] = useState<GroupChallenge | null>(null);
   const [status, setStatus] = useState<OnlineStatus>("idle");
+  const [race, setRace] = useState<Race | null>(null);
+  const [raceResults, setRaceResults] = useState<RaceResult[]>([]);
 
   const refresh = useCallback(async () => {
     if (!code) return;
@@ -35,7 +38,8 @@ export function useOnlineGroup(player: Player | null, stats: PlayerStats) {
       return;
     }
     setMembers(data.members);
-    setChallenge(data.challenge);
+    setRace(data.race);
+    setRaceResults(data.raceResults);
     setStatus("ok");
   }, [code]);
 
@@ -73,39 +77,58 @@ export function useOnlineGroup(player: Player | null, stats: PlayerStats) {
     setGroupCode(null);
     setCode(null);
     setMembers(null);
-    setChallenge(null);
+    setRace(null);
+    setRaceResults([]);
     setStatus("idle");
   }, []);
 
-  const updateGroupChallenge = useCallback(
-    async (c: { text: string; emoji: string; category?: string } | null) => {
-      if (!code) return;
-      await setGroupChallenge(code, c ? { ...c, by: player?.name } : null);
+  const startRace = useCallback(
+    async (missions: Mission[]) => {
+      if (!code) return false;
+      const created = await startRaceApi(code, missions, player?.name);
+      if (created) {
+        setRace(created);
+        setRaceResults([]);
+      }
       void refresh();
+      return !!created;
     },
     [code, player?.name, refresh]
   );
 
-  const completeGroupChallenge = useCallback(async () => {
-    if (!code || !player) return;
-    await syncGroup(
-      code,
-      { id: player.id, name: player.name, avatar: player.avatar },
-      stats,
-      Date.now()
-    );
+  const endRace = useCallback(async () => {
+    if (!code) return;
+    await endRaceApi(code);
     void refresh();
-  }, [code, player, stats, refresh]);
+  }, [code, refresh]);
+
+  /** מדווח התקדמות במרוץ ומעדכן מיד את השורה שלי בטבלה (בלי לחכות לרענון). */
+  const reportRaceProgress = useCallback(
+    async (raceId: string, done: number, score: number) => {
+      if (!code || !player) return;
+      const mine = await sendRaceProgress(
+        code,
+        raceId,
+        { id: player.id, name: player.name, avatar: player.avatar },
+        done,
+        score
+      );
+      if (mine) setRaceResults((rs) => [...rs.filter((r) => r.id !== mine.id), mine]);
+    },
+    [code, player]
+  );
 
   return {
     code,
     members,
-    challenge,
+    race,
+    raceResults,
     status,
     refresh,
     join,
     leave,
-    updateGroupChallenge,
-    completeGroupChallenge
+    startRace,
+    endRace,
+    reportRaceProgress
   };
 }

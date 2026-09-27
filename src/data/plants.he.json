@@ -105,7 +105,7 @@
   },
   {
     "id": "oak",
-    "hebrewName": "עץ אַלּוֹן",
+    "hebrewName": "אַלּוֹן מָצוּי",
     "emoji": "🌳",
     "category": "עץ",
     "scientificName": "Quercus calliprinos",
@@ -153,7 +153,8 @@
       "הוורד מריח נפלא, אבל שימו לב לקוצים!",
       "יש ורדים בהמון צבעים: אדום, ורוד, צהוב ולבן.",
       "הוורד הוא סמל של אהבה וידידות."
-    ]
+    ],
+    "wikiTitle": "Rose"
   },
   {
     "id": "anemone",
@@ -183,7 +184,7 @@
   },
   {
     "id": "chrysanthemum",
-    "hebrewName": "חַרְצִית",
+    "hebrewName": "חַרְצִית עֲטוּרָה",
     "emoji": "🌼",
     "category": "פרח",
     "scientificName": "Glebionis coronaria",
@@ -205,7 +206,8 @@
       "הפרג אדום עז עם 'נקודה' שחורה באמצע.",
       "העלים שלו דקים והפרח עדין כמו נייר.",
       "הוא אחד מפרחי האביב האדומים בישראל."
-    ]
+    ],
+    "wikiTitle": "Papaver"
   },
   {
     "id": "sunflower",
@@ -231,7 +233,8 @@
       "ללבנדר ריח סגול ומרגיע.",
       "פרפרים ודבורים אוהבים אותו מאוד.",
       "מייבשים אותו ושמים בארון כדי שיריח טוב."
-    ]
+    ],
+    "wikiTitle": "Lavandula"
   },
   {
     "id": "dandelion",
@@ -270,7 +273,8 @@
       "מה שנראה כמו פרחים צבעוניים הם בעצם עלים מיוחדים!",
       "היא מטפסת על קירות וגדרות בצבע ורוד-סגול.",
       "אוהבת שמש חזקה ומעט מים."
-    ]
+    ],
+    "wikiTitle": "Bougainvillea"
   },
   {
     "id": "oleander",
@@ -327,7 +331,7 @@
   },
   {
     "id": "aloe",
-    "hebrewName": "אֲלוֵֹרָה",
+    "hebrewName": "אֲלוֹוֶרָה",
     "emoji": "🪴",
     "category": "צמח",
     "scientificName": "Aloe vera",
@@ -363,7 +367,8 @@
       "לרוב יש לו שלושה עלים — ומי שמוצא ארבעה זה מזל!",
       "פורח בפרחים ורודים או לבנים קטנים.",
       "גדל בשדות ובגינות באביב."
-    ]
+    ],
+    "wikiTitle": "Trifolium"
   },
   {
     "id": "mallow",
@@ -376,7 +381,8 @@
       "העלים העגולים שלה נאכלים ומכינים מהם חביתיות.",
       "היא צומחת בכל מקום בחורף ובאביב.",
       "הפירות הקטנים נראים כמו גלגלים זעירים."
-    ]
+    ],
+    "wikiTitle": "Malva"
   },
   {
     "id": "tomato",
@@ -419,10 +425,10 @@
   },
   {
     "id": "washingtonia",
-    "hebrewName": "דֶּקֶל",
+    "hebrewName": "וָשִׁינְגְטוֹנְיָה חֲסוּנָה (דֶּקֶל)",
     "emoji": "🌴",
     "category": "עץ",
-    "scientificName": "Washingtonia",
+    "scientificName": "Washingtonia robusta",
     "genus": "Washingtonia",
     "facts": [
       "דקל גבוה עם עלים גדולים בצורת מניפה.",
@@ -493,7 +499,8 @@
       "פרח גדול ומרשים, לרוב בסגול כהה.",
       "יש מיני אירוס נדירים ומוגנים בישראל.",
       "שלושה עלים זקופים ושלושה שמוטים כלפי מטה."
-    ]
+    ],
+    "wikiTitle": "Iris (plant)"
   },
   {
     "id": "lily",
@@ -519,7 +526,8 @@
       "פרח בצורת גביע בהמון צבעים.",
       "בהרי ישראל פורח צבעוני בר אדום.",
       "פרח מפורסם מאוד מהולנד."
-    ]
+    ],
+    "wikiTitle": "Tulip"
   },
   {
     "id": "narcissus",
@@ -545,7 +553,8 @@
       "פורח במרפסות ובעציצים כמעט כל השנה.",
       "לעלים ריח מיוחד כשנוגעים בהם.",
       "אוהב שמש ולא צריך הרבה מים."
-    ]
+    ],
+    "wikiTitle": "Pelargonium"
   },
   {
     "id": "petunia",
@@ -558,14 +567,15 @@
       "פרחים בצורת חצוצרה בהמון צבעים.",
       "פורחת יפה במיוחד בקיץ.",
       "אהובה מאוד לקישוט מרפסות."
-    ]
+    ],
+    "wikiTitle": "Petunia"
   },
   {
     "id": "marigold",
-    "hebrewName": "צִפָּרְנֵי חָתוּל",
+    "hebrewName": "טַגֶטֶס",
     "emoji": "🌼",
     "category": "פרח",
-    "scientificName": "Tagetes",
+    "scientificName": "Tagetes erecta",
     "genus": "Tagetes",
     "facts": [
       "פרחים כתומים-צהובים עליזים.",
@@ -610,7 +620,8 @@
       "פרחים לבנים קטנים עם ריח מתוק וחזק.",
       "מטפס יפה על גדרות וסורגים.",
       "מריח הכי חזק בערב."
-    ]
+    ],
+    "wikiTitle": "Jasmine"
   },
   {
     "id": "gardenia",
@@ -640,7 +651,7 @@
   },
   {
     "id": "pistacia",
-    "hebrewName": "אֵלָה",
+    "hebrewName": "אֵלָה אֶרֶץ־יִשְׂרְאֵלִית",
     "emoji": "🌳",
     "category": "עץ",
     "scientificName": "Pistacia palaestina",
@@ -653,10 +664,10 @@
   },
   {
     "id": "acacia",
-    "hebrewName": "שִׁיטָה",
+    "hebrewName": "שִׁיטָה סוֹכְכָנִית",
     "emoji": "🌳",
     "category": "עץ",
-    "scientificName": "Vachellia",
+    "scientificName": "Vachellia tortilis",
     "genus": "Vachellia",
     "facts": [
       "עץ המדבר עם קוצים ופרחים צהובים כדוריים.",
@@ -688,7 +699,8 @@
       "הענפים נוטים כלפי מטה כמו שיער ארוך.",
       "אוהבת מים וגדלה ליד נחלים.",
       "העלים דקים וארוכים."
-    ]
+    ],
+    "wikiTitle": "Willow"
   },
   {
     "id": "mulberry",
@@ -773,13 +785,14 @@
     "hebrewName": "בָּנָנָה",
     "emoji": "🍌",
     "category": "צמח",
-    "scientificName": "Musa",
+    "scientificName": "Musa acuminata",
     "genus": "Musa",
     "facts": [
       "בכלל לא עץ אלא עשב ענק!",
       "העלים שלה גדולים מאוד.",
       "הבננות גדלות יחד באשכול גדול."
-    ]
+    ],
+    "wikiTitle": "Banana"
   },
   {
     "id": "strawberry",
@@ -792,7 +805,8 @@
       "הפרי האדום מלא בנקודות זעירות שהן הזרעים.",
       "צומח נמוך על הקרקע.",
       "מתוק וחמצמץ וטעים."
-    ]
+    ],
+    "wikiTitle": "Garden strawberry"
   },
   {
     "id": "corn",
@@ -844,7 +858,8 @@
       "פרי כתום וענק.",
       "גדל על שלוחה שזוחלת על הקרקע.",
       "מכינים ממנה מרק כתום וטעים."
-    ]
+    ],
+    "wikiTitle": "Pumpkin"
   },
   {
     "id": "eggplant",
@@ -922,7 +937,8 @@
       "צמח בית עם 'פרח' לבן יפה.",
       "כשהוא צמא העלים נשמטים ומזכירים לך להשקות.",
       "אוהב פינה מוצללת."
-    ]
+    ],
+    "wikiTitle": "Spathiphyllum"
   },
   {
     "id": "ficus-benjamina",
@@ -1106,7 +1122,8 @@
       "פרח ורוד עדין שמופיע אחרי החום.",
       "מהפרחים הראשונים של הסתיו."
     ],
-    "caution": "הסתוונית רעילה — יפה להסתכל בלבד."
+    "caution": "הסתוונית רעילה — יפה להסתכל בלבד.",
+    "wikiTitle": "Colchicum"
   },
   {
     "id": "sternbergia",
@@ -1145,20 +1162,22 @@
       "פרחים לבנים בצורת כוכב.",
       "נפתחים ביום ונסגרים לקראת הערב.",
       "גדלים בשדות באביב."
-    ]
+    ],
+    "wikiTitle": "Ornithogalum"
   },
   {
     "id": "adonis",
     "hebrewName": "דְּמּוּמִית",
     "emoji": "🔴",
     "category": "פרח",
-    "scientificName": "Adonis",
+    "scientificName": "Adonis microcarpa",
     "genus": "Adonis",
     "facts": [
       "פרח אדום קטן שפורח באביב.",
       "אחד מ'הדרום האדום' יחד עם הכלנית והפרג.",
       "האמצע שלו כהה כמעט שחור."
-    ]
+    ],
+    "wikiTitle": "Adonis (plant)"
   },
   {
     "id": "milk-thistle",
@@ -1184,7 +1203,8 @@
       "פרחים כחולים־סגולים יפים.",
       "דבורים ופרפרים אוהבים אותו מאוד.",
       "פורח באביב בשדות ובחצרות."
-    ]
+    ],
+    "wikiTitle": "Echium"
   },
   {
     "id": "bindweed",
@@ -1197,7 +1217,8 @@
       "פרח בצורת חצוצרה קטנה, ורוד או לבן.",
       "מטפס ומתפתל על גדרות וצמחים.",
       "נפוץ מאוד בגינות ובשדות."
-    ]
+    ],
+    "wikiTitle": "Convolvulus"
   },
   {
     "id": "zaatar",
@@ -1240,10 +1261,10 @@
   },
   {
     "id": "phlomis",
-    "hebrewName": "שַׁלְהֶבֶת",
+    "hebrewName": "שַׁלְהֶבִית דְּבִיקָה",
     "emoji": "💛",
     "category": "פרח",
-    "scientificName": "Phlomis",
+    "scientificName": "Phlomis viscosa",
     "genus": "Phlomis",
     "facts": [
       "פרחים צהובים שיושבים בקומות סביב הגבעול.",
@@ -1262,7 +1283,8 @@
       "עץ מדברי עם עלים זעירים כמו קשקשים.",
       "פורח בפרחים ורודים־לבנים קטנטנים.",
       "יכול לחיות גם באדמה מלוחה."
-    ]
+    ],
+    "wikiTitle": "Tamarix"
   },
   {
     "id": "arum",
@@ -1291,5 +1313,5404 @@
       "העלים גדולים ומונחים כמו שושנה על האדמה."
     ],
     "caution": "הדודא רעיל — נהנים מהריח והמראה בלי לטעום."
+  },
+  {
+    "id": "kermes-oak-boissieri",
+    "hebrewName": "אלון התולע",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Quercus boissieri",
+    "genus": "Quercus",
+    "facts": [
+      "אלון התולע משיר את העלים שלו בחורף ומתעורר באביב.",
+      "הוא גדל בעיקר בגליל העליון ובגולן.",
+      "על הענפים שלו אפשר למצוא עפצים — כדורים קטנים שחרקים בונים."
+    ]
+  },
+  {
+    "id": "galilee-oak",
+    "hebrewName": "אלון הגליל",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Quercus look",
+    "genus": "Quercus",
+    "facts": [
+      "אלון הגליל הוא עץ נדיר שגדל בחרמון ובגליל העליון.",
+      "הבלוטים שלו גדולים ויש להם כיפה מחוספסת.",
+      "בחורף הוא נשאר כמעט בלי עלים."
+    ]
+  },
+  {
+    "id": "atlantic-pistacia",
+    "hebrewName": "אלה אטלנטית",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Pistacia atlantica",
+    "genus": "Pistacia",
+    "facts": [
+      "האלה האטלנטית יכולה להפוך לעץ ענק שחי מאות שנים.",
+      "היא עמידה מאוד ליובש וגדלה גם בנגב.",
+      "בסתיו העלים שלה מאדימים ונושרים."
+    ]
+  },
+  {
+    "id": "buckthorn",
+    "hebrewName": "אשחר רחב-עלים",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Rhamnus alaternus",
+    "genus": "Rhamnus",
+    "facts": [
+      "האשחר הוא שיח ירוק-עד של החורש הים-תיכוני.",
+      "יש לו פירות קטנים שהופכים משחורים לאדומים.",
+      "ציפורים אוהבות לאכול את הפירות שלו."
+    ]
+  },
+  {
+    "id": "phillyrea",
+    "hebrewName": "בר-זית בינוני",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Phillyrea latifolia",
+    "genus": "Phillyrea",
+    "facts": [
+      "בר-זית הוא קרוב משפחה של עץ הזית.",
+      "העלים שלו קשים ומבריקים וירוקים כל השנה.",
+      "הפירות שלו כחולים-שחורים וקטנים כמו אפונה."
+    ]
+  },
+  {
+    "id": "syrian-pear",
+    "hebrewName": "אגס סורי",
+    "emoji": "🍐",
+    "category": "עץ",
+    "scientificName": "Pyrus syriaca",
+    "genus": "Pyrus",
+    "facts": [
+      "האגס הסורי הוא אגס בר שגדל בהרים של ישראל.",
+      "באביב הוא מתכסה בפרחים לבנים.",
+      "הפירות שלו קטנים וקשים — לא טעימים כמו אגס מהשוק."
+    ]
+  },
+  {
+    "id": "azarole",
+    "hebrewName": "עוזרר קוצני",
+    "emoji": "🍒",
+    "category": "עץ",
+    "scientificName": "Crataegus azarolus",
+    "genus": "Crataegus",
+    "facts": [
+      "לעוזרר יש קוצים על הענפים ופירות קטנים וצהובים-כתומים.",
+      "הפירות אכילים וטעמם חמצמץ-מתוק.",
+      "באביב הוא מתכסה בפרחים לבנים ריחניים."
+    ]
+  },
+  {
+    "id": "syrian-maple",
+    "hebrewName": "אדר סורי",
+    "emoji": "🍁",
+    "category": "עץ",
+    "scientificName": "Acer obtusifolium",
+    "genus": "Acer",
+    "facts": [
+      "האדר הסורי הוא קרוב משפחה של העץ שעל דגל קנדה.",
+      "הזרעים שלו מעופפים עם כנפיים ומסתובבים כמו מסוק.",
+      "הוא גדל בגליל, בכרמל ובגולן."
+    ]
+  },
+  {
+    "id": "syrian-ash",
+    "hebrewName": "מילה סורית",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Fraxinus syriaca",
+    "genus": "Fraxinus",
+    "facts": [
+      "המילה גדלה ליד נחלים ומעיינות.",
+      "הזרעים שלה בעלי כנף אחת ומרחפים ברוח.",
+      "בחורף היא משירה את עליה."
+    ]
+  },
+  {
+    "id": "euphrates-poplar",
+    "hebrewName": "צפצפת הפרת",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Populus euphratica",
+    "genus": "Populus",
+    "facts": [
+      "צפצפת הפרת גדלה ליד מים גם במקומות חמים מאוד.",
+      "יש לה עלים בצורות שונות על אותו עץ!",
+      "הזרעים שלה עטופים בשערות לבנות כמו צמר גפן."
+    ]
+  },
+  {
+    "id": "white-poplar",
+    "hebrewName": "צפצפה מכסיפה",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Populus alba",
+    "genus": "Populus",
+    "facts": [
+      "לעלים של הצפצפה המכסיפה יש צד תחתון לבן ורך.",
+      "כשהרוח נושבת העץ כולו נראה מנצנץ בכסף.",
+      "היא אוהבת לגדול ליד נחלים."
+    ]
+  },
+  {
+    "id": "willow-acmophylla",
+    "hebrewName": "ערבה מחודדת",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Salix acmophylla",
+    "genus": "Salix",
+    "facts": [
+      "הערבה המחודדת גדלה על גדות נחלים.",
+      "העלים שלה ארוכים וצרים.",
+      "בחג הסוכות משתמשים בענפי ערבה בארבעת המינים."
+    ]
+  },
+  {
+    "id": "weeping-willow",
+    "hebrewName": "ערבה בוכייה",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Salix babylonica",
+    "genus": "Salix",
+    "facts": [
+      "לערבה הבוכייה ענפים ארוכים שנופלים למטה כמו דמעות.",
+      "אוהבים לשתול אותה ליד אגמים ובריכות.",
+      "היא צריכה הרבה מים."
+    ]
+  },
+  {
+    "id": "nettle-tree",
+    "hebrewName": "מיש דרומי",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Celtis australis",
+    "genus": "Celtis",
+    "facts": [
+      "למיש יש פירות קטנים ומתוקים שהופכים שחורים בסתיו.",
+      "העץ חי שנים רבות ונותן צל רחב.",
+      "ציפורים מפיצות את הזרעים שלו."
+    ]
+  },
+  {
+    "id": "sycamore-fig",
+    "hebrewName": "שקמה",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Ficus sycomorus",
+    "genus": "Ficus",
+    "facts": [
+      "השקמה היא עץ ענק עם צמרת רחבה ומוצלת.",
+      "הפירות שלה גדלים ישר על הגזע והענפים העבים.",
+      "השכונה \"שקמונה\" ורחוב \"השקמים\" נקראו על שמה."
+    ]
+  },
+  {
+    "id": "phoenician-juniper",
+    "hebrewName": "ערער אדום",
+    "emoji": "🌲",
+    "category": "עץ",
+    "scientificName": "Juniperus phoenicea",
+    "genus": "Juniperus",
+    "facts": [
+      "הערער האדום גדל בהרי אדום ובנגב.",
+      "העלים שלו קטנים כמו קשקשים.",
+      "הפירות שלו נראים כמו גרגרים אדומים."
+    ]
+  },
+  {
+    "id": "turkish-pine",
+    "hebrewName": "אורן ברוטיה",
+    "emoji": "🌲",
+    "category": "עץ",
+    "scientificName": "Pinus brutia",
+    "genus": "Pinus",
+    "facts": [
+      "אורן ברוטיה נשתל ביערות רבים בארץ.",
+      "האצטרובלים שלו יושבים צמוד לענף.",
+      "הוא עמיד יותר מחרקים מאשר האורן הירושלמי."
+    ]
+  },
+  {
+    "id": "stone-pine",
+    "hebrewName": "אורן הצנובר",
+    "emoji": "🌲",
+    "category": "עץ",
+    "scientificName": "Pinus pinea",
+    "genus": "Pinus",
+    "facts": [
+      "מהאצטרובלים של אורן הצנובר מוציאים צנוברים טעימים.",
+      "הצמרת שלו עגולה ורחבה כמו מטרייה.",
+      "לוקח כמה שנים עד שהאצטרובל מבשיל."
+    ]
+  },
+  {
+    "id": "canary-pine",
+    "hebrewName": "אורן קנרי",
+    "emoji": "🌲",
+    "category": "עץ",
+    "scientificName": "Pinus canariensis",
+    "genus": "Pinus",
+    "facts": [
+      "לאורן הקנרי יש מחטים ארוכות במיוחד.",
+      "במקור הוא מגיע מהאיים הקנריים.",
+      "הוא יכול לצמוח שוב אחרי שריפה."
+    ]
+  },
+  {
+    "id": "lebanon-cedar",
+    "hebrewName": "ארז הלבנון",
+    "emoji": "🌲",
+    "category": "עץ",
+    "scientificName": "Cedrus libani",
+    "genus": "Cedrus",
+    "facts": [
+      "ארז הלבנון מופיע בתנ\"ך ובדגל של לבנון.",
+      "העץ שלו חזק וריחני, ובנו ממנו את בית המקדש.",
+      "הענפים שלו פרושים כמו קומות."
+    ]
+  },
+  {
+    "id": "arizona-cypress",
+    "hebrewName": "ברוש אריזוני",
+    "emoji": "🌲",
+    "category": "עץ",
+    "scientificName": "Cupressus arizonica",
+    "genus": "Cupressus",
+    "facts": [
+      "לברוש האריזוני יש עלים בצבע כחלחל-אפור.",
+      "שותלים אותו הרבה ביערות בנגב.",
+      "הוא עמיד ליובש ולקור."
+    ]
+  },
+  {
+    "id": "myrtle",
+    "hebrewName": "הדס מצוי",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Myrtus communis",
+    "genus": "Myrtus",
+    "facts": [
+      "ההדס הוא אחד מארבעת המינים של סוכות.",
+      "כשמשפשפים את העלים שלו עולה ריח נעים.",
+      "הוא פורח בקיץ בפרחים לבנים עם הרבה אבקנים."
+    ]
+  },
+  {
+    "id": "chaste-tree",
+    "hebrewName": "שיח אברהם",
+    "emoji": "💜",
+    "category": "עץ",
+    "scientificName": "Vitex agnus-castus",
+    "genus": "Vitex",
+    "facts": [
+      "שיח אברהם פורח בקיץ בשיבולים סגולות.",
+      "הוא גדל ליד נחלים ומעיינות.",
+      "הדבורים מאוד אוהבות את הפרחים שלו."
+    ]
+  },
+  {
+    "id": "athel-tamarisk",
+    "hebrewName": "אשל הפרקים",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Tamarix aphylla",
+    "genus": "Tamarix",
+    "facts": [
+      "לאשל הפרקים ענפים דקים שנראים כמו חוטים ירוקים.",
+      "הוא יכול לגדול באדמה מלוחה.",
+      "נוטעים אותו כשובר רוח בנגב."
+    ]
+  },
+  {
+    "id": "nile-tamarisk",
+    "hebrewName": "אשל היאור",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Tamarix nilotica",
+    "genus": "Tamarix",
+    "facts": [
+      "אשל היאור גדל בערבה ובים המלח.",
+      "הוא מפריש מלח דרך העלים שלו.",
+      "פורח בפרחים ורודים קטנים."
+    ]
+  },
+  {
+    "id": "coastal-acacia",
+    "hebrewName": "שיטה כחלחלה",
+    "emoji": "💛",
+    "category": "עץ",
+    "scientificName": "Acacia saligna",
+    "genus": "Acacia",
+    "facts": [
+      "השיטה הכחלחלה פורחת באביב בכדורים צהובים.",
+      "היא הגיעה מאוסטרליה ומתפשטת בחולות החוף.",
+      "העלים שלה ארוכים וצרים כמו רצועות."
+    ]
+  },
+  {
+    "id": "desert-date",
+    "hebrewName": "זקום מצרי",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Balanites aegyptiaca",
+    "genus": "Balanites",
+    "facts": [
+      "הזקום גדל בחום הכבד של הערבה ושל ים המלח.",
+      "יש לו קוצים ירוקים ארוכים.",
+      "מהפירות שלו הפיקו פעם שמן."
+    ]
+  },
+  {
+    "id": "moringa-peregrina",
+    "hebrewName": "מורינגה רותמית",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Moringa peregrina",
+    "genus": "Moringa",
+    "facts": [
+      "המורינגה הרותמית היא עץ מדבר נדיר באזור אילת וים המלח.",
+      "הפרחים שלה ורודים-לבנים וריחניים.",
+      "הזרעים שלה מלאים שמן."
+    ]
+  },
+  {
+    "id": "lotus-jujube",
+    "hebrewName": "שיזף השלחים",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Ziziphus lotus",
+    "genus": "Ziziphus",
+    "facts": [
+      "שיזף השלחים הוא שיח קוצני שנשאר נמוך.",
+      "הפירות שלו קטנים, כתומים ואכילים.",
+      "הוא מאבד את עליו בחורף."
+    ]
+  },
+  {
+    "id": "toothbrush-tree",
+    "hebrewName": "סלוודורה פרסית",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Salvadora persica",
+    "genus": "Salvadora",
+    "facts": [
+      "מהענפים של הסלוודורה הכינו פעם מברשות שיניים!",
+      "היא גדלה באזורים החמים של ים המלח והערבה.",
+      "העלים שלה עבים ובשרניים."
+    ]
+  },
+  {
+    "id": "apple-of-sodom",
+    "hebrewName": "פתילת המדבר",
+    "emoji": "🎈",
+    "category": "עץ",
+    "scientificName": "Calotropis procera",
+    "genus": "Calotropis",
+    "facts": [
+      "לפתילת המדבר פירות גדולים ונפוחים כמו בלון.",
+      "בתוכם זרעים עם שערות משי ארוכות.",
+      "היא גדלה ליד ים המלח ובערבה."
+    ],
+    "caution": "הנוזל הלבן של פתילת המדבר רעיל ומגרה את העיניים — לא נוגעים!"
+  },
+  {
+    "id": "caper",
+    "hebrewName": "צלף קוצני",
+    "emoji": "🌸",
+    "category": "צמח",
+    "scientificName": "Capparis spinosa",
+    "genus": "Capparis",
+    "facts": [
+      "הצלף גדל בין סלעים ואפילו בסדקים של הכותל המערבי.",
+      "מהניצנים שלו מכינים \"צלפים\" כבושים.",
+      "הפרחים שלו לבנים עם אבקנים סגולים ארוכים."
+    ]
+  },
+  {
+    "id": "saltbush",
+    "hebrewName": "מלוח קיפח",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Atriplex halimus",
+    "genus": "Atriplex",
+    "facts": [
+      "לעלים של המלוח יש טעם מלוח.",
+      "הוא גדל באדמה מלוחה ובמדבר.",
+      "בעלי חיים אוהבים ללחך אותו."
+    ]
+  },
+  {
+    "id": "boxthorn",
+    "hebrewName": "אטד אירופי",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Lycium europaeum",
+    "genus": "Lycium",
+    "facts": [
+      "האטד הוא שיח קוצני שמופיע במשל יותם בתנ\"ך.",
+      "יש לו פירות אדומים קטנים.",
+      "ציפורים בונות בו קינים כי הקוצים מגינים עליהן."
+    ]
+  },
+  {
+    "id": "zygophyllum",
+    "hebrewName": "זוגן השיח",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Zygophyllum dumosum",
+    "genus": "Zygophyllum",
+    "facts": [
+      "זוגן השיח הוא אחד הצמחים הנפוצים במדבר יהודה.",
+      "העלים שלו בשרניים ונושרים בקיץ.",
+      "הוא יכול לשרוד שנים בלי כמעט גשם."
+    ]
+  },
+  {
+    "id": "nitraria",
+    "hebrewName": "ימלוח פגום",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Nitraria retusa",
+    "genus": "Nitraria",
+    "facts": [
+      "הימלוח גדל ליד ים המלח ובאילת.",
+      "הוא אוהב אדמה מלוחה מאוד.",
+      "הפירות שלו אדומים ועסיסיים."
+    ]
+  },
+  {
+    "id": "ochradenus",
+    "hebrewName": "רכפתן המדבר",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Ochradenus baccatus",
+    "genus": "Ochradenus",
+    "facts": [
+      "הרכפתן גדל בוואדיות במדבר.",
+      "יש לו פירות לבנים קטנים ועסיסיים.",
+      "ציפורים ויעלים אוהבים לאכול ממנו."
+    ]
+  },
+  {
+    "id": "white-wormwood",
+    "hebrewName": "לענה חד-זרעית",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Artemisia sieberi",
+    "genus": "Artemisia",
+    "facts": [
+      "הלענה החד-זרעית ריחנית מאוד ומכסה שטחים בנגב.",
+      "בדואים מכינים ממנה תה.",
+      "העלים שלה אפורים וקטנים."
+    ]
+  },
+  {
+    "id": "tree-wormwood",
+    "hebrewName": "לענה שיחנית",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Artemisia arborescens",
+    "genus": "Artemisia",
+    "facts": [
+      "ללענה השיחנית עלים כסופים ורכים.",
+      "יש לה ריח חזק ומר.",
+      "היא גדלה על מצוקים ליד הים."
+    ]
+  },
+  {
+    "id": "thymelaea",
+    "hebrewName": "מתנן שעיר",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Thymelaea hirsuta",
+    "genus": "Thymelaea",
+    "facts": [
+      "המתנן גדל בחולות ובשטחים יבשים.",
+      "הענפים שלו גמישים וחזקים כמו חבל.",
+      "העלים שלו קטנים וצמודים לענף."
+    ]
+  },
+  {
+    "id": "coridothymus",
+    "hebrewName": "קורנית מקורקפת",
+    "emoji": "💜",
+    "category": "עשב",
+    "scientificName": "Coridothymus capitatus",
+    "genus": "Coridothymus",
+    "facts": [
+      "הקורנית ריחנית מאוד ופורחת בקיץ בסגול-ורוד.",
+      "דבורים עושות ממנה דבש משובח.",
+      "היא קרובה לטימין שבמטבח."
+    ]
+  },
+  {
+    "id": "white-savory",
+    "hebrewName": "זוטה לבנה",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Micromeria fruticosa",
+    "genus": "Micromeria",
+    "facts": [
+      "מהזוטה הלבנה מכינים תה ריחני.",
+      "העלים שלה אפורים וריחניים כשמשפשפים אותם.",
+      "היא גדלה בין סלעים בהרים."
+    ]
+  },
+  {
+    "id": "prasium",
+    "hebrewName": "פרסיון גדול",
+    "emoji": "🤍",
+    "category": "עשב",
+    "scientificName": "Prasium majus",
+    "genus": "Prasium",
+    "facts": [
+      "לפרסיון פרחים לבנים קטנים באביב.",
+      "הוא מטפס על שיחים אחרים.",
+      "אפשר למצוא אותו בחורש ובגדרות אבנים."
+    ]
+  },
+  {
+    "id": "felty-germander",
+    "hebrewName": "געדה מצויה",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Teucrium polium",
+    "genus": "Teucrium",
+    "facts": [
+      "הגעדה מכוסה שערות רכות ונראית אפורה.",
+      "יש לה ריח חזק ומר.",
+      "היא פורחת בקיץ בפרחים לבנים קטנים."
+    ]
+  },
+  {
+    "id": "cretan-germander",
+    "hebrewName": "געדה כרתית",
+    "emoji": "💜",
+    "category": "עשב",
+    "scientificName": "Teucrium creticum",
+    "genus": "Teucrium",
+    "facts": [
+      "לגעדה הכרתית פרחים סגלגלים בקיץ.",
+      "העלים שלה צרים ולבנבנים מתחת.",
+      "היא גדלה ליד נחלים ובשולי שדות."
+    ]
+  },
+  {
+    "id": "sumac",
+    "hebrewName": "אוג הבורסקאים",
+    "emoji": "🔴",
+    "category": "עץ",
+    "scientificName": "Rhus coriaria",
+    "genus": "Rhus",
+    "facts": [
+      "מהפירות של האוג מכינים את התבלין הסומאק האדום.",
+      "בסתיו העלים שלו מאדימים.",
+      "פעם השתמשו בו לעיבוד עורות."
+    ]
+  },
+  {
+    "id": "thorny-clematis",
+    "hebrewName": "זלזלת הקנוקנות",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Clematis cirrhosa",
+    "genus": "Clematis",
+    "facts": [
+      "הזלזלת מטפסת על עצים בעזרת קנוקנות.",
+      "היא פורחת בחורף בפרחים לבנים-צהבהבים.",
+      "לזרעים שלה יש זנבות נוצתיים."
+    ]
+  },
+  {
+    "id": "fragrant-clematis",
+    "hebrewName": "זלזלת לוהבת",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Clematis flammula",
+    "genus": "Clematis",
+    "facts": [
+      "הזלזלת הלוהבת פורחת בקיץ בהמון פרחים לבנים וריחניים.",
+      "היא מטפסת על שיחים בחורש.",
+      "הזרעים שלה נראים כמו פונפונים שעירים."
+    ],
+    "caution": "המיץ של הזלזלת עלול לגרות את העור."
+  },
+  {
+    "id": "smilax",
+    "hebrewName": "קיסוסית קוצנית",
+    "emoji": "🍃",
+    "category": "צמח",
+    "scientificName": "Smilax aspera",
+    "genus": "Smilax",
+    "facts": [
+      "הקיסוסית היא מטפס עם קוצים ועלים בצורת לב.",
+      "הפירות שלה אדומים וזוהרים.",
+      "היא מסתבכת בשיחים בחורש."
+    ]
+  },
+  {
+    "id": "ivy",
+    "hebrewName": "קיסוס החורש",
+    "emoji": "🍃",
+    "category": "צמח",
+    "scientificName": "Hedera helix",
+    "genus": "Hedera",
+    "facts": [
+      "הקיסוס מטפס על קירות ועצים בעזרת שורשים קטנים.",
+      "הוא ירוק כל השנה.",
+      "הפירות שלו שחורים ומזינים ציפורים בחורף."
+    ],
+    "caution": "פירות הקיסוס רעילים לאנשים — לא אוכלים!"
+  },
+  {
+    "id": "holy-bramble",
+    "hebrewName": "פטל קדוש",
+    "emoji": "🫐",
+    "category": "צמח",
+    "scientificName": "Rubus sanguineus",
+    "genus": "Rubus",
+    "facts": [
+      "הפטל הקדוש גדל ליד מים ויש לו קוצים חדים.",
+      "הפירות שלו אדומים ואז שחורים ומתוקים.",
+      "לפי המסורת זה \"הסנה הבוער\" מסיפור משה."
+    ]
+  },
+  {
+    "id": "dog-rose",
+    "hebrewName": "ורד הכלב",
+    "emoji": "🌹",
+    "category": "פרח",
+    "scientificName": "Rosa canina",
+    "genus": "Rosa",
+    "facts": [
+      "ורד הכלב הוא ורד בר עם פרחים ורודים פשוטים.",
+      "הפירות שלו אדומים ומלאים ויטמין C.",
+      "הוא גדל בהרים הגבוהים בצפון."
+    ]
+  },
+  {
+    "id": "phoenician-rose",
+    "hebrewName": "ורד צידוני",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Rosa phoenicia",
+    "genus": "Rosa",
+    "facts": [
+      "הורד הצידוני מטפס ופורח בפרחים לבנים ריחניים.",
+      "הוא גדל ליד מעיינות ונחלים.",
+      "פורח באביב ובתחילת הקיץ."
+    ]
+  },
+  {
+    "id": "wild-asparagus",
+    "hebrewName": "אספרג החורש",
+    "emoji": "🌿",
+    "category": "צמח",
+    "scientificName": "Asparagus aphyllus",
+    "genus": "Asparagus",
+    "facts": [
+      "לאספרג החורש יש מחטים קוצניות במקום עלים.",
+      "בחורף צומחים ממנו נצרים שאפשר לאכול.",
+      "הפירות שלו שחורים וקטנים."
+    ]
+  },
+  {
+    "id": "tree-tobacco",
+    "hebrewName": "טבק השיח",
+    "emoji": "💛",
+    "category": "עץ",
+    "scientificName": "Nicotiana glauca",
+    "genus": "Nicotiana",
+    "facts": [
+      "לטבק השיח פרחים צהובים בצורת צינור.",
+      "ציפורי צוף אוהבות לשתות מהם.",
+      "הוא הגיע מדרום אמריקה."
+    ],
+    "caution": "טבק השיח רעיל מאוד — לא אוכלים שום חלק ממנו."
+  },
+  {
+    "id": "castor-bean",
+    "hebrewName": "קיקיון מצוי",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Ricinus communis",
+    "genus": "Ricinus",
+    "facts": [
+      "הקיקיון מופיע בסיפור של יונה הנביא.",
+      "העלים שלו גדולים בצורת כף יד.",
+      "מהזרעים מפיקים שמן קיק."
+    ],
+    "caution": "הזרעים של הקיקיון רעילים מאוד — אסור לאכול!"
+  },
+  {
+    "id": "tree-of-heaven",
+    "hebrewName": "אילנתה בלוטית",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Ailanthus altissima",
+    "genus": "Ailanthus",
+    "facts": [
+      "האילנתה גדלה מהר מאוד — גם בסדקים של מדרכות.",
+      "העלים שלה ארוכים ובנויים מהרבה עלעלים.",
+      "היא הגיעה מסין."
+    ]
+  },
+  {
+    "id": "chinaberry",
+    "hebrewName": "אזדרכת מצויה",
+    "emoji": "💜",
+    "category": "עץ",
+    "scientificName": "Melia azedarach",
+    "genus": "Melia",
+    "facts": [
+      "האזדרכת פורחת באביב בפרחים סגולים ריחניים.",
+      "בחורף נשארים עליה פירות צהובים קטנים.",
+      "נותנת צל טוב בחצרות ובשדרות."
+    ],
+    "caution": "הפירות של האזדרכת רעילים — לא אוכלים!"
+  },
+  {
+    "id": "laurel-fig",
+    "hebrewName": "פיקוס השדרות",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Ficus microcarpa",
+    "genus": "Ficus",
+    "facts": [
+      "פיקוס השדרות נותן צל רחב ברחובות רבים בישראל.",
+      "משורשים שיורדים מהענפים יכולים לצמוח גזעים חדשים.",
+      "העלים שלו מבריקים וירוקים כל השנה."
+    ]
+  },
+  {
+    "id": "rubber-fig",
+    "hebrewName": "פיקוס גומי",
+    "emoji": "🪴",
+    "category": "עץ",
+    "scientificName": "Ficus elastica",
+    "genus": "Ficus",
+    "facts": [
+      "לפיקוס הגומי עלים גדולים, עבים ומבריקים.",
+      "פעם הפיקו ממנו גומי.",
+      "הוא גדל גם כצמח בית וגם כעץ ענק בגינה."
+    ]
+  },
+  {
+    "id": "fiddle-leaf-fig",
+    "hebrewName": "פיקוס כינורי",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Ficus lyrata",
+    "genus": "Ficus",
+    "facts": [
+      "העלים של הפיקוס הכינורי נראים כמו כינור.",
+      "הוא צמח בית אהוב וגדול.",
+      "הוא אוהב אור ולא אוהב שמזיזים אותו."
+    ]
+  },
+  {
+    "id": "sacred-fig",
+    "hebrewName": "פיקוס קדוש",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Ficus religiosa",
+    "genus": "Ficus",
+    "facts": [
+      "לעלים של הפיקוס הקדוש יש קצה ארוך כמו זנב.",
+      "בהודו הוא עץ קדוש.",
+      "אפשר למצוא אותו בגנים ציבוריים בישראל."
+    ]
+  },
+  {
+    "id": "banyan",
+    "hebrewName": "פיקוס בנגלי",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Ficus benghalensis",
+    "genus": "Ficus",
+    "facts": [
+      "הפיקוס הבנגלי מוריד שורשי אוויר שהופכים לגזעים.",
+      "עץ אחד יכול להיראות כמו יער קטן!",
+      "הוא העץ הלאומי של הודו."
+    ]
+  },
+  {
+    "id": "flame-tree",
+    "hebrewName": "צאלון נאה",
+    "emoji": "🔥",
+    "category": "עץ",
+    "scientificName": "Delonix regia",
+    "genus": "Delonix",
+    "facts": [
+      "הצאלון הנאה פורח בקיץ באדום-כתום בוער.",
+      "התרמילים שלו ארוכים וחומים כמו חרבות.",
+      "הוא אוהב חום ושמש."
+    ]
+  },
+  {
+    "id": "parkinsonia",
+    "hebrewName": "פרקינסוניה שיכנית",
+    "emoji": "💛",
+    "category": "עץ",
+    "scientificName": "Parkinsonia aculeata",
+    "genus": "Parkinsonia",
+    "facts": [
+      "לפרקינסוניה גזע וענפים ירוקים.",
+      "היא פורחת בפרחים צהובים קטנים.",
+      "העלים שלה דקים מאוד ויש לה קוצים."
+    ]
+  },
+  {
+    "id": "tipu-tree",
+    "hebrewName": "טיפואנה",
+    "emoji": "💛",
+    "category": "עץ",
+    "scientificName": "Tipuana tipu",
+    "genus": "Tipuana",
+    "facts": [
+      "הטיפואנה פורחת בתחילת הקיץ בפרחים צהובים-כתומים.",
+      "לזרעים שלה יש כנף והם מסתחררים באוויר.",
+      "היא עץ שדרות נפוץ."
+    ]
+  },
+  {
+    "id": "kurrajong",
+    "hebrewName": "ברכיכיטון צפצפתי",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Brachychiton populneus",
+    "genus": "Brachychiton",
+    "facts": [
+      "לברכיכיטון גזע עבה ששומר מים.",
+      "הפירות שלו נראים כמו סירות קטנות.",
+      "הוא הגיע מאוסטרליה."
+    ]
+  },
+  {
+    "id": "flame-kurrajong",
+    "hebrewName": "ברכיכיטון אדרי",
+    "emoji": "🔴",
+    "category": "עץ",
+    "scientificName": "Brachychiton acerifolius",
+    "genus": "Brachychiton",
+    "facts": [
+      "הברכיכיטון האדרי מתכסה בקיץ בפרחים אדומים.",
+      "לפעמים הוא מאבד את העלים ונשאר רק עם פרחים.",
+      "העלים שלו דומים לעלי אדר."
+    ]
+  },
+  {
+    "id": "silky-oak",
+    "hebrewName": "גרווילאה חסונה",
+    "emoji": "🧡",
+    "category": "עץ",
+    "scientificName": "Grevillea robusta",
+    "genus": "Grevillea",
+    "facts": [
+      "לגרווילאה פרחים כתומים-זהובים כמו מברשת.",
+      "העלים שלה דומים לשרך.",
+      "ציפורים אוהבות את הצוף שלה."
+    ]
+  },
+  {
+    "id": "casuarina",
+    "hebrewName": "קזוארינה שבטבטית",
+    "emoji": "🌲",
+    "category": "עץ",
+    "scientificName": "Casuarina equisetifolia",
+    "genus": "Casuarina",
+    "facts": [
+      "הקזוארינה נראית כמו אורן אבל היא לא קרובה אליו.",
+      "הענפים הדקים שלה עושים רחש נעים ברוח.",
+      "היא עמידה לרוח ולמלח ליד הים."
+    ]
+  },
+  {
+    "id": "brazilian-pepper",
+    "hebrewName": "פלפלון דמוי-אלה",
+    "emoji": "🔴",
+    "category": "עץ",
+    "scientificName": "Schinus terebinthifolia",
+    "genus": "Schinus",
+    "facts": [
+      "לפלפלון יש אשכולות של פירות ורודים קטנים.",
+      "הפירות נראים כמו פלפל ורוד.",
+      "הוא הגיע מדרום אמריקה."
+    ]
+  },
+  {
+    "id": "coral-tree",
+    "hebrewName": "אלמוגן",
+    "emoji": "🔴",
+    "category": "עץ",
+    "scientificName": "Erythrina corallodendron",
+    "genus": "Erythrina",
+    "facts": [
+      "האלמוגן פורח בחורף בפרחים אדומים כמו אלמוגים.",
+      "הוא פורח כשאין עליו עלים בכלל.",
+      "ציפורים באות לשתות את הצוף."
+    ],
+    "caution": "הזרעים של האלמוגן רעילים."
+  },
+  {
+    "id": "orchid-tree",
+    "hebrewName": "בוהיניה מגוונת",
+    "emoji": "🌸",
+    "category": "עץ",
+    "scientificName": "Bauhinia variegata",
+    "genus": "Bauhinia",
+    "facts": [
+      "לבוהיניה פרחים שנראים כמו סחלבים.",
+      "העלים שלה בנויים משני חצאים כמו כנפי פרפר.",
+      "היא פורחת בסוף החורף."
+    ]
+  },
+  {
+    "id": "southern-magnolia",
+    "hebrewName": "מגנוליה גדולת-פרחים",
+    "emoji": "🤍",
+    "category": "עץ",
+    "scientificName": "Magnolia grandiflora",
+    "genus": "Magnolia",
+    "facts": [
+      "למגנוליה פרחים לבנים ענקיים וריחניים.",
+      "העלים שלה עבים ומבריקים.",
+      "מגנוליות הן מהעצים העתיקים בעולם."
+    ]
+  },
+  {
+    "id": "frangipani",
+    "hebrewName": "פלומריה",
+    "emoji": "🌸",
+    "category": "עץ",
+    "scientificName": "Plumeria rubra",
+    "genus": "Plumeria",
+    "facts": [
+      "לפלומריה פרחים ריחניים מאוד שמשמשים לזרי פרחים בהוואי.",
+      "הענפים שלה עבים ובשרניים.",
+      "בחורף היא משירה את עליה."
+    ]
+  },
+  {
+    "id": "bottlebrush",
+    "hebrewName": "קליסטמון (מברשת בקבוקים)",
+    "emoji": "🔴",
+    "category": "עץ",
+    "scientificName": "Callistemon citrinus",
+    "genus": "Callistemon",
+    "facts": [
+      "הפרחים של הקליסטמון נראים כמו מברשת לניקוי בקבוקים.",
+      "הם אדומים וציפורי צוף אוהבות אותם.",
+      "הוא הגיע מאוסטרליה."
+    ]
+  },
+  {
+    "id": "norfolk-pine",
+    "hebrewName": "אראוקריה רמה",
+    "emoji": "🌲",
+    "category": "עץ",
+    "scientificName": "Araucaria heterophylla",
+    "genus": "Araucaria",
+    "facts": [
+      "לאראוקריה ענפים מסודרים בקומות כמו עץ חג המולד.",
+      "היא יכולה לגדול גבוה מאוד.",
+      "היא הגיעה מאי קטן באוקיינוס השקט."
+    ]
+  },
+  {
+    "id": "oriental-thuja",
+    "hebrewName": "ביוטה מזרחית",
+    "emoji": "🌲",
+    "category": "עץ",
+    "scientificName": "Platycladus orientalis",
+    "genus": "Platycladus",
+    "facts": [
+      "לביוטה ענפים שטוחים שעומדים כמו מניפות.",
+      "שותלים אותה בגדרות חיות.",
+      "היא ירוקה כל השנה."
+    ]
+  },
+  {
+    "id": "dragon-tree",
+    "hebrewName": "דרקנה דרקונית",
+    "emoji": "🐉",
+    "category": "עץ",
+    "scientificName": "Dracaena draco",
+    "genus": "Dracaena",
+    "facts": [
+      "לדרקנה הדרקונית יש צמרת בצורת מטרייה.",
+      "השרף שלה אדום ונקרא \"דם הדרקון\".",
+      "היא גדלה לאט מאוד."
+    ]
+  },
+  {
+    "id": "yucca",
+    "hebrewName": "יוקה",
+    "emoji": "🌿",
+    "category": "צמח",
+    "scientificName": "Yucca gigantea",
+    "genus": "Yucca",
+    "facts": [
+      "ליוקה עלים ארוכים וחדים כמו חרבות.",
+      "היא פורחת באשכול פרחים לבנים גבוה.",
+      "היא עמידה מאוד ליובש."
+    ]
+  },
+  {
+    "id": "canary-palm",
+    "hebrewName": "תמר קנרי",
+    "emoji": "🌴",
+    "category": "עץ",
+    "scientificName": "Phoenix canariensis",
+    "genus": "Phoenix",
+    "facts": [
+      "לתמר הקנרי גזע עבה וצמרת עגולה ורחבה.",
+      "הוא קרוב משפחה של עץ התמר.",
+      "הפירות שלו כתומים וקטנים ולא טעימים."
+    ]
+  },
+  {
+    "id": "washingtonia-filifera",
+    "hebrewName": "וושינגטוניה חוטית",
+    "emoji": "🌴",
+    "category": "עץ",
+    "scientificName": "Washingtonia filifera",
+    "genus": "Washingtonia",
+    "facts": [
+      "לוושינגטוניה החוטית חוטים לבנים בקצות העלים.",
+      "העלים שלה בצורת מניפה.",
+      "עלים יבשים נשארים על הגזע כמו חצאית."
+    ]
+  },
+  {
+    "id": "doum-palm",
+    "hebrewName": "דום מצרי",
+    "emoji": "🌴",
+    "category": "עץ",
+    "scientificName": "Hyphaene thebaica",
+    "genus": "Hyphaene",
+    "facts": [
+      "הדום הוא הדקל היחיד בישראל שהגזע שלו מתפצל.",
+      "הוא גדל באזור אילת.",
+      "הפירות שלו מריחים כמו עוגת ג'ינג'ר."
+    ]
+  },
+  {
+    "id": "leucaena",
+    "hebrewName": "לויקנה",
+    "emoji": "🤍",
+    "category": "עץ",
+    "scientificName": "Leucaena leucocephala",
+    "genus": "Leucaena",
+    "facts": [
+      "הלויקנה פורחת בכדורים לבנים רכים.",
+      "היא מתפשטת מהר מאוד.",
+      "יש לה תרמילים שטוחים ומלאים זרעים."
+    ]
+  },
+  {
+    "id": "crape-myrtle",
+    "hebrewName": "לגרסטרמיה",
+    "emoji": "🌸",
+    "category": "עץ",
+    "scientificName": "Lagerstroemia indica",
+    "genus": "Lagerstroemia",
+    "facts": [
+      "הלגרסטרמיה פורחת בקיץ בוורוד, סגול או לבן.",
+      "הגזע שלה חלק ומתקלף בצבעים.",
+      "היא נפוצה בגינות ובשדרות."
+    ]
+  },
+  {
+    "id": "pittosporum",
+    "hebrewName": "פיטוספורום",
+    "emoji": "🤍",
+    "category": "עץ",
+    "scientificName": "Pittosporum tobira",
+    "genus": "Pittosporum",
+    "facts": [
+      "לפיטוספורום פרחים לבנים עם ריח של הדרים.",
+      "שותלים אותו כגדר חיה.",
+      "העלים שלו עבים ומבריקים."
+    ]
+  },
+  {
+    "id": "duranta",
+    "hebrewName": "דורנטה",
+    "emoji": "💜",
+    "category": "עץ",
+    "scientificName": "Duranta erecta",
+    "genus": "Duranta",
+    "facts": [
+      "לדורנטה פרחים סגולים קטנים ופירות כתומים.",
+      "היא משמשת לגדר חיה.",
+      "פרפרים אוהבים את הפרחים שלה."
+    ],
+    "caution": "הפירות של הדורנטה רעילים."
+  },
+  {
+    "id": "yellow-bells",
+    "hebrewName": "טקומה זקופה",
+    "emoji": "💛",
+    "category": "עץ",
+    "scientificName": "Tecoma stans",
+    "genus": "Tecoma",
+    "facts": [
+      "לטקומה פרחים צהובים בצורת פעמון.",
+      "היא פורחת כמעט כל השנה.",
+      "דבורים וציפורים אוהבות אותה."
+    ]
+  },
+  {
+    "id": "grapefruit",
+    "hebrewName": "אשכולית",
+    "emoji": "🍊",
+    "category": "עץ",
+    "scientificName": "Citrus × paradisi",
+    "genus": "Citrus",
+    "facts": [
+      "האשכולית גדלה באשכולות כמו ענבים — מכאן השם.",
+      "הטעם שלה חמצמץ ומריר.",
+      "ישראל ידועה באשכוליות טעימות."
+    ],
+    "wikiTitle": "Grapefruit"
+  },
+  {
+    "id": "mandarin",
+    "hebrewName": "קלמנטינה (מנדרינה)",
+    "emoji": "🍊",
+    "category": "עץ",
+    "scientificName": "Citrus reticulata",
+    "genus": "Citrus",
+    "facts": [
+      "את הקלמנטינה קל לקלף עם הידיים.",
+      "היא מבשילה בחורף.",
+      "בתוכה פלחים קטנים ומתוקים."
+    ]
+  },
+  {
+    "id": "citron",
+    "hebrewName": "אתרוג",
+    "emoji": "🍋",
+    "category": "עץ",
+    "scientificName": "Citrus medica",
+    "genus": "Citrus",
+    "facts": [
+      "האתרוג הוא אחד מארבעת המינים של סוכות.",
+      "יש לו קליפה עבה וריח נפלא.",
+      "האתרוג היה בין ההדרים הראשונים שגדלו בארץ."
+    ]
+  },
+  {
+    "id": "pomelo",
+    "hebrewName": "פומלה",
+    "emoji": "🍈",
+    "category": "עץ",
+    "scientificName": "Citrus maxima",
+    "genus": "Citrus",
+    "facts": [
+      "הפומלה היא פרי ההדר הגדול ביותר.",
+      "יש לה קליפה עבה מאוד.",
+      "היא מתוקה יותר מאשכולית."
+    ]
+  },
+  {
+    "id": "kumquat",
+    "hebrewName": "קומקוואט",
+    "emoji": "🍊",
+    "category": "עץ",
+    "scientificName": "Citrus japonica",
+    "genus": "Citrus",
+    "facts": [
+      "הקומקוואט קטן כמו זית גדול.",
+      "אוכלים אותו עם הקליפה!",
+      "הקליפה מתוקה והתוך חמוץ."
+    ]
+  },
+  {
+    "id": "peach",
+    "hebrewName": "עץ אפרסק",
+    "emoji": "🍑",
+    "category": "עץ",
+    "scientificName": "Prunus persica",
+    "genus": "Prunus",
+    "facts": [
+      "לאפרסק קליפה רכה ופלומתית.",
+      "העץ פורח באביב בפרחים ורודים.",
+      "בתוך הפרי יש גלעין גדול וקשה."
+    ]
+  },
+  {
+    "id": "apricot",
+    "hebrewName": "עץ משמש",
+    "emoji": "🍑",
+    "category": "עץ",
+    "scientificName": "Prunus armeniaca",
+    "genus": "Prunus",
+    "facts": [
+      "המשמש מבשיל בתחילת הקיץ.",
+      "ממשמשים מייבשים מכינים מִשְׁמִשׁ מיובש.",
+      "עונת המשמש קצרה מאוד — ממנה בא הביטוי \"בוקרה פיל משמש\"."
+    ]
+  },
+  {
+    "id": "plum",
+    "hebrewName": "עץ שזיף",
+    "emoji": "🟣",
+    "category": "עץ",
+    "scientificName": "Prunus domestica",
+    "genus": "Prunus",
+    "facts": [
+      "השזיף יכול להיות סגול, אדום או צהוב.",
+      "משזיפים מיובשים מכינים פרונים.",
+      "העץ פורח באביב בלבן."
+    ]
+  },
+  {
+    "id": "cherry",
+    "hebrewName": "עץ דובדבן",
+    "emoji": "🍒",
+    "category": "עץ",
+    "scientificName": "Prunus avium",
+    "genus": "Prunus",
+    "facts": [
+      "הדובדבנים גדלים בזוגות על עוקצים ארוכים.",
+      "בישראל מגדלים אותם בגולן ובגליל.",
+      "העץ צריך חורף קר כדי לפרוח."
+    ]
+  },
+  {
+    "id": "loquat",
+    "hebrewName": "שסק",
+    "emoji": "🟠",
+    "category": "עץ",
+    "scientificName": "Eriobotrya japonica",
+    "genus": "Eriobotrya",
+    "facts": [
+      "השסק מבשיל באביב, לפני רוב הפירות.",
+      "יש לו פרי כתום עם כמה גלעינים גדולים.",
+      "הוא פורח דווקא בחורף."
+    ]
+  },
+  {
+    "id": "quince",
+    "hebrewName": "חבוש",
+    "emoji": "🍐",
+    "category": "עץ",
+    "scientificName": "Cydonia oblonga",
+    "genus": "Cydonia",
+    "facts": [
+      "החבוש נראה כמו אגס גדול וצהוב.",
+      "אוכלים אותו מבושל או כריבה.",
+      "יש לו ריח חזק ונעים."
+    ]
+  },
+  {
+    "id": "persimmon",
+    "hebrewName": "אפרסמון",
+    "emoji": "🟠",
+    "category": "עץ",
+    "scientificName": "Diospyros kaki",
+    "genus": "Diospyros",
+    "facts": [
+      "האפרסמון מבשיל בסתיו בצבע כתום.",
+      "בישראל פיתחו זן מיוחד בשם \"שרון\".",
+      "כשהוא בשל מאוד הוא רך כמו ג'לי."
+    ]
+  },
+  {
+    "id": "guava",
+    "hebrewName": "גויאבה",
+    "emoji": "🍈",
+    "category": "עץ",
+    "scientificName": "Psidium guajava",
+    "genus": "Psidium",
+    "facts": [
+      "לגויאבה ריח חזק שממלא את כל הבית.",
+      "בתוכה הרבה זרעים קטנים.",
+      "היא מלאה ויטמין C."
+    ]
+  },
+  {
+    "id": "cherimoya",
+    "hebrewName": "אנונה",
+    "emoji": "💚",
+    "category": "עץ",
+    "scientificName": "Annona cherimola",
+    "genus": "Annona",
+    "facts": [
+      "לאנונה קליפה ירוקה עם קשקשים.",
+      "התוך לבן ומתוק כמו גלידה.",
+      "יש בה גרעינים שחורים גדולים."
+    ]
+  },
+  {
+    "id": "lychee",
+    "hebrewName": "ליצ'י",
+    "emoji": "🔴",
+    "category": "עץ",
+    "scientificName": "Litchi chinensis",
+    "genus": "Litchi",
+    "facts": [
+      "לליצ'י קליפה אדומה ומחוספסת.",
+      "התוך שקוף ומתוק.",
+      "הוא מבשיל בקיץ."
+    ]
+  },
+  {
+    "id": "papaya",
+    "hebrewName": "פפאיה",
+    "emoji": "🍈",
+    "category": "עץ",
+    "scientificName": "Carica papaya",
+    "genus": "Carica",
+    "facts": [
+      "לפפאיה גזע ללא ענפים ועלים גדולים בראש.",
+      "הפירות גדלים ישר על הגזע.",
+      "בתוך הפרי יש הרבה זרעים שחורים."
+    ]
+  },
+  {
+    "id": "walnut",
+    "hebrewName": "עץ אגוז המלך",
+    "emoji": "🌰",
+    "category": "עץ",
+    "scientificName": "Juglans regia",
+    "genus": "Juglans",
+    "facts": [
+      "האגוז עטוף בקליפה ירוקה שמכתימה את הידיים.",
+      "בתוך הקליפה הקשה יש אגוז שנראה כמו מוח.",
+      "העץ גדול ונותן צל רחב."
+    ]
+  },
+  {
+    "id": "pistachio",
+    "hebrewName": "עץ פיסטוק",
+    "emoji": "🥜",
+    "category": "עץ",
+    "scientificName": "Pistacia vera",
+    "genus": "Pistacia",
+    "facts": [
+      "הפיסטוק קרוב משפחה של האלה.",
+      "כשהפרי מבשיל הקליפה נפתחת כמו חיוך.",
+      "יש עצי פיסטוק זכרים ונקבות."
+    ]
+  },
+  {
+    "id": "black-mulberry",
+    "hebrewName": "תות שחור",
+    "emoji": "🫐",
+    "category": "עץ",
+    "scientificName": "Morus nigra",
+    "genus": "Morus",
+    "facts": [
+      "התות השחור מכתים את הידיים בסגול.",
+      "הפירות מתוקים ועסיסיים.",
+      "תולעי משי אוכלות את עלי התות."
+    ]
+  },
+  {
+    "id": "feijoa",
+    "hebrewName": "פיג'ויה",
+    "emoji": "💚",
+    "category": "עץ",
+    "scientificName": "Acca sellowiana",
+    "genus": "Acca",
+    "facts": [
+      "לפיג'ויה פרי ירוק עם ריח מתוק.",
+      "הפרחים שלה אדומים-לבנים ואפשר לאכול את עלי הכותרת.",
+      "היא מבשילה בסתיו."
+    ],
+    "wikiTitle": "Feijoa sellowiana"
+  },
+  {
+    "id": "macadamia",
+    "hebrewName": "מקדמיה",
+    "emoji": "🌰",
+    "category": "עץ",
+    "scientificName": "Macadamia integrifolia",
+    "genus": "Macadamia",
+    "facts": [
+      "לאגוזי המקדמיה קליפה קשה מאוד.",
+      "הם הגיעו במקור מאוסטרליה.",
+      "האגוז שמנוני ועדין."
+    ]
+  },
+  {
+    "id": "jujube",
+    "hebrewName": "שיזף סיני (ג'וג'ובה)",
+    "emoji": "🟤",
+    "category": "עץ",
+    "scientificName": "Ziziphus jujuba",
+    "genus": "Ziziphus",
+    "facts": [
+      "לשיזף הסיני פירות שנראים כמו תמרים קטנים.",
+      "הם פריכים כמו תפוח.",
+      "העץ נותן פירות בסוף הקיץ."
+    ]
+  },
+  {
+    "id": "moringa",
+    "hebrewName": "מורינגה מכונפת",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Moringa oleifera",
+    "genus": "Moringa",
+    "facts": [
+      "העלים של המורינגה מזינים מאוד.",
+      "היא גדלה מהר מאוד.",
+      "לתרמילים שלה צורת מקל ארוך."
+    ]
+  },
+  {
+    "id": "mountain-tulip",
+    "hebrewName": "צבעוני מאדים",
+    "emoji": "🌷",
+    "category": "פרח",
+    "scientificName": "Tulipa systola",
+    "genus": "Tulipa",
+    "facts": [
+      "צבעוני המאדים פורח באביב באדום בוהק.",
+      "הוא גדל בנגב ובהרים.",
+      "אסור לקטוף אותו — הוא צמח מוגן."
+    ]
+  },
+  {
+    "id": "yellow-horned-poppy",
+    "hebrewName": "פרגה צהובה",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Glaucium flavum",
+    "genus": "Glaucium",
+    "facts": [
+      "הפרגה הצהובה גדלה על חוף הים.",
+      "הפרי שלה ארוך ודק כמו קרן.",
+      "העלים שלה אפורים ומכוסים שעווה."
+    ]
+  },
+  {
+    "id": "red-horned-poppy",
+    "hebrewName": "פרגה מצויה",
+    "emoji": "🟠",
+    "category": "פרח",
+    "scientificName": "Glaucium grandiflorum",
+    "genus": "Glaucium",
+    "facts": [
+      "לפרגה המצויה פרחים כתומים-אדומים גדולים.",
+      "בבסיס עלי הכותרת יש כתם שחור.",
+      "היא פורחת באביב בשדות ובשולי דרכים."
+    ]
+  },
+  {
+    "id": "purple-iris",
+    "hebrewName": "אירוס הארגמן",
+    "emoji": "🪻",
+    "category": "פרח",
+    "scientificName": "Iris atropurpurea",
+    "genus": "Iris",
+    "facts": [
+      "אירוס הארגמן כמעט שחור מרוב שהוא סגול כהה.",
+      "הוא גדל רק בחולות מישור החוף.",
+      "זה צמח נדיר ומוגן."
+    ]
+  },
+  {
+    "id": "gilboa-iris",
+    "hebrewName": "אירוס הגלבוע",
+    "emoji": "🪻",
+    "category": "פרח",
+    "scientificName": "Iris haynei",
+    "genus": "Iris",
+    "facts": [
+      "אירוס הגלבוע פורח בסוף החורף על הר הגלבוע.",
+      "הפרח שלו גדול, סגול ומנוקד.",
+      "בכל שנה מגיעים המון מטיילים לראות אותו."
+    ]
+  },
+  {
+    "id": "palestine-iris",
+    "hebrewName": "אירוס ארץ-ישראלי",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Iris palaestina",
+    "genus": "Iris",
+    "facts": [
+      "לאירוס הארץ-ישראלי פרחים בהירים, לבנבנים-תכלכלים.",
+      "הוא פורח כבר בחורף.",
+      "הוא נמוך ולא מתנשא מעל האדמה."
+    ]
+  },
+  {
+    "id": "nazareth-iris",
+    "hebrewName": "אירוס נצרתי",
+    "emoji": "🪻",
+    "category": "פרח",
+    "scientificName": "Iris bismarckiana",
+    "genus": "Iris",
+    "facts": [
+      "לאירוס הנצרתי פרח ענק בגוונים של לבן וסגול.",
+      "הוא גדל בגליל התחתון.",
+      "הוא אחד האירוסים היפים והנדירים."
+    ]
+  },
+  {
+    "id": "vartan-iris",
+    "hebrewName": "אירוס ורטן",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Iris vartanii",
+    "genus": "Iris",
+    "facts": [
+      "אירוס ורטן פורח באמצע החורף.",
+      "הפרח שלו תכול-לבנבן וריחני.",
+      "הוא גדל בהרי יהודה ובשומרון."
+    ]
+  },
+  {
+    "id": "marsh-iris",
+    "hebrewName": "אירוס הביצות",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Iris grant-duffii",
+    "genus": "Iris",
+    "facts": [
+      "לאירוס הביצות פרח צהוב.",
+      "הוא גדל באדמה כבדה שמתמלאת מים בחורף.",
+      "זה אירוס נדיר."
+    ]
+  },
+  {
+    "id": "reticulated-iris",
+    "hebrewName": "אירוס ססגוני",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Iris histrio",
+    "genus": "Iris",
+    "facts": [
+      "האירוס הססגוני קטן ופורח עוד בחורף.",
+      "יש לו נקודות וקווים יפים על הפרח.",
+      "הוא צומח מבצל קטן באדמה."
+    ]
+  },
+  {
+    "id": "italian-gladiolus",
+    "hebrewName": "סיפן התבואה",
+    "emoji": "💗",
+    "category": "פרח",
+    "scientificName": "Gladiolus italicus",
+    "genus": "Gladiolus",
+    "facts": [
+      "לסיפן פרחים ורודים לאורך גבעול אחד.",
+      "הוא נוהג לגדול בין שדות חיטה.",
+      "השם \"סיפן\" בא ממילה שמשמעותה חרב."
+    ]
+  },
+  {
+    "id": "winter-crocus",
+    "hebrewName": "כרכום החורף",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Crocus hyemalis",
+    "genus": "Crocus",
+    "facts": [
+      "כרכום החורף פורח בחורף בלבן עם אבקנים כתומים.",
+      "הוא נמוך מאוד וצמוד לאדמה.",
+      "מקרוב משפחה שלו מכינים את התבלין זעפרן."
+    ]
+  },
+  {
+    "id": "steven-colchicum",
+    "hebrewName": "סתוונית היורה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Colchicum stevenii",
+    "genus": "Colchicum",
+    "facts": [
+      "סתוונית היורה פורחת עם הגשמים הראשונים.",
+      "הפרחים ורודים ויוצאים ישר מהאדמה.",
+      "העלים מופיעים רק אחרי הפרחים."
+    ],
+    "caution": "הסתוונית רעילה — מסתכלים ולא אוכלים."
+  },
+  {
+    "id": "sea-daffodil",
+    "hebrewName": "חבצלת החוף",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Pancratium maritimum",
+    "genus": "Pancratium",
+    "facts": [
+      "חבצלת החוף פורחת בסוף הקיץ על חולות הים.",
+      "הפרחים לבנים וריחניים במיוחד בלילה.",
+      "זה צמח מוגן — אסור לקטוף."
+    ]
+  },
+  {
+    "id": "small-pancratium",
+    "hebrewName": "חבצלת קטנת-פרחים",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Pancratium parviflorum",
+    "genus": "Pancratium",
+    "facts": [
+      "חבצלת קטנת-פרחים פורחת בסתיו.",
+      "היא גדלה בהרים ובגליל.",
+      "הפרחים שלה לבנים וקטנים יותר מחבצלת החוף."
+    ]
+  },
+  {
+    "id": "tassel-hyacinth",
+    "hebrewName": "כדן מצוי",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Leopoldia comosa",
+    "genus": "Leopoldia",
+    "facts": [
+      "לכדן יש \"ציצה\" סגולה בראש הגבעול.",
+      "הוא פורח באביב בשדות.",
+      "הפרחים התחתונים שלו חומים-ירקרקים."
+    ],
+    "wikiTitle": "Muscari comosum"
+  },
+  {
+    "id": "autumn-squill",
+    "hebrewName": "בן-חצב סתווי",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Prospero autumnale",
+    "genus": "Prospero",
+    "facts": [
+      "בן-החצב הסתווי פורח בסתיו בפרחים סגלגלים קטנים.",
+      "הוא קטן מאוד בהשוואה לחצב.",
+      "הוא צומח מבצל."
+    ]
+  },
+  {
+    "id": "hyacinth-squill",
+    "hebrewName": "בן-חצב יקינתוני",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Scilla hyacinthoides",
+    "genus": "Scilla",
+    "facts": [
+      "לבן-חצב היקינתוני אשכול ארוך של פרחים כחולים.",
+      "הוא פורח באביב.",
+      "הוא גבוה ויכול להגיע למטר."
+    ]
+  },
+  {
+    "id": "naples-garlic",
+    "hebrewName": "שום נפוליטני",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Allium neapolitanum",
+    "genus": "Allium",
+    "facts": [
+      "לשום הנפוליטני פרחים לבנים בצורת כוכב.",
+      "הוא פורח באביב בשדות ובחורש.",
+      "כשמועכים אותו עולה ריח של שום."
+    ]
+  },
+  {
+    "id": "schubert-garlic",
+    "hebrewName": "שום שוברט",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Allium schubertii",
+    "genus": "Allium",
+    "facts": [
+      "לשום שוברט כדור פרחים ענקי שנראה כמו זיקוק.",
+      "יש בו פרחים עם עוקצים ארוכים וקצרים.",
+      "הוא גדל בנגב ובהרים."
+    ]
+  },
+  {
+    "id": "wild-leek",
+    "hebrewName": "שום גבוה",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Allium ampeloprasum",
+    "genus": "Allium",
+    "facts": [
+      "השום הגבוה הוא קרוב הבר של הכרישה.",
+      "יש לו כדור פרחים סגלגל על גבעול גבוה.",
+      "הוא פורח בקיץ."
+    ]
+  },
+  {
+    "id": "yellow-asphodel",
+    "hebrewName": "עיריוני צהוב",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Asphodeline lutea",
+    "genus": "Asphodeline",
+    "facts": [
+      "לעיריוני אשכול פרחים צהובים על גבעול עבה.",
+      "הוא פורח באביב בהרים.",
+      "העלים שלו צרים ורבים."
+    ]
+  },
+  {
+    "id": "yellow-bee-orchid",
+    "hebrewName": "דבורנית צהובה",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Ophrys lutea",
+    "genus": "Ophrys",
+    "facts": [
+      "הפרח של הדבורנית נראה כמו חרק קטן.",
+      "זכרי דבורים מתבלבלים ו\"מאביקים\" אותו.",
+      "זה סחלב מוגן."
+    ]
+  },
+  {
+    "id": "brown-bee-orchid",
+    "hebrewName": "דבורנית שחומה",
+    "emoji": "🐝",
+    "category": "פרח",
+    "scientificName": "Ophrys fusca",
+    "genus": "Ophrys",
+    "facts": [
+      "לדבורנית השחומה פרח חום שדומה לדבורה.",
+      "היא פורחת בסוף החורף.",
+      "הסחלבים בישראל מוגנים."
+    ]
+  },
+  {
+    "id": "butterfly-orchid",
+    "hebrewName": "סחלב פרפרני",
+    "emoji": "🦋",
+    "category": "פרח",
+    "scientificName": "Anacamptis papilionacea",
+    "genus": "Anacamptis",
+    "facts": [
+      "לסחלב הפרפרני פרחים ורודים שנראים כמו פרפרים.",
+      "הוא פורח באביב בבתות.",
+      "זה צמח מוגן."
+    ],
+    "wikiTitle": "Orchis papilionacea"
+  },
+  {
+    "id": "anatolian-orchid",
+    "hebrewName": "סחלב אנטולי",
+    "emoji": "💗",
+    "category": "פרח",
+    "scientificName": "Orchis anatolica",
+    "genus": "Orchis",
+    "facts": [
+      "לסחלב האנטולי פרחים ורודים עם נקודות.",
+      "הוא גדל בחורש ובין סלעים.",
+      "פורח בסוף החורף ובאביב."
+    ]
+  },
+  {
+    "id": "galilee-orchid",
+    "hebrewName": "סחלב הגליל",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Orchis galilaea",
+    "genus": "Orchis",
+    "facts": [
+      "לסחלב הגליל אשכול צפוף של פרחים לבנבנים-ורדרדים.",
+      "הוא גדל בגליל ובכרמל.",
+      "הפרחים שלו נראים כמו אנשים קטנים."
+    ]
+  },
+  {
+    "id": "serapias",
+    "hebrewName": "טוריים מזרחיים",
+    "emoji": "🟤",
+    "category": "פרח",
+    "scientificName": "Serapias levantina",
+    "genus": "Serapias",
+    "facts": [
+      "לסחלב הטוריים פרחים חומים-אדמדמים.",
+      "יש לו \"לשון\" ארוכה שיוצאת מהפרח.",
+      "הוא גדל באדמות לחות."
+    ]
+  },
+  {
+    "id": "palestine-lupine",
+    "hebrewName": "תורמוס ארץ-ישראלי",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Lupinus palaestinus",
+    "genus": "Lupinus",
+    "facts": [
+      "לתורמוס הארץ-ישראלי פרחים לבנבנים-תכלכלים.",
+      "הוא גדל בחולות מישור החוף.",
+      "העלים שלו מכוסים שערות כסופות."
+    ]
+  },
+  {
+    "id": "narrow-lupine",
+    "hebrewName": "תורמוס צר-עלים",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Lupinus angustifolius",
+    "genus": "Lupinus",
+    "facts": [
+      "לתורמוס צר-העלים פרחים כחולים ועלים דקים.",
+      "הזרעים שלו גדלים בתרמילים שעירים.",
+      "פרחי תורמוס מושכים דבורים."
+    ]
+  },
+  {
+    "id": "palestine-vetch",
+    "hebrewName": "בקיה ארץ-ישראלית",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Vicia palaestina",
+    "genus": "Vicia",
+    "facts": [
+      "הבקיה מטפסת בעזרת קנוקנות דקות.",
+      "יש לה פרחים סגולים קטנים.",
+      "היא ממשפחת הקטניות, כמו האפונה."
+    ]
+  },
+  {
+    "id": "purple-clover",
+    "hebrewName": "תלתן ארגמני",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Trifolium purpureum",
+    "genus": "Trifolium",
+    "facts": [
+      "לתלתן הארגמני ראש פרחים ארוך בצבע סגול-ורוד.",
+      "דבורים מאוד אוהבות אותו.",
+      "הוא פורח באביב בשדות."
+    ]
+  },
+  {
+    "id": "star-clover",
+    "hebrewName": "תלתן כוכבני",
+    "emoji": "⭐",
+    "category": "פרח",
+    "scientificName": "Trifolium stellatum",
+    "genus": "Trifolium",
+    "facts": [
+      "כשהתלתן הכוכבני מבשיל הוא נראה כמו כוכבים קטנים.",
+      "הראש שלו רך ושעיר.",
+      "הוא נפוץ בשולי דרכים."
+    ]
+  },
+  {
+    "id": "shield-clover",
+    "hebrewName": "תלתן המגן",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Trifolium clypeatum",
+    "genus": "Trifolium",
+    "facts": [
+      "לתלתן המגן פרחים לבנים-ורדרדים גדולים.",
+      "העלים שלו בנויים משלושה עלעלים, כמו כל תלתן.",
+      "הוא פורח באביב."
+    ]
+  },
+  {
+    "id": "burr-medick",
+    "hebrewName": "אספסת מצויה",
+    "emoji": "💛",
+    "category": "עשב",
+    "scientificName": "Medicago polymorpha",
+    "genus": "Medicago",
+    "facts": [
+      "לאספסת פרחים צהובים קטנים.",
+      "הפירות שלה מסולסלים כמו קפיץ עם קוצים.",
+      "הם נדבקים לגרביים ולפרוות של חיות."
+    ]
+  },
+  {
+    "id": "camelthorn",
+    "hebrewName": "הגה מצויה",
+    "emoji": "🌸",
+    "category": "עשב",
+    "scientificName": "Alhagi maurorum",
+    "genus": "Alhagi",
+    "facts": [
+      "להגה יש קוצים חדים ופרחים ורודים קטנים.",
+      "גמלים אוהבים לאכול אותה למרות הקוצים.",
+      "השורשים שלה מגיעים עמוק מאוד."
+    ]
+  },
+  {
+    "id": "syrian-mesquite",
+    "hebrewName": "ינבוט השדה",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Prosopis farcta",
+    "genus": "Prosopis",
+    "facts": [
+      "הינבוט הוא עשב קוצני ששורשיו עמוקים מאוד.",
+      "הוא מתפשט בשדות ובשולי דרכים.",
+      "הפרי שלו חום וקשה."
+    ]
+  },
+  {
+    "id": "corn-marigold",
+    "hebrewName": "חרצית השדות",
+    "emoji": "🌼",
+    "category": "פרח",
+    "scientificName": "Glebionis segetum",
+    "genus": "Glebionis",
+    "facts": [
+      "לחרצית השדות פרח צהוב לגמרי.",
+      "היא פורחת באביב בשדות.",
+      "היא קרובה לחרצית העטורה."
+    ]
+  },
+  {
+    "id": "field-marigold",
+    "hebrewName": "ציפורני חתול השדה",
+    "emoji": "🧡",
+    "category": "פרח",
+    "scientificName": "Calendula arvensis",
+    "genus": "Calendula",
+    "facts": [
+      "לציפורני חתול השדה פרחים כתומים קטנים.",
+      "הזרעים שלה מעוקלים כמו ציפורניים של חתול.",
+      "היא פורחת בחורף."
+    ]
+  },
+  {
+    "id": "palestine-chamomile",
+    "hebrewName": "קחוון ארץ-ישראלי",
+    "emoji": "🌼",
+    "category": "פרח",
+    "scientificName": "Anthemis palaestina",
+    "genus": "Anthemis",
+    "facts": [
+      "לקחוון פרחים לבנים עם מרכז צהוב, כמו חיננית.",
+      "הוא מכסה שדות שלמים בחורף ובאביב.",
+      "הוא דומה מאוד לבבונג."
+    ]
+  },
+  {
+    "id": "spring-groundsel",
+    "hebrewName": "סביון אביבי",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Senecio vernalis",
+    "genus": "Senecio",
+    "facts": [
+      "לסביון פרחים צהובים קטנים.",
+      "הזרעים שלו מעופפים עם שערות כמו שן הארי.",
+      "הוא אחד הפרחים הראשונים שפורחים בחורף."
+    ]
+  },
+  {
+    "id": "syrian-thistle",
+    "hebrewName": "ברקן סורי",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Notobasis syriaca",
+    "genus": "Notobasis",
+    "facts": [
+      "לברקן עלים קוצניים עם עורקים לבנים.",
+      "הפרחים שלו סגולים.",
+      "הוא יכול לגדול גבוה מאוד בשולי שדות."
+    ]
+  },
+  {
+    "id": "syrian-artichoke",
+    "hebrewName": "קינרס סורי",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Cynara syriaca",
+    "genus": "Cynara",
+    "facts": [
+      "הקינרס הסורי הוא קרוב הבר של הארטישוק.",
+      "הפרחים שלו סגולים וגדולים.",
+      "העלים שלו קוצניים וכסופים."
+    ]
+  },
+  {
+    "id": "gundelia",
+    "hebrewName": "עכובית הגלגל",
+    "emoji": "🟣",
+    "category": "פרח",
+    "scientificName": "Gundelia tournefortii",
+    "genus": "Gundelia",
+    "facts": [
+      "העכובית מתייבשת בקיץ ומתגלגלת ברוח.",
+      "אוכלים את הניצנים שלה בתבשילים.",
+      "היא קוצנית מאוד."
+    ]
+  },
+  {
+    "id": "globe-thistle",
+    "hebrewName": "קיפודן מצוי",
+    "emoji": "🔵",
+    "category": "פרח",
+    "scientificName": "Echinops adenocaulos",
+    "genus": "Echinops",
+    "facts": [
+      "לקיפודן ראש פרחים עגול שנראה כמו קיפוד.",
+      "הוא פורח בקיץ בצבע תכלת.",
+      "דבורים ופרפרים מתאספים עליו."
+    ]
+  },
+  {
+    "id": "slender-safflower",
+    "hebrewName": "קורטם דק",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Carthamus tenuis",
+    "genus": "Carthamus",
+    "facts": [
+      "לקורטם פרחים סגלגלים ועלים קוצניים.",
+      "הוא פורח בקיץ.",
+      "קרוב משפחה שלו משמש להפקת שמן."
+    ]
+  },
+  {
+    "id": "wild-chicory",
+    "hebrewName": "עולש מצוי",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Cichorium pumilum",
+    "genus": "Cichorium",
+    "facts": [
+      "לעולש פרחים תכולים שנפתחים בבוקר.",
+      "את העלים שלו אוכלים כמו סלט.",
+      "הוא פורח בחורף ובאביב."
+    ]
+  },
+  {
+    "id": "helichrysum",
+    "hebrewName": "דם המכבים",
+    "emoji": "🔴",
+    "category": "פרח",
+    "scientificName": "Helichrysum sanguineum",
+    "genus": "Helichrysum",
+    "facts": [
+      "לדם המכבים פרחים אדומים קטנים.",
+      "לפי אגדה הוא צמח במקום שבו נשפך דם המכבים.",
+      "הוא צמח מוגן."
+    ]
+  },
+  {
+    "id": "achillea",
+    "hebrewName": "אכילאה ריחנית",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Achillea fragrantissima",
+    "genus": "Achillea",
+    "facts": [
+      "לאכילאה ריח חזק ונעים.",
+      "היא גדלה בוואדיות במדבר.",
+      "בדואים השתמשו בה כתרופה."
+    ]
+  },
+  {
+    "id": "inula",
+    "hebrewName": "טיון דביק",
+    "emoji": "💛",
+    "category": "עשב",
+    "scientificName": "Dittrichia viscosa",
+    "genus": "Dittrichia",
+    "facts": [
+      "לטיון עלים דביקים עם ריח חזק.",
+      "הוא פורח בסתיו בפרחים צהובים.",
+      "הוא גדל בשולי דרכים ובשדות נטושים."
+    ]
+  },
+  {
+    "id": "sow-thistle",
+    "hebrewName": "מרור הגינות",
+    "emoji": "💛",
+    "category": "עשב",
+    "scientificName": "Sonchus oleraceus",
+    "genus": "Sonchus",
+    "facts": [
+      "המרור מופיע בליל הסדר כ\"מרור\".",
+      "יש לו פרחים צהובים ועלים עם טעם מר.",
+      "כשחותכים אותו יוצא נוזל לבן."
+    ]
+  },
+  {
+    "id": "prickly-lettuce",
+    "hebrewName": "חסת המצפן",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Lactuca serriola",
+    "genus": "Lactuca",
+    "facts": [
+      "לחסת המצפן עלים שמסתובבים לכיוון צפון-דרום.",
+      "היא קרובת הבר של החסה.",
+      "הפרחים שלה צהובים וקטנים."
+    ]
+  },
+  {
+    "id": "syrian-hollyhock",
+    "hebrewName": "חטמית זיפנית",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Alcea setosa",
+    "genus": "Alcea",
+    "facts": [
+      "לחטמית פרחים ורודים גדולים על גבעול גבוה.",
+      "היא פורחת בתחילת הקיץ.",
+      "היא קרובה לחלמית."
+    ]
+  },
+  {
+    "id": "large-mallow",
+    "hebrewName": "חלמית גדולה",
+    "emoji": "🌸",
+    "category": "עשב",
+    "scientificName": "Malva sylvestris",
+    "genus": "Malva",
+    "facts": [
+      "לחלמית הגדולה פרחים ורודים עם פסים סגולים.",
+      "מהעלים שלה מכינים \"חובייזה\".",
+      "היא גדלה ליד בתים ובשדות."
+    ]
+  },
+  {
+    "id": "common-mallow",
+    "hebrewName": "חלמית מצויה",
+    "emoji": "🌸",
+    "category": "עשב",
+    "scientificName": "Malva nicaeensis",
+    "genus": "Malva",
+    "facts": [
+      "החלמית המצויה נפוצה מאוד בחורף.",
+      "הפירות שלה נראים כמו כיכר לחם קטנה.",
+      "ילדים אוהבים לאכול את הפירות הקטנים."
+    ]
+  },
+  {
+    "id": "scarlet-pimpernel",
+    "hebrewName": "מרגנית השדה",
+    "emoji": "🧡",
+    "category": "פרח",
+    "scientificName": "Lysimachia arvensis",
+    "genus": "Lysimachia",
+    "facts": [
+      "למרגנית פרחים קטנים באדום-כתום או כחול.",
+      "הפרחים נסגרים כשמעונן.",
+      "היא צמח קטן שזוחל על האדמה."
+    ],
+    "wikiTitle": "Anagallis arvensis"
+  },
+  {
+    "id": "egyptian-catchfly",
+    "hebrewName": "ציפורנית מצרית",
+    "emoji": "💗",
+    "category": "פרח",
+    "scientificName": "Silene aegyptiaca",
+    "genus": "Silene",
+    "facts": [
+      "לציפורנית המצרית פרחים ורודים בוהקים.",
+      "היא פורחת באביב בשדות.",
+      "הפרח שלה יוצא מצינור ארוך."
+    ]
+  },
+  {
+    "id": "large-storksbill",
+    "hebrewName": "מקור-חסידה גדול",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Erodium gruinum",
+    "genus": "Erodium",
+    "facts": [
+      "הפרי של מקור-החסידה ארוך כמו מקור של חסידה.",
+      "כשהוא מתייבש הזרע מסתלסל ונקדח לתוך האדמה!",
+      "יש לו פרחים סגולים."
+    ]
+  },
+  {
+    "id": "hypericum",
+    "hebrewName": "פרע מסולסל",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Hypericum triquetrifolium",
+    "genus": "Hypericum",
+    "facts": [
+      "לפרע פרחים צהובים קטנים בקיץ.",
+      "העלים שלו מסולסלים.",
+      "הוא גדל בשולי שדות."
+    ]
+  },
+  {
+    "id": "hairy-flax",
+    "hebrewName": "פשתה שעירה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Linum pubescens",
+    "genus": "Linum",
+    "facts": [
+      "לפשתה השעירה פרחים ורודים עם מרכז כהה.",
+      "היא פורחת באביב.",
+      "היא קרובה לפשתה שממנה עושים בד."
+    ]
+  },
+  {
+    "id": "bermuda-buttercup",
+    "hebrewName": "חמציץ נטוי",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Oxalis pes-caprae",
+    "genus": "Oxalis",
+    "facts": [
+      "לחמציץ פרחים צהובים ועלים כמו תלתן.",
+      "לגבעול שלו טעם חמוץ.",
+      "הוא הגיע מדרום אפריקה והתפשט בכל הארץ."
+    ]
+  },
+  {
+    "id": "yellow-mignonette",
+    "hebrewName": "רכפה צהובה",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Reseda lutea",
+    "genus": "Reseda",
+    "facts": [
+      "לרכפה אשכולות ארוכים של פרחים צהובים קטנים.",
+      "היא פורחת באביב ובקיץ.",
+      "הזרעים שלה קטנים ושחורים."
+    ]
+  },
+  {
+    "id": "ribwort",
+    "hebrewName": "לחך אזמלני",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Plantago lanceolata",
+    "genus": "Plantago",
+    "facts": [
+      "ללחך עלים ארוכים עם עורקים ישרים.",
+      "יש לו שיבולת פרחים קטנה על גבעול ארוך.",
+      "ציפורים אוכלות את הזרעים."
+    ]
+  },
+  {
+    "id": "purslane",
+    "hebrewName": "רגלת הגינה",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Portulaca oleracea",
+    "genus": "Portulaca",
+    "facts": [
+      "לרגלה עלים בשרניים שאפשר לאכול בסלט.",
+      "היא גדלה בקיץ בגינות.",
+      "היא עשירה באומגה 3."
+    ]
+  },
+  {
+    "id": "small-nettle",
+    "hebrewName": "סרפד צורב",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Urtica urens",
+    "genus": "Urtica",
+    "facts": [
+      "לסרפד שערות קטנות שצורבות את העור.",
+      "אחרי בישול אפשר לאכול אותו.",
+      "פרפרים מטילים עליו ביצים."
+    ],
+    "caution": "הסרפד צורב — לא נוגעים בידיים!"
+  },
+  {
+    "id": "squirting-cucumber",
+    "hebrewName": "ירוקת החמור",
+    "emoji": "💥",
+    "category": "צמח",
+    "scientificName": "Ecballium elaterium",
+    "genus": "Ecballium",
+    "facts": [
+      "כשהפרי של ירוקת החמור בשל הוא \"יורה\" זרעים!",
+      "הפירות שלה נראים כמו מלפפונים קטנים ושעירים.",
+      "היא גדלה בשולי דרכים."
+    ],
+    "caution": "הפרי של ירוקת החמור רעיל — לא אוכלים ולא מקרבים לעיניים."
+  },
+  {
+    "id": "colocynth",
+    "hebrewName": "אבטיח הפקועה",
+    "emoji": "🍈",
+    "category": "צמח",
+    "scientificName": "Citrullus colocynthis",
+    "genus": "Citrullus",
+    "facts": [
+      "לאבטיח הפקועה פירות עגולים בגודל של תפוז.",
+      "הוא גדל בחולות המדבר.",
+      "הפרי מר מאוד."
+    ],
+    "caution": "הפרי מר ורעיל — לא אוכלים!"
+  },
+  {
+    "id": "puncture-vine",
+    "hebrewName": "קוטב מצוי",
+    "emoji": "💛",
+    "category": "עשב",
+    "scientificName": "Tribulus terrestris",
+    "genus": "Tribulus",
+    "facts": [
+      "לקוטב פרחים צהובים קטנים.",
+      "הפירות שלו קוצניים ונדבקים לנעליים.",
+      "הוא זוחל על האדמה בקיץ."
+    ]
+  },
+  {
+    "id": "harmal",
+    "hebrewName": "שבר מצוי",
+    "emoji": "🤍",
+    "category": "עשב",
+    "scientificName": "Peganum harmala",
+    "genus": "Peganum",
+    "facts": [
+      "לשבר פרחים לבנים וריח חזק.",
+      "הוא גדל בשולי דרכים במדבר.",
+      "בעלי חיים לא אוכלים אותו."
+    ],
+    "caution": "השבר רעיל — לא אוכלים."
+  },
+  {
+    "id": "heliotrope",
+    "hebrewName": "עוקץ-עקרב אירופי",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Heliotropium europaeum",
+    "genus": "Heliotropium",
+    "facts": [
+      "התפרחת של עוקץ-העקרב מסולסלת כמו זנב עקרב.",
+      "הפרחים שלו לבנים וקטנים.",
+      "הוא פורח בקיץ בשדות."
+    ]
+  },
+  {
+    "id": "bugloss",
+    "hebrewName": "לשון-פר סמורה",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Anchusa strigosa",
+    "genus": "Anchusa",
+    "facts": [
+      "ללשון-פר פרחים כחולים-תכולים.",
+      "העלים שלה מחוספסים כמו לשון של פרה.",
+      "ילדים מוצצים את הצוף המתוק מהפרחים."
+    ]
+  },
+  {
+    "id": "judean-viper-bugloss",
+    "hebrewName": "עכנאי יהודה",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Echium judaeum",
+    "genus": "Echium",
+    "facts": [
+      "לעכנאי יהודה פרחים סגולים-ורודים גדולים.",
+      "הוא מכוסה שערות דוקרניות.",
+      "הוא פורח באביב."
+    ]
+  },
+  {
+    "id": "borage",
+    "hebrewName": "זיפנוצה",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Borago officinalis",
+    "genus": "Borago",
+    "facts": [
+      "לזיפנוצה פרחים כחולים בצורת כוכב.",
+      "אפשר לאכול את הפרחים שלה.",
+      "לעלים שלה טעם של מלפפון."
+    ]
+  },
+  {
+    "id": "henbit",
+    "hebrewName": "נזמית לופתת",
+    "emoji": "💗",
+    "category": "פרח",
+    "scientificName": "Lamium amplexicaule",
+    "genus": "Lamium",
+    "facts": [
+      "לנזמית פרחים ורודים קטנים.",
+      "העלים שלה עוטפים את הגבעול.",
+      "היא פורחת בחורף בגינות ובשדות."
+    ]
+  },
+  {
+    "id": "nigella",
+    "hebrewName": "קצח תרבותי",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Nigella sativa",
+    "genus": "Nigella",
+    "facts": [
+      "מהזרעים של הקצח מפזרים על לחמים ובייגלה.",
+      "הזרעים שחורים וקטנים.",
+      "יש לו פרחים לבנים-תכלכלים."
+    ]
+  },
+  {
+    "id": "white-mustard",
+    "hebrewName": "חרדל לבן",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Sinapis alba",
+    "genus": "Sinapis",
+    "facts": [
+      "מהזרעים של החרדל מכינים את רוטב החרדל.",
+      "הוא פורח בשדות בצהוב.",
+      "יש לו תרמילים שעירים."
+    ]
+  },
+  {
+    "id": "charlock",
+    "hebrewName": "חרדל השדה",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Sinapis arvensis",
+    "genus": "Sinapis",
+    "facts": [
+      "חרדל השדה צובע שדות שלמים בצהוב בחורף.",
+      "הוא ממשפחת המצליבים — לפרחים ארבעה עלי כותרת.",
+      "דבורים מאוד אוהבות אותו."
+    ]
+  },
+  {
+    "id": "sea-fennel",
+    "hebrewName": "קריתמון ימי",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Crithmum maritimum",
+    "genus": "Crithmum",
+    "facts": [
+      "הקריתמון גדל על סלעים ליד הים.",
+      "העלים שלו בשרניים ומלוחים.",
+      "אפשר לכבוש אותו כמו מלפפונים."
+    ]
+  },
+  {
+    "id": "beach-evening-primrose",
+    "hebrewName": "נר הלילה החופי",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Oenothera drummondii",
+    "genus": "Oenothera",
+    "facts": [
+      "הפרחים של נר הלילה נפתחים בערב.",
+      "הוא גדל על חולות הים.",
+      "בבוקר הפרחים הופכים לכתומים."
+    ]
+  },
+  {
+    "id": "syrian-eryngo",
+    "hebrewName": "חרחבינה כחלחלה",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Eryngium creticum",
+    "genus": "Eryngium",
+    "facts": [
+      "לחרחבינה קוצים כחולים מבריקים.",
+      "כשהיא מתייבשת היא מתגלגלת ברוח.",
+      "היא פורחת בקיץ."
+    ]
+  },
+  {
+    "id": "giant-fennel",
+    "hebrewName": "כלך מצוי",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Ferula communis",
+    "genus": "Ferula",
+    "facts": [
+      "לכלך גבעול עבה וגבוה מאוד.",
+      "הוא פורח באביב בפרחים צהובים.",
+      "לפי אגדה יוונית, פרומתאוס הביא אש בגבעול של כלך."
+    ]
+  },
+  {
+    "id": "hemlock",
+    "hebrewName": "רוש עקוד",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Conium maculatum",
+    "genus": "Conium",
+    "facts": [
+      "לרוש גבעול עם כתמים סגולים.",
+      "הוא נראה דומה לגזר בר.",
+      "הוא גדל ליד מים."
+    ],
+    "caution": "הרוש רעיל מאוד! לא נוגעים ולא אוכלים."
+  },
+  {
+    "id": "datura",
+    "hebrewName": "דטורה",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Datura innoxia",
+    "genus": "Datura",
+    "facts": [
+      "לדטורה פרחים לבנים גדולים בצורת חצוצרה.",
+      "הפרחים נפתחים בלילה.",
+      "הפרי שלה קוצני כמו קיפוד."
+    ],
+    "caution": "הדטורה רעילה מאוד — לא נוגעים!"
+  },
+  {
+    "id": "golden-henbane",
+    "hebrewName": "שיכרון זהוב",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Hyoscyamus aureus",
+    "genus": "Hyoscyamus",
+    "facts": [
+      "לשיכרון פרחים צהובים עם מרכז סגול כהה.",
+      "הוא גדל בסדקי קירות וסלעים.",
+      "אפשר לראות אותו בחומות ירושלים."
+    ],
+    "caution": "השיכרון רעיל — מסתכלים ולא נוגעים."
+  },
+  {
+    "id": "withania",
+    "hebrewName": "ויתניה משכרת",
+    "emoji": "🟠",
+    "category": "עשב",
+    "scientificName": "Withania somnifera",
+    "genus": "Withania",
+    "facts": [
+      "לוויתניה פירות כתומים בתוך \"פנס\" ירוק.",
+      "היא משמשת ברפואה ההודית.",
+      "היא גדלה במקומות חמים."
+    ],
+    "caution": "הוויתניה רעילה — לא אוכלים."
+  },
+  {
+    "id": "black-nightshade",
+    "hebrewName": "סולנום שחור",
+    "emoji": "⚫",
+    "category": "עשב",
+    "scientificName": "Solanum nigrum",
+    "genus": "Solanum",
+    "facts": [
+      "לסולנום השחור פרחים לבנים קטנים ופירות שחורים.",
+      "הוא קרוב משפחה של העגבנייה.",
+      "הוא גדל בגינות כעשב בר."
+    ],
+    "caution": "הפירות הירוקים רעילים — לא אוכלים."
+  },
+  {
+    "id": "mullein",
+    "hebrewName": "בוצין מפורץ",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Verbascum sinuatum",
+    "genus": "Verbascum",
+    "facts": [
+      "לבוצין פרחים צהובים על גבעולים מסועפים.",
+      "העלים שלו גדולים ושעירים.",
+      "הוא פורח בקיץ."
+    ]
+  },
+  {
+    "id": "sea-lavender",
+    "hebrewName": "עדעד כחול",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Limonium sinuatum",
+    "genus": "Limonium",
+    "facts": [
+      "לעדעד פרחים שנשארים יפים גם כשהם יבשים.",
+      "הוא גדל ליד הים.",
+      "מכניסים אותו לזרי פרחים יבשים."
+    ]
+  },
+  {
+    "id": "lomelosia",
+    "hebrewName": "תגית מצויה",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Lomelosia prolifera",
+    "genus": "Lomelosia",
+    "facts": [
+      "לתגית פרחים בצבע שמנת.",
+      "הפרחים שלה מסודרים כמו כרית.",
+      "היא פורחת באביב."
+    ],
+    "wikiTitle": "Scabiosa prolifera"
+  },
+  {
+    "id": "amaranth",
+    "hebrewName": "ירבוז מופשל",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Amaranthus retroflexus",
+    "genus": "Amaranthus",
+    "facts": [
+      "הירבוז גדל בקיץ בגינות ובשדות.",
+      "יש לו הרבה מאוד זרעים קטנים.",
+      "העלים שלו אכילים אחרי בישול."
+    ]
+  },
+  {
+    "id": "fenugreek",
+    "hebrewName": "חילבה",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Trigonella foenum-graecum",
+    "genus": "Trigonella",
+    "facts": [
+      "מהזרעים של החילבה מכינים תבלין ומטבל תימני.",
+      "יש לה ריח חזק.",
+      "היא ממשפחת הקטניות."
+    ]
+  },
+  {
+    "id": "spotted-arum",
+    "hebrewName": "לוף מנומר",
+    "emoji": "🟣",
+    "category": "פרח",
+    "scientificName": "Arum dioscoridis",
+    "genus": "Arum",
+    "facts": [
+      "ללוף המנומר מתחלת גדולה עם כתמים סגולים כהים.",
+      "יש לו ריח רע שמושך זבובים.",
+      "הזבובים עוזרים לו להאביק את הפרחים."
+    ],
+    "caution": "הלוף רעיל אם אוכלים אותו."
+  },
+  {
+    "id": "friars-cowl",
+    "hebrewName": "לוענית מצויה",
+    "emoji": "🟤",
+    "category": "פרח",
+    "scientificName": "Arisarum vulgare",
+    "genus": "Arisarum",
+    "facts": [
+      "ללוענית פרח קטן שנראה כמו כובע של נזיר.",
+      "היא פורחת בחורף בצל סלעים.",
+      "היא קרובה ללוף."
+    ],
+    "caution": "הלוענית רעילה."
+  },
+  {
+    "id": "dragon-arum",
+    "hebrewName": "דרקונתית מצויה",
+    "emoji": "🟣",
+    "category": "פרח",
+    "scientificName": "Dracunculus vulgaris",
+    "genus": "Dracunculus",
+    "facts": [
+      "לדרקונתית מתחלת ענקית בצבע בורדו.",
+      "היא מריחה כמו בשר רקוב כדי למשוך זבובים.",
+      "הגבעול שלה מנומר כמו עור של נחש."
+    ],
+    "caution": "הדרקונתית רעילה — לא נוגעים."
+  },
+  {
+    "id": "cytinus",
+    "hebrewName": "עלקת הלוטם",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Cytinus hypocistis",
+    "genus": "Cytinus",
+    "facts": [
+      "העלקת היא טפיל שחי על השורשים של הלוטם.",
+      "אין לה עלים ירוקים בכלל.",
+      "היא מציצה החוצה מהאדמה כמו פרח צהוב-אדום קטן."
+    ]
+  },
+  {
+    "id": "olive-mistletoe",
+    "hebrewName": "דבקון הזית",
+    "emoji": "🔴",
+    "category": "צמח",
+    "scientificName": "Viscum cruciatum",
+    "genus": "Viscum",
+    "facts": [
+      "הדבקון גדל על ענפי עצים ויונק מהם מים.",
+      "יש לו פירות אדומים ודביקים.",
+      "ציפורים מפיצות אותו מעץ לעץ."
+    ],
+    "caution": "הפירות של הדבקון רעילים לאנשים."
+  },
+  {
+    "id": "acacia-loranthus",
+    "hebrewName": "הרנוג השיטים",
+    "emoji": "🔴",
+    "category": "פרח",
+    "scientificName": "Plicosepalus acaciae",
+    "genus": "Plicosepalus",
+    "facts": [
+      "ההרנוג הוא טפיל שגדל על עצי שיטה.",
+      "יש לו פרחים אדומים בצורת צינור.",
+      "ציפורי צוף מאביקות אותו."
+    ]
+  },
+  {
+    "id": "maidenhair-fern",
+    "hebrewName": "שערות שולמית",
+    "emoji": "🌿",
+    "category": "צמח",
+    "scientificName": "Adiantum capillus-veneris",
+    "genus": "Adiantum",
+    "facts": [
+      "שערות שולמית הוא שרך שגדל ליד מעיינות ומפלים.",
+      "העלעלים שלו עדינים כמו מניפות קטנות.",
+      "הגבעולים שלו שחורים ודקים כמו שערות."
+    ]
+  },
+  {
+    "id": "blue-lotus",
+    "hebrewName": "נימפאה תכולה",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Nymphaea caerulea",
+    "genus": "Nymphaea",
+    "facts": [
+      "הנימפאה צפה על פני המים.",
+      "הפרחים שלה תכולים ונפתחים בבוקר.",
+      "במצרים העתיקה היא הייתה פרח קדוש."
+    ]
+  },
+  {
+    "id": "yellow-water-lily",
+    "hebrewName": "נופר צהוב",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Nuphar lutea",
+    "genus": "Nuphar",
+    "facts": [
+      "הנופר גדל במים עומדים ובנחלים איטיים.",
+      "העלים שלו גדולים וצפים על המים.",
+      "הוא נדיר מאוד בישראל."
+    ]
+  },
+  {
+    "id": "cattail",
+    "hebrewName": "סוף מצוי",
+    "emoji": "🟤",
+    "category": "עשב",
+    "scientificName": "Typha domingensis",
+    "genus": "Typha",
+    "facts": [
+      "לסוף יש \"נקניק\" חום בראש הגבעול.",
+      "הוא גדל בביצות ובבריכות.",
+      "מהעלים שלו קלעו פעם מחצלות."
+    ]
+  },
+  {
+    "id": "common-reed",
+    "hebrewName": "קנה מצוי",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Phragmites australis",
+    "genus": "Phragmites",
+    "facts": [
+      "הקנה המצוי גדל בצפיפות ליד מים.",
+      "הוא יכול להגיע לגובה של כמה מטרים.",
+      "ציפורים רבות מקננות בין הקנים."
+    ]
+  },
+  {
+    "id": "giant-reed",
+    "hebrewName": "קנה שכיח",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Arundo donax",
+    "genus": "Arundo",
+    "facts": [
+      "הקנה השכיח הוא עשב ענק שגבעוליו חלולים.",
+      "מהקנים שלו עושים חלילים.",
+      "הוא גדל ליד נחלים."
+    ]
+  },
+  {
+    "id": "papyrus",
+    "hebrewName": "גומא הפפירוס",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Cyperus papyrus",
+    "genus": "Cyperus",
+    "facts": [
+      "מהפפירוס הכינו במצרים העתיקה נייר.",
+      "הוא גדל בעמק החולה.",
+      "הגבעול שלו משולש."
+    ]
+  },
+  {
+    "id": "purple-loosestrife",
+    "hebrewName": "שנית גדולה",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Lythrum salicaria",
+    "genus": "Lythrum",
+    "facts": [
+      "לשנית אשכולות של פרחים סגולים-ורודים.",
+      "היא גדלה על גדות נחלים.",
+      "היא פורחת בקיץ."
+    ]
+  },
+  {
+    "id": "water-mint",
+    "hebrewName": "נענת המים",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Mentha aquatica",
+    "genus": "Mentha",
+    "facts": [
+      "לנענת המים ריח חזק של מנטה.",
+      "היא גדלה בתוך מים רדודים.",
+      "הפרחים שלה סגלגלים בכדורים קטנים."
+    ]
+  },
+  {
+    "id": "rose-of-jericho",
+    "hebrewName": "שושנת יריחו",
+    "emoji": "🌹",
+    "category": "צמח",
+    "scientificName": "Anastatica hierochuntica",
+    "genus": "Anastatica",
+    "facts": [
+      "כשיבש שושנת יריחו מתכווצת לכדור.",
+      "כשיורד גשם היא נפתחת ומפזרת זרעים.",
+      "היא גדלה במדבר."
+    ]
+  },
+  {
+    "id": "watercress",
+    "hebrewName": "גרגיר הנחלים",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Nasturtium officinale",
+    "genus": "Nasturtium",
+    "facts": [
+      "גרגיר הנחלים גדל בתוך מים זורמים ונקיים.",
+      "יש לו טעם חריף ורענן.",
+      "אוכלים אותו בסלטים."
+    ]
+  },
+  {
+    "id": "wild-oat",
+    "hebrewName": "שיבולת-שועל נפוצה",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Avena sterilis",
+    "genus": "Avena",
+    "facts": [
+      "לזרעים של שיבולת-השועל יש זיפים ארוכים שמסתובבים.",
+      "כשהם מתייבשים הם \"הולכים\" על האדמה!",
+      "היא קרובת הבר של שיבולת השועל שאוכלים."
+    ]
+  },
+  {
+    "id": "wild-emmer",
+    "hebrewName": "חיטת הבר (אם החיטה)",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Triticum dicoccoides",
+    "genus": "Triticum",
+    "facts": [
+      "אם החיטה התגלתה בראש פינה ובגליל.",
+      "היא האמא הקדומה של החיטה שממנה אופים לחם.",
+      "אהרון אהרונסון גילה אותה בשנת 1906."
+    ]
+  },
+  {
+    "id": "wild-barley",
+    "hebrewName": "שעורת התבור",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Hordeum spontaneum",
+    "genus": "Hordeum",
+    "facts": [
+      "שעורת התבור היא שעורת בר שגדלה בכל הארץ.",
+      "היא קרובה לשעורה שבה משתמשים לאוכל.",
+      "השיבולים שלה מתפרקות כשהן מבשילות."
+    ]
+  },
+  {
+    "id": "bermuda-grass",
+    "hebrewName": "יבלית מצויה",
+    "emoji": "🌱",
+    "category": "עשב",
+    "scientificName": "Cynodon dactylon",
+    "genus": "Cynodon",
+    "facts": [
+      "היבלית היא דשא עמיד מאוד.",
+      "היא מתפשטת בעזרת זוחלים מתחת ומעל האדמה.",
+      "היא נפוצה במדשאות ובגינות."
+    ]
+  },
+  {
+    "id": "quaking-grass",
+    "hebrewName": "זעזועית גדולה",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Briza maxima",
+    "genus": "Briza",
+    "facts": [
+      "לזעזועית שיבוליות שנראות כמו לבבות תלויים.",
+      "הן רועדות בכל משב רוח.",
+      "מכניסים אותן לזרי פרחים יבשים."
+    ]
+  },
+  {
+    "id": "stipa",
+    "hebrewName": "מלענן מצוי",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Stipa capensis",
+    "genus": "Stipa",
+    "facts": [
+      "למלענן זיפים ארוכים ומסולסלים.",
+      "הזרעים שלו נדבקים לגרביים.",
+      "הוא נפוץ בנגב."
+    ]
+  },
+  {
+    "id": "kikuyu",
+    "hebrewName": "קיקויו",
+    "emoji": "🌱",
+    "category": "עשב",
+    "scientificName": "Cenchrus clandestinus",
+    "genus": "Cenchrus",
+    "facts": [
+      "הקיקויו הוא דשא עבה שמשמש למדשאות.",
+      "הוא גדל מהר מאוד בקיץ.",
+      "הוא הגיע מאפריקה."
+    ],
+    "wikiTitle": "Pennisetum clandestinum"
+  },
+  {
+    "id": "onion",
+    "hebrewName": "בצל",
+    "emoji": "🧅",
+    "category": "צמח",
+    "scientificName": "Allium cepa",
+    "genus": "Allium",
+    "facts": [
+      "כשחותכים בצל הוא מוציא חומר שגורם לדמעות.",
+      "הבצל גדל מתחת לאדמה.",
+      "הוא בנוי משכבות-שכבות."
+    ],
+    "wikiTitle": "Onion"
+  },
+  {
+    "id": "garlic",
+    "hebrewName": "שום",
+    "emoji": "🧄",
+    "category": "צמח",
+    "scientificName": "Allium sativum",
+    "genus": "Allium",
+    "facts": [
+      "ראש שום בנוי מהרבה שיניים קטנות.",
+      "לשום ריח חזק מאוד.",
+      "כל שן שנשתלת הופכת לראש שום חדש."
+    ],
+    "wikiTitle": "Garlic"
+  },
+  {
+    "id": "potato",
+    "hebrewName": "תפוח אדמה",
+    "emoji": "🥔",
+    "category": "צמח",
+    "scientificName": "Solanum tuberosum",
+    "genus": "Solanum",
+    "facts": [
+      "תפוחי האדמה גדלים מתחת לאדמה.",
+      "מהם מכינים צ'יפס ופירה.",
+      "יש להם \"עיניים\" שמהן צומחים נבטים."
+    ],
+    "wikiTitle": "Potato"
+  },
+  {
+    "id": "sweet-potato",
+    "hebrewName": "בטטה",
+    "emoji": "🍠",
+    "category": "צמח",
+    "scientificName": "Ipomoea batatas",
+    "genus": "Ipomoea",
+    "facts": [
+      "הבטטה מתוקה וכתומה מבפנים.",
+      "היא קרובה לחבלבל ולא לתפוח האדמה.",
+      "היא עשירה בוויטמין A."
+    ],
+    "wikiTitle": "Sweet potato"
+  },
+  {
+    "id": "lettuce",
+    "hebrewName": "חסה",
+    "emoji": "🥬",
+    "category": "צמח",
+    "scientificName": "Lactuca sativa",
+    "genus": "Lactuca",
+    "facts": [
+      "החסה בנויה מעלים ירוקים ופריכים.",
+      "ממנה מכינים סלט ירוק.",
+      "כשהיא פורחת העלים שלה נהיים מרים."
+    ],
+    "wikiTitle": "Lettuce"
+  },
+  {
+    "id": "cabbage",
+    "hebrewName": "כרוב",
+    "emoji": "🥬",
+    "category": "צמח",
+    "scientificName": "Brassica oleracea",
+    "genus": "Brassica",
+    "facts": [
+      "הכרוב בנוי מעלים שמתגלגלים לכדור.",
+      "גם כרובית וברוקולי הם מאותו מין!",
+      "יש כרוב ירוק וכרוב סגול."
+    ],
+    "wikiTitle": "Brassica oleracea"
+  },
+  {
+    "id": "radish",
+    "hebrewName": "צנון",
+    "emoji": "🔴",
+    "category": "צמח",
+    "scientificName": "Raphanus sativus",
+    "genus": "Raphanus",
+    "facts": [
+      "הצנון גדל מהר מאוד — תוך חודש.",
+      "יש לו טעם חריף.",
+      "הוא יכול להיות אדום, לבן או סגול."
+    ],
+    "wikiTitle": "Radish"
+  },
+  {
+    "id": "turnip",
+    "hebrewName": "לפת",
+    "emoji": "🟣",
+    "category": "צמח",
+    "scientificName": "Brassica rapa",
+    "genus": "Brassica",
+    "facts": [
+      "הלפת היא שורש לבן-סגול.",
+      "מלפת כבושה מכינים חמוצים ורודים.",
+      "גם הבוק צ'וי הוא מאותו מין."
+    ],
+    "wikiTitle": "Turnip"
+  },
+  {
+    "id": "beet",
+    "hebrewName": "סלק",
+    "emoji": "🟣",
+    "category": "צמח",
+    "scientificName": "Beta vulgaris",
+    "genus": "Beta",
+    "facts": [
+      "לסלק שורש אדום-סגול שצובע את הידיים.",
+      "מסלק מסוים מפיקים סוכר.",
+      "גם עלי המנגולד הם מאותו מין."
+    ],
+    "wikiTitle": "Beetroot"
+  },
+  {
+    "id": "spinach",
+    "hebrewName": "תרד",
+    "emoji": "🥬",
+    "category": "צמח",
+    "scientificName": "Spinacia oleracea",
+    "genus": "Spinacia",
+    "facts": [
+      "התרד מלא ברזל וויטמינים.",
+      "פופאי המלח אכל תרד כדי להיות חזק.",
+      "הוא גדל בחורף."
+    ],
+    "wikiTitle": "Spinach"
+  },
+  {
+    "id": "zucchini",
+    "hebrewName": "קישוא",
+    "emoji": "🥒",
+    "category": "צמח",
+    "scientificName": "Cucurbita pepo",
+    "genus": "Cucurbita",
+    "facts": [
+      "הקישוא גדל מהר מאוד בקיץ.",
+      "הפרחים שלו צהובים וגדולים ואפשר לאכול אותם.",
+      "גם דלעת הלואין היא מאותו מין."
+    ],
+    "wikiTitle": "Zucchini"
+  },
+  {
+    "id": "watermelon",
+    "hebrewName": "אבטיח",
+    "emoji": "🍉",
+    "category": "צמח",
+    "scientificName": "Citrullus lanatus",
+    "genus": "Citrullus",
+    "facts": [
+      "האבטיח מורכב בעיקר ממים.",
+      "הוא גדל על צמח זוחל על האדמה.",
+      "אבטיח אחד יכול לשקול יותר מ-10 קילו."
+    ],
+    "wikiTitle": "Watermelon"
+  },
+  {
+    "id": "melon",
+    "hebrewName": "מלון",
+    "emoji": "🍈",
+    "category": "צמח",
+    "scientificName": "Cucumis melo",
+    "genus": "Cucumis",
+    "facts": [
+      "למלון ריח מתוק כשהוא בשל.",
+      "הוא קרוב משפחה של המלפפון.",
+      "בישראל פיתחו זנים מפורסמים כמו \"גליה\"."
+    ],
+    "wikiTitle": "Melon"
+  },
+  {
+    "id": "okra",
+    "hebrewName": "במיה",
+    "emoji": "🌿",
+    "category": "צמח",
+    "scientificName": "Abelmoschus esculentus",
+    "genus": "Abelmoschus",
+    "facts": [
+      "הבמיה היא תרמיל ירוק ארוך.",
+      "כשמבשלים אותה היא נהיית רירית.",
+      "הפרחים שלה צהובים ויפים."
+    ],
+    "wikiTitle": "Okra"
+  },
+  {
+    "id": "pea",
+    "hebrewName": "אפונה",
+    "emoji": "🫛",
+    "category": "צמח",
+    "scientificName": "Pisum sativum",
+    "genus": "Pisum",
+    "facts": [
+      "האפונה גדלה בתוך תרמילים ירוקים.",
+      "היא מטפסת בעזרת קנוקנות.",
+      "גרגור מנדל חקר אפונים וגילה את חוקי התורשה."
+    ],
+    "wikiTitle": "Pea"
+  },
+  {
+    "id": "chickpea",
+    "hebrewName": "חומוס",
+    "emoji": "🫘",
+    "category": "צמח",
+    "scientificName": "Cicer arietinum",
+    "genus": "Cicer",
+    "facts": [
+      "מהחומוס מכינים חומוס ופלאפל!",
+      "בכל תרמיל יש רק גרגר אחד או שניים.",
+      "הוא גדל בישראל כבר אלפי שנים."
+    ],
+    "wikiTitle": "Chickpea"
+  },
+  {
+    "id": "lentil",
+    "hebrewName": "עדשה",
+    "emoji": "🟤",
+    "category": "צמח",
+    "scientificName": "Lens culinaris",
+    "genus": "Lens",
+    "facts": [
+      "העדשים קטנות ועגולות.",
+      "מהן מכינים מרק עדשים ומג'דרה.",
+      "עשיו מכר את הבכורה שלו בשביל נזיד עדשים."
+    ],
+    "wikiTitle": "Lentil"
+  },
+  {
+    "id": "fava-bean",
+    "hebrewName": "פול",
+    "emoji": "🫘",
+    "category": "צמח",
+    "scientificName": "Vicia faba",
+    "genus": "Vicia",
+    "facts": [
+      "לפול תרמילים ירוקים גדולים.",
+      "הפרחים שלו לבנים עם כתם שחור.",
+      "מפול מכינים את המנה \"פול מדמס\"."
+    ],
+    "caution": "יש אנשים שרגישים לפול (פביזם) — רק באישור של הורים.",
+    "wikiTitle": "Vicia faba"
+  },
+  {
+    "id": "bitter-vetch",
+    "hebrewName": "כרשינה",
+    "emoji": "🌿",
+    "category": "צמח",
+    "scientificName": "Vicia ervilia",
+    "genus": "Vicia",
+    "facts": [
+      "הכרשינה היא אחד הגידולים הקדומים בעולם.",
+      "מאכילים בה בעלי חיים.",
+      "היא ממשפחת הקטניות."
+    ],
+    "wikiTitle": "Vicia ervilia"
+  },
+  {
+    "id": "bean",
+    "hebrewName": "שעועית",
+    "emoji": "🫘",
+    "category": "צמח",
+    "scientificName": "Phaseolus vulgaris",
+    "genus": "Phaseolus",
+    "facts": [
+      "השעועית יכולה להיות ירוקה, צהובה או סגולה.",
+      "יש זנים שמטפסים גבוה על עמודים.",
+      "הזרעים שלה בצורת כליה."
+    ],
+    "wikiTitle": "Phaseolus vulgaris"
+  },
+  {
+    "id": "peanut",
+    "hebrewName": "בוטן",
+    "emoji": "🥜",
+    "category": "צמח",
+    "scientificName": "Arachis hypogaea",
+    "genus": "Arachis",
+    "facts": [
+      "הבוטנים גדלים מתחת לאדמה!",
+      "הפרח נובל ואז \"נקבר\" באדמה ושם גדל הבוטן.",
+      "מבוטנים מכינים חמאת בוטנים."
+    ],
+    "wikiTitle": "Peanut"
+  },
+  {
+    "id": "sesame",
+    "hebrewName": "שומשום",
+    "emoji": "🤍",
+    "category": "צמח",
+    "scientificName": "Sesamum indicum",
+    "genus": "Sesamum",
+    "facts": [
+      "משומשום מכינים טחינה וחלבה.",
+      "הזרעים שלו גדלים בתוך תרמילים קטנים.",
+      "כשהתרמיל בשל הוא נפתח — \"פתח שומשום\"!"
+    ],
+    "wikiTitle": "Sesame"
+  },
+  {
+    "id": "celery",
+    "hebrewName": "סלרי",
+    "emoji": "🥬",
+    "category": "צמח",
+    "scientificName": "Apium graveolens",
+    "genus": "Apium",
+    "facts": [
+      "לסלרי גבעולים פריכים ומלאים מים.",
+      "יש לו ריח חזק.",
+      "מוסיפים אותו למרקים."
+    ],
+    "wikiTitle": "Celery"
+  },
+  {
+    "id": "parsley",
+    "hebrewName": "פטרוזיליה",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Petroselinum crispum",
+    "genus": "Petroselinum",
+    "facts": [
+      "הפטרוזיליה היא עשב תיבול ירוק ורענן.",
+      "מוסיפים אותה לטאבולה ולסלטים.",
+      "פרפר הזנב-סנונית אוהב להטיל עליה ביצים."
+    ],
+    "wikiTitle": "Parsley"
+  },
+  {
+    "id": "dill",
+    "hebrewName": "שמיר",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Anethum graveolens",
+    "genus": "Anethum",
+    "facts": [
+      "לשמיר עלים דקים כמו חוטים.",
+      "מוסיפים אותו למלפפונים חמוצים.",
+      "הפרחים שלו צהובים בצורת מטרייה."
+    ],
+    "wikiTitle": "Dill"
+  },
+  {
+    "id": "coriander",
+    "hebrewName": "כוסברה",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Coriandrum sativum",
+    "genus": "Coriandrum",
+    "facts": [
+      "לכוסברה ריח שיש אנשים שאוהבים ויש ששונאים.",
+      "הזרעים שלה משמשים כתבלין.",
+      "היא נפוצה במטבח התימני וההודי."
+    ],
+    "wikiTitle": "Coriander"
+  },
+  {
+    "id": "fennel",
+    "hebrewName": "שומר",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Foeniculum vulgare",
+    "genus": "Foeniculum",
+    "facts": [
+      "לשומר טעם שמזכיר ליקריץ.",
+      "גם שומר בר גדל בשולי דרכים בישראל.",
+      "הזרעים שלו טובים לכאב בטן."
+    ],
+    "wikiTitle": "Fennel"
+  },
+  {
+    "id": "artichoke",
+    "hebrewName": "ארטישוק",
+    "emoji": "🟢",
+    "category": "צמח",
+    "scientificName": "Cynara cardunculus",
+    "genus": "Cynara",
+    "facts": [
+      "את הארטישוק אוכלים כשהוא עוד ניצן.",
+      "אם לא קוטפים — הוא פורח בסגול.",
+      "הוא קרוב משפחה של הקינרס."
+    ],
+    "wikiTitle": "Artichoke"
+  },
+  {
+    "id": "asparagus",
+    "hebrewName": "אספרגוס",
+    "emoji": "🌱",
+    "category": "צמח",
+    "scientificName": "Asparagus officinalis",
+    "genus": "Asparagus",
+    "facts": [
+      "את האספרגוס אוכלים כשהוא נבט צעיר.",
+      "הוא יכול לגדול כמה סנטימטרים ביום.",
+      "אותו צמח נותן יבול במשך שנים רבות."
+    ],
+    "wikiTitle": "Asparagus"
+  },
+  {
+    "id": "cotton",
+    "hebrewName": "כותנה",
+    "emoji": "☁️",
+    "category": "צמח",
+    "scientificName": "Gossypium hirsutum",
+    "genus": "Gossypium",
+    "facts": [
+      "מהכותנה עושים בגדים ומגבות.",
+      "הסיבים הלבנים עוטפים את הזרעים.",
+      "בישראל מגדלים כותנה בעמקים."
+    ],
+    "wikiTitle": "Gossypium hirsutum"
+  },
+  {
+    "id": "roselle",
+    "hebrewName": "כרכדה",
+    "emoji": "🔴",
+    "category": "פרח",
+    "scientificName": "Hibiscus sabdariffa",
+    "genus": "Hibiscus",
+    "facts": [
+      "מהכרכדה מכינים משקה אדום חמצמץ.",
+      "בונים את המשקה מהגביעים האדומים של הפרח.",
+      "היא קרובה להיביסקוס."
+    ],
+    "wikiTitle": "Roselle (plant)"
+  },
+  {
+    "id": "wheat",
+    "hebrewName": "חיטה",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Triticum aestivum",
+    "genus": "Triticum",
+    "facts": [
+      "מחיטה טוחנים קמח ואופים לחם.",
+      "היא אחד משבעת המינים.",
+      "בשבועות חוגגים את קציר החיטים."
+    ],
+    "wikiTitle": "Common wheat"
+  },
+  {
+    "id": "barley",
+    "hebrewName": "שעורה",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Hordeum vulgare",
+    "genus": "Hordeum",
+    "facts": [
+      "השעורה היא אחד משבעת המינים.",
+      "לשיבולת שלה זיפים ארוכים.",
+      "משעורה מכינים גריסים ומרקים."
+    ],
+    "wikiTitle": "Barley"
+  },
+  {
+    "id": "oat",
+    "hebrewName": "שיבולת-שועל",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Avena sativa",
+    "genus": "Avena",
+    "facts": [
+      "משיבולת שועל מכינים דייסה וגרנולה.",
+      "היא מזינה מאוד.",
+      "סוסים אוהבים לאכול אותה."
+    ],
+    "wikiTitle": "Oat"
+  },
+  {
+    "id": "rice",
+    "hebrewName": "אורז",
+    "emoji": "🍚",
+    "category": "עשב",
+    "scientificName": "Oryza sativa",
+    "genus": "Oryza",
+    "facts": [
+      "האורז גדל בשדות מוצפים במים.",
+      "חצי מהאנשים בעולם אוכלים אורז כל יום.",
+      "כל גרגר אורז הוא זרע."
+    ],
+    "wikiTitle": "Rice"
+  },
+  {
+    "id": "sorghum",
+    "hebrewName": "דורה",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Sorghum bicolor",
+    "genus": "Sorghum",
+    "facts": [
+      "הדורה עמידה לחום וליובש.",
+      "מהזרעים שלה מכינים קמח ומספוא.",
+      "בישראל מגדלים אותה בקיץ."
+    ],
+    "wikiTitle": "Sorghum bicolor"
+  },
+  {
+    "id": "sugarcane",
+    "hebrewName": "קנה סוכר",
+    "emoji": "🍬",
+    "category": "עשב",
+    "scientificName": "Saccharum officinarum",
+    "genus": "Saccharum",
+    "facts": [
+      "בתוך הגבעול של קנה הסוכר יש מיץ מתוק.",
+      "ממנו מפיקים סוכר.",
+      "הוא יכול לגדול לגובה של 4 מטרים."
+    ],
+    "wikiTitle": "Sugarcane"
+  },
+  {
+    "id": "millet",
+    "hebrewName": "דוחן",
+    "emoji": "🌾",
+    "category": "עשב",
+    "scientificName": "Panicum miliaceum",
+    "genus": "Panicum",
+    "facts": [
+      "הדוחן הוא דגן עם גרגרים קטנים ועגולים.",
+      "ציפורים מאוד אוהבות לאכול אותו.",
+      "הוא גדל מהר ולא צריך הרבה מים."
+    ],
+    "wikiTitle": "Proso millet"
+  },
+  {
+    "id": "bamboo",
+    "hebrewName": "במבוק",
+    "emoji": "🎋",
+    "category": "עשב",
+    "scientificName": "Bambusa vulgaris",
+    "genus": "Bambusa",
+    "facts": [
+      "הבמבוק הוא בעצם עשב ענק!",
+      "יש במבוקים שגדלים כמעט מטר ביום.",
+      "הפנדות אוכלות במבוק."
+    ],
+    "wikiTitle": "Bambusa vulgaris"
+  },
+  {
+    "id": "sage",
+    "hebrewName": "מרווה רפואית",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Salvia officinalis",
+    "genus": "Salvia",
+    "facts": [
+      "למרווה עלים אפורים ורכים.",
+      "מוסיפים אותה לתה.",
+      "יש לה ריח חזק ונעים."
+    ],
+    "wikiTitle": "Salvia officinalis"
+  },
+  {
+    "id": "thyme",
+    "hebrewName": "טימין",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Thymus vulgaris",
+    "genus": "Thymus",
+    "facts": [
+      "לטימין עלים קטנטנים וריח חזק.",
+      "מוסיפים אותו לתבשילים ולפיצה.",
+      "דבורים אוהבות את הפרחים הקטנים שלו."
+    ],
+    "wikiTitle": "Thymus vulgaris"
+  },
+  {
+    "id": "oregano",
+    "hebrewName": "אורגנו",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Origanum vulgare",
+    "genus": "Origanum",
+    "facts": [
+      "האורגנו הוא תבלין הפיצה המפורסם.",
+      "הוא קרוב משפחה של הזעתר.",
+      "יש לו פרחים סגלגלים קטנים."
+    ],
+    "wikiTitle": "Oregano"
+  },
+  {
+    "id": "marjoram",
+    "hebrewName": "מיורן",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Origanum majorana",
+    "genus": "Origanum",
+    "facts": [
+      "למיורן ריח מתוק ועדין.",
+      "הוא קרוב מאוד לאורגנו.",
+      "מוסיפים אותו למרקים."
+    ],
+    "wikiTitle": "Marjoram"
+  },
+  {
+    "id": "lemongrass",
+    "hebrewName": "עשב לימון",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Cymbopogon citratus",
+    "genus": "Cymbopogon",
+    "facts": [
+      "לעשב הלימון ריח של לימון.",
+      "מכינים ממנו תה מרענן.",
+      "הוא נפוץ במטבח התאילנדי."
+    ],
+    "wikiTitle": "Cymbopogon citratus"
+  },
+  {
+    "id": "lemon-verbena",
+    "hebrewName": "לואיזה",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Aloysia citrodora",
+    "genus": "Aloysia",
+    "facts": [
+      "ללואיזה עלים עם ריח חזק של לימון.",
+      "מכינים ממנה תה חם.",
+      "היא שיח שגדל בגינות רבות בארץ."
+    ],
+    "wikiTitle": "Aloysia citrodora"
+  },
+  {
+    "id": "lemon-balm",
+    "hebrewName": "מליסה רפואית",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Melissa officinalis",
+    "genus": "Melissa",
+    "facts": [
+      "למליסה ריח עדין של לימון.",
+      "היא קרובה לנענע.",
+      "דבורים מאוד אוהבות אותה."
+    ],
+    "wikiTitle": "Lemon balm"
+  },
+  {
+    "id": "horse-mint",
+    "hebrewName": "נענה משובלת",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Mentha longifolia",
+    "genus": "Mentha",
+    "facts": [
+      "הנענה המשובלת היא נענע בר.",
+      "היא גדלה ליד מעיינות ונחלים.",
+      "העלים שלה שעירים ואפורים."
+    ],
+    "wikiTitle": "Mentha longifolia"
+  },
+  {
+    "id": "french-lavender",
+    "hebrewName": "אזוביון דגול",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Lavandula stoechas",
+    "genus": "Lavandula",
+    "facts": [
+      "לאזוביון יש \"דגל\" סגול בראש התפרחת.",
+      "הוא גדל בר בכרמל ובחולות.",
+      "הוא ריחני כמו לבנדר."
+    ],
+    "wikiTitle": "Lavandula stoechas"
+  },
+  {
+    "id": "rue",
+    "hebrewName": "פיגם מצוי",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Ruta chalepensis",
+    "genus": "Ruta",
+    "facts": [
+      "לפיגם ריח חזק מאוד.",
+      "הפרחים שלו צהובים עם שוליים מפורצים.",
+      "פעם תלו אותו בבתים \"נגד עין הרע\"."
+    ],
+    "caution": "הפיגם עלול לגרום לכוויות בעור בשמש."
+  },
+  {
+    "id": "flax",
+    "hebrewName": "פשתה תרבותית",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Linum usitatissimum",
+    "genus": "Linum",
+    "facts": [
+      "מהפשתה עושים בד פשתן וחוטים.",
+      "מהזרעים שלה מפיקים שמן.",
+      "הפרחים שלה תכולים ויפים."
+    ],
+    "wikiTitle": "Flax"
+  },
+  {
+    "id": "alfalfa",
+    "hebrewName": "אספסת תרבותית",
+    "emoji": "💜",
+    "category": "צמח",
+    "scientificName": "Medicago sativa",
+    "genus": "Medicago",
+    "facts": [
+      "האספסת היא מזון חשוב לפרות.",
+      "הפרחים שלה סגולים.",
+      "השורשים שלה עמוקים מאוד."
+    ],
+    "wikiTitle": "Alfalfa"
+  },
+  {
+    "id": "calendula",
+    "hebrewName": "ציפורני חתול רפואיות",
+    "emoji": "🧡",
+    "category": "פרח",
+    "scientificName": "Calendula officinalis",
+    "genus": "Calendula",
+    "facts": [
+      "לציפורני החתול פרחים כתומים או צהובים.",
+      "מהפרחים מכינים משחה מרגיעה לעור.",
+      "אפשר לאכול את עלי הכותרת בסלט."
+    ],
+    "wikiTitle": "Calendula officinalis"
+  },
+  {
+    "id": "pansy",
+    "hebrewName": "אמנון ותמר",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Viola × wittrockiana",
+    "genus": "Viola",
+    "facts": [
+      "לאמנון ותמר פרחים שנראים כמו פרצוף קטן.",
+      "הם פורחים בחורף בגינות.",
+      "יש להם הרבה צבעים."
+    ],
+    "wikiTitle": "Pansy"
+  },
+  {
+    "id": "snapdragon",
+    "hebrewName": "לוע הארי",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Antirrhinum majus",
+    "genus": "Antirrhinum",
+    "facts": [
+      "כשלוחצים על הפרח בצדדים הוא \"פותח פה\" כמו אריה.",
+      "הוא פורח בחורף ובאביב.",
+      "דבורות-בומבוס נכנסות לתוכו."
+    ],
+    "wikiTitle": "Antirrhinum majus"
+  },
+  {
+    "id": "carnation",
+    "hebrewName": "ציפורן",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Dianthus caryophyllus",
+    "genus": "Dianthus",
+    "facts": [
+      "לציפורן ריח שמזכיר תבלין.",
+      "השוליים של עלי הכותרת שלה משוננים.",
+      "היא פרח זר פופולרי."
+    ],
+    "wikiTitle": "Dianthus caryophyllus"
+  },
+  {
+    "id": "stock",
+    "hebrewName": "מנתור",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Matthiola incana",
+    "genus": "Matthiola",
+    "facts": [
+      "למנתור ריח חזק ומתוק.",
+      "הוא פורח בחורף ובאביב.",
+      "לעלים שלו צבע אפרפר."
+    ],
+    "wikiTitle": "Matthiola incana"
+  },
+  {
+    "id": "sweet-pea",
+    "hebrewName": "טופח ריחני",
+    "emoji": "💗",
+    "category": "פרח",
+    "scientificName": "Lathyrus odoratus",
+    "genus": "Lathyrus",
+    "facts": [
+      "לטופח הריחני פרחים ריחניים בצבעים רבים.",
+      "הוא מטפס בעזרת קנוקנות.",
+      "הוא ממשפחת הקטניות."
+    ],
+    "caution": "הזרעים של הטופח רעילים.",
+    "wikiTitle": "Lathyrus odoratus"
+  },
+  {
+    "id": "nasturtium",
+    "hebrewName": "כובע הנזיר",
+    "emoji": "🧡",
+    "category": "פרח",
+    "scientificName": "Tropaeolum majus",
+    "genus": "Tropaeolum",
+    "facts": [
+      "לכובע הנזיר עלים עגולים כמו מטבעות.",
+      "אפשר לאכול גם את הפרחים וגם את העלים.",
+      "לפרחים טעם חריף."
+    ],
+    "wikiTitle": "Tropaeolum majus"
+  },
+  {
+    "id": "scarlet-sage",
+    "hebrewName": "מרווה זוהרת",
+    "emoji": "🔴",
+    "category": "פרח",
+    "scientificName": "Salvia splendens",
+    "genus": "Salvia",
+    "facts": [
+      "למרווה הזוהרת פרחים אדומים בוהקים.",
+      "היא פורחת זמן רב בגינות.",
+      "ציפורי צוף אוהבות אותה."
+    ],
+    "wikiTitle": "Salvia splendens"
+  },
+  {
+    "id": "celosia",
+    "hebrewName": "צלוזיה",
+    "emoji": "🔥",
+    "category": "פרח",
+    "scientificName": "Celosia argentea",
+    "genus": "Celosia",
+    "facts": [
+      "לצלוזיה פרחים שנראים כמו להבות.",
+      "הם באדום, צהוב או ורוד.",
+      "היא פורחת בקיץ."
+    ],
+    "wikiTitle": "Celosia argentea"
+  },
+  {
+    "id": "moss-rose",
+    "hebrewName": "רגלת גדולת-פרחים",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Portulaca grandiflora",
+    "genus": "Portulaca",
+    "facts": [
+      "לרגלת גדולת-הפרחים פרחים צבעוניים שנפתחים בשמש.",
+      "העלים שלה בשרניים.",
+      "היא לא צריכה הרבה מים."
+    ],
+    "wikiTitle": "Portulaca grandiflora"
+  },
+  {
+    "id": "vinca",
+    "hebrewName": "וינקה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Catharanthus roseus",
+    "genus": "Catharanthus",
+    "facts": [
+      "לוינקה פרחים ורודים או לבנים עם \"עין\" במרכז.",
+      "היא פורחת כל הקיץ.",
+      "ממנה הפיקו תרופות חשובות."
+    ],
+    "caution": "הוינקה רעילה — לא אוכלים.",
+    "wikiTitle": "Catharanthus roseus"
+  },
+  {
+    "id": "hydrangea",
+    "hebrewName": "הידרנגאה",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Hydrangea macrophylla",
+    "genus": "Hydrangea",
+    "facts": [
+      "להידרנגאה כדורי פרחים ענקיים.",
+      "הצבע שלה תלוי באדמה — כחול או ורוד!",
+      "היא אוהבת צל ומים."
+    ],
+    "wikiTitle": "Hydrangea macrophylla"
+  },
+  {
+    "id": "camellia",
+    "hebrewName": "קמליה",
+    "emoji": "🌺",
+    "category": "פרח",
+    "scientificName": "Camellia japonica",
+    "genus": "Camellia",
+    "facts": [
+      "לקמליה פרחים מושלמים כמו ורדים.",
+      "היא פורחת בחורף.",
+      "קרובת משפחה שלה היא צמח התה."
+    ],
+    "wikiTitle": "Camellia japonica"
+  },
+  {
+    "id": "azalea",
+    "hebrewName": "אזליאה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Rhododendron simsii",
+    "genus": "Rhododendron",
+    "facts": [
+      "לאזליאה המון פרחים שמכסים את כל השיח.",
+      "היא פורחת בחורף ובאביב.",
+      "היא אוהבת אדמה חומצית."
+    ],
+    "caution": "האזליאה רעילה.",
+    "wikiTitle": "Rhododendron simsii"
+  },
+  {
+    "id": "agapanthus",
+    "hebrewName": "אגפנטוס",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Agapanthus africanus",
+    "genus": "Agapanthus",
+    "facts": [
+      "לאגפנטוס כדור של פרחים כחולים על גבעול ארוך.",
+      "הוא פורח בקיץ.",
+      "השם שלו פירושו \"פרח האהבה\"."
+    ],
+    "wikiTitle": "Agapanthus africanus"
+  },
+  {
+    "id": "canna",
+    "hebrewName": "קנה הודי",
+    "emoji": "🔴",
+    "category": "פרח",
+    "scientificName": "Canna indica",
+    "genus": "Canna",
+    "facts": [
+      "לקנה ההודי עלים גדולים ופרחים אדומים או צהובים.",
+      "הזרעים שלו קשים ועגולים כמו חרוזים.",
+      "הוא אוהב מים."
+    ],
+    "wikiTitle": "Canna indica"
+  },
+  {
+    "id": "calla",
+    "hebrewName": "כלה חבשית",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Zantedeschia aethiopica",
+    "genus": "Zantedeschia",
+    "facts": [
+      "לכלה מתחלת לבנה שעוטפת עמוד צהוב.",
+      "היא פורחת בחורף ובאביב.",
+      "היא אוהבת מקומות לחים."
+    ],
+    "caution": "הכלה רעילה — לא אוכלים.",
+    "wikiTitle": "Zantedeschia aethiopica"
+  },
+  {
+    "id": "freesia",
+    "hebrewName": "פרזיה",
+    "emoji": "💛",
+    "category": "פרח",
+    "scientificName": "Freesia refracta",
+    "genus": "Freesia",
+    "facts": [
+      "לפרזיה ריח מתוק במיוחד.",
+      "הפרחים שלה מסודרים בשורה על הגבעול.",
+      "היא צומחת מפקעת."
+    ],
+    "wikiTitle": "Freesia"
+  },
+  {
+    "id": "hyacinth",
+    "hebrewName": "יקינטון",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Hyacinthus orientalis",
+    "genus": "Hyacinthus",
+    "facts": [
+      "ליקינטון אשכול פרחים צפוף וריחני מאוד.",
+      "הוא צומח מבצל.",
+      "אפשר לגדל אותו על צנצנת מים."
+    ],
+    "wikiTitle": "Hyacinthus orientalis"
+  },
+  {
+    "id": "daylily",
+    "hebrewName": "המרוקליס",
+    "emoji": "🧡",
+    "category": "פרח",
+    "scientificName": "Hemerocallis fulva",
+    "genus": "Hemerocallis",
+    "facts": [
+      "כל פרח של ההמרוקליס חי רק יום אחד!",
+      "אבל בכל יום נפתח פרח חדש.",
+      "הפרחים שלו כתומים."
+    ],
+    "wikiTitle": "Hemerocallis fulva"
+  },
+  {
+    "id": "bird-of-paradise",
+    "hebrewName": "ציפור גן עדן",
+    "emoji": "🧡",
+    "category": "פרח",
+    "scientificName": "Strelitzia reginae",
+    "genus": "Strelitzia",
+    "facts": [
+      "הפרח של ציפור גן עדן נראה כמו ראש של ציפור צבעונית.",
+      "הוא כתום וכחול.",
+      "הוא הגיע מדרום אפריקה."
+    ],
+    "wikiTitle": "Strelitzia reginae"
+  },
+  {
+    "id": "clivia",
+    "hebrewName": "קליביה",
+    "emoji": "🧡",
+    "category": "פרח",
+    "scientificName": "Clivia miniata",
+    "genus": "Clivia",
+    "facts": [
+      "לקליביה פרחים כתומים באשכול.",
+      "היא אוהבת צל.",
+      "היא פורחת בסוף החורף."
+    ],
+    "caution": "הקליביה רעילה.",
+    "wikiTitle": "Clivia miniata"
+  },
+  {
+    "id": "amaryllis",
+    "hebrewName": "היפאסטרום",
+    "emoji": "🔴",
+    "category": "פרח",
+    "scientificName": "Hippeastrum",
+    "genus": "Hippeastrum",
+    "facts": [
+      "להיפאסטרום פרחים ענקיים בצורת חצוצרה.",
+      "הוא צומח מבצל גדול.",
+      "פורח באביב."
+    ],
+    "caution": "הבצל רעיל.",
+    "wikiTitle": "Hippeastrum"
+  },
+  {
+    "id": "dahlia",
+    "hebrewName": "דליה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Dahlia pinnata",
+    "genus": "Dahlia",
+    "facts": [
+      "לדליה פרחים בהמון צורות וצבעים.",
+      "היא צומחת מפקעות.",
+      "היא הפרח הלאומי של מקסיקו."
+    ],
+    "wikiTitle": "Dahlia pinnata"
+  },
+  {
+    "id": "zinnia",
+    "hebrewName": "ציניה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Zinnia elegans",
+    "genus": "Zinnia",
+    "facts": [
+      "הציניה פורחת כל הקיץ.",
+      "פרפרים מאוד אוהבים אותה.",
+      "קל לגדל אותה מזרעים."
+    ],
+    "wikiTitle": "Zinnia elegans"
+  },
+  {
+    "id": "cosmos",
+    "hebrewName": "קוסמוס",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Cosmos bipinnatus",
+    "genus": "Cosmos",
+    "facts": [
+      "לקוסמוס פרחים ורודים, לבנים או סגולים.",
+      "העלים שלו דקים כמו חוטים.",
+      "הוא גדל מהר מזרעים."
+    ],
+    "wikiTitle": "Cosmos bipinnatus"
+  },
+  {
+    "id": "gerbera",
+    "hebrewName": "גרברה",
+    "emoji": "🌼",
+    "category": "פרח",
+    "scientificName": "Gerbera jamesonii",
+    "genus": "Gerbera",
+    "facts": [
+      "לגרברה פרחים גדולים בצבעים עזים.",
+      "היא פרח זר נפוץ.",
+      "היא הגיעה מדרום אפריקה."
+    ],
+    "wikiTitle": "Gerbera jamesonii"
+  },
+  {
+    "id": "garden-chrysanthemum",
+    "hebrewName": "חרצית תרבותית",
+    "emoji": "🌼",
+    "category": "פרח",
+    "scientificName": "Chrysanthemum × morifolium",
+    "genus": "Chrysanthemum",
+    "facts": [
+      "לחרצית התרבותית פרחים בהמון צבעים.",
+      "היא פורחת בסתיו.",
+      "ביפן היא סמל של הקיסר."
+    ],
+    "wikiTitle": "Chrysanthemum × morifolium"
+  },
+  {
+    "id": "echinacea",
+    "hebrewName": "אכינצאה",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Echinacea purpurea",
+    "genus": "Echinacea",
+    "facts": [
+      "לאכינצאה מרכז קוצני ועלי כותרת ורודים.",
+      "מכינים ממנה תה.",
+      "פרפרים אוהבים אותה."
+    ],
+    "wikiTitle": "Echinacea purpurea"
+  },
+  {
+    "id": "plumbago",
+    "hebrewName": "פלומבגו",
+    "emoji": "💙",
+    "category": "פרח",
+    "scientificName": "Plumbago auriculata",
+    "genus": "Plumbago",
+    "facts": [
+      "לפלומבגו פרחים תכולים בהירים.",
+      "הוא פורח כמעט כל השנה.",
+      "משתמשים בו לגדרות חיות."
+    ],
+    "wikiTitle": "Plumbago auriculata"
+  },
+  {
+    "id": "japanese-honeysuckle",
+    "hebrewName": "יערה יפנית",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Lonicera japonica",
+    "genus": "Lonicera",
+    "facts": [
+      "ליערה פרחים לבנים שהופכים לצהובים.",
+      "יש לה ריח מתוק בערב.",
+      "ילדים מוצצים צוף מהפרחים."
+    ],
+    "wikiTitle": "Lonicera japonica"
+  },
+  {
+    "id": "wisteria",
+    "hebrewName": "ויסטריה",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Wisteria sinensis",
+    "genus": "Wisteria",
+    "facts": [
+      "לויסטריה אשכולות ארוכים של פרחים סגולים.",
+      "היא מטפסת על פרגולות.",
+      "היא פורחת באביב."
+    ],
+    "caution": "הזרעים של הוויסטריה רעילים.",
+    "wikiTitle": "Wisteria sinensis"
+  },
+  {
+    "id": "passion-flower",
+    "hebrewName": "שעונית כחולה",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Passiflora caerulea",
+    "genus": "Passiflora",
+    "facts": [
+      "הפרח של השעונית נראה כמו שעון!",
+      "היא מטפסת בעזרת קנוקנות.",
+      "קרובת משפחה שלה נותנת את פרי הפסיפלורה."
+    ],
+    "wikiTitle": "Passiflora caerulea"
+  },
+  {
+    "id": "alyssum",
+    "hebrewName": "לובולריה ימית",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Lobularia maritima",
+    "genus": "Lobularia",
+    "facts": [
+      "ללובולריה פרחים לבנים קטנים עם ריח של דבש.",
+      "היא גדלה גם בר ליד הים.",
+      "דבורים אוהבות אותה."
+    ],
+    "wikiTitle": "Lobularia maritima"
+  },
+  {
+    "id": "poinsettia",
+    "hebrewName": "פוינסטיה",
+    "emoji": "🔴",
+    "category": "פרח",
+    "scientificName": "Euphorbia pulcherrima",
+    "genus": "Euphorbia",
+    "facts": [
+      "העלים העליונים של הפוינסטיה אדומים ונראים כמו פרחים.",
+      "הפרחים האמיתיים קטנים וצהובים באמצע.",
+      "היא פורחת בחורף."
+    ],
+    "caution": "המיץ הלבן שלה מגרה את העור.",
+    "wikiTitle": "Poinsettia"
+  },
+  {
+    "id": "crown-of-thorns",
+    "hebrewName": "כתר קוצים",
+    "emoji": "🔴",
+    "category": "פרח",
+    "scientificName": "Euphorbia milii",
+    "genus": "Euphorbia",
+    "facts": [
+      "לכתר הקוצים גבעול מלא קוצים ופרחים אדומים.",
+      "הוא עמיד מאוד ליובש.",
+      "הוא צמח עציץ נפוץ."
+    ],
+    "caution": "המיץ הלבן שלו מגרה את העור.",
+    "wikiTitle": "Euphorbia milii"
+  },
+  {
+    "id": "kalanchoe",
+    "hebrewName": "קלנכואה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Kalanchoe blossfeldiana",
+    "genus": "Kalanchoe",
+    "facts": [
+      "לקלנכואה עלים בשרניים ופרחים צבעוניים.",
+      "היא צריכה מעט מים.",
+      "היא פורחת בחורף."
+    ],
+    "wikiTitle": "Kalanchoe blossfeldiana"
+  },
+  {
+    "id": "jade-plant",
+    "hebrewName": "קרסולה (עץ הכסף)",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Crassula ovata",
+    "genus": "Crassula",
+    "facts": [
+      "לקרסולה עלים עבים כמו מטבעות.",
+      "היא שומרת מים בעלים.",
+      "היא יכולה לחיות עשרות שנים."
+    ],
+    "wikiTitle": "Crassula ovata"
+  },
+  {
+    "id": "tree-aloe",
+    "hebrewName": "אלוי השיח",
+    "emoji": "🔴",
+    "category": "צמח",
+    "scientificName": "Aloe arborescens",
+    "genus": "Aloe",
+    "facts": [
+      "לאלוי השיח פרחים אדומים-כתומים בחורף.",
+      "העלים שלו בשרניים עם שיניים בצדדים.",
+      "ציפורי צוף מבקרות בו."
+    ],
+    "wikiTitle": "Aloe arborescens"
+  },
+  {
+    "id": "agave",
+    "hebrewName": "אגבה אמריקנית",
+    "emoji": "🌵",
+    "category": "צמח",
+    "scientificName": "Agave americana",
+    "genus": "Agave",
+    "facts": [
+      "האגבה פורחת פעם אחת בחייה ואז מתה.",
+      "התפרחת שלה יכולה להגיע ל-8 מטרים!",
+      "העלים שלה עבים ודוקרניים."
+    ],
+    "caution": "לעלים של האגבה קוצים חדים.",
+    "wikiTitle": "Agave americana"
+  },
+  {
+    "id": "golden-barrel",
+    "hebrewName": "אכינוקקטוס",
+    "emoji": "🌵",
+    "category": "צמח",
+    "scientificName": "Echinocactus grusonii",
+    "genus": "Echinocactus",
+    "facts": [
+      "לאכינוקקטוס צורת כדור עם קוצים צהובים.",
+      "הוא גדל לאט מאוד.",
+      "הוא הגיע ממקסיקו."
+    ],
+    "caution": "לקקטוס קוצים חדים.",
+    "wikiTitle": "Echinocactus grusonii"
+  },
+  {
+    "id": "peruvian-cactus",
+    "hebrewName": "צריאוס",
+    "emoji": "🌵",
+    "category": "צמח",
+    "scientificName": "Cereus repandus",
+    "genus": "Cereus",
+    "facts": [
+      "הצריאוס הוא קקטוס גבוה בצורת עמודים.",
+      "הפרחים שלו נפתחים בלילה.",
+      "יש לו פירות אכילים."
+    ],
+    "caution": "לקקטוס קוצים חדים.",
+    "wikiTitle": "Cereus repandus"
+  },
+  {
+    "id": "dragon-fruit",
+    "hebrewName": "פיטאיה",
+    "emoji": "🐉",
+    "category": "צמח",
+    "scientificName": "Selenicereus undatus",
+    "genus": "Selenicereus",
+    "facts": [
+      "הפיטאיה היא קקטוס מטפס.",
+      "הפרי שלה ורוד מבחוץ ולבן עם נקודות שחורות מבפנים.",
+      "הפרחים שלה נפתחים רק לילה אחד."
+    ],
+    "wikiTitle": "Selenicereus undatus"
+  },
+  {
+    "id": "ponytail-palm",
+    "hebrewName": "בוקרנאה (רגל פיל)",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Beaucarnea recurvata",
+    "genus": "Beaucarnea",
+    "facts": [
+      "לבוקרנאה בסיס גזע נפוח כמו רגל של פיל.",
+      "היא שומרת בו מים.",
+      "העלים שלה ארוכים ונופלים כמו שיער."
+    ],
+    "wikiTitle": "Beaucarnea recurvata"
+  },
+  {
+    "id": "sago-palm",
+    "hebrewName": "ציקס",
+    "emoji": "🌴",
+    "category": "צמח",
+    "scientificName": "Cycas revoluta",
+    "genus": "Cycas",
+    "facts": [
+      "הציקס נראה כמו דקל אבל הוא קרוב יותר לאורן.",
+      "זה צמח עתיק מתקופת הדינוזאורים!",
+      "הוא גדל לאט מאוד."
+    ],
+    "caution": "הציקס רעיל מאוד — לא אוכלים.",
+    "wikiTitle": "Cycas revoluta"
+  },
+  {
+    "id": "croton",
+    "hebrewName": "קרוטון",
+    "emoji": "🍂",
+    "category": "צמח",
+    "scientificName": "Codiaeum variegatum",
+    "genus": "Codiaeum",
+    "facts": [
+      "לקרוטון עלים צבעוניים בצהוב, כתום ואדום.",
+      "הוא צמח עציץ פופולרי.",
+      "הוא אוהב אור."
+    ],
+    "caution": "המיץ של הקרוטון רעיל.",
+    "wikiTitle": "Codiaeum variegatum"
+  },
+  {
+    "id": "coleus",
+    "hebrewName": "קולאוס",
+    "emoji": "🍂",
+    "category": "צמח",
+    "scientificName": "Coleus scutellarioides",
+    "genus": "Coleus",
+    "facts": [
+      "לקולאוס עלים בצבעים מדהימים.",
+      "הוא גדל בצל.",
+      "חותכים לו את הפרחים כדי שהעלים יהיו יפים."
+    ],
+    "wikiTitle": "Coleus scutellarioides"
+  },
+  {
+    "id": "zz-plant",
+    "hebrewName": "זמיוקולקס",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Zamioculcas zamiifolia",
+    "genus": "Zamioculcas",
+    "facts": [
+      "לזמיוקולקס עלים מבריקים כאילו צבועים.",
+      "הוא שורד כמעט בלי מים ובלי אור.",
+      "הוא צמח בית קל לגידול."
+    ],
+    "caution": "הזמיוקולקס רעיל אם אוכלים אותו.",
+    "wikiTitle": "Zamioculcas"
+  },
+  {
+    "id": "spider-plant",
+    "hebrewName": "כלורופיטום (צמח עכביש)",
+    "emoji": "🕷️",
+    "category": "צמח",
+    "scientificName": "Chlorophytum comosum",
+    "genus": "Chlorophytum",
+    "facts": [
+      "לכלורופיטום עלים ארוכים עם פס לבן.",
+      "הוא מוציא \"תינוקות\" קטנים על גבעולים.",
+      "אפשר לשתול כל תינוק לצמח חדש."
+    ],
+    "wikiTitle": "Chlorophytum comosum"
+  },
+  {
+    "id": "tradescantia",
+    "hebrewName": "טרדסקנטיה",
+    "emoji": "💜",
+    "category": "צמח",
+    "scientificName": "Tradescantia zebrina",
+    "genus": "Tradescantia",
+    "facts": [
+      "לטרדסקנטיה עלים סגולים-כסופים עם פסים.",
+      "היא גדלה מהר ונשפכת מעציצים.",
+      "קל להרבות אותה מייחורים."
+    ],
+    "wikiTitle": "Tradescantia zebrina"
+  },
+  {
+    "id": "philodendron",
+    "hebrewName": "פילודנדרון",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Philodendron hederaceum",
+    "genus": "Philodendron",
+    "facts": [
+      "לפילודנדרון עלים בצורת לב.",
+      "הוא מטפס או נשפך מהעציץ.",
+      "הוא אוהב צל חלקי."
+    ],
+    "caution": "רעיל אם אוכלים אותו.",
+    "wikiTitle": "Philodendron hederaceum"
+  },
+  {
+    "id": "dieffenbachia",
+    "hebrewName": "דיפנבכיה",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Dieffenbachia seguine",
+    "genus": "Dieffenbachia",
+    "facts": [
+      "לדיפנבכיה עלים גדולים עם כתמים לבנים.",
+      "היא צמח בית נפוץ.",
+      "היא אוהבת חום."
+    ],
+    "caution": "הדיפנבכיה רעילה — המיץ שלה שורף את הפה.",
+    "wikiTitle": "Dieffenbachia seguine"
+  },
+  {
+    "id": "aglaonema",
+    "hebrewName": "אגלאונמה",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Aglaonema commutatum",
+    "genus": "Aglaonema",
+    "facts": [
+      "לאגלאונמה עלים עם דוגמאות כסופות.",
+      "היא מסתדרת עם מעט אור.",
+      "היא צמח בית קל."
+    ],
+    "caution": "רעיל אם אוכלים אותו.",
+    "wikiTitle": "Aglaonema commutatum"
+  },
+  {
+    "id": "anthurium",
+    "hebrewName": "אנתוריום",
+    "emoji": "❤️",
+    "category": "פרח",
+    "scientificName": "Anthurium andraeanum",
+    "genus": "Anthurium",
+    "facts": [
+      "לאנתוריום \"פרח\" אדום מבריק בצורת לב.",
+      "הוא נראה כאילו עשוי מפלסטיק.",
+      "הוא אוהב לחות."
+    ],
+    "caution": "רעיל אם אוכלים אותו.",
+    "wikiTitle": "Anthurium andraeanum"
+  },
+  {
+    "id": "phalaenopsis",
+    "hebrewName": "סחלב פלנופסיס",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Phalaenopsis",
+    "genus": "Phalaenopsis",
+    "facts": [
+      "הפלנופסיס הוא הסחלב הנפוץ בבתים.",
+      "הפרחים שלו מחזיקים חודשים.",
+      "השורשים שלו גדלים באוויר."
+    ],
+    "wikiTitle": "Phalaenopsis"
+  },
+  {
+    "id": "begonia",
+    "hebrewName": "בגוניה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Begonia × semperflorens-cultorum",
+    "genus": "Begonia",
+    "facts": [
+      "לבגוניה פרחים ורודים, אדומים או לבנים.",
+      "העלים שלה מבריקים ובשרניים.",
+      "היא אוהבת צל חלקי."
+    ],
+    "wikiTitle": "Begonia"
+  },
+  {
+    "id": "african-violet",
+    "hebrewName": "סיגלית אפריקנית",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Saintpaulia ionantha",
+    "genus": "Saintpaulia",
+    "facts": [
+      "לסיגלית האפריקנית עלים רכים ושעירים.",
+      "היא פורחת בסגול כמעט כל השנה.",
+      "לא משקים אותה על העלים."
+    ],
+    "wikiTitle": "Saintpaulia ionantha"
+  },
+  {
+    "id": "dracaena-marginata",
+    "hebrewName": "דרקנה מרגינטה",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Dracaena marginata",
+    "genus": "Dracaena",
+    "facts": [
+      "לדרקנה מרגינטה עלים דקים עם שוליים אדומים.",
+      "היא נראית כמו עץ דקל קטן.",
+      "היא צמח בית עמיד."
+    ],
+    "caution": "רעילה לחתולים ולכלבים.",
+    "wikiTitle": "Dracaena marginata"
+  },
+  {
+    "id": "schefflera",
+    "hebrewName": "שפלרה",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Schefflera arboricola",
+    "genus": "Schefflera",
+    "facts": [
+      "לשפלרה עלים שנראים כמו מטרייה קטנה.",
+      "היא צמח בית עמיד.",
+      "בחוץ היא יכולה להפוך לשיח גדול."
+    ],
+    "wikiTitle": "Schefflera arboricola"
+  },
+  {
+    "id": "boston-fern",
+    "hebrewName": "שרך בוסטון",
+    "emoji": "🌿",
+    "category": "צמח",
+    "scientificName": "Nephrolepis exaltata",
+    "genus": "Nephrolepis",
+    "facts": [
+      "לשרך בוסטון עלים ארוכים ומנוצים.",
+      "שרכים לא עושים פרחים — הם מתרבים בנבגים.",
+      "הוא אוהב לחות."
+    ],
+    "wikiTitle": "Nephrolepis exaltata"
+  },
+  {
+    "id": "hoya",
+    "hebrewName": "הויה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Hoya carnosa",
+    "genus": "Hoya",
+    "facts": [
+      "להויה פרחים שנראים כמו כוכבים עשויים משעווה.",
+      "יש להם ריח מתוק בלילה.",
+      "היא מטפסת."
+    ],
+    "wikiTitle": "Hoya carnosa"
+  },
+  {
+    "id": "prayer-plant",
+    "hebrewName": "מרנטה",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Maranta leuconeura",
+    "genus": "Maranta",
+    "facts": [
+      "העלים של המרנטה מתקפלים למעלה בלילה כמו ידיים בתפילה.",
+      "יש להם דוגמאות יפות.",
+      "היא אוהבת לחות."
+    ],
+    "wikiTitle": "Maranta leuconeura"
+  },
+  {
+    "id": "areca-palm",
+    "hebrewName": "דיפסיס (דקל ארקה)",
+    "emoji": "🌴",
+    "category": "צמח",
+    "scientificName": "Dypsis lutescens",
+    "genus": "Dypsis",
+    "facts": [
+      "דקל הארקה הוא דקל בית פופולרי.",
+      "הגבעולים שלו צהבהבים.",
+      "הוא אוהב אור רב."
+    ],
+    "wikiTitle": "Dypsis lutescens"
+  },
+  {
+    "id": "parlor-palm",
+    "hebrewName": "כמדוריאה",
+    "emoji": "🌴",
+    "category": "צמח",
+    "scientificName": "Chamaedorea elegans",
+    "genus": "Chamaedorea",
+    "facts": [
+      "הכמדוריאה היא דקל קטן שגדל בבית.",
+      "היא מסתדרת עם מעט אור.",
+      "היא גדלה לאט."
+    ],
+    "wikiTitle": "Chamaedorea elegans"
+  },
+  {
+    "id": "fragrant-sage",
+    "hebrewName": "מרווה ריחנית",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Salvia dominica",
+    "genus": "Salvia",
+    "facts": [
+      "למרווה הריחנית ריח חזק ודביק.",
+      "היא גדלה בין סלעים במדבר יהודה ובהרים.",
+      "הפרחים שלה לבנבנים-צהבהבים."
+    ]
+  },
+  {
+    "id": "jerusalem-sage",
+    "hebrewName": "מרווה ירושלמית",
+    "emoji": "💗",
+    "category": "פרח",
+    "scientificName": "Salvia hierosolymitana",
+    "genus": "Salvia",
+    "facts": [
+      "למרווה הירושלמית פרחים ורודים-בורדו.",
+      "היא פורחת באביב בחורש.",
+      "העלים שלה גדולים ויושבים בבסיס הצמח."
+    ]
+  },
+  {
+    "id": "palestine-sage",
+    "hebrewName": "מרווה ארץ-ישראלית",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Salvia palaestinae",
+    "genus": "Salvia",
+    "facts": [
+      "למרווה הארץ-ישראלית פרחים סגלגלים-ורודים.",
+      "היא גדלה בשטחים פתוחים ובבתות.",
+      "הדבורים מאביקות אותה במנגנון מיוחד כמו מנוף."
+    ]
+  },
+  {
+    "id": "judean-sage",
+    "hebrewName": "מרווה יהודה",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Salvia judaica",
+    "genus": "Salvia",
+    "facts": [
+      "למרווה יהודה פרחים סגולים כהים.",
+      "היא גדלה בהרי יהודה ובשומרון.",
+      "יש אומרים שצורת התפרחת שלה נתנה השראה למנורת בית המקדש."
+    ]
+  },
+  {
+    "id": "hares-tail",
+    "hebrewName": "זנב-ארנבת ביצני",
+    "emoji": "🐰",
+    "category": "עשב",
+    "scientificName": "Lagurus ovatus",
+    "genus": "Lagurus",
+    "facts": [
+      "לזנב-הארנבת שיבולת רכה ושעירה כמו זנב של ארנב.",
+      "הוא גדל בחולות ליד הים.",
+      "אוהבים להכניס אותו לזרי פרחים יבשים."
+    ]
+  },
+  {
+    "id": "cairo-morning-glory",
+    "hebrewName": "לפופית קהירית",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Ipomoea cairica",
+    "genus": "Ipomoea",
+    "facts": [
+      "ללפופית פרחים סגולים בצורת משפך.",
+      "היא מטפסת ומכסה גדרות שלמות.",
+      "כל פרח נפתח ליום אחד בלבד."
+    ]
+  },
+  {
+    "id": "vervain",
+    "hebrewName": "ורבנה רפואית",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Verbena officinalis",
+    "genus": "Verbena",
+    "facts": [
+      "לורבנה פרחים סגלגלים קטנטנים על גבעולים דקים.",
+      "היא גדלה ליד מעיינות ובשולי שדות.",
+      "בעבר השתמשו בה כצמח מרפא."
+    ]
+  },
+  {
+    "id": "syrian-acanthus",
+    "hebrewName": "קוציץ סורי",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Acanthus syriacus",
+    "genus": "Acanthus",
+    "facts": [
+      "לקוציץ תפרחת עם פרחים לבנים וחפים סגולים קוצניים.",
+      "העלים שלו מעוטרים כמו קישוט.",
+      "היוונים העתיקים עיטרו עמודים בצורת עלים של קוציץ."
+    ]
+  },
+  {
+    "id": "wild-radish",
+    "hebrewName": "צנון מצוי",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Raphanus raphanistrum",
+    "genus": "Raphanus",
+    "facts": [
+      "לצנון המצוי פרחים לבנים-צהבהבים עם עורקים סגולים.",
+      "הוא קרוב הבר של הצנון שאוכלים.",
+      "הוא פורח בשדות בחורף."
+    ]
+  },
+  {
+    "id": "peony",
+    "hebrewName": "אדמונית החורש",
+    "emoji": "🌺",
+    "category": "פרח",
+    "scientificName": "Paeonia mascula",
+    "genus": "Paeonia",
+    "facts": [
+      "לאדמונית פרחים ורודים-אדומים גדולים.",
+      "היא גדלה רק בגליל העליון ובגולן.",
+      "זה צמח נדיר ומוגן מאוד."
+    ]
+  },
+  {
+    "id": "silverleaf-nightshade",
+    "hebrewName": "סולנום זיתני",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Solanum elaeagnifolium",
+    "genus": "Solanum",
+    "facts": [
+      "לסולנום הזיתני פרחים סגולים עם אבקנים צהובים.",
+      "העלים שלו כסופים.",
+      "הוא עשב פולש שקשה מאוד להיפטר ממנו."
+    ],
+    "caution": "הפירות הצהובים רעילים — לא אוכלים."
+  },
+  {
+    "id": "madder",
+    "hebrewName": "פואת הצבעים",
+    "emoji": "🔴",
+    "category": "צמח",
+    "scientificName": "Rubia tinctorum",
+    "genus": "Rubia",
+    "facts": [
+      "מהשורשים של הפואה הפיקו צבע אדום לבדים.",
+      "העלים שלה מחוספסים ונדבקים לבגדים.",
+      "היא מטפסת על שיחים."
+    ]
+  },
+  {
+    "id": "fleabane",
+    "hebrewName": "קייצת מסולסלת",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Erigeron bonariensis",
+    "genus": "Erigeron",
+    "facts": [
+      "הקייצת נפוצה מאוד בשולי דרכים ובחצרות.",
+      "יש לה הרבה זרעים מעופפים.",
+      "היא הגיעה מדרום אמריקה."
+    ],
+    "wikiTitle": "Erigeron bonariensis"
+  },
+  {
+    "id": "barbary-nut",
+    "hebrewName": "אירוסית הגלגלים",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Moraea sisyrinchium",
+    "genus": "Moraea",
+    "facts": [
+      "לאירוסית פרחים סגולים קטנים עם כתם צהוב-לבן.",
+      "הפרחים נפתחים רק אחר הצהריים.",
+      "היא קרובה לאירוס."
+    ],
+    "wikiTitle": "Moraea sisyrinchium"
+  },
+  {
+    "id": "creeping-fig",
+    "hebrewName": "פיקוס מטפס",
+    "emoji": "🍃",
+    "category": "צמח",
+    "scientificName": "Ficus pumila",
+    "genus": "Ficus",
+    "facts": [
+      "הפיקוס המטפס נדבק לקירות ומכסה אותם בירוק.",
+      "העלים שלו קטנים כשהוא צעיר.",
+      "הוא קרוב משפחה של התאנה."
+    ]
+  },
+  {
+    "id": "natal-plum",
+    "hebrewName": "קריסה",
+    "emoji": "🤍",
+    "category": "עץ",
+    "scientificName": "Carissa macrocarpa",
+    "genus": "Carissa",
+    "facts": [
+      "לקריסה פרחים לבנים ריחניים כמו יסמין.",
+      "יש לה פירות אדומים אכילים.",
+      "הענפים שלה קוצניים."
+    ]
+  },
+  {
+    "id": "orange-jasmine",
+    "hebrewName": "מוראיה",
+    "emoji": "🤍",
+    "category": "עץ",
+    "scientificName": "Murraya paniculata",
+    "genus": "Murraya",
+    "facts": [
+      "למוראיה פרחים לבנים עם ריח של פריחת הדרים.",
+      "היא משמשת לגדר חיה.",
+      "יש לה פירות אדומים קטנים."
+    ]
+  },
+  {
+    "id": "pentas",
+    "hebrewName": "פנטס",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Pentas lanceolata",
+    "genus": "Pentas",
+    "facts": [
+      "לפנטס כדורי פרחים קטנים בצורת כוכב.",
+      "פרפרים מאוד אוהבים אותו.",
+      "הוא פורח כמעט כל השנה."
+    ]
+  },
+  {
+    "id": "tree-houseleek",
+    "hebrewName": "אאוניום",
+    "emoji": "🌹",
+    "category": "צמח",
+    "scientificName": "Aeonium arboreum",
+    "genus": "Aeonium",
+    "facts": [
+      "לאאוניום שושנות עלים בשרניות בקצות הענפים.",
+      "יש זנים עם עלים כמעט שחורים.",
+      "הוא צריך מעט מים."
+    ]
+  },
+  {
+    "id": "echeveria",
+    "hebrewName": "אצ'ווריה",
+    "emoji": "🌹",
+    "category": "צמח",
+    "scientificName": "Echeveria elegans",
+    "genus": "Echeveria",
+    "facts": [
+      "העלים של האצ'ווריה מסודרים כמו ורד.",
+      "הם מכוסים באבקה לבנה-כחלחלה.",
+      "היא סוקולנט קטן ואהוב."
+    ]
+  },
+  {
+    "id": "string-of-pearls",
+    "hebrewName": "שרשרת פנינים",
+    "emoji": "📿",
+    "category": "צמח",
+    "scientificName": "Curio rowleyanus",
+    "genus": "Curio",
+    "facts": [
+      "לשרשרת הפנינים עלים עגולים כמו חרוזים.",
+      "היא נשפכת מעציצים תלויים.",
+      "הכדורים שומרים מים."
+    ],
+    "caution": "רעילה אם אוכלים אותה.",
+    "wikiTitle": "Curio rowleyanus"
+  },
+  {
+    "id": "pilea",
+    "hebrewName": "פילאה (צמח הכסף הסיני)",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Pilea peperomioides",
+    "genus": "Pilea",
+    "facts": [
+      "לפילאה עלים עגולים כמו מטבעות.",
+      "היא מוציאה צמחים קטנים מהאדמה.",
+      "היא צמח בית פופולרי."
+    ]
+  },
+  {
+    "id": "peperomia",
+    "hebrewName": "פפרומיה",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Peperomia obtusifolia",
+    "genus": "Peperomia",
+    "facts": [
+      "לפפרומיה עלים עבים ומבריקים.",
+      "היא קרובה לפלפל השחור.",
+      "היא צריכה מעט מים."
+    ]
+  },
+  {
+    "id": "elephant-ear",
+    "hebrewName": "אלוקסיה",
+    "emoji": "🐘",
+    "category": "צמח",
+    "scientificName": "Alocasia macrorrhizos",
+    "genus": "Alocasia",
+    "facts": [
+      "לאלוקסיה עלים ענקיים כמו אוזני פיל.",
+      "היא אוהבת מים וצל.",
+      "היא יכולה לגדול גבוה מאדם."
+    ],
+    "caution": "האלוקסיה רעילה ומגרה את העור."
+  },
+  {
+    "id": "taro",
+    "hebrewName": "קולקסיה (טארו)",
+    "emoji": "🪴",
+    "category": "צמח",
+    "scientificName": "Colocasia esculenta",
+    "genus": "Colocasia",
+    "facts": [
+      "לקולקסיה עלים ענקיים בצורת לב.",
+      "הפקעות שלה נאכלות אחרי בישול.",
+      "טיפות מים מתגלגלות על העלים שלה."
+    ],
+    "caution": "לא אוכלים אותה בלי בישול."
+  },
+  {
+    "id": "staghorn-fern",
+    "hebrewName": "קרן איל",
+    "emoji": "🦌",
+    "category": "צמח",
+    "scientificName": "Platycerium bifurcatum",
+    "genus": "Platycerium",
+    "facts": [
+      "לקרן האיל עלים שנראים כמו קרניים של איל.",
+      "היא גדלה על עצים ולא באדמה.",
+      "זה שרך."
+    ]
+  },
+  {
+    "id": "pineapple",
+    "hebrewName": "אננס",
+    "emoji": "🍍",
+    "category": "צמח",
+    "scientificName": "Ananas comosus",
+    "genus": "Ananas",
+    "facts": [
+      "האננס גדל על צמח נמוך ולא על עץ.",
+      "אפשר לשתול את ה\"כתר\" שלו ולגדל צמח חדש.",
+      "לוקח כשנתיים עד שנוצר פרי."
+    ]
+  },
+  {
+    "id": "arugula",
+    "hebrewName": "גרגיר (רוקט)",
+    "emoji": "🥬",
+    "category": "עשב",
+    "scientificName": "Eruca vesicaria",
+    "genus": "Eruca",
+    "facts": [
+      "לגרגיר טעם חריף ומעט מריר.",
+      "אוכלים אותו בסלטים.",
+      "הפרחים שלו לבנים עם עורקים סגולים."
+    ],
+    "wikiTitle": "Eruca vesicaria"
+  },
+  {
+    "id": "passion-fruit",
+    "hebrewName": "פסיפלורה",
+    "emoji": "💜",
+    "category": "צמח",
+    "scientificName": "Passiflora edulis",
+    "genus": "Passiflora",
+    "facts": [
+      "הפסיפלורה היא מטפס עם פרי סגול.",
+      "בתוך הפרי יש זרעים עם עיסה ריחנית וחמצמצה.",
+      "הפרחים שלה מיוחדים מאוד."
+    ]
+  },
+  {
+    "id": "cape-gooseberry",
+    "hebrewName": "פיזליס",
+    "emoji": "🏮",
+    "category": "צמח",
+    "scientificName": "Physalis peruviana",
+    "genus": "Physalis",
+    "facts": [
+      "הפרי של הפיזליס עטוף בפנס נייר.",
+      "הפרי כתום, קטן וחמצמץ.",
+      "הוא קרוב לעגבנייה."
+    ],
+    "caution": "הפירות הירוקים ושאר הצמח רעילים — אוכלים רק פרי בשל."
+  },
+  {
+    "id": "pecan",
+    "hebrewName": "עץ פקאן",
+    "emoji": "🌰",
+    "category": "עץ",
+    "scientificName": "Carya illinoinensis",
+    "genus": "Carya",
+    "facts": [
+      "אגוזי הפקאן גדלים על עצים גבוהים.",
+      "בישראל מגדלים פקאן בעמקים ובגליל.",
+      "הקליפה שלהם דקה וחלקה."
+    ]
+  },
+  {
+    "id": "jojoba",
+    "hebrewName": "חוחובה",
+    "emoji": "🌿",
+    "category": "עץ",
+    "scientificName": "Simmondsia chinensis",
+    "genus": "Simmondsia",
+    "facts": [
+      "מזרעי החוחובה מפיקים שמן לקרמים ולשיער.",
+      "היא גדלה בנגב ובערבה.",
+      "היא עמידה לחום וליובש."
+    ]
+  },
+  {
+    "id": "raspberry",
+    "hebrewName": "פטל אדום",
+    "emoji": "🍓",
+    "category": "צמח",
+    "scientificName": "Rubus idaeus",
+    "genus": "Rubus",
+    "facts": [
+      "הפטל האדום בנוי מהמון כדורים קטנים.",
+      "לצמח יש קוצים קטנים.",
+      "הוא מבשיל בקיץ."
+    ]
+  },
+  {
+    "id": "pink-trumpet-tree",
+    "hebrewName": "טבבויה ורודה",
+    "emoji": "🌸",
+    "category": "עץ",
+    "scientificName": "Handroanthus impetiginosus",
+    "genus": "Handroanthus",
+    "facts": [
+      "הטבבויה מתכסה בסוף החורף בפרחים ורודים.",
+      "היא פורחת כשאין עליה עלים.",
+      "היא עץ שדרות יפה."
+    ]
+  },
+  {
+    "id": "saffron",
+    "hebrewName": "כרכום הזעפרן",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Crocus sativus",
+    "genus": "Crocus",
+    "facts": [
+      "מהאבקנים האדומים של הכרכום מכינים זעפרן.",
+      "צריך אלפי פרחים בשביל קצת זעפרן.",
+      "זה התבלין היקר בעולם."
+    ]
+  },
+  {
+    "id": "nettle-goosefoot",
+    "hebrewName": "כף-אווז החומות",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Chenopodium murale",
+    "genus": "Chenopodium",
+    "facts": [
+      "לכף-אווז עלים בצורת כף רגל של אווז.",
+      "הוא גדל ליד בתים וקירות.",
+      "הוא עשב נפוץ בגינות."
+    ]
+  },
+  {
+    "id": "nutgrass",
+    "hebrewName": "גומא הפקעים",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Cyperus rotundus",
+    "genus": "Cyperus",
+    "facts": [
+      "לגומא הפקעים יש פקעות קטנות מתחת לאדמה.",
+      "הוא אחד העשבים הקשים ביותר לעקירה.",
+      "הגבעול שלו משולש."
+    ]
+  },
+  {
+    "id": "lemon-eucalyptus",
+    "hebrewName": "אקליפטוס לימוני",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Corymbia citriodora",
+    "genus": "Corymbia",
+    "facts": [
+      "לעלים של האקליפטוס הלימוני ריח חזק של לימון.",
+      "הגזע שלו חלק ולבן.",
+      "הוא עץ גבוה מאוד."
+    ]
+  },
+  {
+    "id": "glossy-privet",
+    "hebrewName": "ליגוסטרום מבריק",
+    "emoji": "🤍",
+    "category": "עץ",
+    "scientificName": "Ligustrum lucidum",
+    "genus": "Ligustrum",
+    "facts": [
+      "לליגוסטרום אשכולות פרחים לבנים קטנים.",
+      "העלים שלו מבריקים וירוקים כל השנה.",
+      "הוא עץ שדרות נפוץ."
+    ],
+    "caution": "הפירות שלו רעילים."
+  },
+  {
+    "id": "sacred-lotus",
+    "hebrewName": "לוטוס הודי",
+    "emoji": "🪷",
+    "category": "פרח",
+    "scientificName": "Nelumbo nucifera",
+    "genus": "Nelumbo",
+    "facts": [
+      "ללוטוס פרחים ורודים ענקיים מעל המים.",
+      "מים מתגלגלים על העלים שלו ולא מרטיבים אותם.",
+      "הוא סמל חשוב בהודו."
+    ]
+  },
+  {
+    "id": "rose-geranium",
+    "hebrewName": "גרניום ריחני",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Pelargonium graveolens",
+    "genus": "Pelargonium",
+    "facts": [
+      "לגרניום הריחני עלים עם ריח של ורד ולימון.",
+      "מפיקים ממנו שמן בושם.",
+      "כשמשפשפים את העלה — הידיים מריחות טוב."
+    ]
+  },
+  {
+    "id": "sweet-violet",
+    "hebrewName": "סיגל ריחני",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Viola odorata",
+    "genus": "Viola",
+    "facts": [
+      "לסיגל פרחים סגולים קטנים וריחניים מאוד.",
+      "הוא אוהב צל.",
+      "מהפרחים שלו מכינים בושם."
+    ]
+  },
+  {
+    "id": "daisy",
+    "hebrewName": "חיננית רב-שנתית",
+    "emoji": "🌼",
+    "category": "פרח",
+    "scientificName": "Bellis perennis",
+    "genus": "Bellis",
+    "facts": [
+      "לחיננית פרח לבן עם מרכז צהוב.",
+      "הפרח נסגר בלילה ונפתח בבוקר.",
+      "ילדים אוהבים לעשות ממנה זרים."
+    ]
+  },
+  {
+    "id": "gladiolus",
+    "hebrewName": "גלדיולה",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Gladiolus × hortulanus",
+    "genus": "Gladiolus",
+    "facts": [
+      "לגלדיולה פרחים גדולים לאורך גבעול ארוך.",
+      "היא צומחת מפקעת.",
+      "השם שלה בא מהמילה \"חרב\" בלטינית."
+    ],
+    "wikiTitle": "Gladiolus"
+  },
+  {
+    "id": "lisianthus",
+    "hebrewName": "ליזיאנתוס",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Eustoma grandiflorum",
+    "genus": "Eustoma",
+    "facts": [
+      "לליזיאנתוס פרחים עדינים שנראים כמו ורדים.",
+      "ישראל מגדלת ומייצאת אותו לכל העולם.",
+      "הוא מחזיק הרבה זמן באגרטל."
+    ]
+  },
+  {
+    "id": "waxflower",
+    "hebrewName": "שעוונית",
+    "emoji": "🌸",
+    "category": "פרח",
+    "scientificName": "Chamelaucium uncinatum",
+    "genus": "Chamelaucium",
+    "facts": [
+      "לשעוונית פרחים קטנים שנראים עשויים משעווה.",
+      "העלים שלה דקים כמו מחטים עם ריח לימוני.",
+      "ישראל מגדלת אותה לייצוא."
+    ]
+  },
+  {
+    "id": "sour-orange",
+    "hebrewName": "חושחש",
+    "emoji": "🍊",
+    "category": "עץ",
+    "scientificName": "Citrus × aurantium",
+    "genus": "Citrus",
+    "facts": [
+      "החושחש נראה כמו תפוז אבל הוא מר וחמוץ.",
+      "משתמשים בו כבסיס להרכבת עצי הדר.",
+      "מהפרחים שלו מכינים מי זהר."
+    ],
+    "wikiTitle": "Bitter orange"
+  },
+  {
+    "id": "lime",
+    "hebrewName": "ליים",
+    "emoji": "🍋",
+    "category": "עץ",
+    "scientificName": "Citrus × aurantiifolia",
+    "genus": "Citrus",
+    "facts": [
+      "הליים ירוק, קטן וחמוץ מאוד.",
+      "מוסיפים אותו למשקאות ולמנות.",
+      "הוא קרוב של הלימון."
+    ],
+    "wikiTitle": "Key lime"
+  },
+  {
+    "id": "jerusalem-artichoke",
+    "hebrewName": "ארטישוק ירושלמי",
+    "emoji": "🌻",
+    "category": "צמח",
+    "scientificName": "Helianthus tuberosus",
+    "genus": "Helianthus",
+    "facts": [
+      "לארטישוק הירושלמי פקעות שאוכלים.",
+      "הוא קרוב של החמנית ויש לו פרחים צהובים.",
+      "למרות השם הוא לא קשור לירושלים."
+    ]
+  },
+  {
+    "id": "luffa",
+    "hebrewName": "לופה מצרית",
+    "emoji": "🧽",
+    "category": "צמח",
+    "scientificName": "Luffa aegyptiaca",
+    "genus": "Luffa",
+    "facts": [
+      "מהפרי היבש של הלופה עושים ספוגים לרחצה!",
+      "כשהוא צעיר אפשר לאכול אותו.",
+      "הוא מטפס ופורח בצהוב."
+    ],
+    "wikiTitle": "Luffa aegyptiaca"
+  },
+  {
+    "id": "bottle-gourd",
+    "hebrewName": "דלעת הבקבוק",
+    "emoji": "🍶",
+    "category": "צמח",
+    "scientificName": "Lagenaria siceraria",
+    "genus": "Lagenaria",
+    "facts": [
+      "מהפרי היבש של דלעת הבקבוק עשו כלים ובקבוקים.",
+      "הפרחים שלה לבנים ונפתחים בערב.",
+      "היא מטפסת."
+    ],
+    "wikiTitle": "Lagenaria siceraria"
+  },
+  {
+    "id": "stevia",
+    "hebrewName": "סטיביה",
+    "emoji": "🍬",
+    "category": "עשב",
+    "scientificName": "Stevia rebaudiana",
+    "genus": "Stevia",
+    "facts": [
+      "העלים של הסטיביה מתוקים הרבה יותר מסוכר!",
+      "משתמשים בהם כממתיק.",
+      "היא הגיעה מפרגוואי."
+    ],
+    "wikiTitle": "Stevia rebaudiana"
+  },
+  {
+    "id": "tarragon",
+    "hebrewName": "טרגון",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Artemisia dracunculus",
+    "genus": "Artemisia",
+    "facts": [
+      "לטרגון טעם שמזכיר אניס.",
+      "מוסיפים אותו למטבח הצרפתי.",
+      "העלים שלו ארוכים וצרים."
+    ],
+    "wikiTitle": "Tarragon"
+  },
+  {
+    "id": "peppermint",
+    "hebrewName": "מנטה",
+    "emoji": "🌿",
+    "category": "עשב",
+    "scientificName": "Mentha × piperita",
+    "genus": "Mentha",
+    "facts": [
+      "למנטה טעם קריר ורענן.",
+      "ממנה מכינים מסטיקים וסוכריות.",
+      "היא הכלאה של שני סוגי נענע."
+    ],
+    "wikiTitle": "Peppermint"
+  },
+  {
+    "id": "cork-oak",
+    "hebrewName": "אלון השעם",
+    "emoji": "🌳",
+    "category": "עץ",
+    "scientificName": "Quercus suber",
+    "genus": "Quercus",
+    "facts": [
+      "מהקליפה העבה של אלון השעם עושים פקקים.",
+      "אפשר לקלף את הקליפה בלי לפגוע בעץ.",
+      "בישראל שותלים אותו בפארקים."
+    ]
+  },
+  {
+    "id": "rose-of-sharon",
+    "hebrewName": "היביסקוס סורי",
+    "emoji": "💜",
+    "category": "פרח",
+    "scientificName": "Hibiscus syriacus",
+    "genus": "Hibiscus",
+    "facts": [
+      "להיביסקוס הסורי פרחים סגולים, ורודים או לבנים.",
+      "הוא משיר את העלים בחורף.",
+      "הוא הפרח הלאומי של דרום קוריאה."
+    ]
+  },
+  {
+    "id": "damask-rose",
+    "hebrewName": "ורד דמשקאי",
+    "emoji": "🌹",
+    "category": "פרח",
+    "scientificName": "Rosa × damascena",
+    "genus": "Rosa",
+    "facts": [
+      "מהורד הדמשקאי מפיקים מי ורדים ושמן ורדים.",
+      "הריח שלו חזק ומתוק.",
+      "השם שלו בא מהעיר דמשק."
+    ],
+    "wikiTitle": "Rosa × damascena"
+  },
+  {
+    "id": "arabian-jasmine",
+    "hebrewName": "יסמין ערבי",
+    "emoji": "🤍",
+    "category": "פרח",
+    "scientificName": "Jasminum sambac",
+    "genus": "Jasminum",
+    "facts": [
+      "ליסמין הערבי פרחים לבנים עם ריח חזק מאוד.",
+      "מכינים ממנו תה יסמין.",
+      "הוא הפרח הלאומי של הפיליפינים."
+    ]
+  },
+  {
+    "id": "white-lupin",
+    "hebrewName": "תורמוס תרבותי",
+    "emoji": "🫘",
+    "category": "צמח",
+    "scientificName": "Lupinus albus",
+    "genus": "Lupinus",
+    "facts": [
+      "מהזרעים של התורמוס מכינים את החטיף \"תורמוס\" המלוח.",
+      "צריך להשרות אותם הרבה זמן לפני שאוכלים.",
+      "הפרחים שלו לבנים-תכלכלים."
+    ],
+    "wikiTitle": "Lupinus albus"
+  },
+  {
+    "id": "leek",
+    "hebrewName": "כרישה",
+    "emoji": "🥬",
+    "category": "צמח",
+    "scientificName": "Allium porrum",
+    "genus": "Allium",
+    "facts": [
+      "לכרישה גבעול לבן עבה ועלים ירוקים שטוחים.",
+      "היא קרובה לבצל ולשום.",
+      "מכינים ממנה קציצות כרישה לפסח."
+    ],
+    "wikiTitle": "Leek"
   }
 ]

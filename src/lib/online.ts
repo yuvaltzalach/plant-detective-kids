@@ -1,5 +1,6 @@
 // שכבת אונליין: קבוצה משותפת (קוד הצטרפות) וטבלת ניצחונות בין מכשירים.
 // הכל עטוף ב-try/catch — אם השרת/KV לא זמין, מחזירים null והאפליקציה ממשיכה רגיל.
+import type { Mission, Race, RaceResult } from "./race";
 
 const CODE_KEY = "plant-detective:groupCode";
 
@@ -11,21 +12,13 @@ export interface OnlineMember {
   stickers: number;
   badges: number;
   level: number;
-  groupDoneAt?: number;
-  updatedAt: number;
-}
-
-export interface GroupChallenge {
-  text: string;
-  emoji: string;
-  category?: string;
-  by?: string;
   updatedAt: number;
 }
 
 export interface GroupData {
   members: OnlineMember[];
-  challenge: GroupChallenge | null;
+  race: Race | null;
+  raceResults: RaceResult[];
 }
 
 export interface PlayerStats {
@@ -73,14 +66,13 @@ export function normalizeCode(raw: string): string {
 export async function syncGroup(
   code: string,
   player: OnlinePlayer,
-  stats: PlayerStats,
-  groupDoneAt?: number
+  stats: PlayerStats
 ): Promise<boolean> {
   try {
     const res = await fetch("/api/group/sync", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ code, player, stats, groupDoneAt })
+      body: JSON.stringify({ code, player, stats })
     });
     return res.ok;
   } catch {
@@ -93,25 +85,49 @@ export async function fetchGroup(code: string): Promise<GroupData | null> {
     const res = await fetch("/api/group/leaderboard?code=" + encodeURIComponent(code));
     if (!res.ok) return null;
     const data = (await res.json()) as Partial<GroupData>;
-    return { members: data.members ?? [], challenge: data.challenge ?? null };
+    return {
+      members: data.members ?? [],
+      race: data.race ?? null,
+      raceResults: data.raceResults ?? []
+    };
   } catch {
     return null;
   }
 }
 
-/** קובע (או מבטל, עם null) אתגר משותף לכל הקבוצה. */
-export async function setGroupChallenge(
-  code: string,
-  challenge: { text: string; emoji: string; category?: string; by?: string } | null
-): Promise<boolean> {
+async function postJson(url: string, body: unknown): Promise<any | null> {
   try {
-    const res = await fetch("/api/group/challenge", {
+    const res = await fetch(url, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ code, challenge })
+      body: JSON.stringify(body)
     });
-    return res.ok;
+    if (!res.ok) return null;
+    return await res.json();
   } catch {
-    return false;
+    return null;
   }
+}
+
+/** פותח מרוץ משימות חדש לכל הקבוצה (מחליף מרוץ קודם). */
+export async function startRace(code: string, missions: Mission[], by?: string): Promise<Race | null> {
+  const data = await postJson("/api/group/race", { code, action: "start", race: { missions, by } });
+  return data?.race ?? null;
+}
+
+/** סוגר את המרוץ הנוכחי — הטבלה הסופית נקבעת לפי מה שכל אחד הספיק. */
+export async function endRace(code: string): Promise<boolean> {
+  return !!(await postJson("/api/group/race", { code, action: "end" }));
+}
+
+/** מדווח התקדמות במרוץ (כמה משימות הושלמו וכמה נקודות). */
+export async function sendRaceProgress(
+  code: string,
+  raceId: string,
+  player: OnlinePlayer,
+  done: number,
+  score: number
+): Promise<RaceResult | null> {
+  const data = await postJson("/api/group/race-progress", { code, raceId, player, done, score });
+  return data?.result ?? null;
 }

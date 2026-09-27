@@ -8,14 +8,23 @@ import type {
 
 const PLANTS = plantsData as PlantContent[];
 
+/** מנרמל שם מדעי להשוואה: אותיות קטנות, בלי סימן הכלאה (×) ובלי רווחים כפולים. */
+function normSci(name: string): string {
+  return name.toLowerCase().replace(/×/g, " ").replace(/\s+x\s+/g, " ").replace(/\s+/g, " ").trim();
+}
+
 // אינדקסים לחיפוש מהיר לפי שם מדעי מלא ולפי סוג (genus)
 const byScientific = new Map<string, PlantContent>();
-const byGenus = new Map<string, PlantContent>();
+const byGenus = new Map<string, PlantContent[]>();
 for (const p of PLANTS) {
-  byScientific.set(p.scientificName.toLowerCase(), p);
-  if (!byGenus.has(p.genus.toLowerCase())) {
-    byGenus.set(p.genus.toLowerCase(), p);
-  }
+  byScientific.set(normSci(p.scientificName), p);
+  const g = p.genus.toLowerCase();
+  byGenus.set(g, [...(byGenus.get(g) ?? []), p]);
+}
+
+function genusOf(candidate: IdentifyCandidate): string {
+  const sci = candidate.scientificName?.toLowerCase().trim() ?? "";
+  return (candidate.genus || sci.split(/\s+/)[0] || "").toLowerCase().trim();
 }
 
 /** כל הצמחים במסד המקומי — משמש להצגת האלבום עם המשבצות הריקות. */
@@ -25,15 +34,23 @@ export function getAllPlants(): PlantContent[] {
 
 /** חיפוש תוכן עברי מקומי עבור מועמד זיהוי. מחזיר null אם אין התאמה. */
 export function findLocalContent(candidate: IdentifyCandidate): PlantContent | null {
-  const sci = candidate.scientificName?.toLowerCase().trim() ?? "";
+  const sci = normSci(candidate.scientificName ?? "");
   if (sci && byScientific.has(sci)) return byScientific.get(sci)!;
+  // Pl@ntNet לפעמים מחזיר גם תת-מין/זן ("Olea europaea subsp. ...") — משווים לפי שתי המילים הראשונות
+  const binomial = sci.split(" ").slice(0, 2).join(" ");
+  if (binomial && byScientific.has(binomial)) return byScientific.get(binomial)!;
 
-  // התאמה לפי המילה הראשונה של השם המדעי (הסוג)
-  const genusFromSci = sci.split(/\s+/)[0];
-  const genus = (candidate.genus || genusFromSci || "").toLowerCase().trim();
-  if (genus && byGenus.has(genus)) return byGenus.get(genus)!;
+  // התאמה לפי הסוג (genus) — רק כשיש במסד מין אחד בלבד מהסוג הזה. אם יש כמה מינים
+  // (למשל כמה סוגי אלון), הצגת אחד מהם הייתה נותנת שם לא נכון לצמח שצולם.
+  const same = byGenus.get(genusOf(candidate));
+  if (same && same.length === 1) return same[0];
 
   return null;
+}
+
+/** נציג מהסוג כשיש כמה מינים — משמש רק כגיבוי אחרון, אחרי שוויקיפדיה לא עזרה. */
+function genusFallback(candidate: IdentifyCandidate): PlantContent | null {
+  return byGenus.get(genusOf(candidate))?.[0] ?? null;
 }
 
 function toResultFromLocal(local: PlantContent, candidate: IdentifyCandidate): PlantResult {
@@ -159,7 +176,11 @@ export async function enrichToResult(candidate: IdentifyCandidate): Promise<Plan
     }
   }
 
-  // 3) גיבוי אחרון — מעדיפים שם נפוץ בעברית; אם אין, מציגים את השם הלטיני
+  // 3) צמח קרוב מאותו סוג במסד המקומי
+  const sibling = genusFallback(candidate);
+  if (sibling) return toResultFromLocal(sibling, candidate);
+
+  // 4) גיבוי אחרון — מעדיפים שם נפוץ בעברית; אם אין, מציגים את השם הלטיני
   const hebrewCommon = (candidate.commonNames ?? []).find(hasHebrew);
   const friendlyName =
     hebrewCommon || candidate.commonNames?.[0] || candidate.scientificName || "צמח מסתורי";
