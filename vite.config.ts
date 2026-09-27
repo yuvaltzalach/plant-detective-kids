@@ -7,8 +7,8 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: "autoUpdate",
-      // הרישום נעשה ידנית ב-main.tsx (כדי לרענן את הדף מיד כשיש גרסה חדשה)
+      // "prompt": הגרסה החדשה מחכה, והאפליקציה מחילה אותה רק במסך הבית (src/lib/appUpdate.ts)
+      registerType: "prompt",
       injectRegister: false,
       includeAssets: ["favicon.svg", "icon.svg"],
       manifest: {

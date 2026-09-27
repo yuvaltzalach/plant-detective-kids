@@ -14,11 +14,13 @@ interface AlbumProps {
 
 export function Album({ state, player, points, level, onCapture }: AlbumProps) {
   const plants = getAllPlants();
-  const localIds = new Set(plants.map((p) => p.id));
+  const byId = new Map(plants.map((p) => [p.id, p]));
 
-  // מדבקות שנאספו אך אינן במסד המקומי (מוויקיפדיה וכו')
-  const extras = Object.values(state.stickers).filter((s) => !localIds.has(s.collectId));
-  const collectedCount = Object.keys(state.stickers).length;
+  // המדבקות שנאספו — החדשה ביותר למעלה (כולל צמחים שזוהו מוויקיפדיה ואינם במסד)
+  const found = Object.values(state.stickers).sort((a, b) => b.firstFoundAt - a.firstFoundAt);
+  // אחריהן המשבצות של הצמחים שעוד לא נמצאו
+  const missing = plants.filter((p) => !state.stickers[p.id]);
+  const collectedCount = found.length;
 
   const handleShare = () => {
     playPop();
@@ -60,42 +62,31 @@ export function Album({ state, player, points, level, onCapture }: AlbumProps) {
       )}
 
       <div className="mt-5 grid grid-cols-3 gap-3 sm:grid-cols-4">
-        {plants.map((p) => {
-          const sticker = state.stickers[p.id];
-          const has = !!sticker;
+        {found.map((sticker) => {
+          const p = byId.get(sticker.collectId);
           return (
             <div
-              key={p.id}
-              className={`flex aspect-square flex-col items-center justify-center rounded-2xl p-2 text-center transition ${
-                has ? "bg-white shadow-md animate-pop" : "bg-gray-200/60"
-              }`}
+              key={sticker.collectId}
+              className="flex aspect-square flex-col items-center justify-center rounded-2xl bg-white p-2 text-center shadow-md animate-pop"
             >
-              <div className={`text-4xl ${has ? "" : "opacity-30 grayscale"}`}>
-                {has ? p.emoji : "❓"}
+              <div className="text-4xl">{p?.emoji ?? sticker.emoji}</div>
+              <div className="mt-1 text-xs font-bold leading-tight text-leaf-dark">
+                {p?.hebrewName ?? sticker.hebrewName}
               </div>
-              <div
-                className={`mt-1 text-xs font-bold leading-tight ${
-                  has ? "text-leaf-dark" : "text-gray-500"
-                }`}
-              >
-                {has ? p.hebrewName : "עוד לא נמצא"}
-              </div>
-              {has && sticker.timesFound > 1 && (
+              {sticker.timesFound > 1 && (
                 <div className="text-[10px] text-amber-600">×{sticker.timesFound}</div>
               )}
             </div>
           );
         })}
 
-        {extras.map((s) => (
+        {missing.map((p) => (
           <div
-            key={s.collectId}
-            className="flex aspect-square flex-col items-center justify-center rounded-2xl bg-white p-2 text-center shadow-md animate-pop"
+            key={p.id}
+            className="flex aspect-square flex-col items-center justify-center rounded-2xl bg-gray-200/60 p-2 text-center"
           >
-            <div className="text-4xl">{s.emoji}</div>
-            <div className="mt-1 text-xs font-bold leading-tight text-leaf-dark">
-              {s.hebrewName}
-            </div>
+            <div className="text-4xl opacity-30 grayscale">❓</div>
+            <div className="mt-1 text-xs font-bold leading-tight text-gray-500">עוד לא נמצא</div>
           </div>
         ))}
       </div>
