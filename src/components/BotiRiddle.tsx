@@ -128,7 +128,7 @@ export function RiddlePopup({ plant, onClose }: { plant: PlantContent; onClose: 
               🔊 הקראה
             </button>
             <button onClick={onClose} className="big-btn bg-leaf px-6 py-2 text-base">
-              סבבה!
+              מעולה, הבנתי!
             </button>
           </div>
         </div>
