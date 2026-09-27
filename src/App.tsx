@@ -224,7 +224,6 @@ export default function App() {
           state={a.state}
           challenge={a.challenge}
           onCapture={startCapture}
-          onCompleteManually={a.completeChallenge}
         />
       )}
 
@@ -290,22 +289,11 @@ export default function App() {
 
       {screen === "parents" && (
         <Parents
-          settings={a.settings}
           children={a.children}
           onRefreshChildren={a.refreshChildren}
           onLinkChild={a.linkChildAccount}
           onDeleteChild={a.deleteChildAccount}
           onResetChildPassword={a.resetChildPassword}
-          onSetChallenge={a.updateCustomChallenge}
-          onClearChallenge={() => a.updateCustomChallenge(null)}
-          online={{
-            code: online.code,
-            race: online.race,
-            join: online.join,
-            leave: online.leave,
-            startRace: online.startRace,
-            endRace: online.endRace
-          }}
         />
       )}
 

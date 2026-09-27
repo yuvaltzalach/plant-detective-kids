@@ -97,7 +97,7 @@ function grantNewBadges(state: ProgressState, at: number): string[] {
 
 /**
  * רושם זיהוי מוצלח: מוסיף מדבקה/נקודות, מעדכן את האתגר הפעיל ורצף, ומחשב תגים חדשים.
- * `challenge` הוא האתגר הפעיל (יומי או מותאם על-ידי הורה). פונקציה טהורה.
+ * `challenge` הוא האתגר היומי (אוטומטי, זהה בכל המכשירים). פונקציה טהורה.
  */
 export function recordFind(
   prev: ProgressState,
@@ -116,6 +116,7 @@ export function recordFind(
   if (state.todayDate !== today) {
     state.todayDate = today;
     state.todayCount = 0;
+    state.todayChallengeCount = 0;
   }
 
   // מדבקה: חדשה או חוזרת
@@ -144,14 +145,12 @@ export function recordFind(
   const alreadyDoneToday = state.lastChallengeDate === today;
   let challengeCompletedNow = false;
   if (!alreadyDoneToday) {
-    // אתגר עם סימון ידני (טקסט חופשי של הורה) לא מסומן אוטומטית על-ידי זיהוי
-    const matches = challenge.manual
-      ? false
-      : challenge.category
-        ? result.category === challenge.category
-        : challenge.id === "two"
-          ? state.todayCount >= 2
-          : true;
+    // סופרים רק זיהויים שעומדים בתנאי האתגר (קטגוריה / צמח חדש)
+    const qualifies =
+      (!challenge.category || result.category === challenge.category) &&
+      (!challenge.newOnly || isNew);
+    if (qualifies) state.todayChallengeCount = (state.todayChallengeCount ?? 0) + 1;
+    const matches = (state.todayChallengeCount ?? 0) >= (challenge.count ?? 1);
     if (matches) {
       challengeCompletedNow = true;
       pointsGained += applyChallengeCompletion(state, today);
@@ -162,26 +161,6 @@ export function recordFind(
   const newBadgeIds = grantNewBadges(state, now.getTime());
 
   return { state, isNew, pointsGained, newBadgeIds, challengeCompletedNow };
-}
-
-/** סימון ידני של השלמת אתגר (למשל אתגר טקסט חופשי של הורה). פונקציה טהורה. */
-export function completeChallengeManually(
-  prev: ProgressState,
-  now = new Date()
-): FindOutcome {
-  const state: ProgressState = {
-    ...prev,
-    stickers: { ...prev.stickers },
-    badges: [...prev.badges]
-  };
-  const today = dateKey(now);
-  if (state.lastChallengeDate === today) {
-    return { state, isNew: false, pointsGained: 0, newBadgeIds: [], challengeCompletedNow: false };
-  }
-  const pointsGained = applyChallengeCompletion(state, today);
-  state.points = prev.points + pointsGained;
-  const newBadgeIds = grantNewBadges(state, now.getTime());
-  return { state, isNew: false, pointsGained, newBadgeIds, challengeCompletedNow: true };
 }
 
 /** רמה נגזרת מהנקודות (כל 50 נקודות = רמה). */

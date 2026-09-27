@@ -1,12 +1,10 @@
 // ניהול משתתפים (פרופילים) על המכשיר, התקדמות פר-משתתף, והגדרות אפליקציה.
 // הכל ב-localStorage — בלי שרת ובלי חשבונות. מאפשר תחרות בין ילדים על אותו טלפון.
-import { challengeForDate, type Challenge } from "../data/challenges";
 import { STORAGE_KEY, emptyState, loadStateFrom, saveStateTo } from "./progress";
-import type { AppSettings, CustomChallenge, Player, ProgressState } from "../types";
+import type { Player, ProgressState } from "../types";
 
 const PLAYERS_KEY = "plant-detective:players";
 const ACTIVE_KEY = "plant-detective:activePlayer";
-const SETTINGS_KEY = "plant-detective:settings";
 
 export const AVATARS = ["🦊", "🐼", "🦁", "🐸", "🦄", "🐢", "🦉", "🐝", "🦋", "🐙", "🌻", "🦖"];
 
@@ -147,32 +145,4 @@ export function ensureActivePlayer(): Player[] {
     setActivePlayerId(players[0].id);
   }
   return players;
-}
-
-// ─── הגדרות (כולל אתגר מותאם של הורה) ────────────────────────────────────
-export function loadSettings(): AppSettings {
-  return readJson<AppSettings>(SETTINGS_KEY, { customChallenge: null });
-}
-
-export function saveSettings(settings: AppSettings) {
-  writeJson(SETTINGS_KEY, settings);
-}
-
-export function setCustomChallenge(challenge: CustomChallenge | null) {
-  saveSettings({ ...loadSettings(), customChallenge: challenge });
-}
-
-/** האתגר הפעיל: מותאם על-ידי הורה אם קיים, אחרת האתגר היומי הקבוע. */
-export function activeChallenge(settings: AppSettings, now = new Date()): Challenge {
-  const custom = settings.customChallenge;
-  if (custom) {
-    return {
-      id: "custom",
-      text: custom.text,
-      emoji: custom.emoji || "🎯",
-      category: custom.category,
-      manual: !custom.category // בלי קטגוריה → סימון ידני ("מצאתי!")
-    };
-  }
-  return challengeForDate(now);
 }
