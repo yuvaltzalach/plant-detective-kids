@@ -58,14 +58,13 @@ describe("recordFind", () => {
   it("משלים אתגר יומי ומעניק נקודות בונוס פעם אחת ביום", () => {
     const date = new Date(2026, 4, 5);
     const cat = challengeForDate(date).category ?? "עץ";
-    const out1 = recordFind(emptyState(), makeResult("a", cat), date);
-    // אם האתגר דורש 2 זיהויים, נשלים עוד אחד
-    let state = out1.state;
-    let completed = out1.challengeCompletedNow;
-    if (!completed) {
-      const out2 = recordFind(state, makeResult("b", cat), date);
-      state = out2.state;
-      completed = out2.challengeCompletedNow;
+    // אתגרים מסוימים דורשים כמה זיהויים — ממשיכים עד שהוא מושלם
+    let state = emptyState();
+    let completed = false;
+    for (let i = 0; i < 3 && !completed; i++) {
+      const out = recordFind(state, makeResult(`a${i}`, cat), date);
+      state = out.state;
+      completed = out.challengeCompletedNow;
     }
     expect(completed).toBe(true);
     expect(state.lastChallengeDate).toBeTruthy();

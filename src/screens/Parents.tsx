@@ -1,23 +1,9 @@
 import { useEffect, useState } from "react";
 import { levelTitle } from "../data/levels";
 import { levelForPoints } from "../lib/progress";
-import { randomCode } from "../lib/online";
-import { getAllPlants } from "../lib/content";
-import { generateMissions, type Mission, type Race } from "../lib/race";
 import type { ChildAccount } from "../lib/auth";
-import type { AppSettings, CustomChallenge, PlantCategory } from "../types";
-
-export interface OnlineControls {
-  code: string | null;
-  race: Race | null;
-  join: (raw: string) => void;
-  leave: () => void;
-  startRace: (missions: Mission[]) => Promise<boolean>;
-  endRace: () => void;
-}
 
 interface ParentsProps {
-  settings: AppSettings;
   children: ChildAccount[] | null;
   onRefreshChildren: () => void;
   onLinkChild: (
@@ -29,19 +15,8 @@ interface ParentsProps {
     username: string,
     newPassword: string
   ) => Promise<{ ok: true } | { ok: false; error: string }>;
-  onSetChallenge: (c: CustomChallenge) => void;
-  onClearChallenge: () => void;
-  online: OnlineControls;
 }
 
-const CATEGORIES: { label: string; value?: PlantCategory }[] = [
-  { label: "כל צמח", value: undefined },
-  { label: "עץ", value: "עץ" },
-  { label: "פרח", value: "פרח" },
-  { label: "עשב", value: "עשב" },
-  { label: "צמח", value: "צמח" }
-];
-const EMOJI_CHOICES = ["🎯", "🌻", "🌳", "🌸", "🍎", "🟡", "🔴", "🟣", "🍃", "🐝"];
 const LINK_ERR: Record<string, string> = {
   "child-not-found": "לא נמצא ילד/ה בשם הזה.",
   "wrong-password": "סיסמה שגויה.",
@@ -51,17 +26,8 @@ const LINK_ERR: Record<string, string> = {
 };
 
 export function Parents(props: ParentsProps) {
-  const [text, setText] = useState(props.settings.customChallenge?.text ?? "");
-  const [emoji, setEmoji] = useState(props.settings.customChallenge?.emoji ?? "🎯");
-  const [category, setCategory] = useState<PlantCategory | undefined>(
-    props.settings.customChallenge?.category
-  );
   const [childUser, setChildUser] = useState("");
   const [childPass, setChildPass] = useState("");
-  const [codeInput, setCodeInput] = useState("");
-  const [raceCount, setRaceCount] = useState(10);
-  const [raceMsg, setRaceMsg] = useState("");
-  const current = props.settings.customChallenge;
 
   useEffect(() => {
     props.onRefreshChildren();
@@ -90,6 +56,12 @@ export function Parents(props: ParentsProps) {
             🔄 רענון
           </button>
         </div>
+
+        <p className="mt-2 rounded-2xl bg-leaf-light/50 p-3 text-sm text-leaf-dark">
+          לכל ילד/ה יש חשבון משלו/ה. כשמקשרים חשבון של ילד/ה לחשבון ההורה שלכם, אתם רואים כאן
+          מכל מכשיר את ההתקדמות שלו/ה (נקודות, רמה, צמחים ותגים), ויכולים לאפס לו/ה סיסמה שנשכחה
+          או למחוק את החשבון. הילד/ה ממשיך/ה לשחק רגיל מהטלפון שלו/ה.
+        </p>
 
         <div className="mt-3 space-y-3">
           {(props.children ?? []).map((c) => {
@@ -184,165 +156,6 @@ export function Parents(props: ParentsProps) {
         </div>
       </section>
 
-      {/* אתגר אישי (במכשיר הזה) */}
-      <section className="rounded-blob bg-white p-5 ring-1 ring-leaf-dark/5 shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)]">
-        <h3 className="text-xl font-black text-leaf-dark">🎯 אתגר אישי</h3>
-        <p className="mt-1 text-sm text-leaf-dark/80">
-          למשל "מצאו פרח עם עלים צהובים". יופיע במקום האתגר היומי במכשיר הזה.
-        </p>
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="מצאו פרח עם עלים צהובים"
-          rows={2}
-          className="mt-3 w-full rounded-2xl border-2 border-leaf-light bg-white p-3 text-lg outline-none focus:border-leaf"
-        />
-        <div className="mt-3 flex flex-wrap gap-2">
-          {EMOJI_CHOICES.map((e) => (
-            <button
-              key={e}
-              onClick={() => setEmoji(e)}
-              className={`h-10 w-10 rounded-xl text-2xl ${
-                e === emoji ? "bg-leaf-light ring-2 ring-leaf" : "bg-gray-100"
-              }`}
-            >
-              {e}
-            </button>
-          ))}
-        </div>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {CATEGORIES.map((c) => (
-            <button
-              key={c.label}
-              onClick={() => setCategory(c.value)}
-              className={`rounded-full px-4 py-1.5 text-sm font-bold ${
-                category === c.value ? "bg-leaf text-white" : "bg-gray-100 text-leaf-dark"
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
-        <div className="mt-4 flex gap-3">
-          <button
-            onClick={() =>
-              props.onSetChallenge({ text: text.trim(), emoji, category, createdAt: Date.now() })
-            }
-            disabled={!text.trim()}
-            className="big-btn flex-1 bg-leaf py-3 text-lg disabled:opacity-40"
-          >
-            שמירת אתגר
-          </button>
-          {current && (
-            <button
-              onClick={() => {
-                props.onClearChallenge();
-                setText("");
-                setEmoji("🎯");
-                setCategory(undefined);
-              }}
-              className="big-btn bg-gray-400 py-3 text-lg"
-            >
-              ביטול
-            </button>
-          )}
-        </div>
-        {current && (
-          <div className="mt-3 rounded-2xl bg-leaf-light/60 p-3 text-center font-bold text-leaf-dark">
-            אתגר פעיל: {current.emoji} {current.text}
-          </div>
-        )}
-      </section>
-
-      {/* תחרות אונליין */}
-      <section className="rounded-blob bg-white p-5 ring-1 ring-leaf-dark/5 shadow-[0_10px_24px_-14px_rgba(20,83,45,0.4)]">
-        <h3 className="text-xl font-black text-leaf-dark">🏆 תחרות אונליין</h3>
-        {!props.online.code ? (
-          <>
-            <p className="mt-1 text-sm text-leaf-dark/80">
-              פתחו קבוצה (קוד לשיתוף) או הצטרפו לקוד קיים — טבלת ניצחונות משותפת בין כולם.
-            </p>
-            <input
-              value={codeInput}
-              onChange={(e) => setCodeInput(e.target.value.toUpperCase())}
-              placeholder="קוד קבוצה"
-              maxLength={8}
-              className="mt-3 w-full rounded-2xl border-2 border-leaf-light bg-white p-3 text-center text-xl font-black tracking-widest outline-none focus:border-leaf"
-            />
-            <div className="mt-3 flex gap-2">
-              <button
-                onClick={() => props.online.join(codeInput)}
-                disabled={codeInput.trim().length < 3}
-                className="big-btn flex-1 bg-leaf py-2 text-base disabled:opacity-40"
-              >
-                הצטרפות
-              </button>
-              <button
-                onClick={() => props.online.join(randomCode())}
-                className="big-btn flex-1 bg-sky py-2 text-base"
-              >
-                ✨ קבוצה חדשה
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="mt-2 rounded-2xl bg-leaf-light/60 p-3 text-center">
-              <div className="text-sm font-bold text-leaf-dark/80">קוד הקבוצה לשיתוף:</div>
-              <div className="text-3xl font-black tracking-widest text-leaf-dark">
-                {props.online.code}
-              </div>
-            </div>
-            <div className="mt-4 text-sm font-bold text-leaf-dark/80">🏁 מרוץ משימות לכל הקבוצה:</div>
-            <p className="mt-1 text-xs text-leaf-dark/70">
-              {props.online.race && !props.online.race.endedAt
-                ? `יש מרוץ פעיל (${props.online.race.missions.length} משימות). הילדים משחקים ממסך "תחרות אונליין".`
-                : "כולם מקבלים את אותו רצף משימות ומתחרים על הכי הרבה נקודות."}
-            </p>
-            <div className="mt-2 flex gap-1.5">
-              {[5, 10, 15].map((c) => (
-                <button
-                  key={c}
-                  onClick={() => setRaceCount(c)}
-                  className={`rounded-full px-4 py-1 text-sm font-bold ${
-                    raceCount === c ? "bg-leaf text-white" : "bg-gray-100 text-leaf-dark"
-                  }`}
-                >
-                  {c} משימות
-                </button>
-              ))}
-            </div>
-            {raceMsg && <div className="mt-2 text-sm font-bold text-leaf">{raceMsg}</div>}
-            <div className="mt-3 flex gap-2">
-              <button
-                onClick={async () => {
-                  const ok = await props.online.startRace(
-                    generateMissions(getAllPlants(), raceCount, true)
-                  );
-                  setRaceMsg(ok ? "✓ המרוץ נפתח! כל הקבוצה יכולה להתחיל." : "לא הצלחנו לפתוח מרוץ, נסו שוב.");
-                }}
-                className="big-btn flex-1 bg-leaf py-2 text-base"
-              >
-                פתיחת מרוץ חדש
-              </button>
-              {props.online.race && !props.online.race.endedAt && (
-                <button
-                  onClick={() => {
-                    props.online.endRace();
-                    setRaceMsg("המרוץ הסתיים — התוצאות במסך התחרות.");
-                  }}
-                  className="big-btn bg-amber-500 py-2 text-base"
-                >
-                  סיום מרוץ
-                </button>
-              )}
-              <button onClick={props.online.leave} className="big-btn bg-gray-400 py-2 text-base">
-                יציאה
-              </button>
-            </div>
-          </>
-        )}
-      </section>
     </div>
   );
 }

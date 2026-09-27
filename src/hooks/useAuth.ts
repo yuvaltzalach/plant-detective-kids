@@ -17,13 +17,12 @@ import {
 } from "../lib/auth";
 import {
   FindOutcome,
-  completeChallengeManually,
   emptyState,
   levelForPoints,
   recordFind
 } from "../lib/progress";
-import { activeChallenge, loadSettings, setCustomChallenge } from "../lib/players";
-import type { AppSettings, CustomChallenge, PlantResult, ProgressState } from "../types";
+import { challengeForDate } from "../data/challenges";
+import type { PlantResult, ProgressState } from "../types";
 
 interface Session {
   token: string;
@@ -74,7 +73,6 @@ export function useAuth() {
   const [state, setState] = useState<ProgressState>(() =>
     session ? loadCachedProgress(session.account.username) : emptyState()
   );
-  const [settings, setSettings] = useState<AppSettings>(() => loadSettings());
   const [children, setChildren] = useState<ChildAccount[] | null>(null);
 
   // כניסה אוטומטית: מרעננים מהשרת אם יש session
@@ -113,18 +111,12 @@ export function useAuth() {
 
   const record = useCallback(
     (result: PlantResult): FindOutcome => {
-      const outcome = recordFind(state, result, new Date(), activeChallenge(loadSettings()));
+      const outcome = recordFind(state, result, new Date(), challengeForDate());
       applyProgress(outcome.state);
       return outcome;
     },
     [state, applyProgress]
   );
-
-  const completeChallenge = useCallback((): FindOutcome => {
-    const outcome = completeChallengeManually(state);
-    applyProgress(outcome.state);
-    return outcome;
-  }, [state, applyProgress]);
 
   const resetProgress = useCallback(() => applyProgress(emptyState()), [applyProgress]);
 
@@ -225,22 +217,15 @@ export function useAuth() {
     [session]
   );
 
-  const updateCustomChallenge = useCallback((c: CustomChallenge | null) => {
-    setCustomChallenge(c);
-    setSettings(loadSettings());
-  }, []);
-
   return {
     account: session?.account ?? null,
     isLoggedIn: !!session,
     state,
-    settings,
     children,
-    challenge: activeChallenge(settings),
+    challenge: challengeForDate(),
     level: levelForPoints(state.points),
     stickerCount: Object.keys(state.stickers).length,
     record,
-    completeChallenge,
     resetProgress,
     signup: doSignup,
     login: doLogin,
@@ -251,7 +236,6 @@ export function useAuth() {
     resetChildPassword: resetChildPasswordAction,
     changeUsername,
     updateProfile,
-    forgotInfo,
-    updateCustomChallenge
+    forgotInfo
   };
 }

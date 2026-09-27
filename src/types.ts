@@ -71,6 +71,8 @@ export interface ProgressState {
   /** תאריך היום שאליו מתייחס המונה, וכמה זיהויים נעשו בו (למעקב אתגר) */
   todayDate?: string;
   todayCount: number;
+  /** כמה זיהויים היום עמדו בתנאי האתגר היומי */
+  todayChallengeCount?: number;
 }
 
 /** משתתף (פרופיל) על המכשיר — לתחרות בין ילדים באותו טלפון. */
@@ -81,18 +83,4 @@ export interface Player {
   createdAt: number;
   /** קוד חשבון אונליין אישי — אם קיים, ההתקדמות מסתנכרנת בין מכשירים. */
   cloudCode?: string;
-}
-
-/** אתגר מותאם שההורה כותב (למשל "מצאו פרח עם עלים צהובים"). */
-export interface CustomChallenge {
-  text: string;
-  emoji: string;
-  /** אם ההורה בחר קטגוריה — האתגר יסומן אוטומטית בזיהוי מתאים. אחרת סימון ידני. */
-  category?: PlantCategory;
-  createdAt: number;
-}
-
-/** הגדרות אפליקציה משותפות (לא תלויות משתתף). */
-export interface AppSettings {
-  customChallenge: CustomChallenge | null;
 }

@@ -283,7 +283,7 @@ export function Home(props: HomeProps) {
               </span>
               {challengeDoneToday && <span className="done-stamp">✓ הושלם</span>}
               <span className="block text-xs font-bold text-amber-800">
-                {challenge.id === "custom" ? "אתגר מההורים" : "אתגר היום"}
+                אתגר היום
               </span>
               <span className="mt-0.5 line-clamp-3 text-[15px] font-bold leading-snug text-forest">
                 {challenge.text}
