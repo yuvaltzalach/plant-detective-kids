@@ -260,7 +260,6 @@ export function Home(props: HomeProps) {
           <SectionHeading id="home-today" accessory={<PawTrail className="h-9 w-[110px]" />}>
             היום בגינה
           </SectionHeading>
-          <span className="journey-fragment journey-fragment--today" aria-hidden="true">✿ · · ·</span>
           <div className="mt-11 grid grid-cols-2 gap-3">
             <button onClick={go(props.onPlantOfDay)} className="explorer-card explorer-card--mint station">
               <span className="station-object station-object--plant">
@@ -304,7 +303,6 @@ export function Home(props: HomeProps) {
           <SectionHeading id="home-explore" accessory={<BeeTrail className="h-9 w-[110px]" />}>
             לגלות ולשחק
           </SectionHeading>
-          <span className="journey-fragment journey-fragment--explore" aria-hidden="true">· · ✿</span>
 
           <button onClick={go(props.onAlbum)} className="explorer-card explorer-card--peach album-card">
             <span className="album-object">
@@ -349,14 +347,14 @@ export function Home(props: HomeProps) {
         {account?.isParent && (
           <button
             onClick={go(props.onParents)}
-            className="mt-6 flex w-full max-w-sm items-center gap-3 rounded-[1.4rem] border-2 border-dashed border-leaf-dark/15 bg-white/45 px-4 py-2.5 text-right transition-transform active:scale-[0.98]"
+            className="parents-entry mt-6 flex w-full max-w-sm items-center gap-3 rounded-[1.4rem] px-4 py-2.5 text-right transition-transform active:scale-[0.98]"
           >
             <ParentsArt className="h-10 w-10 shrink-0" />
             <span className="min-w-0 flex-1">
-              <span className="block text-sm font-bold text-forest/85">אזור הורים</span>
-              <span className="block text-xs text-forest/60">הילדים שלי, אתגר אישי ועוד</span>
+              <span className="block text-sm font-bold text-forest">אזור הורים</span>
+              <span className="block text-xs font-medium text-forest/80">הילדים שלי, אתגר אישי ועוד</span>
             </span>
-            <ChevronForward className="h-5 w-5 shrink-0 text-forest/35" />
+            <ChevronForward className="h-5 w-5 shrink-0 text-forest" />
           </button>
         )}
 
