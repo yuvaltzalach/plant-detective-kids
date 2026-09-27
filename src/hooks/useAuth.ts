@@ -19,8 +19,10 @@ import {
   FindOutcome,
   emptyState,
   levelForPoints,
-  recordFind
+  recordFind,
+  removeStickers
 } from "../lib/progress";
+import { deleteStickerPhoto } from "../lib/photos";
 import { challengeForDate } from "../data/challenges";
 import type { PlantResult, ProgressState } from "../types";
 
@@ -119,6 +121,14 @@ export function useAuth() {
   );
 
   const resetProgress = useCallback(() => applyProgress(emptyState()), [applyProgress]);
+
+  const deleteStickers = useCallback(
+    (collectIds: string[]) => {
+      applyProgress(removeStickers(state, collectIds));
+      if (session) collectIds.forEach((id) => deleteStickerPhoto(session.account.username, id));
+    },
+    [state, session, applyProgress]
+  );
 
   const doSignup = useCallback(
     async (username: string, age: number, password: string, avatar: string): Promise<AuthResult> => {
@@ -227,6 +237,7 @@ export function useAuth() {
     stickerCount: Object.keys(state.stickers).length,
     record,
     resetProgress,
+    deleteStickers,
     signup: doSignup,
     login: doLogin,
     logout,

@@ -197,3 +197,14 @@ export async function enrichToResult(candidate: IdentifyCandidate): Promise<Plan
   // 5) גיבוי אחרון — בלי שמות באנגלית
   return genericResult(candidate, "צמח מסתורי");
 }
+
+/** שם ועובדות בעברית לצמח שאינו במסד המקומי (לדף המדבקה באלבום). */
+export async function hebrewDetailsFor(
+  scientificName: string
+): Promise<{ name: string; facts: string[] } | null> {
+  const he = await hebrewNameFor(scientificName);
+  if (!he) return null;
+  const wiki = await hebrewWiki(he.wikiTitle ?? he.name);
+  const facts = wiki ? splitToFacts(wiki.extract) : [];
+  return { name: he.name, facts };
+}

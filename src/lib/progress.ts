@@ -163,6 +163,22 @@ export function recordFind(
   return { state, isNew, pointsGained, newBadgeIds, challengeCompletedNow };
 }
 
+/**
+ * מוחק מדבקות מהאלבום. מורידים את הנקודות שהתקבלו על המציאה הראשונה, כדי שאי אפשר יהיה
+ * "לצבור" נקודות ע"י מחיקה וצילום מחדש. פונקציה טהורה.
+ */
+export function removeStickers(prev: ProgressState, collectIds: string[]): ProgressState {
+  const stickers = { ...prev.stickers };
+  let removed = 0;
+  for (const id of collectIds) {
+    if (stickers[id]) {
+      delete stickers[id];
+      removed++;
+    }
+  }
+  return { ...prev, stickers, points: Math.max(0, prev.points - removed * POINTS_NEW) };
+}
+
 /** רמה נגזרת מהנקודות (כל 50 נקודות = רמה). */
 export function levelForPoints(points: number): { level: number; toNext: number; inLevel: number } {
   const per = 50;
