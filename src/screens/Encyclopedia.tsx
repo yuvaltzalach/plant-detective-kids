@@ -32,7 +32,7 @@ export function Encyclopedia({ state, onOpenPlant }: EncyclopediaProps) {
   }, [plants, query, filter]);
 
   return (
-    <div className="screen-rise flex flex-1 flex-col px-5 pb-10 pt-2">
+    <div className="garden-page garden-page--encyclopedia screen-rise flex flex-1 flex-col px-5 pb-10 pt-2">
       <div className="relative">
         <div className="title-glow" aria-hidden="true" />
         <h2 className="relative text-center text-3xl font-black text-leaf-dark">

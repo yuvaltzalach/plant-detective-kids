@@ -129,7 +129,7 @@ export default function App() {
   }
 
   return (
-    <div className="relative mx-auto flex min-h-screen max-w-lg flex-col">
+    <div className={`relative mx-auto flex min-h-screen max-w-lg flex-col ${screen === "home" ? "" : "garden-inner"}`}>
       <div className="app-bg" aria-hidden="true" />
       {screen !== "home" && screen !== "game" && (
         <TopBar

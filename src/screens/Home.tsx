@@ -201,7 +201,7 @@ export function Home(props: HomeProps) {
               onClick={() => {
                 if (confirm("להתנתק מהחשבון?")) props.onLogout();
               }}
-              className="flex min-h-[44px] items-center gap-1.5 rounded-full px-3 text-sm font-bold text-leaf-dark/70 transition-transform active:scale-95"
+              className="home-exit flex min-h-[44px] items-center gap-1.5 rounded-full px-3 text-sm font-bold transition-transform active:scale-95"
             >
               <DoorArt className="h-5 w-5" />
               יציאה
@@ -259,7 +259,7 @@ export function Home(props: HomeProps) {
           <SectionHeading id="home-today" accessory={<PawTrail className="h-9 w-[110px]" />}>
             היום בגינה
           </SectionHeading>
-          <div className="mt-8 grid grid-cols-2 gap-3">
+          <div className="mt-5 grid grid-cols-2 gap-3">
             <button onClick={go(props.onPlantOfDay)} className="explorer-card explorer-card--mint station">
               <span className="station-object station-object--plant">
                 {plantOfDay.hebrewName.includes("שקד") ? (
@@ -296,7 +296,7 @@ export function Home(props: HomeProps) {
         </section>
 
         {/* 5. פעילויות — אלבום השדה (חפץ-גיבור) ושלושה כלי חוקר */}
-        <section className="relative mt-9 w-full max-w-sm" aria-labelledby="home-explore">
+        <section className="relative mt-5 w-full max-w-sm" aria-labelledby="home-explore">
           <GardenEdgeVine className="garden-deco section-vine section-vine--explore" />
           <EdgeLeafLarge className="garden-deco deco-leaf-large" />
           <SectionHeading id="home-explore" accessory={<BeeTrail className="h-9 w-[110px]" />}>
@@ -320,7 +320,7 @@ export function Home(props: HomeProps) {
           </button>
 
           <StoneBloom className="garden-deco deco-stone" />
-          <div className="mt-6 grid grid-cols-3 gap-3">
+          <div className="mt-10 grid grid-cols-3 gap-3">
             <button onClick={go(props.onEncyclopedia)} className="explorer-card explorer-card--mint activity-tile">
               <span className="tile-object tile-object--book">
                 <img src="/art/book.webp" alt="" className="h-full w-full object-contain" />
