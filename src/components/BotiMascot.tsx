@@ -1,12 +1,10 @@
 import { MascotView, mascotById } from "../data/mascots";
-import { useMascotId } from "../lib/mascotPref";
 import { RiddleCloud, RiddlePopup, useBotiRiddle } from "./BotiRiddle";
 
 export function BotiMascot() {
   const { plant, bubbleOpen, popupOpen, toggleBubble, openPopup, closePopup } = useBotiRiddle();
-  const mascotId = useMascotId();
-
-  const currentMascot = mascotById(mascotId);
+  // הדמות המנחה קבועה (רקסי הכלבלב) — אין בחירת דמות
+  const currentMascot = mascotById("puppy-photo");
 
   return (
     <>
