@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { TopBar } from "./components/TopBar";
 import { getAllPlants } from "./lib/content";
 import { setMuted } from "./lib/sound";
+import { applyUpdateIfReady, onUpdateReady } from "./lib/appUpdate";
 import { dateKey } from "./data/challenges";
 import { useAuth } from "./hooks/useAuth";
 import { useOnlineGroup } from "./hooks/useOnlineGroup";
@@ -55,10 +56,32 @@ const GAME_COMPONENTS = {
 } as const;
 
 const MUTE_KEY = "plant-detective:muted";
+// תמונה שצולמה ועוד לא זוהתה — אם הדף נטען מחדש באמצע (הטלפון סגר אותו ברקע), ממשיכים
+// ישר לזיהוי במקום לחזור למסך הבית ולאבד את הצילום.
+const PENDING_IMAGE_KEY = "pdk:pendingImage";
+
+function loadPendingImage(): string | null {
+  try {
+    return sessionStorage.getItem(PENDING_IMAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function savePendingImage(dataUrl: string | null) {
+  try {
+    if (dataUrl) sessionStorage.setItem(PENDING_IMAGE_KEY, dataUrl);
+    else sessionStorage.removeItem(PENDING_IMAGE_KEY);
+  } catch {
+    /* מתעלמים (למשל אם אין מקום) */
+  }
+}
 
 export default function App() {
   const a = useAuth();
-  const [stack, setStack] = useState<Screen[]>(["home"]);
+  const [stack, setStack] = useState<Screen[]>(() =>
+    loadPendingImage() ? ["home", "identifying"] : ["home"]
+  );
   const screen = stack[stack.length - 1];
 
   // ניווט: כל העמקה דוחפת רשומת היסטוריה, כדי שכפתור "חזור" (של האפליקציה ושל אנדרואיד)
@@ -85,7 +108,21 @@ export default function App() {
     return () => window.removeEventListener("popstate", onPop);
   }, []);
 
-  const [image, setImage] = useState<string | null>(null);
+  const [image, setImage] = useState<string | null>(() => loadPendingImage());
+
+  useEffect(() => {
+    // חזרנו לזיהוי שנקטע — רשומת היסטוריה כדי ש"חזור" יחזיר למסך הבית
+    if (stack.length > 1) pushHistory(stack.length - 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // גרסה חדשה של האפליקציה מוחלת רק במסך הבית — לא באמצע צילום, זיהוי או משחק
+  useEffect(() => {
+    if (screen !== "home") return;
+    savePendingImage(null); // חזרו לבית — הצילום הקודם כבר לא רלוונטי
+    applyUpdateIfReady();
+    return onUpdateReady(applyUpdateIfReady);
+  }, [screen]);
   const [result, setResult] = useState<PlantResult | null>(null);
   const [detailId, setDetailId] = useState<string | undefined>(undefined);
   const [gameId, setGameId] = useState<GameId | null>(null);
@@ -175,6 +212,7 @@ export default function App() {
       {screen === "capture" && (
         <Capture
           onImage={(dataUrl) => {
+            savePendingImage(dataUrl);
             setImage(dataUrl);
             setResult(null);
             navTo(pendingHunt ? ["home", "online", "identifying"] : ["home", "identifying"]);
@@ -186,6 +224,7 @@ export default function App() {
         <Identifying
           imageDataUrl={image}
           onResult={(r) => {
+            savePendingImage(null);
             setResult(r);
             if (pendingHunt) {
               setHuntOutcome({ ...pendingHunt, category: r.category, plantName: r.hebrewName });
@@ -195,7 +234,10 @@ export default function App() {
               navTo(["home", "result"]);
             }
           }}
-          onRetry={startCapture}
+          onRetry={() => {
+            savePendingImage(null);
+            startCapture();
+          }}
         />
       )}
 
