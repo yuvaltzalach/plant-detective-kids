@@ -1156,12 +1156,13 @@ button {
 .home-wash {
   background:
     linear-gradient(180deg,
-      transparent 0, transparent 395px,
-      rgba(255,249,233,.12) 460px,
-      rgba(255,249,233,.72) 620px,
-      #fff9e9 850px, #fff9e9 100%),
-    url('/art/garden-sky.webp') center top / 165% auto no-repeat,
-    #fff9e9;
+      transparent 0%, transparent 29%,
+      rgba(255,249,233,.16) 37%,
+      rgba(255,249,233,.55) 47%,
+      rgba(255,249,233,.88) 59%,
+      rgba(255,249,233,.91) 81%,
+      rgba(255,249,233,.12) 100%),
+    url('/art/garden-sky.webp') center center / 165% 100% no-repeat;
 }
 .home-rise::before {
   top: 0;
