@@ -7,6 +7,21 @@ interface CaptureProps {
 }
 
 type CameraState = "starting" | "live" | "unavailable";
+/** למה המצלמה הפנימית לא נפתחה — מוצג לילד/להורה במקום לעבור בשקט למצלמת הטלפון */
+type CameraProblem = "denied" | "unsupported" | "inapp" | "error";
+
+/** דפדפן מובנה של וואטסאפ/אינסטגרם/פייסבוק וכו' — לרוב לא מאפשר מצלמה בתוך הדף */
+function isInAppBrowser(): boolean {
+  return /FBAN|FBAV|Instagram|WhatsApp|Line\/|; wv\)/i.test(navigator.userAgent);
+}
+
+const PROBLEM_TEXT: Record<CameraProblem, string> = {
+  denied:
+    "לא נתתם לאפליקציה הרשאה למצלמה. כדי לאשר: לוחצים על סמל המנעול ליד כתובת האתר (או בהגדרות האתר) ← מצלמה ← אישור, ואז \"נסו שוב\".",
+  unsupported: "הדפדפן הזה לא מאפשר מצלמה בתוך האפליקציה. אפשר לצלם עם מצלמת הטלפון.",
+  inapp: "האפליקציה נפתחה מתוך וואטסאפ/אינסטגרם, ושם אין מצלמה פנימית. פתחו את הקישור בכרום (⋮ ← פתיחה בדפדפן).",
+  error: "המצלמה לא נפתחה (אולי אפליקציה אחרת משתמשת בה). נסו שוב, או צלמו עם מצלמת הטלפון."
+};
 
 /**
  * צילום בתוך האפליקציה (getUserMedia): הדף לא עובר לאפליקציית המצלמה של הטלפון, ולכן
@@ -20,6 +35,8 @@ export function Capture({ onImage }: CaptureProps) {
   const galleryRef = useRef<HTMLInputElement>(null);
   const [camera, setCamera] = useState<CameraState>("starting");
   const [busy, setBusy] = useState(false);
+  const [problem, setProblem] = useState<CameraProblem | null>(null);
+  const [attempt, setAttempt] = useState(0);
 
   const stopCamera = () => {
     streamRef.current?.getTracks().forEach((t) => t.stop());
@@ -28,36 +45,60 @@ export function Capture({ onImage }: CaptureProps) {
 
   useEffect(() => {
     let cancelled = false;
+    setCamera("starting");
+    setProblem(null);
     if (!navigator.mediaDevices?.getUserMedia) {
+      setProblem(isInAppBrowser() ? "inapp" : "unsupported");
       setCamera("unavailable");
       return;
     }
-    navigator.mediaDevices
-      .getUserMedia({
-        video: { facingMode: { ideal: "environment" }, width: { ideal: 1920 }, height: { ideal: 1080 } },
-        audio: false
-      })
-      .then((stream) => {
-        if (cancelled) {
-          stream.getTracks().forEach((t) => t.stop());
+    // מנסים קודם באיכות גבוהה ובמצלמה האחורית; יש טלפונים שנכשלים עם דרישות — אז בפשטות
+    const tries: MediaStreamConstraints[] = [
+      { video: { facingMode: { ideal: "environment" }, width: { ideal: 1920 }, height: { ideal: 1080 } }, audio: false },
+      { video: { facingMode: "environment" }, audio: false },
+      { video: true, audio: false }
+    ];
+    (async () => {
+      let lastError: unknown = null;
+      for (const c of tries) {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia(c);
+          if (cancelled) {
+            stream.getTracks().forEach((t) => t.stop());
+            return;
+          }
+          streamRef.current = stream;
+          const video = videoRef.current;
+          if (video) {
+            video.srcObject = stream;
+            void video.play().catch(() => undefined);
+          }
+          setCamera("live");
           return;
+        } catch (e) {
+          lastError = e;
+          // בלי הרשאה אין טעם לנסות שוב עם הגדרות אחרות
+          if (e instanceof DOMException && (e.name === "NotAllowedError" || e.name === "SecurityError")) break;
         }
-        streamRef.current = stream;
-        const video = videoRef.current;
-        if (video) {
-          video.srcObject = stream;
-          void video.play().catch(() => undefined);
-        }
-        setCamera("live");
-      })
-      .catch(() => {
-        if (!cancelled) setCamera("unavailable");
-      });
+      }
+      if (cancelled) return;
+      const name = lastError instanceof DOMException ? lastError.name : "";
+      setProblem(
+        name === "NotAllowedError" || name === "SecurityError"
+          ? isInAppBrowser()
+            ? "inapp"
+            : "denied"
+          : isInAppBrowser()
+            ? "inapp"
+            : "error"
+      );
+      setCamera("unavailable");
+    })();
     return () => {
       cancelled = true;
       stopCamera();
     };
-  }, []);
+  }, [attempt]);
 
   const snap = () => {
     const video = videoRef.current;
@@ -136,6 +177,23 @@ export function Capture({ onImage }: CaptureProps) {
         <p className="mt-1 text-leaf-dark/80">כוונו את המצלמה לעלה, לפרח או לעץ</p>
       </div>
 
+      {problem && (
+        <div className="w-full max-w-xs rounded-2xl bg-amber-100 p-3 text-center text-sm font-bold text-amber-800">
+          {PROBLEM_TEXT[problem]}
+          {problem !== "unsupported" && (
+            <button
+              onClick={() => {
+                playPop();
+                setAttempt((n) => n + 1);
+              }}
+              className="mt-2 block w-full rounded-full bg-amber-500 px-4 py-2 text-white"
+            >
+              🔄 נסו שוב את המצלמה של האפליקציה
+            </button>
+          )}
+        </div>
+      )}
+
       <button
         onClick={() => {
           playPop();
@@ -144,7 +202,7 @@ export function Capture({ onImage }: CaptureProps) {
         disabled={busy}
         className="big-btn w-full max-w-xs bg-gradient-to-b from-leaf to-leaf-dark"
       >
-        📷 פתחו מצלמה
+        📷 צלמו עם מצלמת הטלפון
       </button>
 
       {galleryButton}
